@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical"
+        android:layout_width="320dp"
+        android:layout_height="452dp"
+        android:backgroundTint="#ffffff"
+        android:background="@drawable/radius"
+        android:gravity="center_horizontal">
+
+    <ImageView
+            android:layout_width="320dp"
+            android:layout_height="187dp"
+            app:srcCompat="@color/colorAccent"
+            android:id="@+id/imageView3"
+            android:layout_marginBottom="20dp"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="#222222"
+            android:lineSpacingExtra="5.5sp"
+            android:gravity="center_horizontal"
+            android:text="기부 성공\n스탬프 1개 받기 완료!"
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="#999999"
+            android:lineSpacingExtra="4sp"
+            android:gravity="center_horizontal"
+            android:text="스탬프 10개를 모으면 총 기부한 베리의\n 10% 내에서 랜덤으로 베리를 수확 가능해요."
+            android:layout_marginBottom="30dp"/>
+    <Button
+            android:textSize="14sp"
+            android:textColor="#ffffff"
+            android:text="스탬프 확인하러 가기"
+            android:textStyle="bold"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#ffc21f"
+            android:background="@drawable/radius"
+            android:id="@+id/button3"
+            android:layout_marginBottom="5dp"/>
+
+    <Button
+            android:text="건너뛰기"
+            android:textSize="14sp"
+            android:textColor="#333333"
+            android:backgroundTint="#ffffff"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/button4"/>
+
+</LinearLayout>
