@@ -30,7 +30,7 @@
             android:textSize="30sp"
             android:textStyle="bold"
             android:textColor="#111111"
-            tools:text="베리충전"
+            android:text="베리충전"
             android:layout_marginBottom="30dp"
             android:paddingLeft="20dp"
             android:drawablePadding="13dp"
