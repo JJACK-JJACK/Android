@@ -33,7 +33,7 @@
             android:lineSpacingExtra="4sp"
             android:gravity="center_horizontal"
             android:text="스탬프 10개를 모으면 총 기부한 베리의\n 10% 내에서 랜덤으로 베리를 수확 가능해요."
-            android:layout_marginBottom="30dp"/>
+            android:layout_marginBottom="25dp"/>
     <Button
             android:textSize="14sp"
             android:textColor="#ffffff"
