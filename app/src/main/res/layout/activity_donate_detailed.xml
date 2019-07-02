@@ -41,8 +41,14 @@
     <android.support.v4.view.ViewPager
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/donate_detailed_pager"
-    >
+            android:id="@+id/donate_detailed_pager">
+        <org.jetbrains.anko._ScrollView android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+
+        </org.jetbrains.anko._ScrollView>
+
+
 
     </android.support.v4.view.ViewPager>
 
