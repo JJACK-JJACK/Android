@@ -9,6 +9,10 @@
         android:background="#ffffff"
         tools:context=".MyPageActivity">
 
+    <include
+            layout="@layout/toolbar_with_hamburger">
+    </include>
+
     <TextView
             android:paddingLeft="20dp"
             android:layout_width="match_parent"
