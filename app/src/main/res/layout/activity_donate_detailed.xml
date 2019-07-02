@@ -20,11 +20,45 @@
                 android:src="@drawable/ic_back"/>
     </android.support.v7.widget.Toolbar>
 
-    <ImageView
+    <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="207dp"
-            app:srcCompat="@color/colorPrimary"
-            />
+            android:layout_height="wrap_content">
+
+        <ImageView
+                android:id="@+id/myImageView"
+                android:layout_width="match_parent"
+                android:layout_height="207dp"
+                app:srcCompat="@color/colorPrimary">
+        </ImageView>
+        <TextView
+                android:paddingLeft="16dp"
+                android:paddingTop="133dp"
+                android:text="올 겨울 혜리에게도 따뜻한 이불을"
+                android:textSize="24sp"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignLeft="@id/myImageView"
+                android:layout_alignTop="@id/myImageView"
+                android:layout_alignRight="@id/myImageView"
+                android:layout_alignBottom="@id/myImageView"/>
+        <TextView
+                android:paddingLeft="16dp"
+                android:paddingTop="174dp"
+                android:text="어빙지역아동센터"
+                android:textSize="14sp"
+                android:textColor="#ffffff"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignLeft="@id/myImageView"
+                android:layout_alignTop="@id/myImageView"
+                android:layout_alignRight="@id/myImageView"
+                android:layout_alignBottom="@id/myImageView"/>
+
+
+    </RelativeLayout>
+
 
     <include
             layout="@layout/li_state">
