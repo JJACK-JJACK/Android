@@ -1,117 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="97dp">
-
-    <!--<android.support.v4.widget.DrawerLayout
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content">
-
-     </android.support.v4.widget.DrawerLayout>!-->
-
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="97dp">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingHorizontal="20dp">
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingHorizontal="20dp">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="6dp">
+                android:orientation="vertical">
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
+            >
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="D -"
-                    android:textColor="#ff0000"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="D -"
+                        android:textStyle="bold"
+                        android:textColor="#ff0000"
+                        android:textSize="14sp" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="0dp"
-                    android:text=" 43"
-                    android:textColor="#ff0000"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="0dp"
+                        android:text=" 43"
+                        android:textStyle="bold"
+                        android:textColor="#ff0000"
+                        android:textSize="14sp"
+                        android:id="@+id/li_state_d_day"/>
             </RelativeLayout>
 
             <ProgressBar
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="match_parent"
-                android:layout_height="4dp"
-                android:layout_marginBottom="8dp"
-                android:max="100"
-                android:progress="69"
-                android:progressBackgroundTint="#666666"
-                android:progressTint="#da4830" />
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:progress="69"
+                    android:progressTint="#da4830"
+                    android:progressBackgroundTint="#666666"
+                    android:layout_marginBottom="8dp"
+                    android:id="@+id/li_state_progress"
+                    android:max="100"/>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="69"
-                    android:textColor="#ff0000"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="69"
+                        android:id="@+id/li_state_percent"
+                        android:textStyle="bold"
+                        android:textColor="#ff0000"
+                        android:textSize="14sp" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="%"
-                    android:textColor="#ff0000"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="%"
+                        android:textStyle="bold"
+                        android:textColor="#ff0000"
+                        android:textSize="14sp" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:text="353542"
-                    android:textColor="#111111"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="353542"
+                        android:id="@+id/li_state_berry_num"
+                        android:textStyle="bold"
+                        android:textColor="#111111"
+                        android:textSize="14sp" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dp"
-                    android:text="베리"
-                    android:textColor="#666666"
-                    android:textSize="14sp" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:text="베리"
+                        android:textColor="#666666"
+                        android:textSize="14sp" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="170dp"
-                    android:text="9900000"
-                    android:textColor="#111111"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="170dp"
+                        android:textSize="14sp"
+                        android:textColor="#111111"
+                        android:textStyle="bold"
+                        android:text="9900000" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dp"
-                    android:text="베리"
-                    android:textColor="#666666"
-                    android:textSize="14sp" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:textSize="14sp"
+                        android:textColor="#666666"
+                        android:text="베리" />
             </LinearLayout>
 
         </LinearLayout>

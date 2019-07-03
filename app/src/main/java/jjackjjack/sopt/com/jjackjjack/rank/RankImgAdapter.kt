@@ -32,12 +32,12 @@ class RankImgAdapter(val context: Context, val rankImgItemList: ArrayList<RankIm
 
 
         fun bind (rankImgItem: RankImgItem, context: Context) {
-            if (rankImgItem.photo != "") {
-                val resourceId = context.resources.getIdentifier(rankImgItem.photo, "drawable", context.packageName)
-                dogPhoto?.setImageResource(resourceId)
-            } else {
-                dogPhoto?.setImageResource(R.mipmap.ic_launcher)
-            }
+//            if (rankImgItem.photo != "") {
+//                val resourceId = context.resources.getIdentifier(rankImgItem.photo, "drawable", context.packageName)
+//                dogPhoto?.setImageResource(resourceId)
+//            } else {
+//                dogPhoto?.setImageResource(R.mipmap.ic_launcher)
+//            }
 
             itemView.setOnClickListener { itemClick(rankImgItem) }
             /* (3) itemView가 클릭됐을 때 처리할 일을 itemClick으로 설정한다.

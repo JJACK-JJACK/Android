@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".DonatePaymentActivity"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp">
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="기부하기"
+                    android:gravity="center">
+            </TextView>
+
+        </LinearLayout>
+
+        <TextView
+                android:layout_marginTop="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="#666666"
+                android:text="기부할 베리"
+        />
+
+        <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/berry_r_icon"
+            />
+            <EditText
+                    android:textSize="20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="금액을 입력해주세요"
+                    android:inputType="number"
+                    android:id="@+id/editText" android:layout_weight="1"
+                    android:backgroundTint="#ffc21f"
+            />
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_marginTop="15.5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="26dp">
+
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#666666"
+                    android:text="보유 베리"
+            />
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="14sp"
+                    android:textColor="#666666"
+                    android:text="700"
+                    android:textStyle="bold"
+            />
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#666666"
+                    android:text="  베리"
+            />
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#da4830"
+                    android:gravity="right"
+                    android:text="베리충전 >"
+
+            />
+        </LinearLayout>
+        <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="26dp">
+
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+ 10"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+ 20"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+ 50"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="전액"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="기부하기"
+            android:layout_alignParentBottom="true"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:background="@drawable/shape_redbtn_4dp"
+            android:id="@+id/btn_donate"
+            android:layout_marginBottom="20dp"
+    />
+</RelativeLayout>

@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.Toast
 import jjackjjack.sopt.com.jjackjjack.R
+import jjackjjack.sopt.com.jjackjjack.rank.RankingAdapter
+import jjackjjack.sopt.com.jjackjjack.rank.RankingItem
+import kotlinx.android.synthetic.main.activity_ranking.*
 
 class RankActivity : AppCompatActivity() {
 
