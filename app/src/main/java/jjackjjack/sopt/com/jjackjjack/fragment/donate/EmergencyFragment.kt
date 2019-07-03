@@ -20,7 +20,8 @@ class EmergencyFragment : Fragment(){
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        var sub_adapter = DonateSortCategoryPagerAdapter(activity!!.supportFragmentManager)
+        //var sub_adapter = DonateSortCategoryPagerAdapter(activity!!.supportFragmentManager)
+        var sub_adapter = DonateSortCategoryPagerAdapter(childFragmentManager)
         donate_sort_pager.adapter = sub_adapter
 
         donate_sort_tab.setupWithViewPager(donate_sort_pager)
