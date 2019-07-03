@@ -57,141 +57,233 @@
             android:text="충전할 베리"
             android:textSize="14sp" />
 
-        <RadioGroup
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="42dp">
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/deposit_selector"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="20dp"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_berrys_small"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#111111"
+                android:letterSpacing="0.01"
+                android:text="베리 10개"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="10dp"
+                />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/dot_radio"
+                android:layout_marginTop="46dp"
+                android:layout_marginLeft="27dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#111111"
+                android:letterSpacing="0.01"
+                android:gravity="right"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="31dp"
+                android:text="1,100원"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/deposit_selector"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_berrys_small"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#111111"
+                android:letterSpacing="0.01"
+                android:text="베리 50개"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="10dp"
+                />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/dot_radio"
+                android:layout_marginTop="36dp"
+                android:layout_marginLeft="27dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#111111"
+                android:letterSpacing="0.01"
+                android:gravity="end"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="31dp"
+                android:text="5,500원"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/deposit_selector"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_berrys_small"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#111111"
+                android:letterSpacing="0.01"
+                android:text="베리 100개"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="10dp"
+                />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/dot_radio"
+                android:layout_marginTop="36dp"
+                android:layout_marginLeft="27dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#111111"
+                android:letterSpacing="0.01"
+                android:gravity="right"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:text="11,000원"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/deposit_selector"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_berrys_small"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#111111"
+                android:letterSpacing="0.01"
+                android:text="베리 300개"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="10dp"
+                />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/dot_radio"
+                android:layout_marginTop="36dp"
+                android:layout_marginLeft="27dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#111111"
+                android:letterSpacing="0.01"
+                android:gravity="end"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:text="33,000원"
+                />
+        </LinearLayout><LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/deposit_selector"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="20dp"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_berrys_small"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="28dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="#111111"
+            android:letterSpacing="0.01"
+            android:text="베리 500개"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="10dp"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dot_radio"
+            android:layout_marginTop="36dp"
+            android:layout_marginLeft="27dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="#111111"
+            android:letterSpacing="0.01"
+            android:gravity="end"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="20dp"
+            android:text="55,000원"
+            />
+    </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
 
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:button="@drawable/radio_selector"
-                    android:drawableLeft="@drawable/ic_berrys_small"
-                    android:drawableRight="@drawable/dot_radio"
-                    android:drawablePadding="10dp"
-                    android:paddingLeft="28dp"
-                    android:text="베리 10개"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="31dp"
-                    android:layout_marginRight="20dp"
-                    android:gravity="right"
-                    android:text="1,100원"
-                    android:textSize="16sp" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_marginTop="30dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton
-                    android:button="@drawable/radio_selector"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:drawableLeft="@drawable/ic_berrys_small"
-                    android:drawablePadding="10dp"
-                    android:drawableRight="@drawable/dot_radio"
-                    android:paddingLeft="28dp"
-                    android:text="베리 50개"
-                    android:textSize="16sp" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="31dp"
-                    android:layout_marginRight="20dp"
-                    android:gravity="right"
-                    android:text="5,500원"
-                    android:textSize="16sp"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_marginTop="30dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton
-                    android:button="@drawable/radio_selector"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:drawableLeft="@drawable/ic_berrys_small"
-                    android:drawablePadding="10dp"
-                    android:drawableRight="@drawable/dot_radio"
-                    android:paddingLeft="28dp"
-                    android:text="베리 100개"
-                    android:textSize="16sp" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="20dp"
-                    android:gravity="right"
-                    android:text="11,000원"
-                    android:textSize="16sp"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_marginTop="30dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton
-                    android:button="@drawable/radio_selector"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:drawableLeft="@drawable/ic_berrys_small"
-                    android:drawablePadding="10dp"
-                    android:drawableRight="@drawable/dot_radio"
-                    android:paddingLeft="28dp"
-                    android:text="베리 300개"
-                    android:textSize="16sp" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="20dp"
-                    android:gravity="right"
-                    android:text="33,000원"
-                    android:textSize="16sp"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_marginTop="30dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton
-                    android:button="@drawable/radio_selector"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:drawableLeft="@drawable/ic_berrys_small"
-                    android:drawablePadding="10dp"
-                    android:drawableRight="@drawable/dot_radio"
-                    android:paddingLeft="28dp"
-                    android:text="베리 500개"
-                    android:textSize="16sp" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="20dp"
-                    android:text="55,000원"
-                    android:gravity="right"
-                    android:textSize="16sp"/>
-            </LinearLayout>
-        </RadioGroup>
     </LinearLayout>
 
 
     <Button
         android:layout_width="fill_parent"
-        android:layout_height="77dp"
+        android:layout_height="64dp"
         android:layout_alignParentBottom="true"
         android:background="@drawable/shape_btn_login"
         android:text="충전하기"

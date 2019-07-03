@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import jjackjjack.sopt.com.jjackjjack.R
 
 class RankImgAdapter(val context: Context, val rankImgItemList: ArrayList<RankImgItem>, val itemClick: (RankImgItem) -> Unit) : RecyclerView.Adapter<RankImgAdapter.Holder>() {
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): Holder {

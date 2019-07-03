@@ -73,7 +73,7 @@
                         android:textColor="#444444"
                         android:background="@drawable/shape_bottom_line_yellow"
                         android:layout_width="300dp"
-                        android:drawableEnd=""
+
                         android:layout_height="wrap_content"/>
 
 

@@ -10,11 +10,6 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity android:name=".DonateDetailedActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity android:name=".DonateActivity">
         </activity>
@@ -29,6 +24,17 @@
         <activity android:name=".login.LoginActivity">
         </activity>
         <activity android:name=".login.SingUpActivity">
+        </activity>
+        <activity android:name="com.example.kmj.imageslider.RankActivity">
+            <intent-filter>
+            <action android:name="android.intent.action.MAIN"/>
+
+            <category android:name="android.intent.category.LAUNCHER"/>
+        </intent-filter>
+
+        </activity>
+        <activity android:name=".DepositActivity">
+
         </activity>
     </application>
 
