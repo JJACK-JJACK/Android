@@ -10,11 +10,7 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity android:name=".DonateDetailedActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity android:name=".DonateActivity">
         </activity>
@@ -25,10 +21,15 @@
         <activity android:name=".MainActivity">
         </activity>
         <activity android:name=".login.BeginningActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
         <activity android:name=".login.LoginActivity">
         </activity>
-        <activity android:name=".login.SingUpActivity">
+        <activity android:name=".login.SignUpActivity" android:windowSoftInputMode="adjustResize">
         </activity>
     </application>
 
