@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".login.SingUpActivity">
+        tools:context=".login.SignUpActivity">
 
     <LinearLayout
             android:orientation="vertical"
@@ -15,15 +15,17 @@
         <ImageView
                 android:layout_marginTop="8dp"
                 android:layout_marginLeft="12dp"
+                android:id="@+id/btn_back"
                 android:src="@drawable/ic_back"
                 android:layout_width="27dp"
                 android:layout_height="32dp"/>
 
         <TextView
-                tools:text="비밀번호를"
+                android:text="이메일 주소를"
                 android:textSize="24sp"
                 android:layout_marginLeft="30dp"
                 android:paddingTop="48dp"
+                android:id="@+id/tv_signup_head"
                 android:textColor="#444444"
                 android:letterSpacing="0.01"
                 android:lineSpacingExtra="12sp"
@@ -52,14 +54,15 @@
                     android:layout_marginTop="30dp"
                     android:paddingHorizontal="30dp"
                     android:orientation="vertical"
-                    android:id="@+id/et_signup_password"
+                    android:id="@+id/ly_signup_section1"
                     android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
                 <TextView
-                        android:text="비밀번호"
+                        android:text="이메일"
                         android:textSize="12sp"
+                        android:id="@+id/tv_signup_section1"
                         android:textColor="#444444"
                         android:letterSpacing="0.01"
                         android:layout_width="wrap_content"
@@ -67,13 +70,16 @@
                 <EditText
                         android:paddingBottom="3.5dp"
                         android:paddingTop="16dp"
-                        android:hint="ex) abc12345"
-
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:maxLength="13"
+                        android:inputType="textEmailAddress"
+                        android:hint="ex) mrpic@naver.com"
+                        android:id="@+id/et_signup_section1"
                         android:textSize="19sp"
                         android:textColor="#444444"
                         android:background="@drawable/shape_bottom_line_yellow"
                         android:layout_width="300dp"
-                        android:drawableEnd=""
                         android:layout_height="wrap_content"/>
 
 
@@ -82,8 +88,10 @@
                     android:background="@drawable/shape_graybtn_8dp"
                     android:layout_width="58dp"
                     android:layout_height="26dp"
-                    android:layout_alignLeft="@id/et_signup_password"
-                    android:layout_alignTop="@+id/et_signup_password"
+                    android:id="@+id/btn_duplicate_verification"
+                    android:visibility="gone"
+                    android:layout_alignLeft="@id/ly_signup_section1"
+                    android:layout_alignTop="@+id/ly_signup_section1"
                     android:layout_marginLeft="261dp"
                     android:layout_marginTop="24dp">
                 <TextView
@@ -92,7 +100,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="12sp"
                         android:textColor="#444444"
-                        tools:text="중복확인"/>
+                        android:text="중복확인"/>
 
             </RelativeLayout>
 
@@ -103,6 +111,8 @@
                 android:layout_marginTop="30dp"
                 android:paddingHorizontal="30dp"
                 android:orientation="vertical"
+                android:id="@+id/ly_signup_section2"
+                android:visibility="gone"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
@@ -111,13 +121,19 @@
                     android:text="비밀번호 확인"
                     android:textSize="12sp"
                     android:textColor="#444444"
+                    android:id="@+id/tv_signup_section2"
                     android:letterSpacing="0.01"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             <EditText
                     android:paddingBottom="3.5dp"
                     android:paddingTop="16dp"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:maxLength="10"
+                    android:inputType="textPassword"
                     android:hint="비밀번호 확인"
+                    android:id="@+id/et_signup_section2"
                     android:textSize="19sp"
                     android:textColor="#444444"
                     android:background="@drawable/shape_bottom_line_yellow"
@@ -135,13 +151,15 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="20dp"
             android:background="@drawable/shape_redbtn_4dp"
+            android:id="@+id/btn_signup_next"
             android:layout_width="300dp"
             android:layout_height="64dp">
         <TextView
                 android:textSize="20sp"
                 android:textColor="#ffffff"
                 android:letterSpacing="0.01"
-                tools:text="다음"
+                android:text="다음"
+                android:id="@+id/tv_signup_next"
                 android:layout_centerInParent="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
