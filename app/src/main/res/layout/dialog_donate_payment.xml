@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
         android:layout_width="320dp"
         android:layout_height="452dp"
         android:backgroundTint="#ffffff"
@@ -9,7 +11,7 @@
         android:gravity="center_horizontal">
 
     <ImageView
-            android:layout_width="320dp"
+            android:layout_width="match_parent"
             android:layout_height="187dp"
             app:srcCompat="@color/colorAccent"
             android:id="@+id/imageView3"
@@ -43,7 +45,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#ffc21f"
             android:background="@drawable/radius"
-            android:id="@+id/button3"
+            android:id="@+id/btn_check"
             android:layout_marginBottom="5dp"/>
 
     <Button
@@ -53,6 +55,6 @@
             android:backgroundTint="#ffffff"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:id="@+id/button4"/>
+            android:id="@+id/btn_close"/>
 
 </LinearLayout>

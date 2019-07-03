@@ -41,7 +41,8 @@
                     android:text=" 43"
                     android:textStyle="bold"
                     android:textColor="#ff0000"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:id="@+id/li_state_d_day"/>
             </RelativeLayout>
 
             <ProgressBar
@@ -52,6 +53,7 @@
                 android:progressTint="#da4830"
                 android:progressBackgroundTint="#666666"
                 android:layout_marginBottom="8dp"
+                android:id="@+id/li_state_progress"
                 android:max="100"/>
 
             <LinearLayout
@@ -62,6 +64,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="69"
+                    android:id="@+id/li_state_percent"
                     android:textStyle="bold"
                     android:textColor="#ff0000"
                     android:textSize="14sp" />
@@ -79,6 +82,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:text="353542"
+                        android:id="@+id/li_state_berry_num"
                         android:textStyle="bold"
                         android:textColor="#111111"
                         android:textSize="14sp" />
