@@ -44,7 +44,7 @@ class PopularFragment : Fragment(){
         )
 
 
-        donateListRecyclerViewAdapter = DonateListRecyclerViewAdapter(context!!, dataList)
+        donateListRecyclerViewAdapter = DonateListRecyclerViewAdapter(context!!, dataList, false)
         rv_popular_category.adapter = donateListRecyclerViewAdapter
         rv_popular_category.layoutManager = LinearLayoutManager(context!!)
     }

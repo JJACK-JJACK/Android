@@ -48,7 +48,7 @@ class RecentFragment : Fragment(){
                 "20", "상일에게 따듯한 이불을", "솝트", "10", "222.000"
             )
         )
-        donateListRecyclerViewAdapter = DonateListRecyclerViewAdapter(context!!, dataList)
+        donateListRecyclerViewAdapter = DonateListRecyclerViewAdapter(context!!, dataList, false)
         rv_recent_category.adapter = donateListRecyclerViewAdapter
         rv_recent_category.layoutManager = LinearLayoutManager(context!!)
     }
