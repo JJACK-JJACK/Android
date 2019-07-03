@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <!--UNSELECTED!-->
-    <item android:state_pressed="false" android:drawable="@drawable/bt_radio_off"></item>
+    <item android:state_selected="false" android:drawable="@drawable/bt_radio_off"></item>
     <!--SELECTED!-->
-    <item android:state_pressed="true" android:drawable="@drawable/bt_radio_on"></item>
+    <item android:state_selected="true" android:drawable="@drawable/bt_radio_on"></item>
 </selector>
