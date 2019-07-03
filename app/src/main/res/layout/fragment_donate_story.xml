@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <ScrollView android:layout_width="match_parent" android:layout_height="wrap_content">
+            <LinearLayout
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="40dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:textColor="#222222"
+                        android:letterSpacing="0.02"
+                        android:lineSpacingExtra="5sp"
+                        android:text="서브타이틀 "
+                        android:textStyle="bold"
+                        android:layout_marginBottom="20dp"
+                />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:textSize="14sp"
+                        android:textColor="#333333"
+                        android:lineSpacingExtra="7sp"
+                        android:text="본문 1문단당 200자 // 많이 더운지라 것이다. 품었기 천고에 인간의 실현에 갑 우리 없는 그리하였는가? 심장은 기관과 우리의 보라. 이상이 유소년에게서 얼마나 붙잡아 구하기 전인 이상의 하여도 그들을 있으랴? 봄바람을 따뜻한 눈에 열락의 대중을 그들은 못하다 위하여서. 발휘하기 것이다.보라, 때까지 사막이다. 피고, 이상은 예수는 든 구할 청춘에서"
+                />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="#333333"
+                        android:lineSpacingExtra="7sp"
+                        android:text="본문 1문단당 200자 // 많이 더운지라 것이다. 품었기 천고에 인간의 실현에 갑 우리 없는 그리하였는가? 심장은 기관과 우리의 보라. 이상이 유소년에게서 얼마나 붙잡아 구하기 전인 이상의 하여도 그들을 있으랴? 봄바람을 따뜻한 눈에 열락의 대중을 그들은 못하다 위하여서. 발휘하기 것이다.보라, 때까지 사막이다. 피고, 이상은 예수는 든 구할 청춘에서"
+                />
+            </LinearLayout>
+        </ScrollView>
+</LinearLayout>
