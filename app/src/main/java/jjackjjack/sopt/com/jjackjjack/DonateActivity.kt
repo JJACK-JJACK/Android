@@ -7,7 +7,6 @@ import kotlinx.android.synthetic.main.activity_donate.*
 class DonateActivity : AppCompatActivity() {
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_donate)
