@@ -8,6 +8,7 @@ import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_activity_main.*
 import kotlinx.android.synthetic.main.nav_drawer.*
+import org.jetbrains.anko.startActivity
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -28,11 +29,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
         }
 
-        btn_cancle.setOnClickListener {
-            if(ly_drawer.isDrawerOpen(Gravity.END)){
-                ly_drawer.closeDrawer(Gravity.END)
-            }
-        }
+        drawerUI()
+
     }
 
     override fun onBackPressed() {
@@ -42,5 +40,20 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         else{
             super.onBackPressed()
         }
+    }
+
+    private fun drawerUI(){
+        btn_drawer_home.setOnClickListener {
+            startActivity<MainActivity>()
+            ly_drawer.closeDrawer(Gravity.END)
+            finish()
+        }
+
+        btn_cancle.setOnClickListener {
+            if(ly_drawer.isDrawerOpen(Gravity.END)){
+                ly_drawer.closeDrawer(Gravity.END)
+            }
+        }
+
     }
 }
