@@ -2,16 +2,24 @@
 <android.support.v7.widget.Toolbar
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:gravity="center_horizontal">
-    <ImageView
-            android:layout_width="36dp"
-            android:layout_height="34dp"
-            android:src="@drawable/ic_home"
-            android:layout_marginLeft="17dp"
-            android:layout_marginRight="300dp"/>
-    <ImageView
-            android:layout_width="33dp"
-            android:layout_height="33dp"
-            android:src="@drawable/ic_hamburger"/>
+        android:layout_height="56dp">
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <ImageView
+                android:layout_width="36dp"
+                android:layout_height="34dp"
+                android:layout_centerVertical="true"
+                android:id="@+id/btn_home"
+                android:src="@drawable/ic_home"/>
+        <ImageView
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:layout_centerVertical="true"
+                android:id="@+id/btn_hambuger"
+                android:src="@drawable/ic_hamburger"/>
+    </RelativeLayout>
+
 </android.support.v7.widget.Toolbar>
