@@ -50,7 +50,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="0dp"
-                        android:text=" 43"
+                        android:text="  43"
                         android:textStyle="bold"
                         android:textColor="#da4830"
                         android:textSize="14sp"
@@ -108,7 +108,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="14dp"
                         android:textStyle="bold"
-                        android:text="%"
+                        android:text=" %"
                         android:textColor="#da4830"
                         android:textSize="12sp" />
 
