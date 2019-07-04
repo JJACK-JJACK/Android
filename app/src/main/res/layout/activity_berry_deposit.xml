@@ -300,6 +300,7 @@
             android:layout_alignParentBottom="true"
             android:background="@drawable/shape_btn_login"
             android:text="충전하기"
+            android:id="@+id/btn_berry_deposit_charge"
             android:textColor="#ffffff"
             android:textSize="20dp"/>
 
