@@ -9,11 +9,13 @@ import android.widget.*
 import jjackjjack.sopt.com.jjackjjack.data.DonateInfoData
 import org.jetbrains.anko.startActivity
 
-class DonateListRecyclerViewAdapter (val ctx: Context, var dataList: ArrayList<DonateInfoData>): RecyclerView.Adapter<DonateListRecyclerViewAdapter.Holder>() {
+//세번쨰 변수 수정 부분
+class DonateListRecyclerViewAdapter (val ctx: Context, var dataList: ArrayList<DonateInfoData>, val isDonateHistory: Boolean): RecyclerView.Adapter<DonateListRecyclerViewAdapter.Holder>() {
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, p1: Int): Holder {
         val view: View = LayoutInflater.from(ctx).inflate(R.layout.li_donate, viewGroup, false )
         return Holder(view)
+
     }
 
     override fun getItemCount(): Int = dataList.size
@@ -32,7 +34,8 @@ class DonateListRecyclerViewAdapter (val ctx: Context, var dataList: ArrayList<D
                 "association" to dataList[position].association,
                 "percent" to dataList[position].percent,
                 "berry_num" to dataList[position].berry_num,
-                "d_day" to dataList[position].d_day
+                "d_day" to dataList[position].d_day,
+                "isDonateHistory" to isDonateHistory
             )
         }
     }

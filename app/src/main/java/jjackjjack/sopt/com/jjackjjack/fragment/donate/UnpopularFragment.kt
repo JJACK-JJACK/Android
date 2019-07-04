@@ -52,7 +52,7 @@ class UnpopularFragment : Fragment(){
         )
 
 
-        donateListRecyclerViewAdapter = DonateListRecyclerViewAdapter(context!!, dataList)
+        donateListRecyclerViewAdapter = DonateListRecyclerViewAdapter(context!!, dataList, false)
         rv_unpopular_category.adapter = donateListRecyclerViewAdapter
         rv_unpopular_category.layoutManager = LinearLayoutManager(context!!)
     }

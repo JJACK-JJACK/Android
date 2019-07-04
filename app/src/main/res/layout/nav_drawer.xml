@@ -8,14 +8,14 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
         <RelativeLayout
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="17dp">
             <ImageView
                     android:layout_width="36dp"
                     android:layout_height="34dp"
-                    android:id="@+id/btn_home"
+                    android:id="@+id/btn_drawer_home"
                     android:src="@drawable/ic_home"/>
             <ImageView
                     android:layout_centerVertical="true"
@@ -99,6 +99,7 @@
                 
                 <ImageView 
                         android:src="@drawable/ic_charge"
+                        android:id="@+id/btn_drawer_berrycharge"
                         android:layout_marginLeft="90dp"
                         android:layout_width="62dp"
                         android:layout_height="31dp"/>
@@ -152,16 +153,19 @@
                 <ImageView
                         android:layout_weight="1"
                         android:src="@drawable/ic_usagelist"
+                        android:id="@+id/btn_drawer_donate_record"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                 <ImageView
                         android:layout_weight="1"
                         android:src="@drawable/ic_ranking"
+                        android:id="@+id/btn_drawer_rank"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                 <ImageView
                         android:layout_weight="1"
                         android:src="@drawable/ic_mypage"
+                        android:id="@+id/btn_drawer_mypage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 

@@ -9,12 +9,11 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="39dp"
             android:textSize="20sp"
-            android:textColor="#666666"
+            android:textColor="#111111"
             android:letterSpacing="0.02"
             android:lineSpacingExtra="5sp"
-            android:text="이렇게 사용될 예정입니다!"
+            android:text="베리는 이렇게 사용될 예정입니다!"
     />
 
     <ScrollView
@@ -23,30 +22,43 @@
             android:layout_height="wrap_content">
 
         <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
-        <TextView
-                android:text="1. "
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-        <TextView
-                android:text="족발 양념 그냥 반반\n대자 X 3접시 하하하하하하하하"
-                android:textSize="14sp"
-                android:textColor="#333333"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:layout_weight="6"/>
-        <TextView
-                android:text="150.000"
-                android:textSize="14sp"
-                android:textColor="#333333"
-                android:layout_marginLeft="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"/>
+            <android.support.v7.widget.RecyclerView android:layout_width="match_parent"
+                                                    android:layout_height="match_parent">
+
+
+            </android.support.v7.widget.RecyclerView>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="목표 베리"/>
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="100.000"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="베리"/>
+
+
+
+
+
+
+            </LinearLayout>
+
+
+
 </LinearLayout>
     </ScrollView>
 
