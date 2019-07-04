@@ -18,17 +18,18 @@
         <activity android:name=".DonateDetailedActivity">
         </activity>
         <activity android:name=".DonateActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
         <activity android:name=".BerryChargeActivity">
         </activity>
         <activity android:name=".MyPageActivity">
         </activity>
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity android:name=".login.BeginningActivity">
         </activity>
@@ -39,7 +40,6 @@
         <activity android:name="com.example.kmj.imageslider.RankActivity">
         </activity>
         <activity android:name=".DepositActivity">
-
         </activity>
     </application>
 

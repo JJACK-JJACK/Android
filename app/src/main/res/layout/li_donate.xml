@@ -19,13 +19,30 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
+
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
             <ImageView
                     android:layout_weight="1"
                     android:layout_width="103dp"
                     android:layout_height="103dp"
-                    android:background="#ff0000"
+                    android:background="#7c7c7c"
                     android:layout_marginRight="20dp"
                     android:id="@+id/li_donate_img_url"/>
+
+            <TextView
+                    android:text="진행중"
+                    android:gravity="center"
+                    android:id="@+id/donate_detailed_title"
+                    android:textSize="10sp"
+                    android:textColor="#ffffff"
+                    android:background="#da4830"
+                    android:textStyle="bold"
+                    android:layout_width="53dp"
+                    android:layout_height="19dp"
+                    android:layout_alignLeft="@id/li_donate_img_url"
+                    android:layout_alignTop="@id/li_donate_img_url"/>
+        </RelativeLayout>
+
 
         <LinearLayout
                 android:layout_width="wrap_content"
@@ -57,7 +74,6 @@
                         android:id="@+id/li_donate_d_day"
                         />
             </RelativeLayout>
-
 
             <TextView
                     android:layout_width="wrap_content"
@@ -91,7 +107,7 @@
                     android:max="100"
                     android:id="@+id/li_donate_progress"/>
 
-            <RelativeLayout
+            <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -99,6 +115,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="69"
+                        android:textStyle="bold"
                         android:textColor="#da4830"
                         android:textSize="12dp"
                         android:id="@+id/li_donate_percent"/>
@@ -106,7 +123,6 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="14dp"
                         android:textStyle="bold"
                         android:text=" %"
                         android:textColor="#da4830"
@@ -115,18 +131,19 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="145dp"
                         android:textColor="#111111"
+                        android:layout_weight="1"
                         android:textStyle="bold"
                         android:text="353,542"
+                        android:gravity="right"
                         android:id="@+id/li_donate_berry_num"/>
 
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="200dp"
-                        android:text="베리" />
-            </RelativeLayout>
+                        android:gravity="right"
+                        android:text=" 베리" />
+            </LinearLayout>
 
         </LinearLayout>
 

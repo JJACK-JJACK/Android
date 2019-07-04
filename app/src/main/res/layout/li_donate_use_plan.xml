@@ -2,10 +2,19 @@
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    <ImageView
+        android:layout_height="wrap_content"
+        android:paddingVertical="10dp">
+    <TextView
             android:layout_width="24dp"
-            android:layout_height="24dp"/>
+            android:layout_height="24dp"
+            android:background="@drawable/shape_yellow_number_ic"
+            android:text="1"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:id="@+id/li_donate_use_plan_idx_num"
+            />
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -19,7 +28,8 @@
                 android:textSize="14sp"
                 android:textColor="#333333"
                 android:text="입양지원 활동 및 입양진행"
-                android:layout_marginBottom="6dp"/>
+                android:layout_marginBottom="6dp"
+                android:id="@+id/li_donate_use_plan_detail"/>
 
         <LinearLayout
                 android:layout_weight="1"
@@ -34,7 +44,8 @@
                     android:textColor="#222222"
                     android:layout_weight="1"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    android:id="@+id/li_donate_use_plan_berry_num"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"

@@ -3,12 +3,7 @@
               android:orientation="vertical"
               android:paddingHorizontal="20dp"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
-
-    <ScrollView
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+              android:layout_height="wrap_content">
 
         <LinearLayout
                 android:orientation="vertical"
@@ -23,12 +18,14 @@
                 android:letterSpacing="0.02"
                 android:lineSpacingExtra="5sp"
                 android:text="베리는 이렇게 사용될 예정입니다!"
+                android:layout_marginBottom="34dp"
         />
 
-            <android.support.v7.widget.RecyclerView android:layout_width="match_parent"
-                                                    android:layout_height="match_parent">
-
-
+            <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rv_donate_use_plan_container"
+                    >
             </android.support.v7.widget.RecyclerView>
 
             <ImageView
@@ -68,6 +65,5 @@
             </LinearLayout>
 
 </LinearLayout>
-    </ScrollView>
 
 </LinearLayout>

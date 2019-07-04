@@ -16,7 +16,6 @@ class DonateDetailedPagerAdapter : FragmentPagerAdapter {
         private var donateStoryFragment: DonateStoryFragment? = null
         private var usePlanFragment: UsePlanFragment? = null
 
-
         @Synchronized
         fun getDonateStoryFragment() : DonateStoryFragment{
             if(donateStoryFragment == null) donateStoryFragment = DonateStoryFragment()
@@ -28,9 +27,7 @@ class DonateDetailedPagerAdapter : FragmentPagerAdapter {
             if(usePlanFragment == null) usePlanFragment = UsePlanFragment()
             return usePlanFragment!!
         }
-
     }
-
     override fun getItem(p0: Int): Fragment? {
         return when(p0){ //몇번째 인덱스냐에 따라서 다른 fragment 반환
             0-> getDonateStoryFragment()
@@ -38,9 +35,7 @@ class DonateDetailedPagerAdapter : FragmentPagerAdapter {
             else -> null
         }
     }
-
     override fun getCount(): Int {
         return 2
     }
-
 }
