@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.view.Gravity
 import android.view.MenuItem
-import com.example.kmj.imageslider.RankActivity
+import jjackjjack.sopt.com.jjackjjack.rank.RankActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_activity_main.*
 import kotlinx.android.synthetic.main.content_activity_main.btn_hambuger

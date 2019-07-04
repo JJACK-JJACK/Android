@@ -1,10 +1,13 @@
-package com.example.kmj.imageslider
+package jjackjjack.sopt.com.jjackjjack.rank
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Gravity
 import android.widget.Toast
+import com.example.kmj.imageslider.RankBtnAdapter
+import com.example.kmj.imageslider.RankBtnItem
+import com.example.kmj.imageslider.RankImgAdapter
 import jjackjjack.sopt.com.jjackjjack.*
 import jjackjjack.sopt.com.jjackjjack.rank.RankingAdapter
 import jjackjjack.sopt.com.jjackjjack.rank.RankingItem
@@ -18,29 +21,29 @@ import org.jetbrains.anko.startActivity
 class RankActivity : AppCompatActivity() {
 
     var RankImageList = arrayListOf<RankImgItem>(
-            RankImgItem("00"),
-            RankImgItem("01"),
-            RankImgItem("02"),
-            RankImgItem("03"),
-            RankImgItem("04"),
-            RankImgItem("05"),
-            RankImgItem("06")
+        RankImgItem("00"),
+        RankImgItem("01"),
+        RankImgItem("02"),
+        RankImgItem("03"),
+        RankImgItem("04"),
+        RankImgItem("05"),
+        RankImgItem("06")
     )
     var RankBtnList = arrayListOf<RankBtnItem>(
-            RankBtnItem("전체"),
-            RankBtnItem("동물"),
-            RankBtnItem("환경"),
-            RankBtnItem("어린이"),
-            RankBtnItem("장애우"),
-            RankBtnItem("긴급구조"),
-            RankBtnItem("어르신")
+        RankBtnItem("전체"),
+        RankBtnItem("동물"),
+        RankBtnItem("환경"),
+        RankBtnItem("어린이"),
+        RankBtnItem("장애우"),
+        RankBtnItem("긴급구조"),
+        RankBtnItem("어르신")
     )
 
     var RankingList = arrayListOf<RankingItem>(
-            RankingItem("1", "1", "1", "1", "1"),
-            RankingItem("2", "2", "2", "2", "2"),
-            RankingItem("3", "3", "3", "3", "3"),
-            RankingItem("4", "4", "4", "4", "4")
+        RankingItem("1", "1", "1", "1", "1"),
+        RankingItem("2", "2", "2", "2", "2"),
+        RankingItem("3", "3", "3", "3", "3"),
+        RankingItem("4", "4", "4", "4", "4")
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
