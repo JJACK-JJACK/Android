@@ -1,8 +1,9 @@
-package jjackjjack.sopt.com.jjackjjack
+package jjackjjack.sopt.com.jjackjjack.berrycharge
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.ImageView
+import jjackjjack.sopt.com.jjackjjack.R
 import kotlinx.android.synthetic.main.activity_berry_deposit.*
 
 

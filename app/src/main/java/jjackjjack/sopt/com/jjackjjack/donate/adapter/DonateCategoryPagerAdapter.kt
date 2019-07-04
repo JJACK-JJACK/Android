@@ -1,9 +1,9 @@
-package jjackjjack.sopt.com.jjackjjack
+package jjackjjack.sopt.com.jjackjjack.donate.adapter
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import jjackjjack.sopt.com.jjackjjack.fragment.donate.*
+import jjackjjack.sopt.com.jjackjjack.donate.fragment.*
 
 class DonateCategoryPagerAdapter : FragmentPagerAdapter {
 

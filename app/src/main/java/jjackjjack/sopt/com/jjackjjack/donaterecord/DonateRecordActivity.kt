@@ -1,10 +1,15 @@
-package jjackjjack.sopt.com.jjackjjack
+package jjackjjack.sopt.com.jjackjjack.donaterecord
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Gravity
+import jjackjjack.sopt.com.jjackjjack.MainActivity
+import jjackjjack.sopt.com.jjackjjack.R
+import jjackjjack.sopt.com.jjackjjack.berrycharge.BerryChargeActivity
 import jjackjjack.sopt.com.jjackjjack.data.DonateInfoData
+import jjackjjack.sopt.com.jjackjjack.list.DonateListRecyclerViewAdapter
+import jjackjjack.sopt.com.jjackjjack.mypage.MyPageActivity
 import jjackjjack.sopt.com.jjackjjack.rank.RankActivity
 import kotlinx.android.synthetic.main.activity_donate_record.*
 import kotlinx.android.synthetic.main.content_activity_donate_record.*
@@ -39,7 +44,8 @@ class DonateRecordActivity : AppCompatActivity() {
             )
         )
 
-        donateListRecyclerViewAdapter = DonateListRecyclerViewAdapter(this, dataList, true)
+        donateListRecyclerViewAdapter =
+            DonateListRecyclerViewAdapter(this, dataList, true)
         rv_donate_record.adapter = donateListRecyclerViewAdapter
         rv_donate_record.layoutManager = LinearLayoutManager(this)
     }

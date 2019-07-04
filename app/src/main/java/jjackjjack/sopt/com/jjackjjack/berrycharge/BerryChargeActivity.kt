@@ -1,7 +1,8 @@
-package jjackjjack.sopt.com.jjackjjack
+package jjackjjack.sopt.com.jjackjjack.berrycharge
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import jjackjjack.sopt.com.jjackjjack.R
 import kotlinx.android.synthetic.main.activity_berry_charge.*
 import org.jetbrains.anko.startActivity
 

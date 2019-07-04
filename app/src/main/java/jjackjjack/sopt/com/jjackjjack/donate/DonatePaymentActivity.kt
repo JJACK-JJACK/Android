@@ -1,11 +1,10 @@
-package jjackjjack.sopt.com.jjackjjack
+package jjackjjack.sopt.com.jjackjjack.donate
 
-import android.app.ProgressDialog.show
-import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.widget.Button
+import jjackjjack.sopt.com.jjackjjack.R
 import kotlinx.android.synthetic.main.activity_donate_payment.*
 
 class DonatePaymentActivity : AppCompatActivity() {

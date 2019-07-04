@@ -9,8 +9,9 @@ import com.example.kmj.imageslider.RankBtnAdapter
 import com.example.kmj.imageslider.RankBtnItem
 import com.example.kmj.imageslider.RankImgAdapter
 import jjackjjack.sopt.com.jjackjjack.*
-import jjackjjack.sopt.com.jjackjjack.rank.RankingAdapter
-import jjackjjack.sopt.com.jjackjjack.rank.RankingItem
+import jjackjjack.sopt.com.jjackjjack.berrycharge.BerryChargeActivity
+import jjackjjack.sopt.com.jjackjjack.donaterecord.DonateRecordActivity
+import jjackjjack.sopt.com.jjackjjack.mypage.MyPageActivity
 import kotlinx.android.synthetic.main.activity_ranking.*
 import kotlinx.android.synthetic.main.content_activity_ranking.*
 import kotlinx.android.synthetic.main.nav_drawer.*

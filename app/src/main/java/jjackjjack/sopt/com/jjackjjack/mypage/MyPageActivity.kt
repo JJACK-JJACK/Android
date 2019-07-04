@@ -1,8 +1,12 @@
-package jjackjjack.sopt.com.jjackjjack
+package jjackjjack.sopt.com.jjackjjack.mypage
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
+import jjackjjack.sopt.com.jjackjjack.donaterecord.DonateRecordActivity
+import jjackjjack.sopt.com.jjackjjack.MainActivity
+import jjackjjack.sopt.com.jjackjjack.R
+import jjackjjack.sopt.com.jjackjjack.berrycharge.BerryChargeActivity
 import jjackjjack.sopt.com.jjackjjack.rank.RankActivity
 import kotlinx.android.synthetic.main.activity_my_page.*
 import kotlinx.android.synthetic.main.nav_drawer.*

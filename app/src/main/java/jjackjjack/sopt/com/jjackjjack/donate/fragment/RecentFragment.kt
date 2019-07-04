@@ -1,14 +1,12 @@
-package jjackjjack.sopt.com.jjackjjack.fragment.donate
+package jjackjjack.sopt.com.jjackjjack.donate.fragment
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import jjackjjack.sopt.com.jjackjjack.DonateDetailedActivity
-import jjackjjack.sopt.com.jjackjjack.DonateListRecyclerViewAdapter
+import jjackjjack.sopt.com.jjackjjack.list.DonateListRecyclerViewAdapter
 import jjackjjack.sopt.com.jjackjjack.R
 import jjackjjack.sopt.com.jjackjjack.data.DonateInfoData
 import kotlinx.android.synthetic.main.fragment_recent_category.*
@@ -48,7 +46,8 @@ class RecentFragment : Fragment(){
                 "20", "상일에게 따듯한 이불을", "솝트", "10", "222.000"
             )
         )
-        donateListRecyclerViewAdapter = DonateListRecyclerViewAdapter(context!!, dataList, false)
+        donateListRecyclerViewAdapter =
+            DonateListRecyclerViewAdapter(context!!, dataList, false)
         rv_recent_category.adapter = donateListRecyclerViewAdapter
         rv_recent_category.layoutManager = LinearLayoutManager(context!!)
     }

@@ -1,4 +1,4 @@
-package jjackjjack.sopt.com.jjackjjack.fragment.donate.detail
+package jjackjjack.sopt.com.jjackjjack.donate.fragment.detail
 
 import android.os.Bundle
 import android.support.v4.app.Fragment

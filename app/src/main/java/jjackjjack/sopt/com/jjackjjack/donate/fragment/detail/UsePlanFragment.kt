@@ -1,4 +1,4 @@
-package jjackjjack.sopt.com.jjackjjack.fragment.donate.detail
+package jjackjjack.sopt.com.jjackjjack.donate.fragment.detail
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -6,7 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import jjackjjack.sopt.com.jjackjjack.DonateUsePlanRecyclerViewAdapter
+import jjackjjack.sopt.com.jjackjjack.list.DonateUsePlanRecyclerViewAdapter
 import jjackjjack.sopt.com.jjackjjack.R
 import jjackjjack.sopt.com.jjackjjack.data.DonateUsePlanData
 import kotlinx.android.synthetic.main.fragment_use_plan.*
@@ -45,7 +45,8 @@ class UsePlanFragment : Fragment(){
                 "4", "족발 대자 3개", "120.000"
             )
         )
-        donateUsePlanRecyclerViewAdapter = DonateUsePlanRecyclerViewAdapter(context!!, dataList)
+        donateUsePlanRecyclerViewAdapter =
+            DonateUsePlanRecyclerViewAdapter(context!!, dataList)
         rv_donate_use_plan_container.adapter = donateUsePlanRecyclerViewAdapter
         rv_donate_use_plan_container.layoutManager = LinearLayoutManager(context!!)
     }

@@ -1,13 +1,13 @@
-package jjackjjack.sopt.com.jjackjjack
+package jjackjjack.sopt.com.jjackjjack.donate
 
-import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import jjackjjack.sopt.com.jjackjjack.R
+import jjackjjack.sopt.com.jjackjjack.donate.adapter.DonateDetailedPagerAdapter
 import kotlinx.android.synthetic.main.activity_donate_detailed.*
 import kotlinx.android.synthetic.main.li_state.*
-import kotlinx.android.synthetic.main.li_state.view.*
 
 class DonateDetailedActivity : AppCompatActivity() {
 
@@ -28,7 +28,8 @@ class DonateDetailedActivity : AppCompatActivity() {
 
 
         if(!intent.getBooleanExtra("isDonateHistory", false)){
-            var main_adapter = DonateDetailedPagerAdapter(supportFragmentManager)
+            var main_adapter =
+                DonateDetailedPagerAdapter(supportFragmentManager)
             donate_detailed_pager.adapter = main_adapter
             donate_detailed_tab.setupWithViewPager(donate_detailed_pager)
             donate_detailed_tab.getTabAt(0)?.setText("기부스토리")

@@ -1,10 +1,10 @@
-package jjackjjack.sopt.com.jjackjjack
+package jjackjjack.sopt.com.jjackjjack.donate.adapter
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import jjackjjack.sopt.com.jjackjjack.fragment.donate.detail.DonateStoryFragment
-import jjackjjack.sopt.com.jjackjjack.fragment.donate.detail.UsePlanFragment
+import jjackjjack.sopt.com.jjackjjack.donate.fragment.detail.DonateStoryFragment
+import jjackjjack.sopt.com.jjackjjack.donate.fragment.detail.UsePlanFragment
 
 class DonateDetailedPagerAdapter : FragmentPagerAdapter {
 

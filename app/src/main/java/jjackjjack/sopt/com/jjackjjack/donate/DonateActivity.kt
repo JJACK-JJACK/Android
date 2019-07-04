@@ -1,7 +1,9 @@
-package jjackjjack.sopt.com.jjackjjack
+package jjackjjack.sopt.com.jjackjjack.donate
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import jjackjjack.sopt.com.jjackjjack.R
+import jjackjjack.sopt.com.jjackjjack.donate.adapter.DonateCategoryPagerAdapter
 import kotlinx.android.synthetic.main.activity_donate.*
 
 class DonateActivity : AppCompatActivity() {
@@ -11,7 +13,8 @@ class DonateActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_donate)
 
-        var main_adapter = DonateCategoryPagerAdapter(supportFragmentManager)
+        var main_adapter =
+            DonateCategoryPagerAdapter(supportFragmentManager)
         donate_pager.adapter = main_adapter
 
         donate_tab.setupWithViewPager(donate_pager)

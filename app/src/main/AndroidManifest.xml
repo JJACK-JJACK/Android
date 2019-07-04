@@ -9,19 +9,19 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".DonateRecordActivity">
+        <activity android:name=".donaterecord.DonateRecordActivity">
         </activity>
         <activity
-                android:name=".DonatePaymentActivity"
+                android:name=".donate.DonatePaymentActivity"
                 android:windowSoftInputMode="adjustResize">
         </activity>
-        <activity android:name=".DonateDetailedActivity">
+        <activity android:name=".donate.DonateDetailedActivity">
         </activity>
-        <activity android:name=".DonateActivity">
+        <activity android:name=".donate.DonateActivity">
         </activity>
-        <activity android:name=".BerryChargeActivity">
+        <activity android:name=".berrycharge.BerryChargeActivity">
         </activity>
-        <activity android:name=".MyPageActivity">
+        <activity android:name=".mypage.MyPageActivity">
         </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -38,7 +38,7 @@
         </activity>
         <activity android:name=".rank.RankActivity">
         </activity>
-        <activity android:name=".DepositActivity">
+        <activity android:name=".berrycharge.DepositActivity">
         </activity>
     </application>
 

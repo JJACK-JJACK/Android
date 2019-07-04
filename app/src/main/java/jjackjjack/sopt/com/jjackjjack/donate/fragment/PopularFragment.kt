@@ -1,4 +1,4 @@
-package jjackjjack.sopt.com.jjackjjack.fragment.donate
+package jjackjjack.sopt.com.jjackjjack.donate.fragment
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -6,7 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import jjackjjack.sopt.com.jjackjjack.DonateListRecyclerViewAdapter
+import jjackjjack.sopt.com.jjackjjack.list.DonateListRecyclerViewAdapter
 import jjackjjack.sopt.com.jjackjjack.R
 import jjackjjack.sopt.com.jjackjjack.data.DonateInfoData
 import kotlinx.android.synthetic.main.fragment_popular_category.*
@@ -44,7 +44,8 @@ class PopularFragment : Fragment(){
         )
 
 
-        donateListRecyclerViewAdapter = DonateListRecyclerViewAdapter(context!!, dataList, false)
+        donateListRecyclerViewAdapter =
+            DonateListRecyclerViewAdapter(context!!, dataList, false)
         rv_popular_category.adapter = donateListRecyclerViewAdapter
         rv_popular_category.layoutManager = LinearLayoutManager(context!!)
     }
