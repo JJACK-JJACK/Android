@@ -1,4 +1,4 @@
-package com.example.kmj.imageslider
+package jjackjjack.sopt.com.jjackjjack.rank
 
 class RankImgItem (val photo: String){
 }

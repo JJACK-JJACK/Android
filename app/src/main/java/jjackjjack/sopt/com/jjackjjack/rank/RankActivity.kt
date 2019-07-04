@@ -1,45 +1,56 @@
-package com.example.kmj.imageslider
+package jjackjjack.sopt.com.jjackjjack.rank
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.view.Gravity
 import android.widget.Toast
-import jjackjjack.sopt.com.jjackjjack.R
+import com.example.kmj.imageslider.RankBtnAdapter
+import com.example.kmj.imageslider.RankBtnItem
+import com.example.kmj.imageslider.RankImgAdapter
+import jjackjjack.sopt.com.jjackjjack.*
 import jjackjjack.sopt.com.jjackjjack.rank.RankingAdapter
 import jjackjjack.sopt.com.jjackjjack.rank.RankingItem
 import kotlinx.android.synthetic.main.activity_ranking.*
+import kotlinx.android.synthetic.main.content_activity_ranking.*
+import kotlinx.android.synthetic.main.nav_drawer.*
+import kotlinx.android.synthetic.main.toolbar_with_hamburger.*
+import org.jetbrains.anko.startActivity
+
 
 class RankActivity : AppCompatActivity() {
 
     var RankImageList = arrayListOf<RankImgItem>(
-            RankImgItem("00"),
-            RankImgItem("01"),
-            RankImgItem("02"),
-            RankImgItem("03"),
-            RankImgItem("04"),
-            RankImgItem("05"),
-            RankImgItem("06")
+        RankImgItem("00"),
+        RankImgItem("01"),
+        RankImgItem("02"),
+        RankImgItem("03"),
+        RankImgItem("04"),
+        RankImgItem("05"),
+        RankImgItem("06")
     )
     var RankBtnList = arrayListOf<RankBtnItem>(
-            RankBtnItem("전체"),
-            RankBtnItem("동물"),
-            RankBtnItem("환경"),
-            RankBtnItem("어린이"),
-            RankBtnItem("장애우"),
-            RankBtnItem("긴급구조"),
-            RankBtnItem("어르신")
+        RankBtnItem("전체"),
+        RankBtnItem("동물"),
+        RankBtnItem("환경"),
+        RankBtnItem("어린이"),
+        RankBtnItem("장애우"),
+        RankBtnItem("긴급구조"),
+        RankBtnItem("어르신")
     )
 
     var RankingList = arrayListOf<RankingItem>(
-            RankingItem("1", "1", "1", "1", "1"),
-            RankingItem("2", "2", "2", "2", "2"),
-            RankingItem("3", "3", "3", "3", "3"),
-            RankingItem("4", "4", "4", "4", "4")
+        RankingItem("1", "1", "1", "1", "1"),
+        RankingItem("2", "2", "2", "2", "2"),
+        RankingItem("3", "3", "3", "3", "3"),
+        RankingItem("4", "4", "4", "4", "4")
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ranking)
+        initialUI()
+        //이거 나중에 함수로 빼주기!
 
         val mAdapter = RankImgAdapter(this, RankImageList) { dog ->
             Toast.makeText(this, "number is ${dog.photo}", Toast.LENGTH_SHORT).show()
@@ -74,5 +85,67 @@ class RankActivity : AppCompatActivity() {
         mRecyclerView3.setHasFixedSize(true)
 
 
+    }
+
+
+    private fun initialUI(){
+        btn_home.setOnClickListener {
+            startActivity<MainActivity>()
+            finish()
+        }
+        drawerUI()
+    }
+
+    private fun drawerUI(){
+        btn_hambuger.setOnClickListener {
+            if(!ly_drawer.isDrawerOpen(Gravity.END)){
+                ly_drawer.openDrawer(Gravity.END)
+            }
+        }
+        btn_drawer_donate_record.setOnClickListener {
+            startActivity<DonateRecordActivity>()
+            ly_drawer.closeDrawer(Gravity.END)
+            //finish()
+        }
+        btn_drawer_home.setOnClickListener {
+            startActivity<MainActivity>()
+            ly_drawer.closeDrawer(Gravity.END)
+            finish()
+        }
+
+        btn_cancle.setOnClickListener {
+            if(ly_drawer.isDrawerOpen(Gravity.END)){
+                ly_drawer.closeDrawer(Gravity.END)
+            }
+        }
+
+
+        btn_drawer_rank.setOnClickListener {
+            startActivity<RankActivity>()
+            ly_drawer.closeDrawer(Gravity.END)
+            //finish()
+        }
+
+        btn_drawer_mypage.setOnClickListener {
+            startActivity<MyPageActivity>()
+            ly_drawer.closeDrawer(Gravity.END)
+            // finish()
+        }
+
+        btn_drawer_berrycharge.setOnClickListener {
+            startActivity<BerryChargeActivity>()
+            ly_drawer.closeDrawer(Gravity.END)
+            // finish()
+        }
+
+    }
+
+    override fun onBackPressed() {
+        if(ly_drawer.isDrawerOpen(Gravity.END)){
+            ly_drawer.closeDrawer(Gravity.END)
+        }
+        else{
+            super.onBackPressed()
+        }
     }
 }
