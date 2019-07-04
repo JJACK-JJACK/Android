@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import jjackjjack.sopt.com.jjackjjack.donate.DonateDetailedActivity
+import jjackjjack.sopt.com.jjackjjack.activities.donate.DonateDetailedActivity
 import jjackjjack.sopt.com.jjackjjack.R
 import jjackjjack.sopt.com.jjackjjack.data.DonateInfoData
 import org.jetbrains.anko.startActivity
