@@ -4,8 +4,8 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Gravity
-import com.example.kmj.imageslider.RankActivity
 import jjackjjack.sopt.com.jjackjjack.data.DonateInfoData
+import jjackjjack.sopt.com.jjackjjack.rank.RankActivity
 import kotlinx.android.synthetic.main.activity_donate_record.*
 import kotlinx.android.synthetic.main.content_activity_donate_record.*
 import kotlinx.android.synthetic.main.nav_drawer.*

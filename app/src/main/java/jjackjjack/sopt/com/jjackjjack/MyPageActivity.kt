@@ -3,7 +3,7 @@ package jjackjjack.sopt.com.jjackjjack
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
-import com.example.kmj.imageslider.RankActivity
+import jjackjjack.sopt.com.jjackjjack.rank.RankActivity
 import kotlinx.android.synthetic.main.activity_my_page.*
 import kotlinx.android.synthetic.main.nav_drawer.*
 import kotlinx.android.synthetic.main.toolbar_with_hamburger.*

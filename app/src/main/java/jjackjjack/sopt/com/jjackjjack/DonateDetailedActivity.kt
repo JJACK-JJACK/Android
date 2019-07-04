@@ -33,14 +33,14 @@ class DonateDetailedActivity : AppCompatActivity() {
             donate_detailed_tab.setupWithViewPager(donate_detailed_pager)
             donate_detailed_tab.getTabAt(0)?.setText("기부스토리")
             donate_detailed_tab.getTabAt(1)?.setText("사용계획")
-            donate_step_scroll.visibility = View.GONE
+            //donate_step_scroll.visibility = View.GONE
 
         }
         else if(intent.getBooleanExtra("isDonateHistory", false)){
             donate_detailed_pager.visibility = View.GONE
             donate_detailed_tab.visibility = View.GONE
             donate_detailed_button_layout.visibility = View.GONE
-            donate_step_scroll.visibility = View.VISIBLE
+            //donate_step_scroll.visibility = View.VISIBLE
         }
 
 
