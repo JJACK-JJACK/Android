@@ -87,5 +87,30 @@ class MainActivity : AppCompatActivity() {
             ly_drawer.closeDrawer(Gravity.END)
         }
 
+        btn_drawer_f_child.setOnClickListener {
+            startActivity<DonateActivity>("fragment" to Constants.FRAGMENT_CHILD)
+            ly_drawer.closeDrawer(Gravity.END)
+        }
+
+        btn_drawer_f_senior.setOnClickListener {
+            startActivity<DonateActivity>("fragment" to Constants.FRAGMENT_ELDER)
+            ly_drawer.closeDrawer(Gravity.END)
+        }
+
+        btn_drawer_f_disabled.setOnClickListener {
+            startActivity<DonateActivity>("fragment" to Constants.FRAGMENT_DISABLE)
+            ly_drawer.closeDrawer(Gravity.END)
+        }
+
+        btn_drawer_f_emergency.setOnClickListener {
+            startActivity<DonateActivity>("fragment" to Constants.FRAGMENT_EMERGENCY)
+            ly_drawer.closeDrawer(Gravity.END)
+        }
+
+        btn_drawer_f_env.setOnClickListener {
+            startActivity<DonateActivity>("fragment" to Constants.FRAGMENT_ENVIRONMENT)
+            ly_drawer.closeDrawer(Gravity.END)
+        }
+
     }
 }
