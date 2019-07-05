@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import jjackjjack.sopt.com.jjackjjack.activities.donate.fragment.*
+import jjackjjack.sopt.com.jjackjjack.utillity.Constants
 
 class DonateCategoryPagerAdapter : FragmentPagerAdapter {
 
@@ -58,12 +59,12 @@ class DonateCategoryPagerAdapter : FragmentPagerAdapter {
 
     override fun getItem(p0: Int): Fragment? {
         return when(p0){ //몇번째 인덱스냐에 따라서 다른 fragment 반환
-            0-> getChildFragment()
-            1-> getElderFragment()
-            2-> getAnimalFragment()
-            3-> getDisabledFragment()
-            4-> getEnvironmentFragment()
-            5-> getEmergencyFragment()
+            Constants.FRAGMENT_CHILD-> getChildFragment()
+            Constants.FRAGMENT_ELDER-> getElderFragment()
+            Constants.FRAGMENT_ANIMAL-> getAnimalFragment()
+            Constants.FRAGMENT_DISABLE-> getDisabledFragment()
+            Constants.FRAGMENT_ENVIRONMENT-> getEnvironmentFragment()
+            Constants.FRAGMENT_EMERGENCY-> getEmergencyFragment()
             else -> null
         }
     }

@@ -9,6 +9,7 @@ import jjackjjack.sopt.com.jjackjjack.activities.donate.DonateActivity
 import jjackjjack.sopt.com.jjackjjack.activities.donaterecord.DonateRecordActivity
 import jjackjjack.sopt.com.jjackjjack.activities.mypage.MyPageActivity
 import jjackjjack.sopt.com.jjackjjack.activities.rank.RankActivity
+import jjackjjack.sopt.com.jjackjjack.utillity.Constants
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_activity_main.btn_hambuger
 import kotlinx.android.synthetic.main.nav_drawer.*
@@ -82,7 +83,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         btn_drawer_f_animal.setOnClickListener {
-            startActivity<DonateActivity>()
+            startActivity<DonateActivity>("fragment" to Constants.FRAGMENT_ANIMAL)
             ly_drawer.closeDrawer(Gravity.END)
         }
 
