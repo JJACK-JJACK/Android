@@ -1,44 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="jjackjjack.sopt.com.jjackjjack">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
     <application
+            android:name=".network.ApplicationController"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".DonateRecordActivity">
+        <activity android:name=".activities.donaterecord.DonateRecordActivity">
         </activity>
         <activity
-                android:name=".DonatePaymentActivity"
+                android:name="jjackjjack.sopt.com.jjackjjack.activities.donate.DonatePaymentActivity"
                 android:windowSoftInputMode="adjustResize">
         </activity>
-        <activity android:name=".DonateDetailedActivity">
+        <activity android:name="jjackjjack.sopt.com.jjackjjack.activities.donate.DonateDetailedActivity">
         </activity>
-        <activity android:name=".DonateActivity">
+        <activity android:name="jjackjjack.sopt.com.jjackjjack.activities.donate.DonateActivity">
         </activity>
-        <activity android:name=".BerryChargeActivity">
+        <activity android:name=".activities.berrycharge.BerryChargeActivity">
         </activity>
-        <activity android:name=".MyPageActivity">
+        <activity android:name=".activities.mypage.MyPageActivity">
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".login.BeginningActivity">
+        <activity android:name=".activities.login.BeginningActivity">
         </activity>
-        <activity android:name=".login.LoginActivity">
+        <activity android:name=".activities.login.LoginActivity">
         </activity>
-        <activity android:name=".login.SignUpActivity" android:windowSoftInputMode="adjustResize">
+        <activity android:name=".activities.login.SignUpActivity" android:windowSoftInputMode="adjustResize">
         </activity>
-        <activity android:name=".rank.RankActivity">
+        <activity android:name=".activities.rank.RankActivity">
         </activity>
-        <activity android:name=".DepositActivity">
+        <activity android:name=".activities.berrycharge.DepositActivity">
+        </activity>
+        <activity android:name=".activities.berryuse.BerryuseActivity">
         </activity>
     </application>
 

@@ -62,21 +62,20 @@
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginTop="28dp">
             <ImageView
                     android:id="@+id/deposit_img_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/deposit_selector"
-                    android:layout_marginTop="40dp"
                     android:layout_marginLeft="20dp"
                     android:clickable="true"/>
             <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/ic_berrys_small"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginLeft="28dp"/>
+                    android:layout_marginLeft="20dp"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -84,14 +83,13 @@
                     android:textColor="#111111"
                     android:letterSpacing="0.01"
                     android:text="베리 10개"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="8dp"
             />
             <ImageView
+                    android:layout_marginTop="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/dot_radio"
-                    android:layout_marginTop="46dp"
                     android:layout_marginLeft="27dp"/>
             <TextView
                     android:layout_width="wrap_content"
@@ -100,12 +98,12 @@
                     android:textColor="#111111"
                     android:letterSpacing="0.01"
                     android:gravity="right"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginLeft="31dp"
+                    android:layout_marginLeft="32dp"
                     android:text="1,100원"
             />
         </LinearLayout>
         <LinearLayout
+                android:layout_marginTop="28dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -114,15 +112,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/deposit_selector"
-                    android:layout_marginTop="30dp"
                     android:layout_marginLeft="20dp"
                     android:clickable="true"/>
             <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/ic_berrys_small"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginLeft="28dp"/>
+                    android:layout_marginLeft="20dp"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -130,14 +126,13 @@
                     android:textColor="#111111"
                     android:letterSpacing="0.01"
                     android:text="베리 50개"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="8dp"
             />
             <ImageView
+                    android:layout_marginTop="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/dot_radio"
-                    android:layout_marginTop="36dp"
                     android:layout_marginLeft="27dp"/>
             <TextView
                     android:layout_width="wrap_content"
@@ -146,12 +141,12 @@
                     android:textColor="#111111"
                     android:letterSpacing="0.01"
                     android:gravity="end"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginLeft="31dp"
+                    android:layout_marginLeft="34dp"
                     android:text="5,500원"
             />
         </LinearLayout>
         <LinearLayout
+                android:layout_marginTop="28dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -160,15 +155,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/deposit_selector"
-                    android:layout_marginTop="30dp"
                     android:layout_marginLeft="20dp"
                     android:clickable="true"/>
             <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/ic_berrys_small"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginLeft="28dp"/>
+                    android:layout_marginLeft="20dp"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -176,14 +169,13 @@
                     android:textColor="#111111"
                     android:letterSpacing="0.01"
                     android:text="베리 100개"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="8dp"
             />
             <ImageView
+                    android:layout_marginTop="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/dot_radio"
-                    android:layout_marginTop="36dp"
                     android:layout_marginLeft="27dp"/>
             <TextView
                     android:layout_width="wrap_content"
@@ -192,12 +184,12 @@
                     android:textColor="#111111"
                     android:letterSpacing="0.01"
                     android:gravity="right"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="19dp"
                     android:text="11,000원"
             />
         </LinearLayout>
         <LinearLayout
+                android:layout_marginTop="28dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -206,15 +198,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/deposit_selector"
-                    android:layout_marginTop="30dp"
                     android:layout_marginLeft="20dp"
                     android:clickable="true"/>
             <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/ic_berrys_small"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginLeft="28dp"/>
+                    android:layout_marginLeft="20dp"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -222,14 +212,13 @@
                     android:textColor="#111111"
                     android:letterSpacing="0.01"
                     android:text="베리 300개"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="8dp"
             />
             <ImageView
+                    android:layout_marginTop="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/dot_radio"
-                    android:layout_marginTop="36dp"
                     android:layout_marginLeft="27dp"/>
             <TextView
                     android:layout_width="wrap_content"
@@ -238,12 +227,12 @@
                     android:textColor="#111111"
                     android:letterSpacing="0.01"
                     android:gravity="end"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="19dp"
                     android:text="33,000원"
             />
         </LinearLayout>
         <LinearLayout
+                android:layout_marginTop="28dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -252,15 +241,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/deposit_selector"
-                    android:layout_marginTop="30dp"
                     android:layout_marginLeft="20dp"
                     android:clickable="true"/>
             <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/ic_berrys_small"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginLeft="28dp"/>
+                    android:layout_marginLeft="20dp"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -268,14 +255,13 @@
                     android:textColor="#111111"
                     android:letterSpacing="0.01"
                     android:text="베리 500개"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="8dp"
             />
             <ImageView
+                    android:layout_marginTop="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/dot_radio"
-                    android:layout_marginTop="36dp"
                     android:layout_marginLeft="27dp"/>
             <TextView
                     android:layout_width="wrap_content"
@@ -284,8 +270,7 @@
                     android:textColor="#111111"
                     android:letterSpacing="0.01"
                     android:gravity="end"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="19dp"
                     android:text="55,000원"
             />
         </LinearLayout>
@@ -300,6 +285,7 @@
             android:layout_alignParentBottom="true"
             android:background="@drawable/shape_btn_login"
             android:text="충전하기"
+            android:id="@+id/btn_berry_deposit_charge"
             android:textColor="#ffffff"
             android:textSize="20dp"/>
 

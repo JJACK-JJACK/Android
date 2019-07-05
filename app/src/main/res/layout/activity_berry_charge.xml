@@ -6,7 +6,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".BerryChargeActivity"
+        tools:context=".activities.berrycharge.BerryChargeActivity"
         android:orientation="vertical"
         android:backgroundTint="#ffffff"
 
@@ -59,7 +59,7 @@
             android:layout_height="64dp"
             android:textSize="20sp"
             android:textColor="#ffffff"
-            android:id="@+id/button"
+            android:id="@+id/btn_berry_charge_card"
             android:drawableLeft="@drawable/ic_card"
             android:paddingLeft="36dp"
             android:layout_gravity="center"
@@ -76,7 +76,7 @@
             android:textSize="20sp"
             android:textColor="#ffffff"
             android:drawableLeft="@drawable/ic_bankbook"
-            android:id="@+id/button2"
+            android:id="@+id/btn_berry_charge_npb"
             android:layout_gravity="center"/>
 
 
