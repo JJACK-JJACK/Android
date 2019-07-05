@@ -44,6 +44,8 @@
         </activity>
         <activity android:name=".activities.berrycharge.DepositActivity">
         </activity>
+        <activity android:name=".activities.berryuse.BerryuseActivity">
+        </activity>
     </application>
 
 </manifest>
