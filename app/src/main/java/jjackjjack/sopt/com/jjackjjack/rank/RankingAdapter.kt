@@ -39,10 +39,10 @@ class RankingAdapter (val context3:Context, val rankingItemList: ArrayList<Ranki
 //            }else{
 //                rank_userimg?.setImageResource(R.drawable.abc_text_cursor_material)
 //            }
-            rank_ranking?.text = rankingItem.rank
-            rank_username?.text= rankingItem.username
-            rank_berry?.text = rankingItem.berry
-            rank_times?.text = rankingItem.times
+            rank_ranking?.text = rankingItem.rank_ranking
+            rank_username?.text= rankingItem.rank_username
+            rank_berry?.text = rankingItem.rank_berry
+            rank_times?.text = rankingItem.rank_times
         }
     }
 

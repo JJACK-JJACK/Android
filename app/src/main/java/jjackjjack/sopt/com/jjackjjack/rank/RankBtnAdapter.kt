@@ -39,5 +39,4 @@ class RankBtnAdapter(val context2: Context, val rankBtnItemList: ArrayList<RankB
             rankBtn?.text = rankBtnItem.btnText
         }
     }
-
 }

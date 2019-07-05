@@ -40,10 +40,10 @@ class RankActivity : AppCompatActivity() {
     )
 
     var RankingList = arrayListOf<RankingItem>(
-        RankingItem("1", "1", "1", "1", "1"),
-        RankingItem("2", "2", "2", "2", "2"),
-        RankingItem("3", "3", "3", "3", "3"),
-        RankingItem("4", "4", "4", "4", "4")
+        RankingItem("1", "1", "1", "1"),
+        RankingItem("2", "2", "2", "2"),
+        RankingItem("3", "3", "3", "3"),
+        RankingItem("4", "4", "4", "4")
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,7 +60,7 @@ class RankActivity : AppCompatActivity() {
         }
         /* 람다식{(RankImgItem) -> Unit} 부분을 추가하여 itemView의 setOnClickListener 에서 어떤 액션을 취할 지 설정해준다. */
         val mAdapter3 = RankingAdapter(this, RankingList) { rank ->
-            Toast.makeText(this, "${rank.rank}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "${rank.rank_username}", Toast.LENGTH_SHORT).show()
         }
 
         mRecyclerView.adapter = mAdapter

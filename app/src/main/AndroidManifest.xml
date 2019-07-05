@@ -24,7 +24,11 @@
         <activity android:name=".MyPageActivity">
         </activity>
         <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
 
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
         <activity android:name=".login.BeginningActivity">
         </activity>
@@ -35,11 +39,6 @@
         <activity android:name=".rank.RankActivity">
         </activity>
         <activity android:name=".DepositActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
     </application>
 
