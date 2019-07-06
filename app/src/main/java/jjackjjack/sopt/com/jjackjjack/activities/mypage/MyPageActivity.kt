@@ -11,10 +11,13 @@ import jjackjjack.sopt.com.jjackjjack.activities.MainActivity
 import jjackjjack.sopt.com.jjackjjack.R
 import jjackjjack.sopt.com.jjackjjack.activities.berrycharge.BerryChargeActivity
 import jjackjjack.sopt.com.jjackjjack.activities.donate.DonateActivity
+import jjackjjack.sopt.com.jjackjjack.activities.login.LoginActivity
 import jjackjjack.sopt.com.jjackjjack.activities.rank.RankActivity
+import jjackjjack.sopt.com.jjackjjack.db.SharedPreferenceController
 import jjackjjack.sopt.com.jjackjjack.interfaces.onDrawer
 import jjackjjack.sopt.com.jjackjjack.utillity.Constants
 import kotlinx.android.synthetic.main.activity_my_page.*
+import kotlinx.android.synthetic.main.content_activity_mypage.*
 import kotlinx.android.synthetic.main.nav_drawer.*
 import kotlinx.android.synthetic.main.toolbar_with_hamburger.*
 import org.jetbrains.anko.startActivity
@@ -36,6 +39,12 @@ class MyPageActivity : AppCompatActivity(), onDrawer {
     private fun initialUI(){
         btn_home.setOnClickListener {
             startActivity<MainActivity>()
+            finish()
+        }
+
+        btn_logout.setOnClickListener {
+            SharedPreferenceController.clearUserSharedPreferences(this)
+            startActivity<LoginActivity>()
             finish()
         }
         drawerUI()
