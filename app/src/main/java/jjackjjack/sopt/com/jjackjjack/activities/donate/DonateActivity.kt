@@ -44,6 +44,7 @@ class DonateActivity : AppCompatActivity(), onDrawer {
 
         var fragnum: Int = intent.getIntExtra("fragment", -1)
 
+        //donate_pager.offscreenPageLimit = 2
         var main_adapter = DonateCategoryPagerAdapter(supportFragmentManager)
         donate_pager.adapter = main_adapter
 
