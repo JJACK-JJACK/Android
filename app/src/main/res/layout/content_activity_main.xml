@@ -14,8 +14,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:layout_marginHorizontal="8dp"
+                android:layout_marginHorizontal="14dp"
                 android:layout_marginVertical="8dp"
+                android:layout_marginBottom="27dp"
                 android:src="@drawable/ic_hamburger"/>
 
         <ImageView
@@ -31,6 +32,7 @@
                 android:layout_marginLeft="40dp"
                 android:letterSpacing="0.01"
                 android:lineSpacingExtra="16sp"
+                android:textStyle="bold"
                 android:text="세상을 바꾸는\n작은 기부, 짹 !"
                 android:textColor="#000000"
                 android:textSize="32sp"/>
@@ -80,6 +82,5 @@
                 app:piv_viewPager="@id/main_activity_slider_pager"
                 android:layout_height="wrap_content" />
     </LinearLayout>
-
 
 </RelativeLayout>

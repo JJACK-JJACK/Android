@@ -27,16 +27,20 @@ class AnimalFragment : Fragment(){
 
         donate_sort_tab.setupWithViewPager(donate_sort_pager)
 
-        val navDonateListSort: View =
-            (activity!!.getSystemService(android.content.Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater)
-                .inflate(R.layout.nav_donatelist_sort, null, false)
+        donate_sort_tab.getTabAt(0)!!.setText("최신순")
+        donate_sort_tab.getTabAt(1)!!.setText("기부율 높은순")
+        donate_sort_tab.getTabAt(2)!!.setText("기부율 낮은순")
 
-        donate_sort_tab.getTabAt(0)!!.customView =
-            navDonateListSort.findViewById(R.id.nav_donatelist_sort_recent) as RelativeLayout
-        donate_sort_tab.getTabAt(1)!!.customView =
-            navDonateListSort.findViewById(R.id.nav_donatelist_sort_popular) as RelativeLayout
-        donate_sort_tab.getTabAt(2)!!.customView =
-            navDonateListSort.findViewById(R.id.nav_donatelist_sort_unpopular) as RelativeLayout
+//        val navDonateListSort: View =
+//            (activity!!.getSystemService(android.content.Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater)
+//                .inflate(R.layout.nav_donatelist_sort, null, false)
+//
+//        donate_sort_tab.getTabAt(0)!!.customView =
+//            navDonateListSort.findViewById(R.id.nav_donatelist_sort_recent) as RelativeLayout
+//        donate_sort_tab.getTabAt(1)!!.customView =
+//            navDonateListSort.findViewById(R.id.nav_donatelist_sort_popular) as RelativeLayout
+//        donate_sort_tab.getTabAt(2)!!.customView =
+//            navDonateListSort.findViewById(R.id.nav_donatelist_sort_unpopular) as RelativeLayout
 
     }
 }
