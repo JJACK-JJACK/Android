@@ -3,6 +3,9 @@ package jjackjjack.sopt.com.jjackjjack.activities
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.support.v4.app.ActivityCompat
+import android.support.v4.app.FragmentManager
 import android.view.Gravity
 import android.view.View
 import android.widget.ImageView
@@ -18,6 +21,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_activity_main.*
 import kotlinx.android.synthetic.main.nav_drawer.*
 import org.jetbrains.anko.startActivity
+
 
 
 class MainActivity : AppCompatActivity(), onDrawer {
@@ -110,8 +114,8 @@ class MainActivity : AppCompatActivity(), onDrawer {
         for(i in 0 until btnAset.size){
             btnAset[i].setOnClickListener{
                 val intent = Intent(this, actSet[i])
-                startActivity(intent)
                 ly_drawer.closeDrawer(Gravity.END)
+                Handler().postDelayed({startActivity(intent)}, 110)
                 if(activityType == i){
                     finish()
                 }
@@ -121,10 +125,7 @@ class MainActivity : AppCompatActivity(), onDrawer {
         for(i in 0 until btnFset.size){
             btnFset[i].setOnClickListener {
                 startActivity<DonateActivity>("fragment" to i)
-                ly_drawer.closeDrawer(Gravity.END)
-                if(activityType==Constants.ACTIVITY_DONATE){
-                    finish()
-                }
+                Handler().postDelayed({ ly_drawer.closeDrawer(Gravity.END)}, 110)
             }
         }
     }
@@ -137,4 +138,5 @@ class MainActivity : AppCompatActivity(), onDrawer {
             super.onBackPressed()
         }
     }
+
 }
