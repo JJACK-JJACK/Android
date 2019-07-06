@@ -2,11 +2,14 @@ package jjackjjack.sopt.com.jjackjjack.activities.login
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import jjackjjack.sopt.com.jjackjjack.activities.MainActivity
 import jjackjjack.sopt.com.jjackjjack.R
 import jjackjjack.sopt.com.jjackjjack.db.SharedPreferenceController
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.startActivity
+import android.view.MotionEvent
+
 
 class LoginActivity : AppCompatActivity() {
 
@@ -14,7 +17,26 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+//        et_login_email.setOnFocusChangeListener { v, hasFocus -> //어떤 view(v)가 활성화(has focus)되었는가
+//            if(hasFocus){
+//                btn_login_login.visibility = View.INVISIBLE
+//            }
+//            else{
+//                btn_login_login.visibility = View.VISIBLE
+//            }
+//        }
+//
+//        et_login_pw.setOnFocusChangeListener { v, hasFocus -> //어떤 view(v)가 활성화(has focus)되었는가
+//            if(hasFocus){
+//                btn_login_login.visibility = View.INVISIBLE
+//            }
+//            else{
+//                btn_login_login.visibility = View.VISIBLE
+//            }
+//        }
+
         initialUI()
+
     }
 
     private fun initialUI(){
@@ -36,6 +58,7 @@ class LoginActivity : AppCompatActivity() {
 
 
         }
+
 
         btn_login_signup.setOnClickListener {
             startActivity<SignUpActivity>()

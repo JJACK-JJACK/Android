@@ -6,16 +6,13 @@ import android.support.v7.app.AlertDialog
 import android.widget.Button
 import jjackjjack.sopt.com.jjackjjack.R
 import kotlinx.android.synthetic.main.activity_donate_payment.*
+import kotlinx.android.synthetic.main.activity_donate_payment.view.*
 
 class DonatePaymentActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_donate_payment)
-
-
-
-
 
         btn_donate.setOnClickListener {
             val builder = AlertDialog.Builder(this)

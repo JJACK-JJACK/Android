@@ -11,20 +11,11 @@
             android:paddingHorizontal="20dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        <TextView
-                android:layout_marginTop="92dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:textColor="#111111"
-                android:letterSpacing="0.01"
-                android:lineSpacingExtra="10sp"
-                android:text="세상을 바꾸는\n작은기부, 짹을\n시작해보세요!"/>
         <ImageView
-                android:layout_marginTop="20dp"
-                android:src="@drawable/ic_account_circle_black_24dp"
-                android:layout_width="48dp"
-                android:layout_height="48dp"/>
+                android:layout_marginTop="162dp"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:src="@drawable/img_login"/>
         <LinearLayout
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="163dp"
@@ -33,7 +24,7 @@
                 android:background="@drawable/shape_btn_email"
                 android:orientation="horizontal"
                 android:layout_width="300dp"
-                android:layout_height="48dp">
+                android:layout_height="56dp">
             <ImageView
                     android:layout_gravity="center_vertical"
                     android:src="@drawable/ic_email"
@@ -55,8 +46,9 @@
                 android:layout_width="300dp"
                 android:id="@+id/btn_beginning_signup"
                 android:layout_gravity="center_horizontal"
-                android:layout_height="48dp">
+                android:layout_height="56dp">
             <TextView
+                    android:gravity="center"
                     android:paddingVertical="16dp"
                     android:paddingHorizontal="120dp"
                     android:text="회원 가입"
@@ -64,7 +56,7 @@
                     android:textColor="@color/red"
                     android:letterSpacing="0.01"
                     android:layout_width="300dp"
-                    android:layout_height="48dp"/>
+                    android:layout_height="56dp"/>
 
         </RelativeLayout>
 
@@ -73,9 +65,9 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 android:textColor="#999999"
-                android:letterSpacing="0.01"
+                android:letterSpacing="0.17"
                 android:gravity="center_horizontal"
                 android:text="회원가입 진행 시 짹의 서비스 약관,\n
 개인정보 보호정책에 동의한 것으로 간주합니다."/>
