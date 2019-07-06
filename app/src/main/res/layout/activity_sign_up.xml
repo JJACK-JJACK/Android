@@ -23,7 +23,7 @@
         <TextView
                 android:text="이메일 주소를"
                 android:textSize="24sp"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="29dp"
                 android:paddingTop="48dp"
                 android:id="@+id/tv_signup_head"
                 android:textColor="#444444"
@@ -36,7 +36,7 @@
                 android:paddingTop="10dp"
                 android:text="입력해주세요"
                 android:textSize="24sp"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="29dp"
                 android:textColor="#444444"
                 android:letterSpacing="0.01"
                 android:lineSpacingExtra="12sp"
@@ -51,7 +51,7 @@
 
 
             <LinearLayout
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="24dp"
                     android:paddingHorizontal="30dp"
                     android:orientation="vertical"
                     android:id="@+id/ly_signup_section1"
@@ -63,7 +63,7 @@
                         android:text="이메일"
                         android:textSize="12sp"
                         android:id="@+id/tv_signup_section1"
-                        android:textColor="#444444"
+                        android:textColor="@color/darkGrayC"
                         android:letterSpacing="0.01"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
@@ -76,7 +76,7 @@
                         android:inputType="textEmailAddress"
                         android:hint="ex) mrpic@naver.com"
                         android:id="@+id/et_signup_section1"
-                        android:textSize="19sp"
+                        android:textSize="20sp"
                         android:textColor="#444444"
                         android:background="@drawable/shape_bottom_line_yellow"
                         android:layout_width="300dp"
@@ -150,12 +150,13 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="20dp"
-            android:background="@drawable/shape_redbtn_4dp"
+            android:layout_marginHorizontal="29dp"
+            android:background="@drawable/shape_redbtn_8dp"
             android:id="@+id/btn_signup_next"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="64dp">
         <TextView
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textColor="#ffffff"
                 android:letterSpacing="0.01"
                 android:text="다음"

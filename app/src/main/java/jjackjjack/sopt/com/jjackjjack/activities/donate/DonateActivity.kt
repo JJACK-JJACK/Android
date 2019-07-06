@@ -44,6 +44,7 @@ class DonateActivity : AppCompatActivity(), onDrawer {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_donate)
 
+        var fragnum: Int = intent.getIntExtra("fragment", -1)
         var main_adapter = DonateCategoryPagerAdapter(supportFragmentManager)
         donate_pager.adapter = main_adapter
 
