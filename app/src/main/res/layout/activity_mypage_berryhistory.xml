@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+    <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:backgroundTint="#ffffff"
+            android:theme="?attr/actionBarTheme"
+            android:id="@+id/toolbar">
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back"
+                android:id="@+id/btn_toolbar_back"/>
+    </android.support.v7.widget.Toolbar>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="#111111"
+            android:text="보유베리"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="40dp"
+    />
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal"
+                  android:layout_marginTop="12dp">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:textColor="#111111"
+                android:layout_marginLeft="20dp"
+                android:text="349,900"
+        />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="#111111"
+                android:text="베리"
+                android:layout_marginLeft="3dp"
+        />
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:background="#f9f9f9"
+    android:layout_marginTop="29dp">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="최근 베리 사용내역"
+                android:paddingTop="6dp"
+                android:paddingBottom="8dp"
+                android:layout_marginLeft="20dp"
+                android:textSize="12sp"
+                android:textColor="#666666"/>
+    </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_berryhistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>
