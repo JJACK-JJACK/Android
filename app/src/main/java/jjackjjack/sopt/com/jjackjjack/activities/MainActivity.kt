@@ -15,9 +15,17 @@ import jjackjjack.sopt.com.jjackjjack.activities.rank.RankActivity
 import jjackjjack.sopt.com.jjackjjack.interfaces.onDrawer
 import jjackjjack.sopt.com.jjackjjack.utillity.Constants
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.content_activity_main.btn_hambuger
+import kotlinx.android.synthetic.main.content_activity_main.*
 import kotlinx.android.synthetic.main.nav_drawer.*
 import org.jetbrains.anko.startActivity
+import com.rd.PageIndicatorView
+
+
+
+
+
+
+
 
 class MainActivity : AppCompatActivity(), onDrawer {
 
@@ -30,10 +38,44 @@ class MainActivity : AppCompatActivity(), onDrawer {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        var fragmentAdapter = MainActivityImageSliderAdapter(supportFragmentManager)
+        main_activity_slider_pager.adapter = fragmentAdapter
+
+        main_activity_slider_pager.setClipToPadding(false)
+        val dpValue = 40
+        val d = resources.displayMetrics.density
+        val margin = (dpValue * d).toInt()
+        main_activity_slider_pager.setPadding(margin, 0, margin, 0)
+        main_activity_slider_pager.setPageMargin(margin / 2)
+
+        for (i in 0..5) {
+            val fragmentMainActivityImageSlider = FragmentMainActivityImageSlider()
+            fragmentAdapter.addImage(fragmentMainActivityImageSlider)
+        }
+        fragmentAdapter.notifyDataSetChanged()
+
+
+
+
+//        pageIndicatorView.setViewPager(main_activity_slider_pager, true)
+//
+//        main_activity_slider_pager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+//            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {/*empty*/
+//            }
+//
+//            override fun onPageSelected(position: Int) {
+//                pageIndicatorView.selection = position
+//            }
+//
+//            override fun onPageScrollStateChanged(state: Int) {/*empty*/
+//            }
+//        })
+
+        //dot_indicator_activity_main.setupWithViewPager(main_activity_slider_pager, true)
+
         drawerUI()
     }
-
-
 
     override fun drawerUI(){
 
@@ -56,8 +98,6 @@ class MainActivity : AppCompatActivity(), onDrawer {
         drawerBtnSetting(Constants.ACTIVITY_MAIN)
 
     }
-
-
 
 
     override fun drawerBtnSetting(activityType: Int){
@@ -94,7 +134,6 @@ class MainActivity : AppCompatActivity(), onDrawer {
                 }
             }
         }
-
     }
 
     override fun onBackPressed() {
