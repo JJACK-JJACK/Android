@@ -51,15 +51,8 @@ class MainActivity : AppCompatActivity(), onDrawer {
 
         dot_indicator_activity_main.setupWithViewPager(main_activity_slider_pager, true)
 
-
-
-        initalUI()
-
         drawerUI()
-
     }
-
-
 
     override fun drawerUI(){
 
@@ -120,7 +113,6 @@ class MainActivity : AppCompatActivity(), onDrawer {
                 }
             }
         }
-
     }
 
     override fun onBackPressed() {
