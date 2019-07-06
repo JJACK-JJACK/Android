@@ -77,7 +77,7 @@ class MyPageActivity : AppCompatActivity(), onDrawer {
             }
         }
 
-        btn_cancle.setOnClickListener {
+        btn_cancel.setOnClickListener {
             if(ly_drawer.isDrawerOpen(Gravity.END)){
                 ly_drawer.closeDrawer(Gravity.END)
             }

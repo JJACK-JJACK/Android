@@ -3,7 +3,6 @@ package jjackjjack.sopt.com.jjackjjack.activities.donate
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.app.FragmentTransaction
 import android.util.Log
 import android.view.Gravity
 import android.view.View
@@ -12,7 +11,6 @@ import jjackjjack.sopt.com.jjackjjack.R
 import jjackjjack.sopt.com.jjackjjack.activities.MainActivity
 import jjackjjack.sopt.com.jjackjjack.activities.berrycharge.BerryChargeActivity
 import jjackjjack.sopt.com.jjackjjack.activities.donate.adapter.DonateCategoryPagerAdapter
-import jjackjjack.sopt.com.jjackjjack.activities.donate.fragment.*
 import jjackjjack.sopt.com.jjackjjack.activities.donaterecord.DonateRecordActivity
 import jjackjjack.sopt.com.jjackjjack.activities.mypage.MyPageActivity
 import jjackjjack.sopt.com.jjackjjack.activities.rank.RankActivity
@@ -23,7 +21,6 @@ import kotlinx.android.synthetic.main.content_activity_donate.*
 import kotlinx.android.synthetic.main.nav_drawer.*
 import kotlinx.android.synthetic.main.toolbar_with_hamburger.*
 import org.jetbrains.anko.startActivity
-import kotlin.properties.Delegates
 
 class DonateActivity : AppCompatActivity(), onDrawer {
 
@@ -101,7 +98,7 @@ class DonateActivity : AppCompatActivity(), onDrawer {
             }
         }
 
-        btn_cancle.setOnClickListener {
+        btn_cancel.setOnClickListener {
             if(ly_drawer.isDrawerOpen(Gravity.END)){
                 ly_drawer.closeDrawer(Gravity.END)
             }
