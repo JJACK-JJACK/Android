@@ -3,9 +3,9 @@ package jjackjjack.sopt.com.jjackjjack.activities.donate.adapter
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import jjackjjack.sopt.com.jjackjjack.activities.donate.fragment.PopularFragment
-import jjackjjack.sopt.com.jjackjjack.activities.donate.fragment.RecentFragment
-import jjackjjack.sopt.com.jjackjjack.activities.donate.fragment.UnpopularFragment
+import jjackjjack.sopt.com.jjackjjack.activities.donate.fragment.sort.PopularFragment
+import jjackjjack.sopt.com.jjackjjack.activities.donate.fragment.sort.RecentFragment
+import jjackjjack.sopt.com.jjackjjack.activities.donate.fragment.sort.UnpopularFragment
 
 class DonateSortCategoryPagerAdapter : FragmentPagerAdapter {
 
