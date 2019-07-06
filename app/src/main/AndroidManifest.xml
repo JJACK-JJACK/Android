@@ -48,6 +48,8 @@
         </activity>
         <activity android:name=".activities.berryuse.BerryuseActivity">
         </activity>
+        <activity android:name=".activities.donate_state.Status_Activity">
+        </activity>
     </application>
 
 </manifest>
