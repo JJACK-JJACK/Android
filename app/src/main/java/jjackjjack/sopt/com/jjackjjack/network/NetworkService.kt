@@ -6,6 +6,7 @@ import jjackjjack.sopt.com.jjackjjack.network.response.post.PostNicknameCheckRes
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostSignUpResponse
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
 
