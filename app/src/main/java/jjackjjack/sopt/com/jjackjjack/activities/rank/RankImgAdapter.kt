@@ -33,8 +33,8 @@ class RankImgAdapter(val context: Context, val rankImgItemList: ArrayList<RankIm
 
 
         fun bind (rankImgItem: RankImgItem, context: Context) {
-//            if (rankImgItem.photo != "") {
-//                val resourceId = context.resources.getIdentifier(rankImgItem.photo, "drawable", context.packageName)
+//            if (rankImgItem.rank_userimg != "") {
+//                val resourceId = context.resources.getIdentifier(rankImgItem.rank_userimg, "drawable", context.packageName)
 //                dogPhoto?.setImageResource(resourceId)
 //            } else {
 //                dogPhoto?.setImageResource(R.mipmap.ic_launcher)

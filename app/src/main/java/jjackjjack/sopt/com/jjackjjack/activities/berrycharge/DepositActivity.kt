@@ -8,11 +8,10 @@ import kotlinx.android.synthetic.main.activity_berry_deposit.*
 
 
 class DepositActivity : AppCompatActivity(){
-    var activeView = null //이거 용도 뭐얌?ㅅ?
-
     var clickTest = arrayOf(0, 0, 0, 0, 0)
 
     lateinit var ivList: Array<ImageView>
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,6 +48,9 @@ class DepositActivity : AppCompatActivity(){
         }
 
     }
+
+
+
 
 
 //        deposit_img_1.setOnClickListener {
@@ -104,6 +106,7 @@ class DepositActivity : AppCompatActivity(){
 //            deposit_img_4.isSelected = false
 //            deposit_img_5.isSelected = false
 //        }
+
 
 }
 
