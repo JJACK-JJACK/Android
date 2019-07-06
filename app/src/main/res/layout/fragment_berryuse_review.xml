@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <LinearLayout
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <TextView
+                android:id="@+id/use_story_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="#222222"
+                android:letterSpacing="0.02"
+                android:lineSpacingExtra="5sp"
+                android:text="“이제 아프지 않을 거예요”"
+        />
+        <TextView
+                android:id="@+id/use_story_content"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="#333333"
+                android:lineSpacingExtra="7sp"
+                android:text="&quot;남양주 유기견 보호소는 굶주림과 수많은 생명의 위험에 놓인 유기동물을 구조해
+치료하는 기부를 주관하여 시민 구조자의 부담은 나누고,
+작은 단위의 동물 구호 활동 활성화를 지원하기 위하여 위기동물 지원을 &apos;짹&apos;을 통해서 진행하고 있습니다.
+목표했던 기부금액 이상의 후원이 들어오게되며,
+더 많은 유기견을  치료하였으며, 매달 매년 더 많은 위기동물생명을 구하기 위하여 노력하고, 행동하고자 합니다.
+많은 위기동물들이 아프지 않고 외롭지 않을 수 있도록, 행복한 제 2의 삶을 살아갈 수 있도록
+앞으로도 유기동물 지원사업을 응원해주세요.
+여러분들이 베푼 사랑은 배가 되어 도움이 필요한 생명들에게 전달되었습니다. 감사합니다. &quot;"
+        />
+    </LinearLayout>
+    <ImageView
+            android:layout_marginLeft="20dp"
+            android:layout_width="320dp"
+            android:layout_height="179dp"
+            android:background="@color/colorPrimary"/>
+    <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <View
+                android:layout_width="32dp"
+                android:layout_height="1dp"
+                android:layout_marginLeft="119dp"/>
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_berrys_small"
+                android:layout_marginLeft="16dp"/>
+        <View
+                android:layout_width="32dp"
+                android:layout_height="1dp"
+                android:layout_marginLeft="16dp"/>
+    </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/berry_use_detailed">
+    </android.support.v7.widget.RecyclerView>
+</LinearLayout>
