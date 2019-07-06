@@ -18,6 +18,13 @@ class Constants {
         const val FRAGMENT_ENVIRONMENT = 4
         const val FRAGMENT_EMERGENCY = 5
 
+        //donate detail fragment
+        const val FRAGMENT_DONATE_STORY = 0
+        const val FRAGMENT_USE_PLAN = 1
+
+        //donate detail tab
+        const val TAB_DONATE_STORY = 0
+        const val TAB_USE_PLAN = 1
 
     }
 }
