@@ -13,9 +13,12 @@ class DonatePaymentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_donate_payment)
 
+        initialUI()
 
 
+    }
 
+    private fun initialUI(){
 
         btn_donate.setOnClickListener {
             val builder = AlertDialog.Builder(this)
@@ -27,7 +30,5 @@ class DonatePaymentActivity : AppCompatActivity() {
                 finish()
             }
         }
-
-
     }
 }

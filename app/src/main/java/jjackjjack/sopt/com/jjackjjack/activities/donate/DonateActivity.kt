@@ -44,15 +44,6 @@ class DonateActivity : AppCompatActivity(), onDrawer {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_donate)
 
-        var main_adapter = DonateCategoryPagerAdapter(supportFragmentManager)
-        donate_pager.adapter = main_adapter
-
-        donate_tab.setupWithViewPager(donate_pager)
-
-        for(i in 0 until sFragmentConstant.size){
-            donate_tab.getTabAt(sFragmentConstant[i])?.setText(sText[i])
-        }
-
 //        donate_tab.getTabAt(Constants.FRAGMENT_CHILD)?.setText("어린이")
 //        donate_tab.getTabAt(Constants.FRAGMENT_ELDER)?.setText("어르신")
 //        donate_tab.getTabAt(Constants.FRAGMENT_ANIMAL)?.setText("동물")
@@ -77,6 +68,16 @@ class DonateActivity : AppCompatActivity(), onDrawer {
     }
 
     private fun initialUI(){
+
+        var main_adapter = DonateCategoryPagerAdapter(supportFragmentManager)
+        donate_pager.adapter = main_adapter
+
+        donate_tab.setupWithViewPager(donate_pager)
+
+        for(i in 0 until sFragmentConstant.size){
+            donate_tab.getTabAt(sFragmentConstant[i])?.setText(sText[i])
+        }
+
         btn_home.setOnClickListener {
             startActivity<MainActivity>()
             finish()

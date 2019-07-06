@@ -18,14 +18,15 @@ class DonateDetailedActivity : AppCompatActivity() {
 
     var fragmentAdapter: DetailFragmentAdapter by Delegates.notNull()
 
-    private fun changeFragment(what:Int){
-        fragmentAdapter.setFragment(what)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_donate_detailed)
 
+        initialUI()
+    }
+
+    private fun initialUI(){
         btn_toolbar_back.setOnClickListener {
             finish()
         }

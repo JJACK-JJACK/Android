@@ -41,6 +41,18 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_donate_record)
         initialUI()
+
+    }
+
+    private fun initialUI(){
+
+
+        btn_home.setOnClickListener {
+            startActivity<MainActivity>()
+            finish()
+        }
+        drawerUI()
+
         var dataList: ArrayList<DonateInfoData> = ArrayList()
 
         dataList.add(
@@ -63,14 +75,6 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
             DonateListRecyclerViewAdapter(this, dataList, true)
         rv_donate_record.adapter = donateListRecyclerViewAdapter
         rv_donate_record.layoutManager = LinearLayoutManager(this)
-    }
-
-    private fun initialUI(){
-        btn_home.setOnClickListener {
-            startActivity<MainActivity>()
-            finish()
-        }
-        drawerUI()
     }
 
     override fun drawerUI() {
