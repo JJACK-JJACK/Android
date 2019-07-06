@@ -3,6 +3,9 @@ package jjackjjack.sopt.com.jjackjjack.activities.mypage
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.support.v4.app.ActivityCompat
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.ImageView
@@ -21,6 +24,7 @@ import kotlinx.android.synthetic.main.content_activity_mypage.*
 import kotlinx.android.synthetic.main.nav_drawer.*
 import kotlinx.android.synthetic.main.toolbar_with_hamburger.*
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
 
 class MyPageActivity : AppCompatActivity(), onDrawer {
 
@@ -51,13 +55,28 @@ class MyPageActivity : AppCompatActivity(), onDrawer {
     }
 
     override fun onBackPressed() {
+
         if(ly_drawer.isDrawerOpen(Gravity.END)){
             ly_drawer.closeDrawer(Gravity.END)
         }
         else{
+            //doubleBackPress()
             super.onBackPressed()
         }
     }
+
+//    private var backPressedTime: Long = 0
+//    private fun doubleBackPress(){
+//        var temp: Long = System.currentTimeMillis()
+//        var intervalTime: Long = temp - backPressedTime
+//        if(intervalTime in 0..2000){
+//            ActivityCompat.finishAffinity(this)
+//        }
+//        else{
+//            backPressedTime = temp
+//            toast("버튼을 한번 더 누르면 종료됩니다.")
+//        }
+//    }
 
     override fun drawerUI() {
         actSet = arrayOf(
@@ -96,21 +115,17 @@ class MyPageActivity : AppCompatActivity(), onDrawer {
         for(i in 0 until btnAset.size){
             btnAset[i].setOnClickListener{
                 val intent = Intent(this, actSet[i])
-                startActivity(intent)
                 ly_drawer.closeDrawer(Gravity.END)
-                if(activityType == i){
-                    finish()
-                }
+                startActivity(intent)
+                finish()
             }
         }
 
         for(i in 0 until btnFset.size){
             btnFset[i].setOnClickListener {
                 startActivity<DonateActivity>("fragment" to i)
-                ly_drawer.closeDrawer(Gravity.END)
-                if(activityType==Constants.ACTIVITY_DONATE){
-                    finish()
-                }
+                Handler().postDelayed({ly_drawer.closeDrawer(Gravity.END)}, 110)
+                finish()
             }
         }
     }

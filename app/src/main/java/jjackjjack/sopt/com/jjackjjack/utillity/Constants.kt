@@ -26,5 +26,10 @@ class Constants {
         const val TAB_DONATE_STORY = 0
         const val TAB_USE_PLAN = 1
 
+        //sort Type
+        const val TYPE_RECENT = 0
+        const val TYPE_POPULAR = 1
+        const val TYPE_UNPOPULAR = 2
+
     }
 }
