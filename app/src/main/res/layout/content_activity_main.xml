@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:attrs="http://schemas.android.com/tools">
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -54,18 +54,31 @@
         </android.support.v4.view.ViewPager>
 
 
-        <android.support.design.widget.TabLayout
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="250dp"
-                android:layout_alignParentBottom="true"
-                android:id="@+id/dot_indicator_activity_main"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                app:tabIndicatorHeight="0dp"
-                app:tabBackground="@drawable/dot_selector">
-        </android.support.design.widget.TabLayout>
+        <!--<android.support.design.widget.TabLayout-->
+                <!--android:layout_marginLeft="40dp"-->
+                <!--android:layout_marginRight="250dp"-->
+                <!--android:layout_alignParentBottom="true"-->
+                <!--android:id="@+id/dot_indicator_activity_main"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="14dp"-->
+                <!--app:tabIndicatorHeight="0dp"-->
+                <!--app:tabBackground="@drawable/dot_selector">-->
+        <!--</android.support.design.widget.TabLayout>-->
 
+        <com.rd.PageIndicatorView
+                android:layout_marginTop="14dp"
+                android:layout_marginLeft="40dp"
+                android:id="@+id/pageIndicatorView"
+                android:layout_width="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_above="@+id/buttons"
+                android:layout_marginBottom="20dp"
+                app:piv_animationType="worm"
+                app:piv_unselectedColor="#eeeeee"
+                app:piv_selectedColor="#ffc21f"
+                app:piv_viewPager="@id/main_activity_slider_pager"
+                android:layout_height="wrap_content" />
     </LinearLayout>
 
 
