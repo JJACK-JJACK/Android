@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import jjackjjack.sopt.com.jjackjjack.list.DonateUsePlanRecyclerViewAdapter
 import jjackjjack.sopt.com.jjackjjack.R
 import jjackjjack.sopt.com.jjackjjack.data.DonateUsePlanData
+import kotlinx.android.synthetic.main.fragment_use_berry.*
 import kotlinx.android.synthetic.main.fragment_use_plan.*
 
 class UsePlanFragment : Fragment(){
@@ -17,7 +18,7 @@ class UsePlanFragment : Fragment(){
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_use_plan, container, false)
+        return inflater.inflate(R.layout.fragment_use_berry, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

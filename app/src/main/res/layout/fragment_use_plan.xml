@@ -6,12 +6,12 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content">
 
-        <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <TextView
+        <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
@@ -22,51 +22,51 @@
                 android:layout_marginBottom="34dp"
         />
 
-            <android.support.v7.widget.RecyclerView
+        <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rv_donate_use_plan_container"
+        >
+        </android.support.v7.widget.RecyclerView>
+
+        <ImageView
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/grey_line"/>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:gravity="center"
+                android:layout_marginBottom="100dp">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/goal_berry"
+                    android:textSize="16sp"
+                    android:textColor="@color/darkGrayC"/>
+
+            <TextView
+                    android:paddingHorizontal="4dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/rv_donate_use_plan_container"
-                    >
-            </android.support.v7.widget.RecyclerView>
-
-            <ImageView
-                    android:layout_marginTop="20dp"
-                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:textSize="24sp"
+                    android:letterSpacing="0.06"
+                    android:textColor="#111111"
+                    android:textStyle="bold"
+                    android:text="100.000"/>
+            <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/grey_line"/>
+                    android:textSize="16sp"
+                    android:textColor="@color/grayA"
+                    android:text="@string/berry"/>
 
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:gravity="center"
-                    android:layout_marginBottom="100dp">
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/goal_berry"
-                        android:textSize="16sp"
-                        android:textColor="@color/darkGrayC"/>
+        </LinearLayout>
 
-                <TextView
-                        android:paddingHorizontal="4dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="right"
-                        android:textSize="24sp"
-                        android:letterSpacing="0.06"
-                        android:textColor="#111111"
-                        android:textStyle="bold"
-                        android:text="100.000"/>
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:textColor="@color/grayA"
-                        android:text="@string/berry"/>
-
-            </LinearLayout>
-
-</LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>

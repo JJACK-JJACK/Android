@@ -67,5 +67,5 @@
                 android:layout_marginLeft="16dp"/>
     </LinearLayout>
     <include
-        layout="@layout/fragment_use_berry"></include>
+            layout="@layout/fragment_use_berry"></include>
 </LinearLayout>

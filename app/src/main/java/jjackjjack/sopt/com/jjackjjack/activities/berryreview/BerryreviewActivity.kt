@@ -1,38 +1,19 @@
-package jjackjjack.sopt.com.jjackjjack.activities.donaterecord
+package jjackjjack.sopt.com.jjackjjack.activities.berryreview
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import jjackjjack.sopt.com.jjackjjack.R
 import jjackjjack.sopt.com.jjackjjack.data.DonateUsePlanData
 import jjackjjack.sopt.com.jjackjjack.list.DonateUsePlanRecyclerViewAdapter
-import kotlinx.android.synthetic.main.activity_donate_record_status.*
 import kotlinx.android.synthetic.main.fragment_use_berry.*
-import kotlinx.android.synthetic.main.header_img.*
-import kotlinx.android.synthetic.main.li_state.*
 
-class DonateRecordStatusActivity : AppCompatActivity() {
-
-    lateinit var donateUsePlanRecyclerViewAdapter: DonateUsePlanRecyclerViewAdapter
-
+class BerryreviewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_donate_record_status)
-        initialUI()
-    }
+        setContentView(R.layout.activity_rank_berryreview)
 
-    private fun initialUI() {
-        btn_toolbar_back.setOnClickListener {
-            finish()
-        }
-
-        li_state_berry_num.text = intent.getStringExtra("berry_num")
-        li_state_d_day.text = intent.getStringExtra("d_day")
-        li_state_percent.text = intent.getStringExtra("percent")
-        li_state_progress.progress = intent.getStringExtra("percent").toInt()
-        donate_detailed_title.text = intent.getStringExtra("title")
-        donate_detailed_association.text = intent.getStringExtra("association")
-
+        lateinit var donateUsePlanRecyclerViewAdapter: DonateUsePlanRecyclerViewAdapter
         var dataList: ArrayList<DonateUsePlanData> = ArrayList()
 
         dataList.add(
@@ -55,9 +36,9 @@ class DonateRecordStatusActivity : AppCompatActivity() {
                 "4", "족발 대자 3개", "120.000"
             )
         )
+
         donateUsePlanRecyclerViewAdapter = DonateUsePlanRecyclerViewAdapter(this, dataList)
         rv_donate_use_container.adapter = donateUsePlanRecyclerViewAdapter
         rv_donate_use_container.layoutManager = LinearLayoutManager(this)
-
     }
 }
