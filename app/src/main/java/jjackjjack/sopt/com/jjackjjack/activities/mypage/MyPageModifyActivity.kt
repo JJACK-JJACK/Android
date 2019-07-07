@@ -6,6 +6,7 @@ import android.os.Bundle
 import jjackjjack.sopt.com.jjackjjack.R
 import kotlinx.android.synthetic.main.activity_my_page_modify.*
 import android.R.attr.data
+import kotlinx.android.synthetic.main.activity_mypage_berryhistory.*
 
 
 class MyPageModifyActivity : AppCompatActivity() {
@@ -18,6 +19,10 @@ class MyPageModifyActivity : AppCompatActivity() {
             val intent = Intent(this, MyPageNicknameModifyActivity::class.java)
             intent.putExtra("nickname", curr_nickname.text)
             startActivityForResult(intent, 3000)
+        }
+
+        btn_back.setOnClickListener {
+            finish()
         }
     }
 

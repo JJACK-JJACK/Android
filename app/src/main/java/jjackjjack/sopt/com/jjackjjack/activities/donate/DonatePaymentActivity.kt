@@ -8,9 +8,10 @@ import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import jjackjjack.sopt.com.jjackjjack.R
+import jjackjjack.sopt.com.jjackjjack.activities.berrycharge.BerryChargeActivity
 import kotlinx.android.synthetic.main.activity_donate_payment.*
 import kotlinx.android.synthetic.main.activity_donate_payment.view.*
-
+import org.jetbrains.anko.startActivity
 
 
 class DonatePaymentActivity : AppCompatActivity() {
@@ -36,10 +37,17 @@ class DonatePaymentActivity : AppCompatActivity() {
             }
         }
 
+        btn_berry_charge.setOnClickListener {
+            startActivity<BerryChargeActivity>()
+        }
+
         btn_erase_all.setOnClickListener {
             edt_donate_berry_num.setText(null)
         }
 
+        btn_payment_back.setOnClickListener {
+            finish()
+        }
 
         var edtString = edt_donate_berry_num.text.toString()
 
