@@ -38,8 +38,12 @@ class MyPageActivity : AppCompatActivity(), onDrawer {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_page)
         initialUI()
-    }
 
+        btn_nickname_edit.setOnClickListener {
+            val intent = Intent(this, MyPageModifyActivity::class.java)
+            startActivity(intent)
+        }
+    }
     private fun initialUI(){
         btn_home.setOnClickListener {
             startActivity<MainActivity>()

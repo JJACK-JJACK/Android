@@ -44,8 +44,8 @@
                     android:letterSpacing="0.06"
                     android:gravity="end"
                     android:text="확인"
-                    android:layout_marginLeft="80dp"
-            />
+                    android:id="@+id/btn_check"
+                    android:layout_marginLeft="80dp"/>
 
 
         </LinearLayout>
@@ -80,7 +80,7 @@
                         android:lines="1"
                         android:maxLines="1"
                         android:maxLength="13"
-                        android:id="@+id/et_nickname_modify"
+                        android:id="@+id/edt_nickname_modify"
                         android:textSize="20sp"
                         android:background="@drawable/shape_bottom_line_yellow"
                         android:layout_height="wrap_content"/>
@@ -99,8 +99,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/ly_nickname_Modify"
-                    android:textColor="@color/darkGrayD"
-            />
+                    android:textColor="@color/darkGrayD"/>
         </RelativeLayout>
     </LinearLayout>
 
