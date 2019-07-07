@@ -3,17 +3,33 @@ package jjackjjack.sopt.com.jjackjjack.activities.login
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.text.InputType
+import android.util.Log
 import android.view.View
+import com.google.gson.JsonObject
+import com.google.gson.JsonParser
 import jjackjjack.sopt.com.jjackjjack.R
 import jjackjjack.sopt.com.jjackjjack.network.ApplicationController
 import jjackjjack.sopt.com.jjackjjack.network.NetworkService
+import jjackjjack.sopt.com.jjackjjack.network.response.post.PostSignUpResponse
+import jjackjjack.sopt.com.jjackjjack.utillity.Secret
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
+import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SignUpActivity : AppCompatActivity() {
 
     private var viewnumber = 1 //회원가입 1, 회원가입 2, 회원가입 3 나중에 상수로 빼서 when
     //전역변수 처리해서 input에 들어간거 넣어줘야함
+
+    lateinit var send_email : String
+    lateinit var send_pw : String
+    lateinit var send_nickname : String
+
+    private var duplicateCheck = false //중복확인체크 하고 넘어갔는지 아닌지
 
     val networkService: NetworkService by lazy{
         ApplicationController.instance.networkService
@@ -31,9 +47,39 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun SignUpResponseData(){
+        var jsonObject = JSONObject()
+        jsonObject.put("email", send_email)
+        jsonObject.put("password", send_pw)
+        jsonObject.put("nickname", send_nickname)
 
+        val gsonObject = JsonParser().parse(jsonObject.toString()) as JsonObject
+
+        val postSignUpResponse: Call<PostSignUpResponse> =
+            networkService.postSignupResponse("application/json", gsonObject)
+
+        postSignUpResponse.enqueue(object: Callback<PostSignUpResponse>{
+            override fun onFailure(call: Call<PostSignUpResponse>, t: Throwable) {
+                Log.e("Sign fail", t.toString())
+                toast("회원가입 실패")
+            }
+
+            override fun onResponse(call: Call<PostSignUpResponse>, response: Response<PostSignUpResponse>) {
+                if(response.isSuccessful){
+                    if(response.body()!!.status == Secret.NETWORK_SUCCESS){
+                        startActivity<LoginActivity>()
+                        finish()
+                    }
+                    else{
+                        toast(response.body()!!.message)
+                    }
+                }
+            }
+        })
     }
 
+    private fun NicknameResponseData(){
+
+    }
 
     override fun onResume() {
         super.onResume()
@@ -45,25 +91,30 @@ class SignUpActivity : AppCompatActivity() {
                 val input_email:String = et_signup_section1.text.toString()
 
                 if(input_email.isNotEmpty()){
-                   viewSecondUI()
+                    send_email = input_email
+                    viewSecondUI()
                 }
             }
             else if(viewnumber==2){
                 val input_pw:String = et_signup_section1.text.toString()
                 val input_pw_verification:String = et_signup_section2.text.toString()
                 if(input_pw.isNotEmpty()&&input_pw_verification.isNotEmpty()&&input_pw.contentEquals(input_pw_verification)){
-                   viewThirdUI()
+                    send_pw = input_pw
+                    viewThirdUI()
+                }else if(!input_pw.contentEquals(input_pw_verification)){
+                    toast("비밀번호가 일치하지 않습니다.")
                 }
-
             }
             else{
 
                 val input_nickname :String = et_signup_section1.text.toString()
 
                 if(input_nickname.isNotEmpty()){
-                    startActivity<LoginActivity>()
-                }
+                    //닉네임 중복 체크 reponse
+                    send_nickname = input_nickname
+                    //로그인 response
 
+                }
             }
         }
     }
