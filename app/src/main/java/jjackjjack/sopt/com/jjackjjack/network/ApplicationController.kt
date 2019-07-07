@@ -5,7 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class ApplicationController : Application(){
-    private val baseURL = "http:/52.79.49.178:3000"
+    private val baseURL = "http://52.79.49.178:3000"
 //주소 뜨기전까지 주석 살리지 말것
     lateinit var networkService: NetworkService
 
