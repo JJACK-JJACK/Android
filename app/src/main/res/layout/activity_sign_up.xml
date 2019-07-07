@@ -24,8 +24,10 @@
                     android:layout_width="27dp"
                     android:layout_height="32dp"/>
             <TextView
+                    android:id="@+id/btn_signup_next"
+                    android:layout_marginLeft="270dp"
                     android:layout_marginRight="20dp"
-                    android:gravity="right"
+                    android:gravity="center_vertical"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/next"
@@ -55,7 +57,6 @@
                 android:lineSpacingExtra="12sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-
 
         <RelativeLayout
                 android:layout_width="wrap_content"
@@ -150,24 +151,24 @@
 
 
     </LinearLayout>
-    <RelativeLayout
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="20dp"
-            android:layout_marginHorizontal="29dp"
-            android:background="@drawable/shape_redbtn_8dp"
-            android:id="@+id/btn_signup_next"
-            android:layout_width="match_parent"
-            android:layout_height="64dp">
-        <TextView
-                android:textSize="16sp"
-                android:textColor="@color/white"
-                android:letterSpacing="0.01"
-                android:text="@string/next"
-                android:id="@+id/tv_signup_next"
-                android:layout_centerInParent="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-    </RelativeLayout>
+    <!--<RelativeLayout-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_marginBottom="20dp"-->
+            <!--android:layout_marginHorizontal="29dp"-->
+            <!--android:background="@drawable/shape_redbtn_8dp"-->
+            <!--android:id="@+id/btn_signup_next"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="64dp">-->
+        <!--<TextView-->
+                <!--android:textSize="16sp"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:letterSpacing="0.01"-->
+                <!--android:text="@string/next"-->
+                <!--android:id="@+id/tv_signup_next"-->
+                <!--android:layout_centerInParent="true"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"/>-->
+    <!--</RelativeLayout>-->
 
 </RelativeLayout>

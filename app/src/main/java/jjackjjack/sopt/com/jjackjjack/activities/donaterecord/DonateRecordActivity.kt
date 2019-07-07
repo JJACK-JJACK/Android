@@ -71,8 +71,7 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
             )
         )
 
-        donateListRecyclerViewAdapter =
-            DonateListRecyclerViewAdapter(this, dataList, true)
+        donateListRecyclerViewAdapter = DonateListRecyclerViewAdapter(this, dataList, true)
         rv_donate_record.adapter = donateListRecyclerViewAdapter
         rv_donate_record.layoutManager = LinearLayoutManager(this)
     }

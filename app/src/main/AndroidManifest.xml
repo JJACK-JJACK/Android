@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="jjackjjack.sopt.com.jjackjjack">
+
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
     <application
+            android:usesCleartextTraffic="true"
             android:name=".network.ApplicationController"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
@@ -13,15 +15,17 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".activities.donaterecord.DonateRecordStatusActivity">
+        </activity>
         <activity android:name=".activities.donaterecord.DonateRecordActivity">
         </activity>
         <activity
-                android:name="jjackjjack.sopt.com.jjackjjack.activities.donate.DonatePaymentActivity"
+                android:name=".activities.donate.DonatePaymentActivity"
                 android:windowSoftInputMode="adjustResize">
         </activity>
-        <activity android:name="jjackjjack.sopt.com.jjackjjack.activities.donate.DonateDetailedActivity">
+        <activity android:name=".activities.donate.DonateDetailedActivity">
         </activity>
-        <activity android:name="jjackjjack.sopt.com.jjackjjack.activities.donate.DonateActivity">
+        <activity android:name=".activities.donate.DonateActivity">
         </activity>
         <activity android:name=".activities.berrycharge.BerryChargeActivity">
         </activity>
@@ -36,10 +40,11 @@
         </activity>
         <activity android:name=".activities.login.BeginningActivity">
         </activity>
-        <activity
-                android:name=".activities.login.LoginActivity">
+        <activity android:name=".activities.login.LoginActivity">
         </activity>
-        <activity android:name=".activities.login.SignUpActivity" android:windowSoftInputMode="adjustResize">
+        <activity
+                android:name=".activities.login.SignUpActivity"
+                android:windowSoftInputMode="adjustResize">
         </activity>
         <activity android:name=".activities.rank.RankActivity">
         </activity>

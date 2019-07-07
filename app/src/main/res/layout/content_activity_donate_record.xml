@@ -2,10 +2,14 @@
 
 
 <LinearLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools" android:orientation="vertical"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" tools:showIn="@layout/activity_donate_record">
+        android:layout_height="match_parent" >
+        <!--tools:showIn="@layout/activity_donate_record">-->
+
     <include
             layout="@layout/toolbar_with_hamburger">
     </include>
@@ -16,8 +20,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="30sp"
-            android:textColor="#111111"
-            android:text="기부 이력"
+            android:textColor="@color/darkGrayA"
+            android:text="@string/donate_history"
             android:textStyle="bold"
     />
 
@@ -37,8 +41,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
-                    android:textColor="#999999"
-                    android:text="참여 횟수"
+                    android:textColor="@color/grayB"
+                    android:text="@string/donate_num"
             />
             <LinearLayout
                     android:layout_width="wrap_content"
@@ -48,17 +52,18 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="24sp"
-                        android:textColor="#111111"
+                        android:textColor="@color/darkGrayA"
                         android:letterSpacing="0.06"
                         android:text="9"
-                        android:textStyle="bold"
-                />
+                        android:textStyle="bold"/>
+
                 <TextView
+                        android:layout_marginLeft="4dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="14sp"
-                        android:textColor="#666666"
-                        android:text=" 회"
+                        android:textColor="@color/grayA"
+                        android:text="@string/times"
                 />
             </LinearLayout>
         </LinearLayout>
@@ -74,8 +79,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
-                    android:textColor="#999999"
-                    android:text="기부한 베리"
+                    android:textColor="@color/grayB"
+                    android:text="@string/berry_donated"
             />
             <LinearLayout
                     android:layout_width="match_parent"
@@ -85,30 +90,42 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="24sp"
-                        android:textColor="#111111"
+                        android:textColor="@color/darkGrayA"
                         android:letterSpacing="0.06"
                         android:text="128"
                         android:textStyle="bold"
                 />
                 <TextView
+                        android:layout_marginLeft="4dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="14sp"
-                        android:textColor="#666666"
-                        android:text=" 베리"
+                        android:textColor="@color/grayA"
+                        android:text="@string/berry"
                 />
-
-
             </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>
+    <View
+            android:layout_gravity="center_horizontal"
+            android:background="@color/colorPrimary"
+            android:layout_width="320dp"
+            android:layout_height="1dp"
+    />
     <ImageView
             android:paddingHorizontal="20dp"
             android:layout_marginTop="19dp"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             app:srcCompat="@android:color/darker_gray"/>
+    <View
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/colorPrimary"
+            android:layout_width="320dp"
+            android:layout_height="1dp"
+    />
 
     <TextView
             android:paddingHorizontal="20dp"
@@ -116,13 +133,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-            android:textColor="#111111"
+            android:textColor="@color/darkGrayA"
             android:letterSpacing="0.01"
-            android:text="참여 현황"
-    />
+            android:text="@string/participate_status"/>
 
     <android.support.v7.widget.RecyclerView
-
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/rv_donate_record">

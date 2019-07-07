@@ -16,11 +16,10 @@ import kotlinx.android.synthetic.main.activity_berry_deposit.*
 import kotlinx.android.synthetic.main.activity_rank_berryreivew.*
 import kotlinx.android.synthetic.main.content_activity_ranking.*
 import kotlinx.android.synthetic.main.fragment_berryuse_review.*
-import kotlinx.android.synthetic.main.fragment_use_berry.*
-import kotlinx.android.synthetic.main.fragment_use_plan.*
 import jjackjjack.sopt.com.jjackjjack.list.DonateUsePlanRecyclerViewAdapter as DonateUsePlanRecyclerViewAdapter1
 
 class BerryuseActivity : AppCompatActivity() {
+
     var BerryUseList = arrayListOf<BerryUseItem>(
         BerryUseItem(
             "1", "입양지원 활동 및 입양진행", "30.000"
@@ -36,19 +35,19 @@ class BerryuseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rank_berryreivew)
-
-       initialUI()
     }
-
-    private fun initialUI(){
-        val berryuseAdapter = BerryUseAdapter(this, BerryUseList)
-
-        berry_use_detailed.adapter = berryuseAdapter
-
-        val lm = LinearLayoutManager(this)
-        berry_use_detailed.layoutManager = lm
-        lm.setOrientation(LinearLayoutManager.VERTICAL)
-        berry_use_detailed.setHasFixedSize(true)
-    }
+//       initialUI()
+//    }
+//
+//    private fun initialUI(){
+//        val berryuseAdapter = BerryUseAdapter(this, BerryUseList)
+//
+//        berry_use_detailed.adapter = berryuseAdapter
+//
+//        val lm = LinearLayoutManager(this)
+//        berry_use_detailed.layoutManager = lm
+//        lm.setOrientation(LinearLayoutManager.HORIZONTAL)
+//        berry_use_detailed.setHasFixedSize(true)
+//    }
 
 }

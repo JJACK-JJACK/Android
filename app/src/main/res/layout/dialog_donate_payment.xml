@@ -20,41 +20,42 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:textColor="#222222"
+            android:textColor="@color/darkGrayB"
             android:lineSpacingExtra="5.5sp"
             android:gravity="center_horizontal"
-            android:text="기부 성공\n스탬프 1개 받기 완료!"
+            android:text="@string/msg_donate_success"
             android:textStyle="bold"
             android:layout_marginBottom="20dp"/>
 
     <TextView
             android:textSize="14sp"
-            android:textColor="#999999"
+            android:textColor="@color/grayB"
             android:lineSpacingExtra="4sp"
             android:gravity="center_horizontal"
-            android:text="기부해주신 베리는 수수료 없이\n100% 전달됩니다"
+            android:text="@string/msg_dialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"/>
     <Button
 
             android:textSize="14sp"
-            android:textColor="#ffffff"
-            android:text="스탬프 확인하러 가기"
+            android:textColor="@color/white"
+            android:text="@string/check_stamp"
             android:textStyle="bold"
             android:layout_width="280dp"
             android:layout_height="56dp"
             style="?android:attr/borderlessButtonStyle"
-            android:backgroundTint="#ffc21f"
+            android:backgroundTint="@color/goldenYellow"
             android:background="@drawable/radius"
             android:id="@+id/btn_check"
             android:layout_marginBottom="5dp"/>
 
     <Button
-            android:text="건너뛰기"
+            android:text="@string/skip"
             android:textSize="14sp"
-            android:textColor="#666666"
-            android:backgroundTint="#f5f5f5"
+            android:textColor="@color/grayA"
+            android:backgroundTint="@color/lightGrayB"
+            android:background="@drawable/radius"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="280dp"
             android:layout_height="56dp"

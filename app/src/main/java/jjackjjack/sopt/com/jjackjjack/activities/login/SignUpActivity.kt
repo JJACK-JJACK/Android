@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.text.InputType
 import android.view.View
 import jjackjjack.sopt.com.jjackjjack.R
+import jjackjjack.sopt.com.jjackjjack.network.ApplicationController
+import jjackjjack.sopt.com.jjackjjack.network.NetworkService
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import org.jetbrains.anko.startActivity
 
@@ -12,6 +14,10 @@ class SignUpActivity : AppCompatActivity() {
 
     private var viewnumber = 1 //회원가입 1, 회원가입 2, 회원가입 3 나중에 상수로 빼서 when
     //전역변수 처리해서 input에 들어간거 넣어줘야함
+
+    val networkService: NetworkService by lazy{
+        ApplicationController.instance.networkService
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +30,9 @@ class SignUpActivity : AppCompatActivity() {
 
     }
 
+    private fun SignUpResponseData(){
+
+    }
 
 
     override fun onResume() {
@@ -102,7 +111,7 @@ class SignUpActivity : AppCompatActivity() {
         et_signup_section1.setText("")
         et_signup_section1.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_NORMAL
         ly_signup_section2.visibility = View.GONE
-        tv_signup_next.text ="완료"
+        btn_signup_next.text ="확인"
         btn_duplicate_verification.visibility = View.VISIBLE
         viewnumber = 3
     }
