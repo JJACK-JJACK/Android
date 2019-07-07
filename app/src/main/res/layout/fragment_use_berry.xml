@@ -11,21 +11,20 @@
             android:layout_height="match_parent">
 
         <TextView
+                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:textColor="#111111"
+                android:textColor="@color/darkGrayA"
                 android:letterSpacing="0.02"
                 android:lineSpacingExtra="5sp"
-                android:text="기부받은 베리는 이렇게 사용했습니다!"
-                android:layout_marginBottom="34dp"
-        />
+                android:text="@string/msg_use_berry_history"
+                android:layout_marginBottom="34dp"/>
 
         <android.support.v7.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/rv_donate_use_container"
-        >
+                android:id="@+id/rv_donate_use_container">
         </android.support.v7.widget.RecyclerView>
 
         <ImageView
@@ -41,9 +40,9 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="사용 베리"
+                    android:text="@string/use_berry"
                     android:textSize="16sp"
-                    android:textColor="#333333"/>
+                    android:textColor="@color/darkGrayC"/>
 
             <TextView
                     android:paddingHorizontal="4dp"
@@ -52,15 +51,15 @@
                     android:layout_weight="1"
                     android:gravity="right"
                     android:textSize="24sp"
-                    android:textColor="#111111"
+                    android:textColor="@color/darkGrayA"
                     android:textStyle="bold"
                     android:text="100.000"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
-                    android:textColor="#666666"
-                    android:text="베리"/>
+                    android:textColor="@color/grayA"
+                    android:text="@string/berry"/>
 
         </LinearLayout>
 

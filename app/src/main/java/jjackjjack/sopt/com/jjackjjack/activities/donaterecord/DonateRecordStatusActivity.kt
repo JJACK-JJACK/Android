@@ -7,7 +7,6 @@ import jjackjjack.sopt.com.jjackjjack.R
 import jjackjjack.sopt.com.jjackjjack.data.DonateUsePlanData
 import jjackjjack.sopt.com.jjackjjack.list.DonateUsePlanRecyclerViewAdapter
 import kotlinx.android.synthetic.main.activity_donate_record_status.*
-import kotlinx.android.synthetic.main.fragment_berryuse_review.*
 import kotlinx.android.synthetic.main.fragment_use_berry.*
 import kotlinx.android.synthetic.main.header_img.*
 import kotlinx.android.synthetic.main.li_state.*

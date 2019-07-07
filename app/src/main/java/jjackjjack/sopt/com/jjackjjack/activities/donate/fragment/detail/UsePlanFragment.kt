@@ -49,8 +49,7 @@ class UsePlanFragment : Fragment(){
                 "4", "족발 대자 3개", "120.000"
             )
         )
-        donateUsePlanRecyclerViewAdapter =
-            DonateUsePlanRecyclerViewAdapter(context!!, dataList)
+        donateUsePlanRecyclerViewAdapter = DonateUsePlanRecyclerViewAdapter(context!!, dataList)
         rv_donate_use_plan_container.adapter = donateUsePlanRecyclerViewAdapter
         rv_donate_use_plan_container.layoutManager = LinearLayoutManager(context!!)
     }
