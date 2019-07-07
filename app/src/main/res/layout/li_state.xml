@@ -18,99 +18,95 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-            <RelativeLayout
+            <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="6dp"
-            >
-
+                    android:layout_height="wrap_content">
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="D -"
                         android:textStyle="bold"
-                        android:textColor="#ff0000"
+                        android:textColor="@color/red"
                         android:textSize="14sp" />
 
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="1dp"
                         android:layout_alignParentStart="true"
-                        android:layout_marginStart="15dp"
                         android:layout_marginTop="0dp"
-                        android:text=" 43"
+                        android:text="43"
                         android:textStyle="bold"
-                        android:textColor="#ff0000"
+                        android:textColor="@color/red"
                         android:textSize="14sp"
                         android:id="@+id/li_state_d_day"/>
-            </RelativeLayout>
+            </LinearLayout>
 
             <ProgressBar
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
                     android:layout_height="4dp"
                     android:progress="69"
-                    android:progressTint="#da4830"
-                    android:progressBackgroundTint="#666666"
+                    android:progressTint="@color/red"
+                    android:progressBackgroundTint="@color/lightGrayA"
                     android:layout_marginBottom="8dp"
-                    android:id="@+id/li_state_progress"
-                    android:max="100"/>
+                    android:max="100"
+                    android:id="@+id/li_state_progress"/>
 
             <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="69"
-                        android:id="@+id/li_state_percent"
                         android:textStyle="bold"
-                        android:textColor="#ff0000"
-                        android:textSize="14sp" />
+                        android:textColor="@color/red"
+                        android:textSize="12sp"
+                        android:id="@+id/li_state_percent"/>
 
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textStyle="bold"
                         android:text="%"
-                        android:textStyle="bold"
-                        android:textColor="#ff0000"
-                        android:textSize="14sp" />
+                        android:textColor="@color/red"
+                        android:textSize="12sp" />
 
                 <TextView
+                        android:layout_marginLeft="6dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:text="353542"
-                        android:id="@+id/li_state_berry_num"
+                        android:textColor="@color/darkGrayA"
                         android:textStyle="bold"
-                        android:textColor="#111111"
-                        android:textSize="14sp" />
+                        android:text="353,542"
+                        android:id="@+id/li_state_berry_num"/>
 
                 <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:layout_marginLeft="2dp"
-                        android:text="베리"
-                        android:textColor="#666666"
-                        android:textSize="14sp" />
+                        android:textColor="@color/grayA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/berry" />
 
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="170dp"
-                        android:textSize="14sp"
-                        android:textColor="#111111"
+                        android:textColor="@color/darkGrayA"
+                        android:layout_weight="1"
                         android:textStyle="bold"
-                        android:text="9900000" />
+                        android:text="9,900,000"
+                        android:gravity="right"
+                        android:id="@+id/li_state_total_num"/>
 
                 <TextView
+                        android:layout_marginLeft="1dp"
+                        android:textColor="@color/grayA"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="2dp"
-                        android:textSize="14sp"
-                        android:textColor="#666666"
-                        android:text="베리" />
+                        android:gravity="right"
+                        android:text="@string/berry" />
             </LinearLayout>
 
         </LinearLayout>

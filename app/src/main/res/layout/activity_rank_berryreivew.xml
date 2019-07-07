@@ -9,6 +9,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+        <include
+                layout="@layout/fragment_berryuse_review">
+        </include>
         <android.support.v7.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
@@ -21,14 +24,12 @@
                     android:src="@drawable/ic_back"
                     android:id="@+id/btn_toolbar_back"/>
         </android.support.v7.widget.Toolbar>
+
         <include
                 layout="@layout/header_img">
         </include>
         <include
             layout="@layout/li_state">
-        </include>
-        <include
-            layout="@layout/fragment_berryuse_review">
         </include>
     </LinearLayout>
 </ScrollView>

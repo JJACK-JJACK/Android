@@ -16,6 +16,7 @@ import kotlinx.android.synthetic.main.activity_berry_deposit.*
 import kotlinx.android.synthetic.main.activity_rank_berryreivew.*
 import kotlinx.android.synthetic.main.content_activity_ranking.*
 import kotlinx.android.synthetic.main.fragment_berryuse_review.*
+import kotlinx.android.synthetic.main.fragment_use_berry.*
 import kotlinx.android.synthetic.main.fragment_use_plan.*
 import jjackjjack.sopt.com.jjackjjack.list.DonateUsePlanRecyclerViewAdapter as DonateUsePlanRecyclerViewAdapter1
 

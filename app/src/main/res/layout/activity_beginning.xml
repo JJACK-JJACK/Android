@@ -18,7 +18,7 @@
                 android:src="@drawable/img_login"/>
         <LinearLayout
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="163dp"
+                android:layout_marginTop="131dp"
                 android:paddingHorizontal="20dp"
                 android:id="@+id/btn_beginning_login"
                 android:background="@drawable/shape_btn_email"
@@ -34,9 +34,9 @@
                     android:layout_gravity="center_vertical"
                     android:textSize="14sp"
                     android:paddingLeft="74dp"
-                    android:textColor="#444444"
+                    android:textColor="@color/darkGrayD"
                     android:letterSpacing="0.01"
-                    android:text="이메일 로그인"
+                    android:text="@string/email_login"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
         </LinearLayout>
@@ -51,7 +51,7 @@
                     android:gravity="center"
                     android:paddingVertical="16dp"
                     android:paddingHorizontal="120dp"
-                    android:text="회원 가입"
+                    android:text="@string/sign_up"
                     android:textSize="14sp"
                     android:textColor="@color/red"
                     android:letterSpacing="0.01"
@@ -66,13 +66,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
-                android:textColor="#999999"
+                android:textColor="@color/grayB"
                 android:letterSpacing="0.17"
                 android:gravity="center_horizontal"
-                android:text="회원가입 진행 시 짹의 서비스 약관,\n
-개인정보 보호정책에 동의한 것으로 간주합니다."/>
-
-
+                android:text="@string/signup_notice"/>
 
     </LinearLayout>
 

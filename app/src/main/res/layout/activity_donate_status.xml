@@ -31,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <ImageView
-                    android:id="@+id/myImageView"
+                    android:id="@+id/header_image_view"
                     android:layout_width="match_parent"
                     android:layout_height="207dp"
                     app:srcCompat="@color/colorPrimary">
@@ -46,10 +46,10 @@
                     android:textStyle="bold"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_alignLeft="@id/myImageView"
-                    android:layout_alignTop="@id/myImageView"
-                    android:layout_alignRight="@id/myImageView"
-                    android:layout_alignBottom="@id/myImageView"/>
+                    android:layout_alignLeft="@id/header_image_view"
+                    android:layout_alignTop="@id/header_image_view"
+                    android:layout_alignRight="@id/header_image_view"
+                    android:layout_alignBottom="@id/header_image_view"/>
             <TextView
                     android:paddingLeft="16dp"
                     android:paddingTop="174dp"
@@ -59,10 +59,10 @@
                     android:textColor="#ffffff"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_alignLeft="@id/myImageView"
-                    android:layout_alignTop="@id/myImageView"
-                    android:layout_alignRight="@id/myImageView"
-                    android:layout_alignBottom="@id/myImageView"/>
+                    android:layout_alignLeft="@id/header_image_view"
+                    android:layout_alignTop="@id/header_image_view"
+                    android:layout_alignRight="@id/header_image_view"
+                    android:layout_alignBottom="@id/header_image_view"/>
         </RelativeLayout>
 
         <include

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.TabLayout
+import android.util.Log
 import android.view.View
 import jjackjjack.sopt.com.jjackjjack.R
 import jjackjjack.sopt.com.jjackjjack.activities.donate.adapter.DonateDetailedPagerAdapter
@@ -77,7 +78,14 @@ class DonateDetailedActivity : AppCompatActivity() {
            // donate_step_scroll.visibility = View.VISIBLE
         }
 
+        btn_cheer.setOnClickListener {
+            val intent = Intent()
+            intent.action = Intent.ACTION_SEND
+            intent.type = "text/plain"
+            intent.addCategory(Intent.CATEGORY_DEFAULT)
 
+            startActivity(Intent.createChooser(intent, "공유"))
+        }
 
         btn_donate.setOnClickListener {
             val intent = Intent(this, DonatePaymentActivity::class.java)

@@ -1,4 +1,31 @@
 <resources>
+
     <string name="app_name">Jjackjjack</string>
-    <string name="ownberry">보유 베리</string>
+
+    <string name="own_berry">보유 베리</string>
+    <string name="sign_up">회원 가입</string>
+    <string name="signup_notice">회원가입 진행 시 짹의 서비스 약관,\n개인정보 보호정책에 동의한 것으로 간주합니다.</string>
+    <string name="email">이메일</string>
+    <string name="password">비밀번호</string>
+    <string name="login">로그인</string>
+    <string name="email_login">이메일 로그인</string>
+    <string name="email_signup">이메일 회원가입</string>
+    <string name="password_check">비밀번호 확인</string>
+    <string name="next">다음</string>
+    <string name="jjack_slogan">세상을 바꾸는\n작은 기부, 짹 !</string>
+    <string name="berry">베리</string>
+    <string name="menu">메뉴</string>
+    <string name="category">카테고리</string>
+
+    <string name="donation_step_ing">진행중</string>
+    <string name="donation_step_end">마감</string>
+    <string name="donation_step_delivery">전달 완료</string>
+    <string name="goal_berry">목표 베리</string>
+    <string name="donate">기부하기</string>
+    <string name="berry_for_donate">기부할 베리</string>
+    <string name="input_berry">금액을 입력해주세요</string>
+    <string name="plus_10">+ 10</string>
+    <string name="plus_20">+ 20</string>
+    <string name="plus_50">+ 50</string>
+    <string name="total_money">전액</string>
 </resources>
