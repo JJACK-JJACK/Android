@@ -23,6 +23,10 @@ class UsePlanFragment : Fragment(){
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        initialUI()
+    }
+
+    private fun initialUI(){
         var dataList: ArrayList<DonateUsePlanData> = ArrayList()
 
         dataList.add(
@@ -50,4 +54,5 @@ class UsePlanFragment : Fragment(){
         rv_donate_use_plan_container.adapter = donateUsePlanRecyclerViewAdapter
         rv_donate_use_plan_container.layoutManager = LinearLayoutManager(context!!)
     }
+
 }

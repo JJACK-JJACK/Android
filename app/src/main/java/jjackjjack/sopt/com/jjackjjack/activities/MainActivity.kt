@@ -3,6 +3,9 @@ package jjackjjack.sopt.com.jjackjjack.activities
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.support.v4.app.ActivityCompat
+import android.support.v4.app.FragmentManager
 import android.view.Gravity
 import android.view.View
 import android.widget.ImageView
@@ -20,6 +23,7 @@ import kotlinx.android.synthetic.main.nav_drawer.*
 import org.jetbrains.anko.startActivity
 
 
+
 class MainActivity : AppCompatActivity(), onDrawer {
 
     lateinit var btnFset: Array<ImageView>
@@ -32,22 +36,7 @@ class MainActivity : AppCompatActivity(), onDrawer {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var fragmentAdapter = MainActivityImageSliderAdapter(supportFragmentManager)
-        main_activity_slider_pager.adapter = fragmentAdapter
-
-        main_activity_slider_pager.setClipToPadding(false)
-        val dpValue = 40
-        val d = resources.displayMetrics.density
-        val margin = (dpValue * d).toInt()
-        main_activity_slider_pager.setPadding(margin, 0, margin, 0)
-        main_activity_slider_pager.setPageMargin(margin / 2)
-
-        for (i in 0..5) {
-            val fragmentMainActivityImageSlider = FragmentMainActivityImageSlider()
-            fragmentAdapter.addImage(fragmentMainActivityImageSlider)
-        }
-        fragmentAdapter.notifyDataSetChanged()
-
+        initialUI()
 
 
 
@@ -68,6 +57,25 @@ class MainActivity : AppCompatActivity(), onDrawer {
         //dot_indicator_activity_main.setupWithViewPager(main_activity_slider_pager, true)
 
         drawerUI()
+    }
+
+    private fun initialUI(){
+        var fragmentAdapter = MainActivityImageSliderAdapter(supportFragmentManager)
+        main_activity_slider_pager.adapter = fragmentAdapter
+
+        main_activity_slider_pager.setClipToPadding(false)
+        val dpValue = 40
+        val d = resources.displayMetrics.density
+        val margin = (dpValue * d).toInt()
+        main_activity_slider_pager.setPadding(margin, 0, margin, 0)
+        main_activity_slider_pager.setPageMargin(margin / 2)
+
+        for (i in 0..5) {
+            val fragmentMainActivityImageSlider = FragmentMainActivityImageSlider()
+            fragmentAdapter.addImage(fragmentMainActivityImageSlider)
+        }
+        fragmentAdapter.notifyDataSetChanged()
+
     }
 
     override fun drawerUI(){
@@ -110,8 +118,8 @@ class MainActivity : AppCompatActivity(), onDrawer {
         for(i in 0 until btnAset.size){
             btnAset[i].setOnClickListener{
                 val intent = Intent(this, actSet[i])
-                startActivity(intent)
                 ly_drawer.closeDrawer(Gravity.END)
+                Handler().postDelayed({startActivity(intent)}, 110)
                 if(activityType == i){
                     finish()
                 }
@@ -121,10 +129,7 @@ class MainActivity : AppCompatActivity(), onDrawer {
         for(i in 0 until btnFset.size){
             btnFset[i].setOnClickListener {
                 startActivity<DonateActivity>("fragment" to i)
-                ly_drawer.closeDrawer(Gravity.END)
-                if(activityType==Constants.ACTIVITY_DONATE){
-                    finish()
-                }
+                Handler().postDelayed({ ly_drawer.closeDrawer(Gravity.END)}, 110)
             }
         }
     }
@@ -137,4 +142,5 @@ class MainActivity : AppCompatActivity(), onDrawer {
             super.onBackPressed()
         }
     }
+
 }

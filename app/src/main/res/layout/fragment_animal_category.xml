@@ -10,7 +10,7 @@
             android:layout_height="203dp"
             app:srcCompat="@color/red"/>
 
-    <LinearLayout
+    <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="50dp">
@@ -20,15 +20,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/donate_sort_tab"
+                app:tabGravity="fill"
                 app:tabIndicatorHeight="0dp">
         </android.support.design.widget.TabLayout>
 
-    </LinearLayout>
+    </RelativeLayout>
 
-    <android.support.v4.view.ViewPager
+    <FrameLayout
+            android:id="@+id/donate_sort_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/donate_sort_pager">
-    </android.support.v4.view.ViewPager>
+            android:layout_height="match_parent">
+
+    </FrameLayout>
+
+    <!--<android.support.v4.view.ViewPager-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:id="@+id/donate_sort_pager">-->
+    <!--</android.support.v4.view.ViewPager>-->
 
 </LinearLayout>

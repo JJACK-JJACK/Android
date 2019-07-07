@@ -35,6 +35,10 @@ class BerryuseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rank_berryreivew)
 
+       initialUI()
+    }
+
+    private fun initialUI(){
         val berryuseAdapter = BerryUseAdapter(this, BerryUseList)
 
         berry_use_detailed.adapter = berryuseAdapter
@@ -44,4 +48,5 @@ class BerryuseActivity : AppCompatActivity() {
         lm.setOrientation(LinearLayoutManager.VERTICAL)
         berry_use_detailed.setHasFixedSize(true)
     }
+
 }

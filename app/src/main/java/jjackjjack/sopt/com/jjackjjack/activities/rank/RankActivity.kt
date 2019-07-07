@@ -3,6 +3,8 @@ package jjackjjack.sopt.com.jjackjjack.activities.rank
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.support.v4.app.FragmentManager
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Gravity
 import android.view.View
@@ -154,21 +156,17 @@ class RankActivity : AppCompatActivity(), onDrawer {
         for(i in 0 until btnAset.size){
             btnAset[i].setOnClickListener{
                 val intent = Intent(this, actSet[i])
-                startActivity(intent)
                 ly_drawer.closeDrawer(Gravity.END)
-                if(activityType == i){
-                    finish()
-                }
+                startActivity(intent)
+                finish()
             }
         }
 
         for(i in 0 until btnFset.size){
             btnFset[i].setOnClickListener {
                 startActivity<DonateActivity>("fragment" to i)
-                ly_drawer.closeDrawer(Gravity.END)
-                if(activityType==Constants.ACTIVITY_DONATE){
-                    finish()
-                }
+                Handler().postDelayed({ly_drawer.closeDrawer(Gravity.END)}, 110)
+                finish()
             }
         }
     }

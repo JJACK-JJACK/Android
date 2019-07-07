@@ -14,21 +14,21 @@ interface NetworkService {
 
     //----------로그인/회원가입---------
     //로그인
-   @POST("api/user/signin")
+   @POST("/user/signin")
     fun postLoginResponse(
         @Header("Content-Type") content_type: String,
         @Body() body: JsonObject
     ): Call<PostLoginResponse>
 
     //회원가입
-    @POST("api/user/signup")
+    @POST("/user/signup")
     fun postSignupResponse(
         @Header("Content-Type") content_type: String,
         @Body() body: JsonObject
     ): Call<PostSignUpResponse>
 
     //닉네임 중복 검사
-    @POST("api/user/nickname")
+    @POST("/user/nickname")
     fun postNicknameCheckResponse(
         @Header("Content-Type") content_type: String,
         @Body() body: JsonObject
