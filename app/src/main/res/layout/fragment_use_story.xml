@@ -41,6 +41,7 @@
         <ImageView
                 android:layout_width="320dp"
                 android:layout_height="179dp"/>
+
     </LinearLayout>
 
 </LinearLayout>

@@ -3,16 +3,38 @@ package jjackjjack.sopt.com.jjackjjack.activities.login
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.text.InputType
+import android.util.Log
 import android.view.View
+import com.google.gson.JsonObject
+import com.google.gson.JsonParser
 import jjackjjack.sopt.com.jjackjjack.R
+import jjackjjack.sopt.com.jjackjjack.network.ApplicationController
+import jjackjjack.sopt.com.jjackjjack.network.NetworkService
+import jjackjjack.sopt.com.jjackjjack.network.response.post.PostNicknameCheckResponse
+import jjackjjack.sopt.com.jjackjjack.network.response.post.PostSignUpResponse
+import jjackjjack.sopt.com.jjackjjack.utillity.Secret
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
+import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SignUpActivity : AppCompatActivity() {
 
     private var viewnumber = 1 //회원가입 1, 회원가입 2, 회원가입 3 나중에 상수로 빼서 when
     //전역변수 처리해서 input에 들어간거 넣어줘야함
 
+    private var send_email : String = ""
+    private var send_pw : String = ""
+    private var send_nickname : String = ""
+
+    private var duplicateCheck = false //중복확인체크 하고 넘어갔는지 아닌지
+
+    val networkService: NetworkService by lazy{
+        ApplicationController.instance.networkService
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,10 +43,94 @@ class SignUpActivity : AppCompatActivity() {
         btn_back.setOnClickListener {
             onBackPressed()
         }
+        duplicateNicknameCheck()
 
     }
 
+    private fun SignUpResponseData(){
+        var jsonObject = JSONObject()
+        jsonObject.put("email", send_email)
+        jsonObject.put("password", send_pw)
+        jsonObject.put("nickname", send_nickname)
 
+        val gsonObject = JsonParser().parse(jsonObject.toString()) as JsonObject
+
+        val postSignUpResponse: Call<PostSignUpResponse> =
+            networkService.postSignupResponse("application/json", gsonObject)
+
+        postSignUpResponse.enqueue(object: Callback<PostSignUpResponse>{
+            override fun onFailure(call: Call<PostSignUpResponse>, t: Throwable) {
+                Log.e("Sign fail", t.toString())
+                toast("회원가입 실패")
+            }
+
+            override fun onResponse(call: Call<PostSignUpResponse>, response: Response<PostSignUpResponse>) {
+                if(response.isSuccessful){
+                    if(response.body()!!.status == Secret.NETWORK_SUCCESS){
+                        toast("가입 성공")
+                        startActivity<LoginActivity>()
+                        finish()
+                    }
+                    else{
+                        toast(response.body()!!.message)
+                        startActivity<LoginActivity>()
+                        finish()
+                    }
+
+                }
+            }
+        })
+    }
+
+    private fun duplicateNicknameCheck(){
+        btn_duplicate_verification.setOnClickListener{
+            if(btn_duplicate_verification.visibility == View.VISIBLE){
+                val input_nickname: String = et_signup_section1.text.toString()
+                send_nickname = input_nickname
+            }
+
+            if(!send_nickname.contentEquals("")){
+                NicknameResponseData()
+            }else{
+                toast("닉네임을 적어주세요")
+            }
+
+        }
+    }
+
+    private fun NicknameResponseData(){
+        var jsonObject = JSONObject()
+        jsonObject.put("nickname", send_nickname)
+
+        val gsonObject = JsonParser().parse(jsonObject.toString()) as JsonObject
+
+        val postNicknameCheckResponse: Call<PostNicknameCheckResponse> =
+                networkService.postNicknameCheckResponse("application/json", gsonObject)
+
+        postNicknameCheckResponse.enqueue(object: Callback<PostNicknameCheckResponse>{
+            override fun onFailure(call: Call<PostNicknameCheckResponse>, t: Throwable) {
+                Log.e("duplicate check fail", t.toString())
+                toast("중복 확인 실패")
+            }
+
+            override fun onResponse(
+                call: Call<PostNicknameCheckResponse>,
+                response: Response<PostNicknameCheckResponse>
+            ) {
+                if(response.isSuccessful){
+                    if(response.body()!!.status == Secret.NETWORK_SUCCESS){
+                        toast("사용 가능한 닉네임입니다.")
+                        duplicateCheck = true
+                    }
+                    else{
+                        toast(response.body()!!.message)
+                        duplicateCheck = false
+                    }
+                }
+            }
+        })
+
+    }
 
     override fun onResume() {
         super.onResume()
@@ -36,25 +142,32 @@ class SignUpActivity : AppCompatActivity() {
                 val input_email:String = et_signup_section1.text.toString()
 
                 if(input_email.isNotEmpty()){
-                   viewSecondUI()
+                    send_email = input_email
+                    viewSecondUI()
                 }
             }
             else if(viewnumber==2){
                 val input_pw:String = et_signup_section1.text.toString()
                 val input_pw_verification:String = et_signup_section2.text.toString()
                 if(input_pw.isNotEmpty()&&input_pw_verification.isNotEmpty()&&input_pw.contentEquals(input_pw_verification)){
-                   viewThirdUI()
+                    send_pw = input_pw
+                    viewThirdUI()
+                }else if(!input_pw.contentEquals(input_pw_verification)){
+                    toast("비밀번호가 일치하지 않습니다.")
                 }
-
             }
             else{
 
-                val input_nickname :String = et_signup_section1.text.toString()
+                val input_nickname: String = et_signup_section1.text.toString()
+                send_nickname = input_nickname
 
                 if(input_nickname.isNotEmpty()){
-                    startActivity<LoginActivity>()
+                    if(duplicateCheck){
+                        SignUpResponseData()
+                    }else{
+                        toast("중복확인 체크를 해주세요!")
+                    }
                 }
-
             }
         }
     }

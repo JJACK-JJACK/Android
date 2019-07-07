@@ -69,6 +69,7 @@
             android:id="@+id/donate_detailed_button_layout">
 
         <TextView
+                android:id="@+id/btn_cheer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/cheer"

@@ -1,5 +1,10 @@
 package jjackjjack.sopt.com.jjackjjack.network.response.post
 
 data class PostLoginResponse(
-    val email: String, val password: String
+    val status : Int,
+    val message: String,
+    val data: LoginData
+)
+data class LoginData(
+    val token: String
 )

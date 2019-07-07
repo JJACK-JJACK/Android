@@ -41,33 +41,33 @@ class DonateDetailedActivity : AppCompatActivity() {
 
 
         //if(!intent.getBooleanExtra("isDonateHistory", false)){
-            //기부하기_상세
-            donate_detailed_tab.addTab(donate_detailed_tab.newTab().setText("기부스토리"))
-            donate_detailed_tab.addTab(donate_detailed_tab.newTab().setText("사용계획"))
+        //기부하기_상세
+        donate_detailed_tab.addTab(donate_detailed_tab.newTab().setText("기부스토리"))
+        donate_detailed_tab.addTab(donate_detailed_tab.newTab().setText("사용계획"))
 
-            donate_detailed_tab.getTabAt(0)?.select()
+        donate_detailed_tab.getTabAt(0)?.select()
 
-            fragmentAdapter = DetailFragmentAdapter(supportFragmentManager, donate_detailed_tab)
-            donate_detailed_tab.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
-                override fun onTabReselected(p0: TabLayout.Tab?) {
+        fragmentAdapter = DetailFragmentAdapter(supportFragmentManager, donate_detailed_tab)
+        donate_detailed_tab.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
+            override fun onTabReselected(p0: TabLayout.Tab?) {
 
-                }
+            }
 
-                override fun onTabUnselected(p0: TabLayout.Tab?) {
+            override fun onTabUnselected(p0: TabLayout.Tab?) {
 
-                }
+            }
 
-                override fun onTabSelected(tab: TabLayout.Tab?) {
-                    when(tab?.position){
-                        Constants.TAB_DONATE_STORY->{
-                            fragmentAdapter.setFragment(Constants.FRAGMENT_DONATE_STORY)
-                        }
-                        Constants.TAB_USE_PLAN->{
-                            fragmentAdapter.setFragment(Constants.FRAGMENT_USE_PLAN)
-                        }
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                when(tab?.position){
+                    Constants.TAB_DONATE_STORY->{
+                        fragmentAdapter.setFragment(Constants.FRAGMENT_DONATE_STORY)
+                    }
+                    Constants.TAB_USE_PLAN->{
+                        fragmentAdapter.setFragment(Constants.FRAGMENT_USE_PLAN)
                     }
                 }
-            })
+            }
+        })
 
         //}
 //        else if(intent.getBooleanExtra("isDonateHistory", false)){
@@ -76,6 +76,15 @@ class DonateDetailedActivity : AppCompatActivity() {
 //            donate_detailed_button_layout.visibility = View.GONE
 //           // donate_step_scroll.visibility = View.VISIBLE
 //        }
+
+        btn_cheer.setOnClickListener {
+            val intent = Intent()
+            intent.action = Intent.ACTION_SEND
+            intent.type = "text/plain"
+            intent.addCategory(Intent.CATEGORY_DEFAULT)
+
+            startActivity(Intent.createChooser(intent, "공유"))
+        }
 
         btn_donate.setOnClickListener {
             val intent = Intent(this, DonatePaymentActivity::class.java)

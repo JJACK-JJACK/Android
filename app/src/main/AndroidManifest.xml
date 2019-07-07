@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
     <application
+            android:usesCleartextTraffic="true"
             android:name=".network.ApplicationController"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
@@ -53,9 +54,9 @@
         </activity>
         <activity android:name=".activities.berrycharge.DepositActivity">
         </activity>
-        <activity android:name=".activities.berryuse.BerryuseActivity">
+        <activity android:name=".activities.berryuse.BerryHistoryActivity">
         </activity>
-        <activity android:name=".activities.donate_state.Status_Activity">
+        <activity android:name=".activities.berryreview.BerryreviewActivity">
         </activity>
     </application>
 

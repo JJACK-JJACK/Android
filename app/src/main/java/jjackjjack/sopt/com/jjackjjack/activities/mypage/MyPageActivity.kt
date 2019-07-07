@@ -14,6 +14,7 @@ import jjackjjack.sopt.com.jjackjjack.activities.MainActivity
 import jjackjjack.sopt.com.jjackjjack.R
 import jjackjjack.sopt.com.jjackjjack.activities.berrycharge.BerryChargeActivity
 import jjackjjack.sopt.com.jjackjjack.activities.donate.DonateActivity
+import jjackjjack.sopt.com.jjackjjack.activities.login.BeginningActivity
 import jjackjjack.sopt.com.jjackjjack.activities.login.LoginActivity
 import jjackjjack.sopt.com.jjackjjack.activities.rank.RankActivity
 import jjackjjack.sopt.com.jjackjjack.db.SharedPreferenceController
@@ -27,6 +28,7 @@ import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 class MyPageActivity : AppCompatActivity(), onDrawer {
+
 
     lateinit var btnFset: Array<ImageView>
 
@@ -52,7 +54,6 @@ class MyPageActivity : AppCompatActivity(), onDrawer {
 
         btn_logout.setOnClickListener {
             SharedPreferenceController.clearUserSharedPreferences(this)
-            startActivity<LoginActivity>()
             finish()
         }
         drawerUI()

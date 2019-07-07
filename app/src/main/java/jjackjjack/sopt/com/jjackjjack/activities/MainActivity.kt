@@ -13,8 +13,10 @@ import jjackjjack.sopt.com.jjackjjack.R
 import jjackjjack.sopt.com.jjackjjack.activities.berrycharge.BerryChargeActivity
 import jjackjjack.sopt.com.jjackjjack.activities.donate.DonateActivity
 import jjackjjack.sopt.com.jjackjjack.activities.donaterecord.DonateRecordActivity
+import jjackjjack.sopt.com.jjackjjack.activities.login.BeginningActivity
 import jjackjjack.sopt.com.jjackjjack.activities.mypage.MyPageActivity
 import jjackjjack.sopt.com.jjackjjack.activities.rank.RankActivity
+import jjackjjack.sopt.com.jjackjjack.db.SharedPreferenceController
 import jjackjjack.sopt.com.jjackjjack.interfaces.onDrawer
 import jjackjjack.sopt.com.jjackjjack.utillity.Constants
 import kotlinx.android.synthetic.main.activity_main.*
@@ -59,7 +61,21 @@ class MainActivity : AppCompatActivity(), onDrawer {
         drawerUI()
     }
 
+    override fun onResume() { //로그아웃 후에 이 뷰는 꺼지게
+        super.onResume()
+        if(!SharedPreferenceController.getAuthorization(this).isNotEmpty()){
+            startActivity<BeginningActivity>()
+            finish()
+        }
+
+    }
+
     private fun initialUI(){
+        if(!SharedPreferenceController.getAuthorization(this).isNotEmpty()){
+            startActivity<BeginningActivity>()
+            finish()
+        }
+
         var fragmentAdapter = MainActivityImageSliderAdapter(supportFragmentManager)
         main_activity_slider_pager.adapter = fragmentAdapter
 
