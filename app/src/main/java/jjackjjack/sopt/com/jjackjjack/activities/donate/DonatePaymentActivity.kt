@@ -19,6 +19,12 @@ class DonatePaymentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_donate_payment)
 
+        initialUI()
+
+
+    }
+
+    private fun initialUI(){
         btn_donate.setOnClickListener {
             val builder = AlertDialog.Builder(this)
             val dialogView = layoutInflater.inflate(R.layout.dialog_donate_payment, null)
@@ -29,6 +35,7 @@ class DonatePaymentActivity : AppCompatActivity() {
                 finish()
             }
         }
+
         btn_erase_all.setOnClickListener {
             edt_donate_berry_num.setText(null)
         }
@@ -63,5 +70,6 @@ class DonatePaymentActivity : AppCompatActivity() {
             }
             edt_donate_berry_num.setText(edtString)
         }
+
     }
 }

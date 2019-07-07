@@ -36,22 +36,7 @@ class MainActivity : AppCompatActivity(), onDrawer {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var fragmentAdapter = MainActivityImageSliderAdapter(supportFragmentManager)
-        main_activity_slider_pager.adapter = fragmentAdapter
-
-        main_activity_slider_pager.setClipToPadding(false)
-        val dpValue = 40
-        val d = resources.displayMetrics.density
-        val margin = (dpValue * d).toInt()
-        main_activity_slider_pager.setPadding(margin, 0, margin, 0)
-        main_activity_slider_pager.setPageMargin(margin / 2)
-
-        for (i in 0..5) {
-            val fragmentMainActivityImageSlider = FragmentMainActivityImageSlider()
-            fragmentAdapter.addImage(fragmentMainActivityImageSlider)
-        }
-        fragmentAdapter.notifyDataSetChanged()
-
+        initialUI()
 
 
 
@@ -72,6 +57,25 @@ class MainActivity : AppCompatActivity(), onDrawer {
         //dot_indicator_activity_main.setupWithViewPager(main_activity_slider_pager, true)
 
         drawerUI()
+    }
+
+    private fun initialUI(){
+        var fragmentAdapter = MainActivityImageSliderAdapter(supportFragmentManager)
+        main_activity_slider_pager.adapter = fragmentAdapter
+
+        main_activity_slider_pager.setClipToPadding(false)
+        val dpValue = 40
+        val d = resources.displayMetrics.density
+        val margin = (dpValue * d).toInt()
+        main_activity_slider_pager.setPadding(margin, 0, margin, 0)
+        main_activity_slider_pager.setPageMargin(margin / 2)
+
+        for (i in 0..5) {
+            val fragmentMainActivityImageSlider = FragmentMainActivityImageSlider()
+            fragmentAdapter.addImage(fragmentMainActivityImageSlider)
+        }
+        fragmentAdapter.notifyDataSetChanged()
+
     }
 
     override fun drawerUI(){
