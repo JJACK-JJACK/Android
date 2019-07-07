@@ -71,11 +71,11 @@
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="응원하기"
-                android:background="#ffc21f"
+                android:text="@string/cheer"
+                android:background="@color/goldenYellow"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="#ffffff"
+                android:textColor="@color/white"
                 android:layout_weight="7"
                 android:gravity="center"/>
 
@@ -83,10 +83,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="기부하기"
-                android:background="#da4830"
+                android:background="@color/red"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="#ffffff"
+                android:textColor="@color/white"
                 android:layout_weight="3"
                 android:gravity="center"
                 android:id="@+id/btn_donate"/>

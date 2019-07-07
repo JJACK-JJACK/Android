@@ -55,7 +55,7 @@
                         android:gravity="right"
                         android:textSize="24sp"
                         android:letterSpacing="0.06"
-                        android:textColor="#111111"
+                        android:textColor="@color/darkGrayA"
                         android:textStyle="bold"
                         android:text="100.000"/>
                 <TextView

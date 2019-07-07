@@ -110,7 +110,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="12sp"
                         android:textColor="@color/darkGrayD"
-                        android:text="중복확인"/>
+                        android:text="@string/check_duplicate"/>
             </RelativeLayout>
         </RelativeLayout>
 

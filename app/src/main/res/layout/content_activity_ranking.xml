@@ -5,7 +5,8 @@
         xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" tools:showIn="@layout/activity_ranking">
+        android:layout_height="match_parent"
+        tools:showIn="@layout/activity_ranking">
 
     <include layout="@layout/toolbar_with_hamburger">
 
@@ -18,7 +19,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-
 
             <RelativeLayout
                     android:layout_width="match_parent"
@@ -38,7 +38,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="50dp"
-                        android:text="랭킹"
+                        android:textColor="@color/darkGrayA"
+                        android:text="@string/delivery_review"
                         android:textSize="30sp"/>
 
                 <TextView
@@ -63,7 +64,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="151dp"
                         android:layout_marginTop="161dp"
-                        android:text="베리"
+                        android:text="@string/berry"
                         android:textSize="16sp"/>
             </RelativeLayout>
 
@@ -73,12 +74,12 @@
                     android:orientation="horizontal">
 
                 <TextView
+                        android:textColor="@color/darkGrayA"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
                         android:layout_marginLeft="20dp"
-                        android:text="우리의 기부금은
-어떻게 사용되었을까요?"
+                        android:text="@string/msg_delivery_review"
                         android:textSize="16sp"/>
             </LinearLayout>
 
@@ -101,7 +102,7 @@
                         android:layout_height="1dp"
                         android:layout_alignParentBottom="true"
                         android:layout_gravity="center"
-                        android:background="#eeeeee"/>
+                        android:background="@color/colorPrimary"/>
             </LinearLayout>
 
             <LinearLayout
@@ -149,10 +150,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="8dp">
             </android.support.v7.widget.RecyclerView>
-
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
-
-
 </LinearLayout>

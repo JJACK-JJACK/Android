@@ -36,6 +36,7 @@
                     android:text="닉네임 수정"
                     android:layout_marginLeft="100dp"
             />
+
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -43,11 +44,9 @@
                     android:textColor="@color/grayA"
                     android:letterSpacing="0.06"
                     android:gravity="end"
-                    android:text="확인"
+                    android:text="@string/check"
                     android:id="@+id/btn_check"
                     android:layout_marginLeft="80dp"/>
-
-
         </LinearLayout>
 
 
