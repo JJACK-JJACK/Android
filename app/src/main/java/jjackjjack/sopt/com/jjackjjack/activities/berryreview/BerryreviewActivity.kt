@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import jjackjjack.sopt.com.jjackjjack.R
 import jjackjjack.sopt.com.jjackjjack.data.DonateUsePlanData
 import jjackjjack.sopt.com.jjackjjack.list.DonateUsePlanRecyclerViewAdapter
+import kotlinx.android.synthetic.main.activity_donate_record_status.*
 import kotlinx.android.synthetic.main.fragment_use_berry.*
 
 class BerryreviewActivity : AppCompatActivity() {
@@ -40,5 +41,14 @@ class BerryreviewActivity : AppCompatActivity() {
         donateUsePlanRecyclerViewAdapter = DonateUsePlanRecyclerViewAdapter(this, dataList)
         rv_donate_use_container.adapter = donateUsePlanRecyclerViewAdapter
         rv_donate_use_container.layoutManager = LinearLayoutManager(this)
+
+        btn_toolbar_back.setOnClickListener {
+            finish()
+        }
+
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 }

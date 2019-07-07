@@ -29,5 +29,9 @@ class BerryHistoryActivity : AppCompatActivity() {
         rv_berryhistory.layoutManager = lm
         lm.setOrientation(LinearLayoutManager.VERTICAL)
         rv_berryhistory.setHasFixedSize(true)
+
+        btn_toolbar_back.setOnClickListener {
+            finish()
+        }
     }
 }

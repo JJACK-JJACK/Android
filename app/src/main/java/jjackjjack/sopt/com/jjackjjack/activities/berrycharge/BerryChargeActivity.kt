@@ -19,6 +19,10 @@ class BerryChargeActivity : AppCompatActivity() {
         btn_berry_charge_npb.setOnClickListener {
             startActivity<DepositActivity>()
         }
+
+        btn_charge_back.setOnClickListener {
+            finish()
+        }
     }
 
 
