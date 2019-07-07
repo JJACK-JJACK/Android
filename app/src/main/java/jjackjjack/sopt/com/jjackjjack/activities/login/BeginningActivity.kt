@@ -16,19 +16,19 @@ class BeginningActivity : AppCompatActivity() {
 
         initialUI()
 
-//        if(SharedPreferenceController.getUserEmail(this).isNotEmpty()){
-//            startActivity<MainActivity>()
-//            finish()
-//        }
+        if(SharedPreferenceController.getAuthorization(this).isNotEmpty()){
+            startActivity<MainActivity>()
+            finish()
+        }
 
 
     }
 
     override fun onResume() { //로그인 후에 이 뷰는 꺼지게
         super.onResume()
-//        if(SharedPreferenceController.getUserEmail(this).isNotEmpty()){
-//            finish()
-//        }
+        if(SharedPreferenceController.getAuthorization(this).isNotEmpty()){
+            finish()
+        }
 
     }
 

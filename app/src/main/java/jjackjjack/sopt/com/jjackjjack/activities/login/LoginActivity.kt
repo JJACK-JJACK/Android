@@ -82,6 +82,7 @@ class LoginActivity : AppCompatActivity() {
                             val token = response.body()!!.data.token
                             SharedPreferenceController.setAuthorization(this@LoginActivity, token)
                             startActivity<MainActivity>()
+                            finish()
                         }
                         else{
                             toast(response.body()!!.message)
