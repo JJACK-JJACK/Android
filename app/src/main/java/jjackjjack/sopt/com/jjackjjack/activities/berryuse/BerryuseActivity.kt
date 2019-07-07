@@ -41,7 +41,7 @@ class BerryuseActivity : AppCompatActivity() {
 
         val lm = LinearLayoutManager(this)
         berry_use_detailed.layoutManager = lm
-        lm.setOrientation(LinearLayoutManager.HORIZONTAL)
+        lm.setOrientation(LinearLayoutManager.VERTICAL)
         berry_use_detailed.setHasFixedSize(true)
     }
 }

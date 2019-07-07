@@ -55,15 +55,15 @@ class RankActivity : AppCompatActivity(), onDrawer {
     )
 
     var RankingList = arrayListOf<RankingItem>(
-        RankingItem("1", "1", "1", "1"),
-        RankingItem("2", "2", "2", "2"),
-        RankingItem("3", "3", "3", "3"),
-        RankingItem("4", "4", "4", "4"),
-        RankingItem("5", "5", "5", "5"),
-        RankingItem("6", "6", "6", "6"),
-        RankingItem("7", "7", "7", "7"),
-        RankingItem("8", "8", "8", "8"),
-        RankingItem("9", "9", "9", "9"),
+        RankingItem(" 1", "1", "1", "1"),
+        RankingItem(" 2", "2", "2", "2"),
+        RankingItem(" 3", "3", "3", "3"),
+        RankingItem(" 4", "4", "4", "4"),
+        RankingItem(" 5", "5", "5", "5"),
+        RankingItem(" 6", "6", "6", "6"),
+        RankingItem(" 7", "7", "7", "7"),
+        RankingItem(" 8", "8", "8", "8"),
+        RankingItem(" 9", "9", "9", "9"),
         RankingItem("10", "10", "10", "10")
     )
 

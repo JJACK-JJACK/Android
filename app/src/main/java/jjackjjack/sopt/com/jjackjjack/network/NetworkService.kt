@@ -6,6 +6,7 @@ import jjackjjack.sopt.com.jjackjjack.network.response.post.PostNicknameCheckRes
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostSignUpResponse
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
 
@@ -32,4 +33,12 @@ interface NetworkService {
         @Header("Content-Type") content_type: String,
         @Body() body: JsonObject
     ): Call<PostNicknameCheckResponse>
+
+    //------기부이력---------
+    //스탬프 수 조회
+    //@GET("api//donation/stamp")
+    //fun getStampResponse(
+    //    @Header("Content-type") content_type: String,
+    //    @Body() body: JsonObject
+    //): Call<GetStampResponse>
 }
