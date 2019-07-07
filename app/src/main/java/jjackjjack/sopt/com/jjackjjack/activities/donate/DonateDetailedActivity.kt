@@ -4,7 +4,6 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.TabLayout
-import android.util.Log
 import android.view.View
 import jjackjjack.sopt.com.jjackjjack.R
 import jjackjjack.sopt.com.jjackjjack.activities.donate.adapter.DonateDetailedPagerAdapter
@@ -42,42 +41,41 @@ class DonateDetailedActivity : AppCompatActivity() {
 
 
         //if(!intent.getBooleanExtra("isDonateHistory", false)){
-            //기부하기_상세
-            donate_detailed_tab.addTab(donate_detailed_tab.newTab().setText("기부스토리"))
-            donate_detailed_tab.addTab(donate_detailed_tab.newTab().setText("사용계획"))
+        //기부하기_상세
+        donate_detailed_tab.addTab(donate_detailed_tab.newTab().setText("기부스토리"))
+        donate_detailed_tab.addTab(donate_detailed_tab.newTab().setText("사용계획"))
 
-            donate_detailed_tab.getTabAt(0)?.select()
+        donate_detailed_tab.getTabAt(0)?.select()
 
-            fragmentAdapter = DetailFragmentAdapter(supportFragmentManager, donate_detailed_tab)
-            donate_detailed_tab.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
-                override fun onTabReselected(p0: TabLayout.Tab?) {
+        fragmentAdapter = DetailFragmentAdapter(supportFragmentManager, donate_detailed_tab)
+        donate_detailed_tab.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
+            override fun onTabReselected(p0: TabLayout.Tab?) {
 
-                }
+            }
 
-                override fun onTabUnselected(p0: TabLayout.Tab?) {
+            override fun onTabUnselected(p0: TabLayout.Tab?) {
 
-                }
+            }
 
-                override fun onTabSelected(tab: TabLayout.Tab?) {
-                    when(tab?.position){
-                        Constants.TAB_DONATE_STORY->{
-                            fragmentAdapter.setFragment(Constants.FRAGMENT_DONATE_STORY)
-                        }
-                        Constants.TAB_USE_PLAN->{
-                            fragmentAdapter.setFragment(Constants.FRAGMENT_USE_PLAN)
-                        }
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                when(tab?.position){
+                    Constants.TAB_DONATE_STORY->{
+                        fragmentAdapter.setFragment(Constants.FRAGMENT_DONATE_STORY)
+                    }
+                    Constants.TAB_USE_PLAN->{
+                        fragmentAdapter.setFragment(Constants.FRAGMENT_USE_PLAN)
                     }
                 }
-            })
+            }
+        })
 
-<<<<<<< HEAD
-        }
-        else if(intent.getBooleanExtra("isDonateHistory", false)){
-            donate_detailed_container.visibility = View.GONE
-            donate_detailed_tab.visibility = View.GONE
-            donate_detailed_button_layout.visibility = View.GONE
-           // donate_step_scroll.visibility = View.VISIBLE
-        }
+        //}
+//        else if(intent.getBooleanExtra("isDonateHistory", false)){
+//            donate_detailed_container.visibility = View.GONE
+//            donate_detailed_tab.visibility = View.GONE
+//            donate_detailed_button_layout.visibility = View.GONE
+//           // donate_step_scroll.visibility = View.VISIBLE
+//        }
 
         btn_cheer.setOnClickListener {
             val intent = Intent()
@@ -87,15 +85,6 @@ class DonateDetailedActivity : AppCompatActivity() {
 
             startActivity(Intent.createChooser(intent, "공유"))
         }
-=======
-        //}
-//        else if(intent.getBooleanExtra("isDonateHistory", false)){
-//            donate_detailed_container.visibility = View.GONE
-//            donate_detailed_tab.visibility = View.GONE
-//            donate_detailed_button_layout.visibility = View.GONE
-//           // donate_step_scroll.visibility = View.VISIBLE
-//        }
->>>>>>> 56221aa1c1894ea5f2af3bf3f7a00d0b40b6430a
 
         btn_donate.setOnClickListener {
             val intent = Intent(this, DonatePaymentActivity::class.java)

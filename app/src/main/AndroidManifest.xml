@@ -50,11 +50,9 @@
         </activity>
         <activity android:name=".activities.berrycharge.DepositActivity">
         </activity>
-        <activity android:name=".activities.berryuse.BerryuseActivity">
-        </activity>
         <activity android:name=".activities.berryuse.BerryHistoryActivity">
         </activity>
-        <activity android:name=".activities.donate_state.Status_Activity">
+        <activity android:name=".activities.berryreview.BerryreviewActivity">
         </activity>
     </application>
 

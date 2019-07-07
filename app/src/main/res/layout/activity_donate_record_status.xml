@@ -11,13 +11,8 @@
         <android.support.v7.widget.Toolbar
                 android:layout_alignParentTop="true"
                 android:layout_width="match_parent"
-<<<<<<< HEAD:app/src/main/res/layout/activity_donate_status_finish.xml
-                android:layout_height="wrap_content"
-                android:backgroundTint="#ffffff"
-=======
                 android:layout_height="56dp"
                 android:backgroundTint="@color/white"
->>>>>>> 56221aa1c1894ea5f2af3bf3f7a00d0b40b6430a:app/src/main/res/layout/activity_donate_record_status.xml
                 android:theme="?attr/actionBarTheme"
                 android:id="@+id/toolbar">
             <ImageView
@@ -31,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
             <include
-                layout="@layout/header_img"></include>
+                    layout="@layout/header_img"></include>
 
             <include
                     layout="@layout/li_state"

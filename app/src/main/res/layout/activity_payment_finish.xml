@@ -4,23 +4,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-    <android.support.v7.widget.Toolbar
-            android:layout_alignParentTop="true"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:backgroundTint="#ffffff"
-            android:theme="?attr/actionBarTheme"
-            android:id="@+id/toolbar">
-        <ImageView
-                android:layout_marginLeft="317dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_cancle_large"
-                android:id="@+id/btn_toolbar_close"/>
-    </android.support.v7.widget.Toolbar>
     <ImageView
-            android:layout_width="360dp"
-            android:layout_height="187dp"
+            android:layout_width="match_parent"
+            android:layout_height="267dp"
             android:background="@color/colorPrimaryDark"/>
     <LinearLayout
             android:layout_marginTop="20dp"
@@ -207,7 +193,16 @@
                     android:textColor="#111111"
                     android:letterSpacing="-0.02"
                     android:gravity="end"
-                    android:text="2019.07. 14 까지"
+                    android:text="2019.07. 14"
+            />
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#111111"
+                    android:letterSpacing="-0.02"
+                    android:gravity="end"
+                    android:text="까지"
             />
         </LinearLayout>
     </LinearLayout>
@@ -225,8 +220,7 @@
                 android:textColor="#ffffff"
                 android:lineSpacingExtra="2sp"
                 android:gravity="center_horizontal"
-                android:text="확인"
-        />
+                android:text="확인"/>
     </RelativeLayout>
 
 </LinearLayout>

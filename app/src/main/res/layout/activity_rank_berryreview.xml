@@ -4,14 +4,11 @@
             xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            tools:context=".activities.berryuse.BerryuseActivity">
+            tools:context=".activities.berryreview.BerryreviewActivity">
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-        <include
-                layout="@layout/fragment_berryuse_review">
-        </include>
         <android.support.v7.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
@@ -30,6 +27,9 @@
         </include>
         <include
             layout="@layout/li_state">
+        </include>
+        <include
+                layout="@layout/fragment_berryuse_review">
         </include>
     </LinearLayout>
 </ScrollView>

@@ -52,8 +52,8 @@ class UsePlanFragment : Fragment(){
         )
         donateUsePlanRecyclerViewAdapter =
             DonateUsePlanRecyclerViewAdapter(context!!, dataList)
-        berry_use_detailed.adapter = donateUsePlanRecyclerViewAdapter
-        berry_use_detailed.layoutManager = LinearLayoutManager(context!!)
+        rv_donate_use_plan_container.adapter = donateUsePlanRecyclerViewAdapter
+        rv_donate_use_plan_container.layoutManager = LinearLayoutManager(context!!)
     }
 
 }

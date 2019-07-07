@@ -25,7 +25,7 @@
         <android.support.v7.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/berry_use_detailed">
+                android:id="@+id/rv_donate_use_container">
         </android.support.v7.widget.RecyclerView>
 
         <ImageView

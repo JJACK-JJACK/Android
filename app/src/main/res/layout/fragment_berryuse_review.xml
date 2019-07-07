@@ -66,17 +66,6 @@
                 android:layout_height="1dp"
                 android:layout_marginLeft="16dp"/>
     </LinearLayout>
-<<<<<<< HEAD
     <include
-        layout="@layout/fragment_use_berry">
-    </include>
-=======
-    <android.support.v7.widget.RecyclerView
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="40dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/rv_berry_use_detailed_container">
-    </android.support.v7.widget.RecyclerView>
->>>>>>> 56221aa1c1894ea5f2af3bf3f7a00d0b40b6430a
+            layout="@layout/fragment_use_berry"></include>
 </LinearLayout>
