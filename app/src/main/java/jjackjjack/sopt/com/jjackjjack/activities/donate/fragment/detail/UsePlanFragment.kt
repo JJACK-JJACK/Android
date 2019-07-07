@@ -17,7 +17,7 @@ class UsePlanFragment : Fragment(){
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_use_plan, container, false)
+        return inflater.inflate(R.layout.fragment_use_berry, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -51,8 +51,8 @@ class UsePlanFragment : Fragment(){
         )
         donateUsePlanRecyclerViewAdapter =
             DonateUsePlanRecyclerViewAdapter(context!!, dataList)
-        rv_donate_use_plan_container.adapter = donateUsePlanRecyclerViewAdapter
-        rv_donate_use_plan_container.layoutManager = LinearLayoutManager(context!!)
+        berry_use_detailed.adapter = donateUsePlanRecyclerViewAdapter
+        berry_use_detailed.layoutManager = LinearLayoutManager(context!!)
     }
 
 }

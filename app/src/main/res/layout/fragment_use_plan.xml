@@ -5,12 +5,12 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content">
 
-        <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <TextView
+        <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
@@ -21,49 +21,49 @@
                 android:layout_marginBottom="34dp"
         />
 
-            <android.support.v7.widget.RecyclerView
+        <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/berry_use_detailed"
+        >
+        </android.support.v7.widget.RecyclerView>
+
+        <ImageView
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/grey_line"/>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:gravity="center">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="목표 베리"
+                    android:textSize="16sp"
+                    android:textColor="#333333"/>
+
+            <TextView
+                    android:paddingHorizontal="4dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/rv_donate_use_plan_container"
-                    >
-            </android.support.v7.widget.RecyclerView>
-
-            <ImageView
-                    android:layout_marginTop="20dp"
-                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:textSize="24sp"
+                    android:textColor="#111111"
+                    android:textStyle="bold"
+                    android:text="100.000"/>
+            <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/grey_line"/>
+                    android:textSize="16sp"
+                    android:textColor="#666666"
+                    android:text="베리"/>
 
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:gravity="center">
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="목표 베리"
-                        android:textSize="16sp"
-                        android:textColor="#333333"/>
+        </LinearLayout>
 
-                <TextView
-                        android:paddingHorizontal="4dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="right"
-                        android:textSize="24sp"
-                        android:textColor="#111111"
-                        android:textStyle="bold"
-                        android:text="100.000"/>
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:textColor="#666666"
-                        android:text="베리"/>
-
-            </LinearLayout>
-
-</LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>

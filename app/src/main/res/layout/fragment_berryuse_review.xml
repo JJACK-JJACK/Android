@@ -61,11 +61,7 @@
                 android:layout_height="1dp"
                 android:layout_marginLeft="16dp"/>
     </LinearLayout>
-    <android.support.v7.widget.RecyclerView
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="40dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/berry_use_detailed">
-    </android.support.v7.widget.RecyclerView>
+    <include
+        layout="@layout/fragment_use_berry">
+    </include>
 </LinearLayout>

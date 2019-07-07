@@ -6,12 +6,13 @@
               android:layout_height="wrap_content">
 
     <LinearLayout
+            android:layout_marginTop="38dp"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
         <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:textColor="#111111"
@@ -24,8 +25,7 @@
         <android.support.v7.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/rv_donate_use_container"
-        >
+                android:id="@+id/berry_use_detailed">
         </android.support.v7.widget.RecyclerView>
 
         <ImageView
