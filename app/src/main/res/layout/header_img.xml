@@ -1,39 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-        android:layout_height="wrap_content" tools:showIn="@layout/activity_donate_detailed">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:showIn="@layout/activity_donate_detailed">
     <ImageView
-            android:id="@+id/myImageView"
+            android:id="@+id/header_image_view"
             android:layout_width="match_parent"
             android:layout_height="207dp"
             app:srcCompat="@color/colorPrimary">
     </ImageView>
     <TextView
+            android:singleLine="true"
+            android:ellipsize="end"
             android:paddingLeft="16dp"
             android:paddingTop="133dp"
             android:text="올 겨울 혜리에게도 따뜻한 이불을"
             android:id="@+id/donate_detailed_title"
             android:textSize="24sp"
-            android:textColor="#ffffff"
+            android:textColor="@color/white"
             android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignLeft="@id/myImageView"
-            android:layout_alignTop="@id/myImageView"
-            android:layout_alignRight="@id/myImageView"
-            android:layout_alignBottom="@id/myImageView"/>
+            android:layout_alignLeft="@id/header_image_view"
+            android:layout_alignTop="@id/header_image_view"
+            android:layout_alignRight="@id/header_image_view"
+            android:layout_alignBottom="@id/header_image_view"/>
     <TextView
             android:paddingLeft="16dp"
             android:paddingTop="174dp"
             android:text="어빙지역아동센터"
             android:id="@+id/donate_detailed_association"
             android:textSize="14sp"
-            android:textColor="#ffffff"
+            android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignLeft="@id/myImageView"
-            android:layout_alignTop="@id/myImageView"
-            android:layout_alignRight="@id/myImageView"
-            android:layout_alignBottom="@id/myImageView"/>
+            android:layout_alignLeft="@id/header_image_view"
+            android:layout_alignTop="@id/header_image_view"
+            android:layout_alignRight="@id/header_image_view"
+            android:layout_alignBottom="@id/header_image_view"/>
 </RelativeLayout>

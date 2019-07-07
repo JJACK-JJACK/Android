@@ -51,5 +51,5 @@
         android:layout_marginTop="128dp"
         android:layout_marginLeft="20dp"
         android:background="@drawable/shape_bottom_line_yellow"
-        android:drawableEnd="@drawable/ic_cancle_small"/>
+        android:drawableEnd="@drawable/ic_cancel_small"/>
 </RelativeLayout>
