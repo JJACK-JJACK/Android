@@ -40,9 +40,9 @@ class DonateDetailedActivity : AppCompatActivity() {
 
 
 
-        if(!intent.getBooleanExtra("isDonateHistory", false)){
+        //if(!intent.getBooleanExtra("isDonateHistory", false)){
             //기부하기_상세
-           donate_detailed_tab.addTab(donate_detailed_tab.newTab().setText("기부스토리"))
+            donate_detailed_tab.addTab(donate_detailed_tab.newTab().setText("기부스토리"))
             donate_detailed_tab.addTab(donate_detailed_tab.newTab().setText("사용계획"))
 
             donate_detailed_tab.getTabAt(0)?.select()
@@ -69,15 +69,13 @@ class DonateDetailedActivity : AppCompatActivity() {
                 }
             })
 
-        }
-        else if(intent.getBooleanExtra("isDonateHistory", false)){
-            donate_detailed_container.visibility = View.GONE
-            donate_detailed_tab.visibility = View.GONE
-            donate_detailed_button_layout.visibility = View.GONE
-           // donate_step_scroll.visibility = View.VISIBLE
-        }
-
-
+        //}
+//        else if(intent.getBooleanExtra("isDonateHistory", false)){
+//            donate_detailed_container.visibility = View.GONE
+//            donate_detailed_tab.visibility = View.GONE
+//            donate_detailed_button_layout.visibility = View.GONE
+//           // donate_step_scroll.visibility = View.VISIBLE
+//        }
 
         btn_donate.setOnClickListener {
             val intent = Intent(this, DonatePaymentActivity::class.java)

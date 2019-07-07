@@ -102,7 +102,7 @@ class SignUpActivity : AppCompatActivity() {
         et_signup_section1.setText("")
         et_signup_section1.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_NORMAL
         ly_signup_section2.visibility = View.GONE
-        tv_signup_next.text ="완료"
+        btn_signup_next.text ="확인"
         btn_duplicate_verification.visibility = View.VISIBLE
         viewnumber = 3
     }
