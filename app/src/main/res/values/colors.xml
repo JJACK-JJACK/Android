@@ -9,16 +9,22 @@
     <color name="lightYellow">#ffe298</color>
     <color name="yellow">#ffce4c</color>
     <color name="darkYellow">#ffc543</color>
+    <color name="goldenYellow">#ffc21f</color>
     <color name="red">#da4830</color>
     <color name="green">#86b854</color>
     <color name="blue">#464fb2</color>
 
 
+    <color name="black">#000000</color>
     <color name="darkGrayA">#111111</color>
-    <color name="darkGrayB">#333333</color>
-    <color name="darkGrayC">#444444</color>
+    <color name="darkGrayB">#222222</color>
+    <color name="darkGrayC">#333333</color>
+    <color name="darkGrayD">#444444</color>
     <color name="grayA">#666666</color>
     <color name="grayB">#999999</color>
+    <color name="grayC">#bbbbbb</color>
     <color name="lightGrayA">#eeeeee</color>
     <color name="lightGrayB">#f5f5f5</color>
+    <color name="white">#ffffff</color>
+
 </resources>

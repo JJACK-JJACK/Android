@@ -21,7 +21,7 @@
                     android:layout_centerVertical="true"
                     android:layout_width="27dp"
                     android:layout_height="29dp"
-                    android:src="@drawable/ic_cancle_large"
+                    android:src="@drawable/ic_cancel_large"
                     android:layout_alignParentRight="true"
                     android:id="@+id/btn_cancel"/>
         </RelativeLayout>
@@ -45,26 +45,24 @@
                     android:layout_height="wrap_content">
                 <TextView
                         android:text="차눈눈누"
-                        android:textColor="#000000"
+                        android:textColor="@color/black"
                         android:textSize="20sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                 <TextView
                         android:layout_marginTop="4dp"
                         android:textSize="14sp"
-                        android:textColor="#999999"
+                        android:textColor="@color/grayB"
                         android:text="parkce37@gmail.com"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
             </LinearLayout>
         </LinearLayout>
-        
         <View
                 android:layout_gravity="center_horizontal"
-                android:background="#f5f5f5"
+                android:background="@color/lightGrayB"
                 android:layout_width="336dp"
                 android:layout_height="2dp"/>
-
         <LinearLayout
                 android:layout_marginTop="20dp"
                 android:orientation="vertical"
@@ -72,9 +70,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <TextView
-                    android:text="@string/ownberry"
+                    android:text="@string/own_berry"
                     android:textSize="14sp"
-                    android:textColor="#999999"
+                    android:textColor="@color/grayB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             <LinearLayout
@@ -86,17 +84,17 @@
                         android:text="128"
                         android:layout_gravity="center_vertical"
                         android:textSize="24sp"
-                        android:textColor="#111111"
+                        android:textColor="@color/darkGrayA"
                         android:textStyle="bold"
                         android:letterSpacing="0.06"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                 <TextView
-                        android:text="베리"
+                        android:text="@string/berry"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="4dp"
                         android:textSize="16sp"
-                        android:textColor="#666666"
+                        android:textColor="@color/grayA"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                 
@@ -104,29 +102,23 @@
                         android:src="@drawable/ic_charge"
                         android:id="@+id/btn_drawer_berrycharge"
                         android:layout_marginLeft="73dp"
-                        android:layout_width="76dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="30dp"/>
 
                 <ImageView
                         android:src="@drawable/ic_usehistory"
                         android:id="@+id/btn_drawer_usehistory"
                         android:layout_marginLeft="16dp"
-                        android:layout_width="75dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="30dp"/>
 
-
-
             </LinearLayout>
-
-
-
         </LinearLayout>
-
 
         <View
                 android:layout_marginTop="19.5dp"
                 android:layout_gravity="center_horizontal"
-                android:background="#f5f5f5"
+                android:background="@color/lightGrayB"
                 android:layout_width="336dp"
                 android:layout_height="2dp"
         />
@@ -138,17 +130,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <TextView
-                    android:text="메뉴"
+                    android:text="@string/menu"
                     android:textSize="14sp"
-                    android:textColor="#999999"
+                    android:textColor="@color/grayB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             <LinearLayout
                     android:orientation="horizontal"
                     android:paddingVertical="5dp"
                     android:weightSum="3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
                 <ImageView
                         android:layout_weight="1"
                         android:src="@drawable/ic_usagelist"
@@ -172,11 +164,10 @@
 
         </LinearLayout>
 
-
         <View
                 android:layout_marginTop="20dp"
                 android:layout_gravity="center_horizontal"
-                android:background="#f5f5f5"
+                android:background="@color/lightGrayB"
                 android:layout_width="336dp"
                 android:layout_height="2dp"
         />
@@ -188,9 +179,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="225dp">
             <TextView
-                    android:text="카테고리"
+                    android:text="@string/category"
                     android:textSize="14sp"
-                    android:textColor="#999999"
+                    android:textColor="@color/grayB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             <LinearLayout
@@ -243,13 +234,9 @@
                         android:id="@+id/btn_drawer_f_senior"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
-
             </LinearLayout>
-
         </LinearLayout>
 
-
     </LinearLayout>
-
 
 </RelativeLayout>

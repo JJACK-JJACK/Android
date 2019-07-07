@@ -49,8 +49,4 @@ interface NetworkService {
 //        @Path("filterId") filterId : Int
 //    ): Call<GetFilteredDonateCardList>
 
-
-
-
-
 }
