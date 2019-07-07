@@ -16,6 +16,10 @@ class MyPageNicknameModifyActivity : AppCompatActivity() {
 
         edt_nickname_modify.hint = intent.getStringExtra("nickname")
 
+        btn_nick_back.setOnClickListener {
+            finish()
+        }
+
         btn_erase_all.setOnClickListener {
             edt_nickname_modify.setText(null)
         }
