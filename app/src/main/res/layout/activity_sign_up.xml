@@ -83,7 +83,7 @@
                         android:paddingTop="16dp"
                         android:lines="1"
                         android:maxLines="1"
-                        android:maxLength="13"
+                        android:maxLength="20"
                         android:inputType="textEmailAddress"
                         android:hint="ex) mrpic@naver.com"
                         android:id="@+id/et_signup_section1"
@@ -92,26 +92,27 @@
                         android:background="@drawable/shape_bottom_line_yellow"
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"/>
+                <RelativeLayout
+                        android:background="@drawable/shape_graybtn_8dp"
+                        android:layout_width="58dp"
+                        android:layout_height="26dp"
+                        android:id="@+id/btn_duplicate_verification"
+                        android:visibility="gone"
+                        android:layout_alignLeft="@+id/ly_signup_section1"
+                        android:layout_alignTop="@+id/ly_signup_section1"
+                        android:layout_marginLeft="238dp"
+                        android:layout_marginTop="6dp">
+                    <TextView
+                            android:layout_centerInParent="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:textColor="@color/darkGrayD"
+                            android:text="중복확인"/>
+                </RelativeLayout>
             </LinearLayout>
 
-            <RelativeLayout
-                    android:background="@drawable/shape_graybtn_8dp"
-                    android:layout_width="58dp"
-                    android:layout_height="26dp"
-                    android:id="@+id/btn_duplicate_verification"
-                    android:visibility="gone"
-                    android:layout_alignLeft="@id/ly_signup_section1"
-                    android:layout_alignTop="@+id/ly_signup_section1"
-                    android:layout_marginLeft="261dp"
-                    android:layout_marginTop="24dp">
-                <TextView
-                        android:layout_centerInParent="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="12sp"
-                        android:textColor="@color/darkGrayD"
-                        android:text="중복확인"/>
-            </RelativeLayout>
+
         </RelativeLayout>
 
 
@@ -138,7 +139,7 @@
                     android:paddingTop="16dp"
                     android:lines="1"
                     android:maxLines="1"
-                    android:maxLength="10"
+                    android:maxLength="20"
                     android:inputType="textPassword"
                     android:hint="@string/password_check"
                     android:id="@+id/et_signup_section2"

@@ -37,4 +37,13 @@
     <string name="times">회</string>
     <string name="berry_donated">기부한 베리</string>
     <string name="participate_status">참여 현황</string>
+    <string name="use_berry">사용 베리</string>
+    <string name="msg_use_berry_history">기부받은 베리는 이렇게 사용했습니다!</string>
+    <string name="msg_donate_step_ing">아직 베리가 차곡차곡 모아지는 중이에요!</string>
+    <string name="msg_donate_step_end">모금된 베리가 전달을 기다리고 있어요!</string>
+    <string name="msg_donate_step_delivery">추후 후기를 작성할 계획입니다!</string>
+    <string name="mypage">마이 페이지</string>
+    <string name="berry_manage">베리 관리</string>
+    <string name="check_duplicate">중복확인</string>
+    <string name="nickname">닉네임</string>
 </resources>
