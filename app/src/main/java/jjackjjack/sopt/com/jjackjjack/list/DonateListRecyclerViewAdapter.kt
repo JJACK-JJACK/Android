@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.*
 import jjackjjack.sopt.com.jjackjjack.activities.donate.DonateDetailedActivity
 import jjackjjack.sopt.com.jjackjjack.R
+import jjackjjack.sopt.com.jjackjjack.activities.donaterecord.DonateRecordStatusActivity
 import jjackjjack.sopt.com.jjackjjack.data.DonateInfoData
 import org.jetbrains.anko.startActivity
 
@@ -30,15 +31,29 @@ class DonateListRecyclerViewAdapter (val ctx: Context, var dataList: ArrayList<D
         holder.progress.progress = dataList[position].percent.toInt()
         holder.berry_num.text = dataList[position].berry_num
 
-        holder.container.setOnClickListener {
-            ctx.startActivity<DonateDetailedActivity>(
-                "title" to dataList[position].title,
-                "association" to dataList[position].association,
-                "percent" to dataList[position].percent,
-                "berry_num" to dataList[position].berry_num,
-                "d_day" to dataList[position].d_day,
-                "isDonateHistory" to isDonateHistory
-            )
+        if (isDonateHistory){
+            holder.container.setOnClickListener {
+                ctx.startActivity<DonateRecordStatusActivity>(
+                    "title" to dataList[position].title,
+                    "association" to dataList[position].association,
+                    "percent" to dataList[position].percent,
+                    "berry_num" to dataList[position].berry_num,
+                    "d_day" to dataList[position].d_day
+                    //"isDonateHistory" to isDonateHistory
+                )
+            }
+        }
+        else if (!isDonateHistory){
+            holder.container.setOnClickListener {
+                ctx.startActivity<DonateDetailedActivity>(
+                    "title" to dataList[position].title,
+                    "association" to dataList[position].association,
+                    "percent" to dataList[position].percent,
+                    "berry_num" to dataList[position].berry_num,
+                    "d_day" to dataList[position].d_day
+                    //"isDonateHistory" to isDonateHistory
+                )
+            }
         }
     }
 

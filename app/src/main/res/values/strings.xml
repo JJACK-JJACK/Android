@@ -28,4 +28,13 @@
     <string name="plus_20">+ 20</string>
     <string name="plus_50">+ 50</string>
     <string name="total_money">전액</string>
+    <string name="msg_donate_success">기부 성공\n스탬프 1개 받기 완료!</string>
+    <string name="msg_dialog">기부해주신 베리는 수수료 없이\n100% 전달됩니다</string>
+    <string name="check_stamp">스탬프 확인하러 가기</string>
+    <string name="skip">건너뛰기</string>
+    <string name="donate_history">기부 이력</string>
+    <string name="donate_num">참여 횟수</string>
+    <string name="times">회</string>
+    <string name="berry_donated">기부한 베리</string>
+    <string name="participate_status">참여 현황</string>
 </resources>
