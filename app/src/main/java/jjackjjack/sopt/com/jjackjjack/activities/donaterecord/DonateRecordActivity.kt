@@ -5,9 +5,11 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import jjackjjack.sopt.com.jjackjjack.activities.MainActivity
 import jjackjjack.sopt.com.jjackjjack.R
 import jjackjjack.sopt.com.jjackjjack.activities.berrycharge.BerryChargeActivity
@@ -18,21 +20,32 @@ import jjackjjack.sopt.com.jjackjjack.list.DonateListRecyclerViewAdapter
 import jjackjjack.sopt.com.jjackjjack.activities.mypage.MyPageActivity
 import jjackjjack.sopt.com.jjackjjack.activities.rank.RankActivity
 import jjackjjack.sopt.com.jjackjjack.interfaces.onDrawer
+import jjackjjack.sopt.com.jjackjjack.network.ApplicationController
+import jjackjjack.sopt.com.jjackjjack.network.NetworkService
+import jjackjjack.sopt.com.jjackjjack.network.data.DonateRecordData
+import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateRecordResponse
 import jjackjjack.sopt.com.jjackjjack.utillity.Constants
 import kotlinx.android.synthetic.main.activity_donate_record.ly_drawer
 import kotlinx.android.synthetic.main.content_activity_donate_record.*
 import kotlinx.android.synthetic.main.nav_drawer.*
 import kotlinx.android.synthetic.main.toolbar_with_hamburger.*
 import org.jetbrains.anko.startActivity
-
+import org.jetbrains.anko.toast
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class DonateRecordActivity : AppCompatActivity(), onDrawer {
+
+    val networkService: NetworkService by lazy {
+        ApplicationController.instance.networkService
+    }
 
     lateinit var btnFset: Array<ImageView>
 
     lateinit var btnAset: Array<View>
 
-    lateinit var actSet : Array<Class<out AppCompatActivity>>
+    lateinit var actSet: Array<Class<out AppCompatActivity>>
 
     lateinit var donateListRecyclerViewAdapter: DonateListRecyclerViewAdapter
 
@@ -40,10 +53,10 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_donate_record)
         initialUI()
-
+        getDonateRecordResponse()
     }
 
-    private fun initialUI(){
+    private fun initialUI() {
 
 
         btn_home.setOnClickListener {
@@ -97,20 +110,20 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
 
     override fun drawerBtnSetting(activityType: Int) {
         btn_hambuger.setOnClickListener {
-            if(!ly_drawer.isDrawerOpen(Gravity.END)){
+            if (!ly_drawer.isDrawerOpen(Gravity.END)) {
                 ly_drawer.openDrawer(Gravity.END)
             }
         }
 
         btn_cancel.setOnClickListener {
-            if(ly_drawer.isDrawerOpen(Gravity.END)){
+            if (ly_drawer.isDrawerOpen(Gravity.END)) {
                 ly_drawer.closeDrawer(Gravity.END)
             }
         }
 
 
-        for(i in 0 until btnAset.size){
-            btnAset[i].setOnClickListener{
+        for (i in 0 until btnAset.size) {
+            btnAset[i].setOnClickListener {
                 val intent = Intent(this, actSet[i])
                 ly_drawer.closeDrawer(Gravity.END)
                 startActivity(intent)
@@ -118,10 +131,10 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
             }
         }
 
-        for(i in 0 until btnFset.size){
+        for (i in 0 until btnFset.size) {
             btnFset[i].setOnClickListener {
                 startActivity<DonateActivity>("fragment" to i)
-                Handler().postDelayed({ly_drawer.closeDrawer(Gravity.END)}, 110)
+                Handler().postDelayed({ ly_drawer.closeDrawer(Gravity.END) }, 110)
                 finish()
 
             }
@@ -130,12 +143,35 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
     }
 
     override fun onBackPressed() {
-        if(ly_drawer.isDrawerOpen(Gravity.END)){
+        if (ly_drawer.isDrawerOpen(Gravity.END)) {
             ly_drawer.closeDrawer(Gravity.END)
-        }
-        else{
+        } else {
             super.onBackPressed()
         }
     }
 
+    private fun getDonateRecordResponse() {
+        val getDonateRecordResponse = networkService.getDonateRecordResponse("application/json")
+
+        getDonateRecordResponse.enqueue(object : Callback<GetDonateRecordResponse> {
+            override fun onFailure(call: Call<GetDonateRecordResponse>, t: Throwable) {
+                Log.e("get donate record data fail", t.toString())
+            }
+
+            override fun onResponse(call: Call<GetDonateRecordResponse>, response: Response<GetDonateRecordResponse>) {
+                if (response.isSuccessful) {
+                    if (response.body()!!.status == 200) {
+                        val receiveData: ArrayList<DonateRecordData> = response.body()!!.data
+                        if (receiveData.size > 0) {
+                            total_berry.text = receiveData[0].toString()
+                            participation_num.text = receiveData[1].toString()
+                        }
+                    }
+                    else if(response.body()!!.status == 600){
+                        toast(response.body()!!.message)
+                    }
+                }
+            }
+        })
+    }
 }

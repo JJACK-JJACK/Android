@@ -100,7 +100,6 @@ class DonateActivity : AppCompatActivity(), onDrawer {
             btn_drawer_home, btn_drawer_donate_record, btn_drawer_rank,
             btn_drawer_mypage, btn_drawer_berrycharge, btn_drawer_usehistory
         )
-
         drawerBtnSetting(Constants.ACTIVITY_DONATE)
     }
 
