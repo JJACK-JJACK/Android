@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import jjackjjack.sopt.com.jjackjjack.list.DonateListRecyclerViewAdapter
 import jjackjjack.sopt.com.jjackjjack.R
-import jjackjjack.sopt.com.jjackjjack.data.DonateInfoData
+import jjackjjack.sopt.com.jjackjjack.model.DonateInfo
 import kotlinx.android.synthetic.main.fragment_popular_category.*
 
 class PopularFragment : Fragment(){
@@ -25,27 +25,27 @@ class PopularFragment : Fragment(){
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        var dataList: ArrayList<DonateInfoData> = ArrayList()
+        var list: ArrayList<DonateInfo> = ArrayList()
 
-        dataList.add(
-            DonateInfoData(
-                "64", "병제에게 맛있는 한끼를", "솝트", "99", "150.000"
-            )
-        )
-        dataList.add(
-            DonateInfoData(
-                "15", "동진에게 맛있는 한끼를", "솝트", "55", "199.999"
-            )
-        )
-        dataList.add(
-            DonateInfoData(
-                "33", "연수에게 맛있는 한끼를", "솝트", "20", "130.000"
-            )
-        )
+//        list.add(
+//            DonateInfo(
+//                "64", "병제에게 맛있는 한끼를", "솝트", "99", "150.000"
+//            )
+//        )
+//        list.add(
+//            DonateInfo(
+//                "15", "동진에게 맛있는 한끼를", "솝트", "55", "199.999"
+//            )
+//        )
+//        list.add(
+//            DonateInfo(
+//                "33", "연수에게 맛있는 한끼를", "솝트", "20", "130.000"
+//            )
+//        )
 
 
         donateListRecyclerViewAdapter =
-            DonateListRecyclerViewAdapter(context!!, dataList, false)
+            DonateListRecyclerViewAdapter(context!!, list, false)
         rv_popular_category.adapter = donateListRecyclerViewAdapter
         rv_popular_category.layoutManager = LinearLayoutManager(context!!)
     }

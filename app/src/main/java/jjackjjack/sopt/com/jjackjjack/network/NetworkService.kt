@@ -1,7 +1,10 @@
 package jjackjjack.sopt.com.jjackjjack.network
 
 import com.google.gson.JsonObject
-import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateCardList
+import jjackjjack.sopt.com.jjackjjack.network.data.DonateSortedData
+import jjackjjack.sopt.com.jjackjjack.network.data.DonatedDetailedData
+import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateDetailedResponse
+import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateSortedListResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostLoginResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostNicknameCheckResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostSignUpResponse
@@ -36,17 +39,24 @@ interface NetworkService {
         @Body() body: JsonObject
     ): Call<PostNicknameCheckResponse>
 
-    //홈 카테고리별 기부 카드 조회
-    @GET("/program/:categoryId")
-    fun getDonateCardList(
-        @Path("categoryId") categoryId : Int
-    ): Call<GetDonateCardList>
+    //---------------
+//    //홈 카테고리별 기부 카드 조회: 필요없을 듯
+//    @GET("/program/:categoryId")
+//    fun getCategoryDonateListResponse(
+//        @Path("categoryId") categoryId : Int
+//    )
 
-//    //홈 카테고리별 기부 카드 필터링 //굳이 나눌 필요가,,?
-//    @GET("/program/:categoryId/:filterId")
-//    fun getFilteredDonateCardList(
-//        @Path("categoryId") categoryId : Int,
-//        @Path("filterId") filterId : Int
-//    ): Call<GetFilteredDonateCardList>
+    //홈 카테고리별 기부 카드 필터링
+    @GET("/program/:categoryId/:filterId")
+    fun getDonateSortedListResponse(
+        @Path("categoryId") categoryId : Int,
+        @Path("filterId") filterId : Int
+    ): Call<GetDonateSortedListResponse>
+
+    //------기부 카드 상세(스토리 & 계획)
+    @GET("/program/detail/:programId")
+    fun getDonateDetailedResponse(
+        @Path("programId") programId: String
+    ): Call<GetDonateDetailedResponse>
 
 }
