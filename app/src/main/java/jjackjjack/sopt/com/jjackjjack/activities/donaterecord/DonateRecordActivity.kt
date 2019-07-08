@@ -11,6 +11,7 @@ import android.widget.ImageView
 import jjackjjack.sopt.com.jjackjjack.activities.MainActivity
 import jjackjjack.sopt.com.jjackjjack.R
 import jjackjjack.sopt.com.jjackjjack.activities.berrycharge.BerryChargeActivity
+import jjackjjack.sopt.com.jjackjjack.activities.berryuse.BerryHistoryActivity
 import jjackjjack.sopt.com.jjackjjack.activities.donate.DonateActivity
 import jjackjjack.sopt.com.jjackjjack.model.DonateInfo
 import jjackjjack.sopt.com.jjackjjack.list.DonateListRecyclerViewAdapter
@@ -78,7 +79,7 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
         actSet = arrayOf(
             MainActivity::class.java, DonateRecordActivity::class.java,
             RankActivity::class.java, MyPageActivity::class.java,
-            BerryChargeActivity::class.java
+            BerryChargeActivity::class.java, BerryHistoryActivity::class.java
         )
 
         btnFset = arrayOf( //프래그먼트로 가는 버튼
@@ -88,7 +89,7 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
 
         btnAset = arrayOf(
             btn_drawer_home, btn_drawer_donate_record, btn_drawer_rank,
-            btn_drawer_mypage, btn_drawer_berrycharge
+            btn_drawer_mypage, btn_drawer_berrycharge, btn_drawer_usehistory
         )
 
         drawerBtnSetting(Constants.ACTIVITY_DONATE_RECORD)
