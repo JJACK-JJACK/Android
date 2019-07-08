@@ -5,5 +5,5 @@ import jjackjjack.sopt.com.jjackjjack.network.data.DonateRecordData
 data class GetDonateRecordResponse (
     val status: Int,
     val message: String,
-    val data: ArrayList<DonateRecordData>
+    val data: DonateRecordData
 )

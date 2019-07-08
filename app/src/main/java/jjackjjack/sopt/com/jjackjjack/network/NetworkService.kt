@@ -3,10 +3,7 @@ package jjackjjack.sopt.com.jjackjjack.network
 import com.google.gson.JsonObject
 import jjackjjack.sopt.com.jjackjjack.network.data.DonateSortedData
 import jjackjjack.sopt.com.jjackjjack.network.data.DonatedDetailedData
-import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateDetailedResponse
-import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateRecordResponse
-import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateParticipationResponse
-import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateSortedListResponse
+import jjackjjack.sopt.com.jjackjjack.network.response.get.*
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostLoginResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostNicknameCheckResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostSignUpResponse
@@ -70,6 +67,14 @@ interface NetworkService {
     //기부 참여 현황
     @GET("/donate")
     fun getDonateParticipationResponse(
-        @Header("Content-Type") content_type: String
+        @Header("Content-Type") token: String
     ): Call<GetDonateParticipationResponse>
+
+    //기부 참여 현황 베리 수
+    @GET("/donate")
+    fun getDonateParticipationBerryNumResponse(
+        @Header("Content-Type") content_type: String
+    ): Call<GetDonateParticipationBerryNumResponse>
+
+
 }
