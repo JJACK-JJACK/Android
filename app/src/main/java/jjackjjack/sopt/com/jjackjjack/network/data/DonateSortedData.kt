@@ -1,6 +1,9 @@
 package jjackjjack.sopt.com.jjackjjack.network.data
 
 import jjackjjack.sopt.com.jjackjjack.model.DonateInfo
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 data class DonateSortedData(
     val categoryId: Int, //ㅇ
@@ -31,22 +34,29 @@ data class DonateSortedData(
         d.centerName = centerName
         d.percent = percentage.toString()
         d.maxBerry = maxBerry.toString()
-        d.d_day = converteDday(start, finish).toString()
+        d.d_day = converteDday(finish).toString()
         return d
     }
 
-    private fun converteDday(start: String, finish: String) : Int{
+    private fun converteDday(finish: String) : Int{
         var Dday : Int = 0
 
-        var convertedDate_start = StringBuilder()
-        var convertedDate_finish = StringBuilder()
+        if(finish != null) {
 
-        if(start != null && finish != null){
-            val dateInfoList_start = start.split("T")
-            val dateInfoList_finish = finish.split("T")
+            val today = Calendar.getInstance()
+
+            val finishdateFormat = SimpleDateFormat("yyyy-MM-dd").parse(finish.split("T")[0])
+            val instance: Calendar = Calendar.getInstance()
+            instance.setTime(finishdateFormat)
+
+            val cnt_today: Long = today.timeInMillis / 86400000
+            val cnt_instance: Long = instance.timeInMillis / 86400000
+
+            val sub: Long = cnt_today - cnt_instance
+
+            Dday = sub.toInt() + 1
 
         }
-
         return Dday
     }
 }

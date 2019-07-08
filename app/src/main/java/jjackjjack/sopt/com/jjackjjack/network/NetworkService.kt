@@ -46,7 +46,7 @@ interface NetworkService {
 //    )
 
     //홈 카테고리별 기부 카드 필터링
-    @GET("/program/:categoryId/:filterId")
+    @GET("/program/{categoryId}/{filterId}")
     fun getDonateSortedListResponse(
         @Path("categoryId") categoryId : Int,
         @Path("filterId") filterId : Int
