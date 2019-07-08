@@ -40,8 +40,9 @@ class DonatePaymentActivity : AppCompatActivity() {
         btn_berry_charge.setOnClickListener {
             startActivity<BerryChargeActivity>()
         }
-
+        var edtString = edt_donate_berry_num.text.toString()
         btn_erase_all.setOnClickListener {
+            edtString = "0"
             edt_donate_berry_num.setText(null)
         }
 
@@ -49,7 +50,7 @@ class DonatePaymentActivity : AppCompatActivity() {
             finish()
         }
 
-        var edtString = edt_donate_berry_num.text.toString()
+
 
         btn_plus_10_berry.setOnClickListener {
             if(edtString.length > 0){
