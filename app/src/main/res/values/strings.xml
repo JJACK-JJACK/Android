@@ -1,7 +1,9 @@
 <resources>
 
-    <string name="app_name">Jjackjjack</string>
+    <string name="app_name">짹</string>
+
     <string name="jjack_slogan">세상을 바꾸는\n작은 기부, 짹 !</string>
+
 
 
     <string name="nickname">닉네임</string>

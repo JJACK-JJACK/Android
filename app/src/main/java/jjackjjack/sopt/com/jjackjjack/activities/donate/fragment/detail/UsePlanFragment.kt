@@ -8,8 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import jjackjjack.sopt.com.jjackjjack.list.DonateUsePlanRecyclerViewAdapter
 import jjackjjack.sopt.com.jjackjjack.R
-import jjackjjack.sopt.com.jjackjjack.data.DonateUsePlanData
-import kotlinx.android.synthetic.main.fragment_use_berry.*
+
+import jjackjjack.sopt.com.jjackjjack.model.DonateUsePlan
+
 import kotlinx.android.synthetic.main.fragment_use_plan.*
 
 class UsePlanFragment : Fragment(){
@@ -28,29 +29,30 @@ class UsePlanFragment : Fragment(){
     }
 
     private fun initialUI(){
-        var dataList: ArrayList<DonateUsePlanData> = ArrayList()
+        var list: ArrayList<DonateUsePlan> = ArrayList()
 
-        dataList.add(
-            DonateUsePlanData(
+        list.add(
+            DonateUsePlan(
                 "1", "입양지원 활동 및 입양진행", "30.000"
             )
         )
-        dataList.add(
-            DonateUsePlanData(
+        list.add(
+            DonateUsePlan(
                 "2", "위급한 유기견 대상 영양제 지원, 예방접종 진행", "19.000"
             )
         )
-        dataList.add(
-            DonateUsePlanData(
+        list.add(
+            DonateUsePlan(
                 "3", "약품 및 물품비용", "23.000"
             )
         )
-        dataList.add(
-            DonateUsePlanData(
+        list.add(
+            DonateUsePlan(
                 "4", "족발 대자 3개", "120.000"
             )
         )
-        donateUsePlanRecyclerViewAdapter = DonateUsePlanRecyclerViewAdapter(context!!, dataList)
+        donateUsePlanRecyclerViewAdapter =
+            DonateUsePlanRecyclerViewAdapter(context!!, list)
         rv_donate_use_plan_container.adapter = donateUsePlanRecyclerViewAdapter
         rv_donate_use_plan_container.layoutManager = LinearLayoutManager(context!!)
     }
