@@ -1,5 +1,6 @@
 package jjackjjack.sopt.com.jjackjjack.activities.donate.fragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
@@ -10,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import jjackjjack.sopt.com.jjackjjack.activities.donate.adapter.DonateSortCategoryPagerAdapter
 import jjackjjack.sopt.com.jjackjjack.R
+import jjackjjack.sopt.com.jjackjjack.R.*
 import jjackjjack.sopt.com.jjackjjack.activities.donate.fragment.sort.SortFragmentAdapter
 import jjackjjack.sopt.com.jjackjjack.utillity.Constants
 import kotlinx.android.synthetic.main.fragment_animal_category.*
@@ -21,7 +23,7 @@ class AnimalFragment : Fragment(){
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_animal_category, container, false)
+        return inflater.inflate(layout.fragment_animal_category, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -60,6 +62,7 @@ class AnimalFragment : Fragment(){
         donate_sort_tab.addTab(donate_sort_tab.newTab().setText("기부율 낮은순"))
 
         donate_sort_tab.getTabAt(0)?.select()
+
 
         sortfragmentAdapter = SortFragmentAdapter(childFragmentManager, donate_sort_tab)
         donate_sort_tab.addOnTabSelectedListener(object:TabLayout.OnTabSelectedListener{

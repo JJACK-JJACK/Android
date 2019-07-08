@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.ImageView
 import jjackjjack.sopt.com.jjackjjack.R
 import jjackjjack.sopt.com.jjackjjack.activities.berrycharge.BerryChargeActivity
+import jjackjjack.sopt.com.jjackjjack.activities.berryuse.BerryHistoryActivity
 import jjackjjack.sopt.com.jjackjjack.activities.donate.DonateActivity
 import jjackjjack.sopt.com.jjackjjack.activities.donaterecord.DonateRecordActivity
 import jjackjjack.sopt.com.jjackjjack.activities.login.BeginningActivity
@@ -126,6 +127,10 @@ class MainActivity : AppCompatActivity(), onDrawer {
             if(ly_drawer.isDrawerOpen(Gravity.END)){
                 ly_drawer.closeDrawer(Gravity.END)
             }
+        }
+
+        btn_drawer_usehistory.setOnClickListener {
+            startActivity<BerryHistoryActivity>()
         }
 
 
