@@ -20,7 +20,7 @@
             android:layout_marginBottom="4dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
-            app:srcCompat="@color/colorPrimaryDark"
+            app:srcCompat="@drawable/ic_account_circle_black_24dp"
             tools:ignore="MissingConstraints"/>
 
 

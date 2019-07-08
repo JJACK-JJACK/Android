@@ -7,21 +7,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import jjackjjack.sopt.com.jjackjjack.R
-import jjackjjack.sopt.com.jjackjjack.data.DonateUsePlanData
+import jjackjjack.sopt.com.jjackjjack.model.DonateUsePlan
 
-class DonateUsePlanRecyclerViewAdapter (val ctx: Context, var dataList: ArrayList<DonateUsePlanData>): RecyclerView.Adapter<DonateUsePlanRecyclerViewAdapter.Holder>() {
+class DonateUsePlanRecyclerViewAdapter (val ctx: Context, var list: ArrayList<DonateUsePlan>): RecyclerView.Adapter<DonateUsePlanRecyclerViewAdapter.Holder>() {
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, p1: Int): Holder {
         val view: View = LayoutInflater.from(ctx).inflate(R.layout.li_donate_use_plan, viewGroup, false )
         return Holder(view)
     }
 
-    override fun getItemCount(): Int = dataList.size
+    override fun getItemCount(): Int = list.size
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.idx.text = " " + dataList[position].idx
-        holder.plan_detail.text = dataList[position].plan_detail
-        holder.berry_num.text = dataList[position].berry_num
+        holder.idx.text = " " + list[position].idx
+        holder.plan_detail.text = list[position].plan_detail
+        holder.berry_num.text = list[position].berry_num
     }
 
     inner class Holder(itemView : View): RecyclerView.ViewHolder(itemView){

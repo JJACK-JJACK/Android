@@ -12,15 +12,13 @@ import jjackjjack.sopt.com.jjackjjack.activities.MainActivity
 import jjackjjack.sopt.com.jjackjjack.R
 import jjackjjack.sopt.com.jjackjjack.activities.berrycharge.BerryChargeActivity
 import jjackjjack.sopt.com.jjackjjack.activities.donate.DonateActivity
-import jjackjjack.sopt.com.jjackjjack.data.DonateInfoData
+import jjackjjack.sopt.com.jjackjjack.model.DonateInfo
 import jjackjjack.sopt.com.jjackjjack.list.DonateListRecyclerViewAdapter
 import jjackjjack.sopt.com.jjackjjack.activities.mypage.MyPageActivity
 import jjackjjack.sopt.com.jjackjjack.activities.rank.RankActivity
 import jjackjjack.sopt.com.jjackjjack.interfaces.onDrawer
 import jjackjjack.sopt.com.jjackjjack.utillity.Constants
-import kotlinx.android.synthetic.main.activity_donate_record.*
 import kotlinx.android.synthetic.main.activity_donate_record.ly_drawer
-import kotlinx.android.synthetic.main.activity_ranking.*
 import kotlinx.android.synthetic.main.content_activity_donate_record.*
 import kotlinx.android.synthetic.main.nav_drawer.*
 import kotlinx.android.synthetic.main.toolbar_with_hamburger.*
@@ -53,25 +51,25 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
         }
         drawerUI()
 
-        var dataList: ArrayList<DonateInfoData> = ArrayList()
+        var list: ArrayList<DonateInfo> = ArrayList()
 
-        dataList.add(
-            DonateInfoData(
-                "64", "병제에게 맛있는 한끼를", "솝트", "99", "150.000"
-            )
-        )
-        dataList.add(
-            DonateInfoData(
-                "15", "동진에게 맛있는 한끼를", "솝트", "55", "199.999"
-            )
-        )
-        dataList.add(
-            DonateInfoData(
-                "33", "연수에게 맛있는 한끼를", "솝트", "20", "130.000"
-            )
-        )
+//        list.add(
+//            DonateInfo(
+//                "64", "병제에게 맛있는 한끼를", "솝트", "99", "150.000"
+//            )
+//        )
+//        list.add(
+//            DonateInfo(
+//                "15", "동진에게 맛있는 한끼를", "솝트", "55", "199.999"
+//            )
+//        )
+//        list.add(w
+//            DonateInfo(
+//                "33", "연수에게 맛있는 한끼를", "솝트", "20", "130.000"
+//            )
+//        )
 
-        donateListRecyclerViewAdapter = DonateListRecyclerViewAdapter(this, dataList, true)
+        donateListRecyclerViewAdapter = DonateListRecyclerViewAdapter(this, list, true)
         rv_donate_record.adapter = donateListRecyclerViewAdapter
         rv_donate_record.layoutManager = LinearLayoutManager(this)
     }

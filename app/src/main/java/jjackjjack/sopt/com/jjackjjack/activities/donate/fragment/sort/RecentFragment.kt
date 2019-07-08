@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import jjackjjack.sopt.com.jjackjjack.list.DonateListRecyclerViewAdapter
 import jjackjjack.sopt.com.jjackjjack.R
-import jjackjjack.sopt.com.jjackjjack.data.DonateInfoData
+import jjackjjack.sopt.com.jjackjjack.model.DonateInfo
 import kotlinx.android.synthetic.main.fragment_recent_category.*
 
 class RecentFragment : Fragment(){
@@ -24,30 +24,30 @@ class RecentFragment : Fragment(){
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        var dataList: ArrayList<DonateInfoData> = ArrayList()
+        var list: ArrayList<DonateInfo> = ArrayList()
 
-        dataList.add(
-            DonateInfoData(
-                "64", "혜리에게 따듯한 이불을", "솝트", "35", "150.000"
-            )
-        )
-        dataList.add(
-            DonateInfoData(
-                "15", "윤희에게 따듯한 이불을", "솝트", "61", "199.999"
-            )
-        )
-        dataList.add(
-            DonateInfoData(
-                "33", "민진에게 따듯한 이불을", "솝트", "88", "130.000"
-            )
-        )
-        dataList.add(
-            DonateInfoData(
-                "20", "상일에게 따듯한 이불을", "솝트", "10", "222.000"
-            )
-        )
+//        list.add(
+//            DonateInfo(
+//                "64", "혜리에게 따듯한 이불을", "솝트", "35", "150.000"
+//            )
+//        )
+//        list.add(
+//            DonateInfo(
+//                "15", "윤희에게 따듯한 이불을", "솝트", "61", "199.999"
+//            )
+//        )
+//        list.add(
+//            DonateInfo(
+//                "33", "민진에게 따듯한 이불을", "솝트", "88", "130.000"
+//            )
+//        )
+//        list.add(
+//            DonateInfo(
+//                "20", "상일에게 따듯한 이불을", "솝트", "10", "222.000"
+//            )
+//        )
         donateListRecyclerViewAdapter =
-            DonateListRecyclerViewAdapter(context!!, dataList, false)
+            DonateListRecyclerViewAdapter(context!!, list, false)
         rv_recent_category.adapter = donateListRecyclerViewAdapter
         rv_recent_category.layoutManager = LinearLayoutManager(context!!)
     }

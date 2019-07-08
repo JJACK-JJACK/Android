@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import jjackjjack.sopt.com.jjackjjack.list.DonateListRecyclerViewAdapter
 import jjackjjack.sopt.com.jjackjjack.R
-import jjackjjack.sopt.com.jjackjjack.data.DonateInfoData
+import jjackjjack.sopt.com.jjackjjack.model.DonateInfo
 import kotlinx.android.synthetic.main.fragment_unpopular_category.*
 
 class UnpopularFragment : Fragment(){
@@ -23,37 +23,37 @@ class UnpopularFragment : Fragment(){
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        var dataList: ArrayList<DonateInfoData> = ArrayList()
+        var list: ArrayList<DonateInfo> = ArrayList()
 
-        dataList.add(
-            DonateInfoData(
-                "64", "민정에게 편안한 보금자리를", "솝트", "99", "150.000"
-            )
-        )
-        dataList.add(
-            DonateInfoData(
-                "15", "찬은에게 편안한 보금자리를", "솝트", "55", "199.999"
-            )
-        )
-        dataList.add(
-            DonateInfoData(
-                "33", "정환에게 편안한 보금자리를", "솝트", "20", "130.000"
-            )
-        )
-        dataList.add(
-            DonateInfoData(
-                "2", "하영에게 편안한 보금자리를", "솝트", "20", "655.222"
-            )
-        )
-        dataList.add(
-            DonateInfoData(
-                "100", "진희에게 편안한 보금자리를", "솝트", "1", "130.000"
-            )
-        )
+//        list.add(
+//            DonateInfo(
+//                "64", "민정에게 편안한 보금자리를", "솝트", "99", "150.000"
+//            )
+//        )
+//        list.add(
+//            DonateInfo(
+//                "15", "찬은에게 편안한 보금자리를", "솝트", "55", "199.999"
+//            )
+//        )
+//        list.add(
+//            DonateInfo(
+//                "33", "정환에게 편안한 보금자리를", "솝트", "20", "130.000"
+//            )
+//        )
+//        list.add(
+//            DonateInfo(
+//                "2", "하영에게 편안한 보금자리를", "솝트", "20", "655.222"
+//            )
+//        )
+//        list.add(
+//            DonateInfo(
+//                "100", "진희에게 편안한 보금자리를", "솝트", "1", "130.000"
+//            )
+//        )
 
 
         donateListRecyclerViewAdapter =
-            DonateListRecyclerViewAdapter(context!!, dataList, false)
+            DonateListRecyclerViewAdapter(context!!, list, false)
         rv_unpopular_category.adapter = donateListRecyclerViewAdapter
         rv_unpopular_category.layoutManager = LinearLayoutManager(context!!)
     }
