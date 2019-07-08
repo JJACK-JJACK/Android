@@ -44,7 +44,6 @@ class DonateActivity : AppCompatActivity(), onDrawer {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_donate)
 
-
 //        donate_tab.getTabAt(Constants.FRAGMENT_CHILD)?.setText("어린이")
 //        donate_tab.getTabAt(Constants.FRAGMENT_ELDER)?.setText("어르신")
 //        donate_tab.getTabAt(Constants.FRAGMENT_ANIMAL)?.setText("동물")

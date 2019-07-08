@@ -2,10 +2,9 @@
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="143dp"
         android:gravity="center"
         android:paddingHorizontal="20dp"
-        android:paddingVertical="15.5dp"
         android:id="@+id/li_donate_container">
 
     <!--<android.support.v4.widget.DrawerLayout-->
@@ -14,6 +13,8 @@
     <!--</android.support.v4.widget.DrawerLayout>-->
 
     <LinearLayout
+            android:paddingVertical="15.5dp"
+            android:id="@+id/ly_item"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -102,7 +103,7 @@
                     android:layout_height="4dp"
                     android:progress="69"
                     android:progressTint="@color/red"
-                    android:progressBackgroundTint="@color/lightGrayA"
+                    android:progressBackgroundTint="@color/colorPrimary"
                     android:layout_marginBottom="8dp"
                     android:max="100"
                     android:id="@+id/li_donate_progress"/>
@@ -150,5 +151,12 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <View
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimary"
+            android:layout_gravity="end"/>
 
 </RelativeLayout>

@@ -111,8 +111,6 @@
                             android:text="중복확인"/>
                 </RelativeLayout>
             </LinearLayout>
-
-
         </RelativeLayout>
 
 

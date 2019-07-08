@@ -40,7 +40,6 @@
             </include>
 
             <android.support.design.widget.TabLayout
-                    android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     app:tabTextColor="@color/grayB"
@@ -48,7 +47,8 @@
                     app:tabIndicatorHeight="1dp"
                     app:tabIndicatorColor="@color/red"
                     app:tabTextAppearance="@style/tabTheme2"
-                    app:tabMode="scrollable"
+                    app:tabMode ="fixed"
+                    app:tabIndicatorFullWidth="false"
                     android:id="@+id/donate_detailed_tab">
             </android.support.design.widget.TabLayout>
 
@@ -72,11 +72,11 @@
                 android:id="@+id/btn_cheer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="응원하기"
-                android:background="#ffc21f"
+                android:text="@string/cheer"
+                android:background="@color/goldenYellow"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="#ffffff"
+                android:textColor="@color/white"
                 android:layout_weight="7"
                 android:gravity="center"/>
 
@@ -84,12 +84,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="기부하기"
-                android:background="#da4830"
+                android:background="@color/red"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="#ffffff"
+                android:textColor="@color/white"
                 android:layout_weight="3"
                 android:gravity="center"
                 android:id="@+id/btn_donate"/>
     </LinearLayout>
+
 </RelativeLayout>

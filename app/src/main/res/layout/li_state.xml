@@ -10,7 +10,7 @@
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:paddingHorizontal="20dp">
 
         <LinearLayout
@@ -33,7 +33,7 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="1dp"
+                        android:layout_marginStart="3dp"
                         android:layout_alignParentStart="true"
                         android:layout_marginTop="0dp"
                         android:text="43"
@@ -49,7 +49,7 @@
                     android:layout_height="4dp"
                     android:progress="69"
                     android:progressTint="@color/red"
-                    android:progressBackgroundTint="@color/lightGrayA"
+                    android:progressBackgroundTint="@color/colorPrimary"
                     android:layout_marginBottom="8dp"
                     android:max="100"
                     android:id="@+id/li_state_progress"/>
@@ -116,9 +116,13 @@
                         android:gravity="right"
                         android:text="@string/berry"/>
             </LinearLayout>
-
         </LinearLayout>
     </LinearLayout>
-
-
+    <View
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:paddingHorizontal="20dp"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimary"
+            android:layout_gravity="end"/>
 </RelativeLayout>
