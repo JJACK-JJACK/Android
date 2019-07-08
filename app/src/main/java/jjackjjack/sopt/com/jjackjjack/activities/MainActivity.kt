@@ -21,6 +21,7 @@ import jjackjjack.sopt.com.jjackjjack.interfaces.onDrawer
 import jjackjjack.sopt.com.jjackjjack.utillity.Constants
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_activity_main.*
+import kotlinx.android.synthetic.main.fragment_main_activity_image_slider.*
 import kotlinx.android.synthetic.main.nav_drawer.*
 import org.jetbrains.anko.startActivity
 
@@ -67,7 +68,6 @@ class MainActivity : AppCompatActivity(), onDrawer {
             startActivity<BeginningActivity>()
             finish()
         }
-
     }
 
     private fun initialUI(){
@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity(), onDrawer {
             finish()
         }
 
-        var fragmentAdapter = MainActivityImageSliderAdapter(supportFragmentManager)
+        var fragmentAdapter = MainActivityImageSliderAdapter(this,supportFragmentManager)
         main_activity_slider_pager.adapter = fragmentAdapter
 
         main_activity_slider_pager.setClipToPadding(false)
@@ -86,16 +86,18 @@ class MainActivity : AppCompatActivity(), onDrawer {
         main_activity_slider_pager.setPadding(margin, 0, margin, 0)
         main_activity_slider_pager.setPageMargin(margin / 2)
 
+        var fragmentList = ArrayList<FragmentMainActivityImageSlider>()
+
         for (i in 0..5) {
-            val fragmentMainActivityImageSlider = FragmentMainActivityImageSlider()
-            fragmentAdapter.addImage(fragmentMainActivityImageSlider)
+            var fragmentMainActivityImageSlider = FragmentMainActivityImageSlider()
+            fragmentMainActivityImageSlider.setCategoryNum(i)
+            fragmentList.add(fragmentMainActivityImageSlider)
+            fragmentAdapter.addImage(fragmentList[i], i)
         }
+
         fragmentAdapter.notifyDataSetChanged()
-
     }
-
     override fun drawerUI(){
-
         actSet = arrayOf(
             MainActivity::class.java, DonateRecordActivity::class.java,
             RankActivity::class.java, MyPageActivity::class.java,
@@ -106,16 +108,12 @@ class MainActivity : AppCompatActivity(), onDrawer {
             btn_drawer_f_child, btn_drawer_f_senior, btn_drawer_f_animal, btn_drawer_f_disabled,
             btn_drawer_f_env, btn_drawer_f_emergency
         )
-
         btnAset = arrayOf(
             btn_drawer_home, btn_drawer_donate_record, btn_drawer_rank,
             btn_drawer_mypage, btn_drawer_berrycharge
         )
-
         drawerBtnSetting(Constants.ACTIVITY_MAIN)
-
     }
-
 
     override fun drawerBtnSetting(activityType: Int){
         btn_hambuger.setOnClickListener {
@@ -158,5 +156,4 @@ class MainActivity : AppCompatActivity(), onDrawer {
             super.onBackPressed()
         }
     }
-
 }

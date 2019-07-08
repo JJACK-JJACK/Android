@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+        android:orientation="vertical"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -40,7 +41,6 @@
                     android:layout_gravity="end"
                     android:layout_width="match_parent"
                     android:id="@+id/li_berryhistory_berry"
-                    android:layout_marginLeft="120dp"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
                     android:textColor="@color/red"
@@ -73,4 +73,10 @@
             </TextView>
         </LinearLayout>
     </LinearLayout>
+    <View
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="20dp"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimary"
+            android:layout_gravity="end"/>
 </LinearLayout>
