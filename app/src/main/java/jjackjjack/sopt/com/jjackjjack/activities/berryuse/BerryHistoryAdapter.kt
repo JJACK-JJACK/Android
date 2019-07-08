@@ -14,7 +14,6 @@ class BerryHistoryAdapter(val context: Context, val berryhistoryItem: ArrayList<
         return Holder(view)
     }
 
-
     override fun onBindViewHolder(p0: Holder, p1: Int) {
         p0?.bind(berryhistoryItem[p1], context)
     }

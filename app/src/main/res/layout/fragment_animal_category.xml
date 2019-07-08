@@ -22,7 +22,6 @@
                 android:id="@+id/donate_sort_tab"
                 app:tabIndicatorHeight="0dp">
         </android.support.design.widget.TabLayout>
-
     </RelativeLayout>
 
     <FrameLayout

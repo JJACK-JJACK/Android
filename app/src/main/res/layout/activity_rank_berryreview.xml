@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            tools:context=".activities.berryreview.BerryreviewActivity">
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical">
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -12,7 +13,7 @@
         <android.support.v7.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:backgroundTint="#ffffff"
+                android:backgroundTint="@color/white"
                 android:theme="?attr/actionBarTheme"
                 android:id="@+id/toolbar">
             <ImageView
@@ -28,6 +29,7 @@
         <include
             layout="@layout/li_state">
         </include>
+
         <include
                 layout="@layout/fragment_berryuse_review">
         </include>

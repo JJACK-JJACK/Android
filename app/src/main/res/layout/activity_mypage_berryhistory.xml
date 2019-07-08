@@ -6,7 +6,7 @@
     <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:backgroundTint="#ffffff"
+            android:backgroundTint="@color/white"
             android:theme="?attr/actionBarTheme"
             android:id="@+id/toolbar">
         <ImageView
@@ -20,8 +20,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:textColor="#111111"
-            android:text="보유베리"
+            android:textColor="@color/white"
+            android:text="@string/own_berry"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="40dp"
     />
@@ -33,7 +33,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="30sp"
-                android:textColor="#111111"
+                android:textStyle="bold"
+                android:textColor="@color/darkGrayA"
                 android:layout_marginLeft="20dp"
                 android:text="349,900"
         />
@@ -41,25 +42,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:textColor="#111111"
-                android:text="베리"
-                android:layout_marginLeft="3dp"
-        />
+                android:textColor="@color/darkGrayA"
+                android:text="@string/berry"
+                android:layout_marginLeft="3dp"/>
     </LinearLayout>
+
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="32dp"
-            android:background="#f9f9f9"
-            android:layout_marginTop="29dp">
+            android:background="@color/lightGrayC"
+    android:layout_marginTop="29dp">
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="최근 베리 사용내역"
+                android:text="@string/recent_use_berry"
                 android:paddingTop="6dp"
                 android:paddingBottom="8dp"
                 android:layout_marginLeft="20dp"
                 android:textSize="12sp"
-                android:textColor="#666666"/>
+                android:textColor="@color/grayA"/>
     </LinearLayout>
     <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_berryhistory"

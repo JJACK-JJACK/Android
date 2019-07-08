@@ -7,8 +7,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:showIn="@layout/activity_ranking">
-
-
     <include layout="@layout/toolbar_with_hamburger">
 
     </include>
@@ -20,7 +18,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-
 
             <RelativeLayout
                     android:layout_width="match_parent"
@@ -41,7 +38,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="50dp"
-                        android:text="전달후기"
+                        android:textColor="@color/darkGrayA"
+                        android:text="@string/delivery_review"
                         android:textSize="30sp"/>
 
                 <TextView
@@ -65,9 +63,9 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="151dp"
+                        android:layout_marginLeft="155dp"
                         android:layout_marginTop="161dp"
-                        android:text="  베리"
+                        android:text="@string/berry"
                         android:textSize="16sp"/>
             </RelativeLayout>
 
@@ -77,6 +75,7 @@
                     android:orientation="horizontal">
 
                 <TextView
+                        android:textColor="@color/darkGrayA"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
@@ -104,12 +103,8 @@
                         android:layout_height="1dp"
                         android:layout_alignParentBottom="true"
                         android:layout_gravity="center"
-                        android:background="#eeeeee"/>
+                        android:background="@color/colorPrimary"/>
             </LinearLayout>
-
         </LinearLayout>
-
     </android.support.v4.widget.NestedScrollView>
-
-
 </LinearLayout>
