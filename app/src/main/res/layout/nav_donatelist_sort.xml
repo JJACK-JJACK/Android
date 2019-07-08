@@ -14,11 +14,12 @@
             android:layout_weight="1"
             android:gravity="center">
         <TextView
+                android:layout_marginLeft="112dp"
                 android:text="최신순"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14dp" android:textColor="#999999"
-                />
+                android:textSize="14sp" android:textColor="#999999"
+        />
     </RelativeLayout>
     <RelativeLayout
             android:id="@+id/nav_donatelist_sort_popular"
@@ -29,8 +30,10 @@
         <TextView
                 android:text="기부율 높은순"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:textSize="14dp" android:textColor="#999999"
-                />
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="#999999"
+        />
     </RelativeLayout>
     <RelativeLayout
             android:id="@+id/nav_donatelist_sort_unpopular"
@@ -41,7 +44,9 @@
         <TextView
                 android:text="기부율 낮은순"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:textSize="14dp" android:textColor="#999999"
-                />
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="#999999"
+        />
     </RelativeLayout>
 </LinearLayout>

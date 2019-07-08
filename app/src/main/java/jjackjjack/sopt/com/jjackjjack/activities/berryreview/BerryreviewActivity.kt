@@ -1,18 +1,27 @@
 package jjackjjack.sopt.com.jjackjjack.activities.berryreview
 
+import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.view.View
 import jjackjjack.sopt.com.jjackjjack.R
 import jjackjjack.sopt.com.jjackjjack.data.DonateUsePlanData
 import jjackjjack.sopt.com.jjackjjack.list.DonateUsePlanRecyclerViewAdapter
 import kotlinx.android.synthetic.main.activity_donate_record_status.*
 import kotlinx.android.synthetic.main.fragment_use_berry.*
+import kotlinx.android.synthetic.main.li_state.*
+import org.jetbrains.anko.backgroundColor
 
 class BerryreviewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rank_berryreview)
+
+
+        li_state_day.visibility = (View.GONE)
+        li_state_total_num.visibility = (View.GONE)
+        li_state_total_num_berry.visibility = (View.GONE)
 
         lateinit var donateUsePlanRecyclerViewAdapter: DonateUsePlanRecyclerViewAdapter
         var dataList: ArrayList<DonateUsePlanData> = ArrayList()
