@@ -2,28 +2,33 @@
 
 
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" tools:showIn="@layout/activity_my_page">
+        android:layout_height="match_parent"
+        tools:showIn="@layout/activity_my_page">
+
     <include
             layout="@layout/toolbar_with_hamburger">
     </include>
 
     <TextView
+            android:layout_marginTop="20dp"
             android:paddingLeft="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="30sp"
-            android:textColor="#111111"
-            android:text="마이 페이지"
-            android:paddingBottom="32dp"/>
+            android:textColor="@color/darkGrayA"
+            android:text="@string/mypage"
+            android:layout_marginBottom="10dp"/>
 
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingLeft="20dp">
+            android:paddingLeft="20dp"
+            android:paddingVertical="22dp">
 
         <ImageView
                 android:layout_width="51dp"
@@ -46,15 +51,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="20sp"
-                        android:textColor="#111111"
-                        android:text="나뭇잎"
+                        android:textColor="@color/darkGrayA"
+                        android:text="나뭇잎"/>
 
-                />
                 <ImageView
                         android:layout_centerVertical="true"
                         android:layout_width="31dp"
                         android:layout_height="31dp"
-                        android:id="@+id/imageButton1"
+                        android:id="@+id/btn_nickname_edit"
                         android:src="@drawable/ic_edit_large"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="40dp"
@@ -65,128 +69,143 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
-                    android:textColor="#999999"
-                    tools:text="parkce37@gmail.com"
-            />
+                    android:textColor="@color/grayB"
+                    android:text="parkce37@gmail.com"/>
         </LinearLayout>
     </LinearLayout>
 
     <View
+            android:layout_marginTop="22dp"
             android:layout_marginVertical="8dp"
-            android:layout_width="320dp"
+            android:layout_width="335dp"
             android:layout_height="1dp"
-            android:background="#eeeeee"
+            android:background="@color/colorPrimary"
             android:layout_gravity="center"/>
 
-    <TextView
-            android:paddingLeft="20dp"
+    <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textColor="#999999"
-            android:text="베리 관리"
-    />
-    <TextView
-            android:paddingTop="8dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
-            android:textSize="16sp"
-            android:textColor="#333333"
-            android:text="보유 베리"
-    />
+            android:paddingVertical="16dp">
+        <TextView
+                android:layout_marginBottom="10dp"
+                android:paddingLeft="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/grayB"
+                android:text="@string/berry_manage"
+        />
+        <TextView
+                android:paddingVertical="6dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:textSize="16sp"
+                android:textColor="@color/darkGrayC"
+                android:text="@string/own_berry"
+        />
 
-    <TextView
-            android:paddingTop="8dp"
-            android:text="베리 이용 내역"
-            android:gravity="center_vertical"
-            android:paddingLeft="20dp"
-            android:textSize="16sp"
-            android:textColor="#333333"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableRight="@drawable/ic_more_small"
-            android:paddingRight="16dp"
-            android:id="@+id/btn_berry_history"/>
+        <TextView
+                android:paddingVertical="6dp"
+                android:text="베리 이용 내역"
+        android:gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:textSize="16sp"
+                android:textColor="@color/darkGrayC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/ic_more_small"
+                android:paddingRight="16dp"
+                android:id="@+id/btn_berry_history"/>
+    </LinearLayout>
+
     <View
+            android:layout_marginTop="12dp"
             android:layout_marginVertical="8dp"
-            android:layout_width="320dp"
+            android:layout_width="335dp"
             android:layout_height="1dp"
-            android:background="#eeeeee"
+            android:background="@color/colorPrimary"
             android:layout_gravity="center"/>
-    <TextView
-            android:paddingLeft="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textColor="#999999"
-            android:text="기타"
-            android:layout_marginBottom="8dp"
-    />
 
-    <TextView
-            android:text="문의하기"
-            android:paddingVertical="8dp"
-            android:gravity="center_vertical"
-            android:paddingLeft="20dp"
-            android:textSize="16sp"
-            android:textColor="#333333"
+    <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableRight="@drawable/ic_more_small"
-            android:paddingRight="16dp"
-            android:id="@+id/btn_inquiry"/>
+            android:paddingVertical="16dp">
+        <TextView
+                android:layout_marginBottom="10dp"
+                android:paddingLeft="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/grayB"
+                android:text="기타"
+        />
+        <TextView
+                android:paddingRight="12dp"
+                android:paddingVertical="6dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:textSize="16sp"
+                android:textColor="@color/darkGrayC"
+                android:text="문의하기"
+                android:drawableRight="@drawable/ic_more_small"
+       />
 
-    <TextView
-            android:text="로그아웃"
-            android:paddingVertical="8dp"
-            android:gravity="center_vertical"
-            android:paddingLeft="20dp"
-            android:textSize="16sp"
-            android:textColor="#333333"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btn_logout"/>
+        <TextView
+                android:paddingVertical="6dp"
+                android:text="로그아웃"
+                android:gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:textSize="16sp"
+                android:textColor="@color/darkGrayC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="16dp"
+                android:id="@+id/btn_logout"/>
+        <TextView
+                android:paddingVertical="6dp"
+                android:text="탈퇴하기"
+                android:gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:textSize="16sp"
+                android:textColor="@color/darkGrayC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="16dp"/>
+    </LinearLayout>
 
-    <TextView
-            android:text="탈퇴하기"
-            android:paddingVertical="8dp"
-            android:gravity="center_vertical"
-            android:paddingLeft="20dp"
-            android:textSize="16sp"
-            android:textColor="#333333"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btn_withdrawal"/>
     <View
+            android:layout_marginTop="16dp"
             android:layout_marginVertical="8dp"
-            android:layout_width="320dp"
+            android:layout_width="335dp"
             android:layout_height="1dp"
-            android:background="#eeeeee"
+            android:background="@color/colorPrimary"
             android:layout_gravity="center"/>
+
     <TextView
+            android:paddingVertical="6dp"
             android:text="오픈소스 라이센스"
-            android:paddingBottom="8dp"
             android:gravity="center_vertical"
             android:paddingLeft="20dp"
             android:textSize="16sp"
-            android:textColor="#333333"
+            android:textColor="@color/darkGrayC"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableRight="@drawable/ic_more_small"
-            android:paddingRight="16dp"
-            android:id="@+id/btn_os_license"/>
+            android:paddingRight="16dp"/>
     <TextView
+            android:paddingVertical="6dp"
             android:text="개인정보 처리방침"
-            android:paddingVertical="8dp"
             android:gravity="center_vertical"
             android:paddingLeft="20dp"
             android:textSize="16sp"
-            android:textColor="#333333"
+            android:textColor="@color/darkGrayC"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableRight="@drawable/ic_more_small"
-            android:paddingRight="16dp"
-            android:id="@+id/btn_policy"/>
+            android:paddingRight="16dp"/>
 
 </LinearLayout>

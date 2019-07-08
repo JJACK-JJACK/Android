@@ -6,7 +6,7 @@
     <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:backgroundTint="#ffffff"
+            android:backgroundTint="@color/white"
             android:theme="?attr/actionBarTheme"
             android:id="@+id/toolbar">
         <ImageView
@@ -19,49 +19,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <TextView
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:textColor="#000000"
+                android:textColor="@color/black"
                 android:letterSpacing="0.01"
                 android:gravity="center_horizontal"
                 android:layout_marginTop="7dp"
                 android:layout_marginLeft="20dp"
-                android:text="나의 스탬프"
-        />
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:textColor="#444444"
-                android:letterSpacing="-0.07"
-                android:lineSpacingExtra="6sp"
-                android:layout_marginTop="7dp"
-                android:layout_marginLeft="138dp"
-                android:text="수확 가능횟수"
-        />
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:textColor="#111111"
-                android:letterSpacing="-0.07"
-                android:lineSpacingExtra="6sp"
-                android:layout_marginTop="7dp"
-                android:layout_marginLeft="1dp"
-                android:text=" 0"
-        />
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:textColor="#111111"
-                android:letterSpacing="-0.07"
-                android:lineSpacingExtra="6sp"
-                android:layout_marginTop="7dp"
-                android:layout_marginLeft="1dp"
-                android:text="회"
-        />
+                android:text="@string/my_stamp"></TextView>
     </LinearLayout>
     <LinearLayout
             android:layout_width="match_parent"
@@ -72,31 +39,18 @@
                 android:layout_width="221dp"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
-                android:textColor="#000000"
+                android:textColor="@color/black"
                 android:letterSpacing="-0.07"
                 android:lineSpacingExtra="6sp"
                 android:layout_marginLeft="20dp"
-                android:text="10개의 스탬프를 다 모으면 총 기부한 베리의
-10% 내에서 랜덤으로 베리를 수확 가능해요"
+                android:text="@string/msg_get_stamp"
         />
 
         <ImageView
                 android:layout_width="320dp"
-                android:layout_height="395dp"
+                android:layout_height="460dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="21dp"
-                android:background="#ffc21f"
-                />
-        <Button android:layout_width="320dp"
-                android:layout_height="56dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:text="베리 수확"
-                android:textSize="16sp"
-                android:textColor="#ffffff"
-                android:letterSpacing="-0.07"
-                android:lineSpacingExtra="2sp"
-                android:background="@drawable/shape_redbtn_4dp"
-        />
+                android:background="@color/goldenYellow"/>
     </LinearLayout>
 </LinearLayout>

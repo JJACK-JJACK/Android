@@ -1,17 +1,24 @@
 package jjackjjack.sopt.com.jjackjjack.activities
 
+import android.content.Context
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import java.util.ArrayList
 
+
+
 class MainActivityImageSliderAdapter : FragmentPagerAdapter {
 
-    constructor(fragmentPagerAdapter: FragmentManager) : super(fragmentPagerAdapter){}
+    var mContext : Context
 
-    var imageFragmentList = ArrayList<Fragment>()
+    constructor(context : Context, fragmentPagerAdapter: FragmentManager) : super(fragmentPagerAdapter){
+        this.mContext = context
+    }
 
-    override fun getItem(position: Int): Fragment {
+    var imageFragmentList = ArrayList<FragmentMainActivityImageSlider>()
+
+    override fun getItem(position: Int): Fragment? {
         return imageFragmentList.get(position)
     }
 
@@ -19,7 +26,7 @@ class MainActivityImageSliderAdapter : FragmentPagerAdapter {
         return imageFragmentList.size
     }
 
-    fun addImage(fragment: Fragment) {
+    fun addImage(fragment: FragmentMainActivityImageSlider, category: Int) {
         imageFragmentList.add(fragment)
     }
 }

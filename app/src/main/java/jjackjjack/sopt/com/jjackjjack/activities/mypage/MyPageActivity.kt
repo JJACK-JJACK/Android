@@ -13,6 +13,7 @@ import jjackjjack.sopt.com.jjackjjack.activities.donaterecord.DonateRecordActivi
 import jjackjjack.sopt.com.jjackjjack.activities.MainActivity
 import jjackjjack.sopt.com.jjackjjack.R
 import jjackjjack.sopt.com.jjackjjack.activities.berrycharge.BerryChargeActivity
+import jjackjjack.sopt.com.jjackjjack.activities.berryuse.BerryHistoryActivity
 import jjackjjack.sopt.com.jjackjjack.activities.donate.DonateActivity
 import jjackjjack.sopt.com.jjackjjack.activities.login.BeginningActivity
 import jjackjjack.sopt.com.jjackjjack.activities.login.LoginActivity
@@ -40,8 +41,16 @@ class MyPageActivity : AppCompatActivity(), onDrawer {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_page)
         initialUI()
-    }
 
+        btn_nickname_edit.setOnClickListener {
+            val intent = Intent(this, MyPageModifyActivity::class.java)
+            startActivity(intent)
+        }
+        btn_berry_history.setOnClickListener{
+            val intent = Intent(this, BerryHistoryActivity::class.java)
+            startActivity(intent)
+        }
+    }
     private fun initialUI(){
         btn_home.setOnClickListener {
             startActivity<MainActivity>()

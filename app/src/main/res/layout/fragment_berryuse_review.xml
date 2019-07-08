@@ -44,7 +44,7 @@
             android:layout_height="179dp"
             android:background="@color/colorPrimary"/>
     <LinearLayout
-            android:layout_marginTop="20dp"
+            android:layout_marginVertical="40dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -67,5 +67,5 @@
                 android:layout_marginLeft="16dp"/>
     </LinearLayout>
     <include
-        layout="@layout/fragment_use_berry"></include>
+            layout="@layout/fragment_use_berry"></include>
 </LinearLayout>

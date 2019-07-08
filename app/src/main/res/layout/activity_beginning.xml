@@ -69,7 +69,7 @@
                 android:textColor="@color/grayB"
                 android:letterSpacing="0.17"
                 android:gravity="center_horizontal"
-                android:text="@string/signup_notice"/>
+                android:text="@string/msg_signup_notice"/>
 
     </LinearLayout>
 

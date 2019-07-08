@@ -16,7 +16,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:textColor="#222222"
+                android:textColor="@color/darkGrayB"
                 android:letterSpacing="0.02"
                 android:lineSpacingExtra="5sp"
                 android:text="“이제 아프지 않을 거예요”"
@@ -27,7 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:textColor="#333333"
+                android:textColor="@color/darkGrayC"
                 android:lineSpacingExtra="7sp"
                 android:text="&quot;남양주 유기견 보호소는 굶주림과 수많은 생명의 위험에 놓인 유기동물을 구조해
 치료하는 기부를 주관하여 시민 구조자의 부담은 나누고,
@@ -41,6 +41,7 @@
         <ImageView
                 android:layout_width="320dp"
                 android:layout_height="179dp"/>
+
     </LinearLayout>
 
 </LinearLayout>

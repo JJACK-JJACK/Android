@@ -112,6 +112,10 @@ class LoginActivity : AppCompatActivity() {
         btn_login_signup.setOnClickListener {
             startActivity<SignUpActivity>()
         }
+
+        btn_login_back.setOnClickListener {
+            finish()
+        }
     }
 
 }
