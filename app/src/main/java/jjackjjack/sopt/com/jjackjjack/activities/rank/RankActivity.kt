@@ -14,6 +14,7 @@ import jjackjjack.sopt.com.jjackjjack.*
 import jjackjjack.sopt.com.jjackjjack.activities.MainActivity
 import jjackjjack.sopt.com.jjackjjack.activities.berrycharge.BerryChargeActivity
 import jjackjjack.sopt.com.jjackjjack.activities.berryreview.BerryreviewActivity
+import jjackjjack.sopt.com.jjackjjack.activities.berryuse.BerryHistoryActivity
 import jjackjjack.sopt.com.jjackjjack.activities.donate.DonateActivity
 import jjackjjack.sopt.com.jjackjjack.activities.donaterecord.DonateRecordActivity
 import jjackjjack.sopt.com.jjackjjack.activities.mypage.MyPageActivity
@@ -87,7 +88,7 @@ class RankActivity : AppCompatActivity(), onDrawer {
         actSet = arrayOf(
             MainActivity::class.java, DonateRecordActivity::class.java,
             RankActivity::class.java, MyPageActivity::class.java,
-            BerryChargeActivity::class.java
+            BerryChargeActivity::class.java, BerryHistoryActivity::class.java
         )
 
         btnFset = arrayOf( //프래그먼트로 가는 버튼
@@ -97,7 +98,7 @@ class RankActivity : AppCompatActivity(), onDrawer {
 
         btnAset = arrayOf(
             btn_drawer_home, btn_drawer_donate_record, btn_drawer_rank,
-            btn_drawer_mypage, btn_drawer_berrycharge
+            btn_drawer_mypage, btn_drawer_berrycharge,btn_drawer_usehistory
         )
 
         drawerBtnSetting(Constants.ACTIVITY_RANK)

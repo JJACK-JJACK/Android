@@ -92,7 +92,7 @@ class MyPageActivity : AppCompatActivity(), onDrawer {
         actSet = arrayOf(
             MainActivity::class.java, DonateRecordActivity::class.java,
             RankActivity::class.java, MyPageActivity::class.java,
-            BerryChargeActivity::class.java
+            BerryChargeActivity::class.java, BerryHistoryActivity::class.java
         )
 
         btnFset = arrayOf( //프래그먼트로 가는 버튼
@@ -102,7 +102,7 @@ class MyPageActivity : AppCompatActivity(), onDrawer {
 
         btnAset = arrayOf(
             btn_drawer_home, btn_drawer_donate_record, btn_drawer_rank,
-            btn_drawer_mypage, btn_drawer_berrycharge
+            btn_drawer_mypage, btn_drawer_berrycharge, btn_drawer_usehistory
         )
 
         drawerBtnSetting(Constants.ACTIVITY_MY_PAGE)
