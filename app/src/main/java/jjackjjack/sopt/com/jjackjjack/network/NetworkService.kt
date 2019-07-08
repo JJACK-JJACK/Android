@@ -4,6 +4,7 @@ import com.google.gson.JsonObject
 import jjackjjack.sopt.com.jjackjjack.network.data.DonateSortedData
 import jjackjjack.sopt.com.jjackjjack.network.data.DonatedDetailedData
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateDetailedResponse
+import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateParticipationResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateSortedListResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostLoginResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostNicknameCheckResponse
@@ -59,4 +60,9 @@ interface NetworkService {
         @Path("programId") programId: String
     ): Call<GetDonateDetailedResponse>
 
+    //기부 참여 현황
+    @GET("/donate")
+    fun getDonateParticipationResponse(
+        @Header("Content-Type") content_type: String
+    ): Call<GetDonateParticipationResponse>
 }
