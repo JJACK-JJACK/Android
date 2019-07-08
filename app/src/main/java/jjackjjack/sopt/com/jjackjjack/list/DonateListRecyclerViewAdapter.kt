@@ -39,6 +39,7 @@ class DonateListRecyclerViewAdapter (val ctx: Context, var list: ArrayList<Donat
                     "percent" to list[position].percent,
                     "maxBerry" to list[position].maxBerry,
                     "d_day" to list[position].d_day
+
                     //"isDonateHistory" to isDonateHistory
                 )
             }

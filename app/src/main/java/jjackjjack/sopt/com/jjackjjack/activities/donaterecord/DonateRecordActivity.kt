@@ -15,16 +15,21 @@ import jjackjjack.sopt.com.jjackjjack.R
 import jjackjjack.sopt.com.jjackjjack.activities.berrycharge.BerryChargeActivity
 import jjackjjack.sopt.com.jjackjjack.activities.berryuse.BerryHistoryActivity
 import jjackjjack.sopt.com.jjackjjack.activities.donate.DonateActivity
-import jjackjjack.sopt.com.jjackjjack.model.DonateInfo
 import jjackjjack.sopt.com.jjackjjack.list.DonateListRecyclerViewAdapter
 import jjackjjack.sopt.com.jjackjjack.activities.mypage.MyPageActivity
 import jjackjjack.sopt.com.jjackjjack.activities.rank.RankActivity
+import jjackjjack.sopt.com.jjackjjack.db.SharedPreferenceController
 import jjackjjack.sopt.com.jjackjjack.interfaces.onDrawer
+import jjackjjack.sopt.com.jjackjjack.model.DonateInfo
+import jjackjjack.sopt.com.jjackjjack.model.DonateParticipationInfo
 import jjackjjack.sopt.com.jjackjjack.network.ApplicationController
 import jjackjjack.sopt.com.jjackjjack.network.NetworkService
 import jjackjjack.sopt.com.jjackjjack.network.data.DonateRecordData
+import jjackjjack.sopt.com.jjackjjack.network.data.DonatedDetailedData
+import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateParticipationResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateRecordResponse
 import jjackjjack.sopt.com.jjackjjack.utillity.Constants
+import jjackjjack.sopt.com.jjackjjack.utillity.Secret
 import kotlinx.android.synthetic.main.activity_donate_record.ly_drawer
 import kotlinx.android.synthetic.main.content_activity_donate_record.*
 import kotlinx.android.synthetic.main.nav_drawer.*
@@ -67,6 +72,7 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
 
         var list: ArrayList<DonateInfo> = ArrayList()
 
+
 //        list.add(
 //            DonateInfo(
 //                "64", "병제에게 맛있는 한끼를", "솝트", "99", "150.000"
@@ -77,7 +83,7 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
 //                "15", "동진에게 맛있는 한끼를", "솝트", "55", "199.999"
 //            )
 //        )
-//        list.add(w
+//        list.add(
 //            DonateInfo(
 //                "33", "연수에게 맛있는 한끼를", "솝트", "20", "130.000"
 //            )
@@ -136,22 +142,25 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
                 startActivity<DonateActivity>("fragment" to i)
                 Handler().postDelayed({ ly_drawer.closeDrawer(Gravity.END) }, 110)
                 finish()
-
             }
         }
-
     }
 
     override fun onBackPressed() {
         if (ly_drawer.isDrawerOpen(Gravity.END)) {
             ly_drawer.closeDrawer(Gravity.END)
-        } else {
+        }
+        else {
             super.onBackPressed()
         }
     }
 
     private fun getDonateRecordResponse() {
-        val getDonateRecordResponse = networkService.getDonateRecordResponse("application/json")
+//        val getDonateRecordResponse =
+//            networkService.getDonateRecordResponse("application/json")
+
+        val getDonateRecordResponse =
+            networkService.getDonateRecordResponse(SharedPreferenceController.getAuthorization(this))
 
         getDonateRecordResponse.enqueue(object : Callback<GetDonateRecordResponse> {
             override fun onFailure(call: Call<GetDonateRecordResponse>, t: Throwable) {
@@ -160,14 +169,44 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
 
             override fun onResponse(call: Call<GetDonateRecordResponse>, response: Response<GetDonateRecordResponse>) {
                 if (response.isSuccessful) {
-                    if (response.body()!!.status == 200) {
-                        val receiveData: ArrayList<DonateRecordData> = response.body()!!.data
-                        if (receiveData.size > 0) {
-                            total_berry.text = receiveData[0].toString()
-                            participation_num.text = receiveData[1].toString()
-                        }
+                    if (response.body()!!.status == Secret.NETWORK_SUCCESS) {
+                        val receiveData: DonateRecordData = response.body()!!.data
+                        total_berry.text = receiveData.donateBerry.toString()
+                        participation_num.text = receiveData.donate.toString()
                     }
-                    else if(response.body()!!.status == 600){
+                } else if (response.body()!!.status == 600) {
+                    toast(response.body()!!.message)
+                }
+            }
+        })
+    }
+
+    private fun getDonateParticipationResponse() {
+
+        val getDonateParticipationResponse = networkService.getDonateParticipationResponse("application/json")
+        getDonateParticipationResponse.enqueue(object : Callback<GetDonateParticipationResponse> {
+            override fun onFailure(call: Call<GetDonateParticipationResponse>, t: Throwable) {
+                Log.e("get donate participation data fail", t.toString()) }
+
+            override fun onResponse(
+                call: Call<GetDonateParticipationResponse>,
+                response: Response<GetDonateParticipationResponse>
+            ) {
+                if (response.isSuccessful) {
+                    if (response.body()!!.status == 200) {
+                        val receiveData: ArrayList<DonatedDetailedData>? = response.body()?.data
+                        if (receiveData!!.size > 0) {
+                            var list: ArrayList<DonateParticipationInfo> = ArrayList()
+                            for (i in 0 until receiveData.size) {
+//                                list.add(
+//                                    DonateParticipationInfo(
+//                                        receiveData[i]._id, receiveData[i].thumbnail, d_day,
+//                                        receiveData[i].title, receiveData[i].centerName, receiveData[i].percentage.toString(),
+//                                        berry)
+//                                )
+                            }
+                        }
+                    } else if (response.body()!!.status == 600) {
                         toast(response.body()!!.message)
                     }
                 }
