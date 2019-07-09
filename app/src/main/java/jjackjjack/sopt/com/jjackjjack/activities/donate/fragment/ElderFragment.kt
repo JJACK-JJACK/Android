@@ -1,23 +1,45 @@
 package jjackjjack.sopt.com.jjackjjack.activities.donate.fragment
 
 import android.os.Bundle
-import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
+import android.support.v4.content.ContextCompat
+import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RelativeLayout
-import jjackjjack.sopt.com.jjackjjack.activities.donate.adapter.DonateSortCategoryPagerAdapter
+import android.widget.TextView
 import jjackjjack.sopt.com.jjackjjack.R
-import jjackjjack.sopt.com.jjackjjack.activities.donate.fragment.sort.SortFragmentAdapter
+import jjackjjack.sopt.com.jjackjjack.list.DonateListRecyclerViewAdapter
+import jjackjjack.sopt.com.jjackjjack.model.DonateInfo
+import jjackjjack.sopt.com.jjackjjack.network.ApplicationController
+import jjackjjack.sopt.com.jjackjjack.network.NetworkService
+import jjackjjack.sopt.com.jjackjjack.network.data.DonateSortedData
+import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateSortedListResponse
 import jjackjjack.sopt.com.jjackjjack.utillity.Constants
+import jjackjjack.sopt.com.jjackjjack.utillity.Secret
 import kotlinx.android.synthetic.main.fragment_elder_category.*
-import kotlin.properties.Delegates
+import org.jetbrains.anko.support.v4.toast
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-class ElderFragment : Fragment(){
+class ElderFragment : Fragment(), View.OnClickListener{
 
-    var sortfragmentAdapter: SortFragmentAdapter by Delegates.notNull()
+    lateinit var donateListRecyclerViewAdapter: DonateListRecyclerViewAdapter
+
+    val dataList: ArrayList<DonateInfo> by lazy {
+        ArrayList<DonateInfo>()
+    }
+
+    val dataList_DonateInfo: ArrayList<DonateInfo> by lazy{
+        ArrayList<DonateInfo>()
+    }
+
+    val networkService: NetworkService by lazy {
+        ApplicationController.instance.networkService
+    }
+    var CategoryId = 3
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -28,60 +50,100 @@ class ElderFragment : Fragment(){
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-//               //var sub_adapter = DonateSortCategoryPagerAdapter(activity!!.supportFragmentManager)
-//        var sub_adapter =
-//            DonateSortCategoryPagerAdapter(childFragmentManager)
-//        donate_sort_pager.adapter = sub_adapter
-//
-//        donate_sort_tab.setupWithViewPager(donate_sort_pager)
-//
-//        val navDonateListSort: View =
-//            (activity!!.getSystemService(android.content.Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater)
-//                .inflate(R.layout.nav_donatelist_sort, null, false)
-//
-//        donate_sort_tab.getTabAt(0)!!.customView =
-//            navDonateListSort.findViewById(R.id.nav_donatelist_sort_recent) as RelativeLayout
-//        donate_sort_tab.getTabAt(1)!!.customView =
-//            navDonateListSort.findViewById(R.id.nav_donatelist_sort_popular) as RelativeLayout
-//        donate_sort_tab.getTabAt(2)!!.customView =
-//            navDonateListSort.findViewById(R.id.nav_donatelist_sort_unpopular) as RelativeLayout
-
       initialUI()
     }
 
+    override fun onClick(view:View) {
+        when(view.id){
+            R.id.tv_sorted_recent->{
+                getDonateSortedListResponse(0)
+                updateTextColor(tv_sorted_recent)
+            }
+            R.id.tv_sorted_popular->{
+                getDonateSortedListResponse(1)
+                updateTextColor(tv_sorted_popular)
+            }
+            R.id.tv_sorted_unpopular->{
+                getDonateSortedListResponse(2)
+                updateTextColor(tv_sorted_unpopular)
+            }
+            else->{
+
+            }
+        }
+    }
+
+    private var curTextView: TextView? = null
+    private fun updateTextColor(textView: TextView){
+        activity?.let{
+            curTextView?.setTextColor(ContextCompat.getColor(it.applicationContext, R.color.grayB))
+            curTextView = textView
+
+            textView.setTextColor(ContextCompat.getColor(it.applicationContext, R.color.darkGrayA))
+        }
+    }
+
     private fun initialUI(){
-        donate_sort_tab.addTab(donate_sort_tab.newTab().setText("최신순"))
-        donate_sort_tab.addTab(donate_sort_tab.newTab().setText("기부율 높은순"))
-        donate_sort_tab.addTab(donate_sort_tab.newTab().setText("기부율 낮은순"))
+        donateListRecyclerViewAdapter =
+            DonateListRecyclerViewAdapter(context!!, dataList, false)
+        rv_recent_category.adapter = donateListRecyclerViewAdapter
+        rv_recent_category.layoutManager = LinearLayoutManager(context!!)
 
-        donate_sort_tab.getTabAt(0)?.select()
+        clearDataList()
 
-        sortfragmentAdapter = SortFragmentAdapter(childFragmentManager, donate_sort_tab)
-        donate_sort_tab.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
-            override fun onTabReselected(tab: TabLayout.Tab?) {
+        tv_sorted_recent.setOnClickListener(this)
+        tv_sorted_popular.setOnClickListener(this)
+        tv_sorted_unpopular.setOnClickListener(this)
 
+        updateTextColor(tv_sorted_recent)
+    }
+
+    private fun getDonateSortedListResponse(filterId: Int){
+        clearDataList()
+
+        val getDonateSortedListResponse = networkService.getDonateSortedListResponse(CategoryId, filterId)
+        getDonateSortedListResponse.enqueue(object : Callback<GetDonateSortedListResponse> {
+            override fun onFailure(call: Call<GetDonateSortedListResponse>, t: Throwable) {
+                Log.e("Sorted List fail", t.toString())
             }
 
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-                //이건 프래그먼트 겹칩 현상때문에 넣음
-                var fm : FragmentManager = childFragmentManager
-                fm.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
-            }
+            override fun onResponse(
+                call: Call<GetDonateSortedListResponse>,
+                response: Response<GetDonateSortedListResponse>
+            ) {
+                if(response.isSuccessful){
+                    if(response.body()!!.status == Secret.NETWORK_LIST_SUCCESS){
+                        val temp: ArrayList<DonateSortedData> = response.body()!!.data
+                        for(i in 0 until temp.size){
+                            dataList_DonateInfo.add(temp[i].toDonateInfo())
+                        }
 
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                when(tab?.position){
-                    Constants.TAB_RECENT->{
-                        sortfragmentAdapter.setFragment(Constants.FRAGMENT_RECENT)
+                        updateDonateList(dataList_DonateInfo)
                     }
-                    Constants.TAB_POPULAR->{
-                        sortfragmentAdapter.setFragment(Constants.FRAGMENT_POPULAR)
+                    else{
+                        toast(response.body()!!.message)
                     }
-                    Constants.TAB_UNPOPULAR->{
-                        sortfragmentAdapter.setFragment(Constants.FRAGMENT_UNPOPULAR)
-                    }
+
                 }
             }
         })
     }
 
+    override fun onResume() {
+        super.onResume()
+        clearDataList()
+        getDonateSortedListResponse(Constants.TAB_RECENT)
+    }
+
+    private fun updateDonateList(list: ArrayList<DonateInfo>){
+        dataList.clear()
+        dataList.addAll(list)
+        donateListRecyclerViewAdapter.notifyDataSetChanged()
+    }
+
+    private fun clearDataList(){
+        dataList_DonateInfo.clear()
+        dataList.clear()
+        donateListRecyclerViewAdapter.notifyDataSetChanged()
+    }
 }

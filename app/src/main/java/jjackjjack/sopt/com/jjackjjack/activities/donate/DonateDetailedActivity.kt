@@ -4,9 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.TabLayout
-import android.view.View
 import jjackjjack.sopt.com.jjackjjack.R
-import jjackjjack.sopt.com.jjackjjack.activities.donate.adapter.DonateDetailedPagerAdapter
 import jjackjjack.sopt.com.jjackjjack.activities.donate.fragment.detail.DetailFragmentAdapter
 import jjackjjack.sopt.com.jjackjjack.utillity.Constants
 import kotlinx.android.synthetic.main.activity_donate_detailed.*
