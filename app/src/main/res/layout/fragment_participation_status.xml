@@ -12,10 +12,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <TextView
+                    android:id="@+id/tv_participation_ing"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
-                    android:textColor="@color/red"
                     android:text="@string/donation_step_ing"/>
             <ImageView
                     android:layout_width="1dp"
@@ -31,17 +31,18 @@
                     android:text="2019. 06. 18 ~"/>
         </LinearLayout>
         <TextView
+                android:id="@+id/participation_status_ing"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:textColor="@color/darkGrayC"
+                android:textColor="@color/grayB"
                 android:letterSpacing="-0.07"
                 android:layout_marginTop="5dp"
                 android:text="@string/msg_donate_step_ing"
         />
     </LinearLayout>
     <LinearLayout
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="28dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -49,6 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <TextView
+                    android:id="@+id/tv_participation_end"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
@@ -68,17 +70,18 @@
                     android:text="~ 2019. 8. 30"/>
         </LinearLayout>
         <TextView
+                android:id="@+id/participation_status_end"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:textColor="@color/darkGrayC"
+                android:textColor="@color/grayB"
                 android:letterSpacing="-0.07"
                 android:layout_marginTop="5dp"
                 android:text="@string/msg_donate_step_end"
         />
     </LinearLayout>
     <LinearLayout
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -86,6 +89,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <TextView
+                    android:id="@+id/tv_participation_finish"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
@@ -105,10 +109,11 @@
                     android:text="2019. 9. 22 (예정)"/>
         </LinearLayout>
         <TextView
+                android:id="@+id/participation_status_finish"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:textColor="@color/darkGrayC"
+                android:textColor="@color/grayB"
                 android:letterSpacing="-0.07"
                 android:layout_marginTop="5dp"
                 android:text="@string/msg_donate_step_delivery"

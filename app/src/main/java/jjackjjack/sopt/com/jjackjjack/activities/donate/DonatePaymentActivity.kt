@@ -63,7 +63,7 @@ class DonatePaymentActivity : AppCompatActivity() {
         }
         btn_plus_20_berry.setOnClickListener {
             if(edtString.length > 0){
-                edtString = (edtString.toInt() + 50).toString()
+                edtString = (edtString.toInt() + 20).toString()
             }
             else{
                 edtString = "20"

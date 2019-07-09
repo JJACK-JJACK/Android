@@ -1,6 +1,8 @@
 package jjackjjack.sopt.com.jjackjjack.network
 
 import com.google.gson.JsonObject
+import jjackjjack.sopt.com.jjackjjack.network.response.get.*
+import jjackjjack.sopt.com.jjackjjack.network.response.post.PostBerryChargeResponse
 import jjackjjack.sopt.com.jjackjjack.network.data.DonateSortedData
 import jjackjjack.sopt.com.jjackjjack.network.data.DonatedDetailedData
 import jjackjjack.sopt.com.jjackjjack.network.response.get.*
@@ -70,6 +72,14 @@ interface NetworkService {
         @Header("token") token: String
     ): Call <GetDonateParticipationResponse>
 
+   //베리 충전
+    @POST("/berryHistory")
+    fun postBerryChargeResponse(
+        @Header("Content-Type") content_type: String,
+        @Header("token") token: String,
+        @Body() body: JsonObject
+    ): Call<PostBerryChargeResponse>
+
     //기부 베리 조회
     @GET("/history/berry")
     fun getDonateParticipationBerryNumResponse(
@@ -77,10 +87,11 @@ interface NetworkService {
     ): Call<GetDonateParticipationBerryNumResponse>
 
 
-    //기부 참여 상세 조회(작성 예정)
-
-
-
-
-
+    //기부 참여 상세 조회
+    @GET("/history/detail/{programId}")
+    fun getDonateParticipationDetailResponse(
+        @Header("Content-Type") content_type: String,
+        @Header("token") token: String,
+        @Path("programId") programId : String
+    ): Call<GetDonateParticipationDetailResponse>
 }
