@@ -6,7 +6,18 @@
         android:orientation="vertical">
 
     <ImageView
-            android:id="@+id/status_ing"
+            android:id="@+id/circle_status_ing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/shape_donate_status_circle"
+            />
+    <ImageView
+            android:layout_marginLeft="4dp"
+            android:layout_width="2dp"
+            android:layout_height="62dp"
+            android:background="@drawable/shape_donate_status_rec"/>
+    <ImageView
+            android:id="@+id/circle_status_end"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/shape_donate_status_circle"/>
@@ -16,17 +27,7 @@
             android:layout_height="62dp"
             android:background="@drawable/shape_donate_status_rec"/>
     <ImageView
-            android:id="@+id/status_end"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shape_donate_status_circle"/>
-    <ImageView
-            android:layout_marginLeft="4dp"
-            android:layout_width="2dp"
-            android:layout_height="62dp"
-            android:background="@drawable/shape_donate_status_rec"/>
-    <ImageView
-            android:id="@+id/status_finish"
+            android:id="@+id/circle_status_finish"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/shape_donate_status_circle"/>

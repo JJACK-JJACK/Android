@@ -5,7 +5,6 @@
     <string name="jjack_slogan">세상을 바꾸는\n작은 기부, 짹 !</string>
 
 
-
     <string name="nickname">닉네임</string>
     <string name="login">로그인</string>
     <string name="sign_up">회원 가입</string>
@@ -31,7 +30,7 @@
     <string name="category">카테고리</string>
     <string name="donate">기부하기</string>
     <string name="skip">건너뛰기</string>
-    <string name="donate_history">기부 이력</string>
+    <string name="donate_history">나의 기부</string>
     <string name="donate_num">참여 횟수</string>
     <string name="times">회</string>
     <string name="participate_status">참여 현황</string>

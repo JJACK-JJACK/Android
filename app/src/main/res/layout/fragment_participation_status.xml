@@ -42,7 +42,7 @@
         />
     </LinearLayout>
     <LinearLayout
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="28dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -81,7 +81,7 @@
         />
     </LinearLayout>
     <LinearLayout
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">

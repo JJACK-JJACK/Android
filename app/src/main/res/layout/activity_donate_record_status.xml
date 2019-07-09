@@ -75,6 +75,7 @@
         </View>
 
         <include
+                android:id="@+id/donate_record_status_review"
                 layout="@layout/fragment_berryuse_review">
         </include>
 

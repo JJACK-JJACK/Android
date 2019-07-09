@@ -1,6 +1,7 @@
 package jjackjjack.sopt.com.jjackjjack.network.data
 
 data class DonatedDetailedData(
+
     val _id: String,
     val title: String,
     val categoryId: Int,
@@ -14,7 +15,8 @@ data class DonatedDetailedData(
     val totalBerry: Int,
     val maxBerry: Int,
     val percentage: Int,
-    val reviewData: ArrayList<ReviewData>,
+    val review: ArrayList<ReviewData>,
+
 
     val start: String,
     val finish: String,
