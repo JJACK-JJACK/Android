@@ -61,19 +61,21 @@ interface NetworkService {
     //기부 횟수, 총 베리
     @GET("/donate")
     fun getDonateRecordResponse(
-        @Header("Content-Type") content_type: String
+        @Header("token") token: String
     ): Call<GetDonateRecordResponse>
 
     //기부 참여 현황
     @GET("/donate")
     fun getDonateParticipationResponse(
-        @Header("Content-Type") token: String
+        @Header("token") token: String
     ): Call<GetDonateParticipationResponse>
 
-    //기부 참여 현황 베리 수
-    @GET("/donate")
+    //기부 참여 상세 조회(작성 예정)
+
+    //기부 베리 조회
+    @GET("/history/berry")
     fun getDonateParticipationBerryNumResponse(
-        @Header("Content-Type") content_type: String
+        @Header("token") token: String
     ): Call<GetDonateParticipationBerryNumResponse>
 
 

@@ -16,6 +16,7 @@ import jjackjjack.sopt.com.jjackjjack.model.DonateInfo
 import jjackjjack.sopt.com.jjackjjack.network.data.DonateSortedData
 import org.jetbrains.anko.startActivity
 
+
 //세번쨰 변수 수정 부분
 class DonateListRecyclerViewAdapter (val ctx: Context, var list: ArrayList<DonateInfo>, val isDonateHistory: Boolean): RecyclerView.Adapter<DonateListRecyclerViewAdapter.Holder>() {
 

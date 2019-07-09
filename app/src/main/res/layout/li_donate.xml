@@ -33,7 +33,7 @@
             <TextView
                     android:text="@string/donation_step_ing"
                     android:gravity="center"
-                    android:id="@+id/donate_detailed_title"
+                    android:id="@+id/li_donate_state"
                     android:textSize="10sp"
                     android:textColor="@color/white"
                     android:background="@color/red"
@@ -126,6 +126,7 @@
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
                         android:text="%"
+                        android:id="@+id/li_donate_percent_mark"
                         android:textColor="@color/red"
                         android:textSize="12sp" />
 
@@ -140,6 +141,7 @@
                         android:id="@+id/li_donate_berry_num"/>
 
                 <TextView
+                        android:id="@+id/txt_berry_or_berry_donate"
                         android:layout_marginLeft="1dp"
                         android:textColor="@color/grayA"
                         android:layout_width="wrap_content"
