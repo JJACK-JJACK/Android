@@ -26,6 +26,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
             <include
+                    android:id="@+id/status_header_img"
                     layout="@layout/header_img"></include>
 
             <include
