@@ -5,6 +5,5 @@ import jjackjjack.sopt.com.jjackjjack.network.data.DonatedDetailedData
 data class GetDonateParticipationResponse (
     val status: Int,
     val message: String,
-    val data: ArrayList<DonatedDetailedData>?
+    val data: ArrayList<DonatedDetailedData>
 )
-

@@ -79,7 +79,7 @@ class LoginActivity : AppCompatActivity() {
                 override fun onResponse(call: Call<PostLoginResponse>, response: Response<PostLoginResponse>) {
                     if(response.isSuccessful){
                         if(response.body()!!.status == Secret.NETWORK_SUCCESS){
-                            val token = response.body()!!.data
+                            val token = response.body()!!.data.token
                             SharedPreferenceController.setAuthorization(this@LoginActivity, token)
                             startActivity<MainActivity>()
                             finish()

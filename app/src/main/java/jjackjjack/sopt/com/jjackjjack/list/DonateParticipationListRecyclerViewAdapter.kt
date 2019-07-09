@@ -1,7 +1,11 @@
 package jjackjjack.sopt.com.jjackjjack.list
 
 import android.content.Context
+import android.graphics.Color
+import android.graphics.PorterDuff
+import android.support.v4.content.res.ResourcesCompat.getColor
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,8 +18,8 @@ import org.jetbrains.anko.backgroundColor
 import org.jetbrains.anko.textColor
 
 
-class DonateParticipateListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<DonateParticipationInfo>) : RecyclerView.Adapter<DonateParticipateListRecyclerViewAdapter.Holder>(){
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): DonateParticipateListRecyclerViewAdapter.Holder {
+class DonateParticipationListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<DonateParticipationInfo>) : RecyclerView.Adapter<DonateParticipationListRecyclerViewAdapter.Holder>(){
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): Holder {
         val view: View = LayoutInflater.from(ctx).inflate(R.layout.li_donate, viewGroup, false )
         return Holder(view)
     }
@@ -23,6 +27,7 @@ class DonateParticipateListRecyclerViewAdapter(val ctx: Context, val dataList: A
     override fun getItemCount(): Int = dataList.size
 
     override fun onBindViewHolder(holder : Holder, position: Int) {
+
         holder.d_day.text = " " + dataList[position].d_day
         holder.title.text = dataList[position].title
         holder.centerName.text = dataList[position].centerName
@@ -33,31 +38,37 @@ class DonateParticipateListRecyclerViewAdapter(val ctx: Context, val dataList: A
             Glide.with(ctx).load(dataList[position].thumbnail).into(holder.thumbnail)
         }
 
-        holder.txt.text = "베리 기부"
+        holder.txt.text = " 베리 기부"
 
-        var state = 0
-        when (state) {
-            0 -> {
-                holder.percent_mark.textColor = R.color.red
-                holder.percent.textColor = R.color.red
-                holder.state.backgroundColor = R.color.red
-                holder.state.text = "진행중"
-            }
-            1 -> {
-                holder.percent_mark.textColor = R.color.green
-                holder.percent.textColor = R.color.green
-                holder.state.backgroundColor = R.color.green
-                holder.state.text = "마감"
-            }
-            2 -> {
-                holder.percent_mark.textColor = R.color.blue
-                holder.percent.textColor = R.color.blue
-                holder.state.backgroundColor = R.color.blue
-                holder.state.text = "전달 완료"
-            }
+        if(dataList[position].state == 0){
+            holder.progress.progressDrawable.setColorFilter(Color.parseColor("#da4830"), PorterDuff.Mode.SRC_IN)
+            holder.percent_mark.setTextColor(Color.parseColor("#da4830"))
+            holder.percent.setTextColor(Color.parseColor("#da4830"))
+            holder.state.setBackgroundColor(Color.parseColor("#da4830"))
+            holder.state.text = "진행중"
         }
+        else if (dataList[position].state == 1){
+            holder.d_mark.visibility = View.INVISIBLE
+            holder.d_day.visibility = View.INVISIBLE
+            holder.progress.progressDrawable.setColorFilter(Color.parseColor("#86b854"), PorterDuff.Mode.SRC_IN)
+            holder.percent_mark.setTextColor(Color.parseColor("#86b854"))
+            holder.percent.setTextColor(Color.parseColor("#86b854"))
+            holder.state.setBackgroundColor(Color.parseColor("#86b854"))
+            holder.state.text = "마감"
+        }
+        else if (dataList[position].state == 2) {
+            holder.d_mark.visibility = View.INVISIBLE
+            holder.d_day.visibility = View.INVISIBLE
+            holder.progress.progressDrawable.setColorFilter(Color.parseColor("#464fb2"), PorterDuff.Mode.SRC_IN)
+            holder.percent_mark.setTextColor(Color.parseColor("#464fb2"))
+            holder.percent.setTextColor(Color.parseColor("#464fb2"))
+            holder.state.setBackgroundColor(Color.parseColor("#464fb2"))
+            holder.state.text = "전달 완료"
+        }
+
     }
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var d_mark = itemView.findViewById(R.id.li_donate_d) as TextView
         var container = itemView.findViewById(R.id.li_donate_container) as RelativeLayout
         var thumbnail = itemView.findViewById(R.id.li_donate_img_url) as ImageView
         var d_day = itemView.findViewById(R.id.li_donate_d_day) as TextView

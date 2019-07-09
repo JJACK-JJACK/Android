@@ -7,3 +7,4 @@ data class GetDonateParticipationBerryNumResponse(
     val message: String,
     val data: ArrayList<DonateBerryData>?
 )
+

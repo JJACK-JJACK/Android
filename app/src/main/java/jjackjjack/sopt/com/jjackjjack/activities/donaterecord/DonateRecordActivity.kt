@@ -14,19 +14,19 @@ import jjackjjack.sopt.com.jjackjjack.R
 import jjackjjack.sopt.com.jjackjjack.activities.berrycharge.BerryChargeActivity
 import jjackjjack.sopt.com.jjackjjack.activities.berryuse.BerryHistoryActivity
 import jjackjjack.sopt.com.jjackjjack.activities.donate.DonateActivity
-import jjackjjack.sopt.com.jjackjjack.list.DonateListRecyclerViewAdapter
 import jjackjjack.sopt.com.jjackjjack.activities.mypage.MyPageActivity
 import jjackjjack.sopt.com.jjackjjack.activities.rank.RankActivity
-import jjackjjack.sopt.com.jjackjjack.data.DonateInfoData
 import jjackjjack.sopt.com.jjackjjack.db.SharedPreferenceController
+import jjackjjack.sopt.com.jjackjjack.interfaces.donateListData
 import jjackjjack.sopt.com.jjackjjack.interfaces.onDrawer
-import jjackjjack.sopt.com.jjackjjack.list.DonateParticipateListRecyclerViewAdapter
-import jjackjjack.sopt.com.jjackjjack.model.DonateInfo
+import jjackjjack.sopt.com.jjackjjack.list.DonateParticipationListRecyclerViewAdapter
 import jjackjjack.sopt.com.jjackjjack.model.DonateParticipationInfo
 import jjackjjack.sopt.com.jjackjjack.network.ApplicationController
 import jjackjjack.sopt.com.jjackjjack.network.NetworkService
+import jjackjjack.sopt.com.jjackjjack.network.data.DonateBerryData
 import jjackjjack.sopt.com.jjackjjack.network.data.DonateRecordData
 import jjackjjack.sopt.com.jjackjjack.network.data.DonatedDetailedData
+import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateParticipationBerryNumResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateParticipationResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateRecordResponse
 import jjackjjack.sopt.com.jjackjjack.utillity.Constants
@@ -40,6 +40,9 @@ import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class DonateRecordActivity : AppCompatActivity(), onDrawer {
 
@@ -47,8 +50,15 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
         ApplicationController.instance.networkService
     }
 
-    val dataList : ArrayList<DonateInfo> by lazy{
-        ArrayList<DonateInfo>()
+    val dataList : ArrayList<DonateParticipationInfo> by lazy{
+        ArrayList<DonateParticipationInfo>()
+    }
+    val dataList_donateParticipateInfo : ArrayList<DonateParticipationInfo> by lazy {
+        ArrayList<DonateParticipationInfo>()
+    }
+
+    val dataList_donateberrynum : ArrayList<Int> by lazy {
+        ArrayList<Int>()
     }
 
     lateinit var btnFset: Array<ImageView>
@@ -57,15 +67,21 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
 
     lateinit var actSet: Array<Class<out AppCompatActivity>>
 
-    lateinit var donateParticipateListRecyclerViewAdapter: DonateParticipateListRecyclerViewAdapter
+    lateinit var donateParticipationListRecyclerViewAdapter: DonateParticipationListRecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_donate_record)
         initialUI()
 
+
         getDonateRecordResponse()
         getDonateParticipationResponse()
+
+//
+//        donateParticipationListRecyclerViewAdapter = DonateParticipationListRecyclerViewAdapter(this, dataList)
+//        rv_donate_record.adapter = donateParticipationListRecyclerViewAdapter
+//        rv_donate_record.layoutManager = LinearLayoutManager(this)
     }
 
     private fun initialUI() {
@@ -75,8 +91,6 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
             finish()
         }
         drawerUI()
-
-        var dataList: ArrayList<DonateParticipationInfo> = ArrayList()
 
 //        list.add(
 //            DonateInfo(
@@ -94,9 +108,10 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
 //            )
 //        )
 
-        donateParticipateListRecyclerViewAdapter = DonateParticipateListRecyclerViewAdapter(this, dataList)
-        rv_donate_record.adapter = donateParticipateListRecyclerViewAdapter
+        donateParticipationListRecyclerViewAdapter = DonateParticipationListRecyclerViewAdapter(this, dataList)
+        rv_donate_record.adapter = donateParticipationListRecyclerViewAdapter
         rv_donate_record.layoutManager = LinearLayoutManager(this)
+
     }
 
     override fun drawerUI() {
@@ -187,7 +202,36 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
 
         var token: String = SharedPreferenceController.getAuthorization(this)
 
-        val getDonateParticipationResponse = networkService.getDonateParticipationResponse(token)
+        val getDonateParticipationResponse =
+            networkService.getDonateParticipationResponse(token)
+
+        val getDonateParticipationBerryNumResponse =
+            networkService.getDonateParticipationBerryNumResponse(token)
+
+        getDonateParticipationBerryNumResponse.enqueue(object : Callback<GetDonateParticipationBerryNumResponse>{
+            override fun onFailure(call: Call<GetDonateParticipationBerryNumResponse>, t: Throwable) {
+                Log.e("hello", t.toString())
+            }
+
+            override fun onResponse(
+                call: Call<GetDonateParticipationBerryNumResponse>,
+                response: Response<GetDonateParticipationBerryNumResponse>
+            ) {
+                if (response.isSuccessful) {
+                    if (response.body()!!.status == Secret.NETWORK_SUCCESS) {
+                        val receiveData: ArrayList<DonateBerryData>? = response.body()?.data
+                        if (receiveData!!.size > 0) {
+                            for (i in 0 until receiveData.size){
+                                dataList_donateberrynum.add(receiveData[i].berry)
+                            }
+                        }
+                    } else if (response.body()!!.status == 600) {
+                        toast(response.body()!!.message)
+                    }
+                }
+            }
+        })
+
         getDonateParticipationResponse.enqueue(object : Callback<GetDonateParticipationResponse> {
             override fun onFailure(call: Call<GetDonateParticipationResponse>, t: Throwable) {
                 Log.e("hello", t.toString())
@@ -201,19 +245,21 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
                     if (response.body()!!.status == Secret.NETWORK_SUCCESS) {
                         val receiveData: ArrayList<DonatedDetailedData>? = response.body()?.data
                         if (receiveData!!.size > 0) {
-                            for (i in 0 until receiveData.size) {
-                                dataList.add(
-                                    DonateInfo(
+                            for (i in 0 until receiveData.size){
+                                dataList_donateParticipateInfo.add(
+                                    DonateParticipationInfo(
                                         receiveData[i]._id,
                                         receiveData[i].thumbnail,
-                                        0.toString(), //임시값
+                                        converteDday(receiveData[i].finish),
                                         receiveData[i].title,
                                         receiveData[i].centerName,
                                         receiveData[i].percentage.toString(),
-                                        0.toString() //임시값
+                                        dataList_donateberrynum[i],
+                                        receiveData[i].state
                                     )
                                 )
                             }
+                            updateDonateList(dataList_donateParticipateInfo)
                         }
                     } else if (response.body()!!.status == 600) {
                         toast(response.body()!!.message)
@@ -221,5 +267,33 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
                 }
             }
         })
+    }
+    private fun updateDonateList(list: ArrayList<DonateParticipationInfo>){
+        dataList.clear()
+        dataList.addAll(list)
+        donateParticipationListRecyclerViewAdapter.notifyDataSetChanged()
+    }
+    private fun converteDday(finish: String) : String{
+
+        var dday : Int = 0
+        var Dday: String =""
+
+        if(finish != null) {
+
+            val today = Calendar.getInstance()
+            val finishdateFormat = SimpleDateFormat("yyyy-MM-dd").parse(finish.split("T")[0])
+            val instance: Calendar = Calendar.getInstance()
+            instance.setTime(finishdateFormat)
+
+            val cnt_today: Long = today.timeInMillis / 86400000
+            val cnt_instance: Long = instance.timeInMillis / 86400000
+
+            val sub: Long = cnt_today - cnt_instance
+
+            dday = Math.abs(sub.toInt() + 1)
+            Dday = "$dday"
+
+        }
+        return Dday
     }
 }
