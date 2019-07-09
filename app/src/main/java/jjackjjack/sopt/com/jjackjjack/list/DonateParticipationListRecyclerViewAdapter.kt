@@ -13,20 +13,26 @@ import android.webkit.URLUtil
 import android.widget.*
 import com.bumptech.glide.Glide
 import jjackjjack.sopt.com.jjackjjack.R
+import jjackjjack.sopt.com.jjackjjack.activities.donaterecord.DonateRecordStatusActivity
 import jjackjjack.sopt.com.jjackjjack.model.DonateParticipationInfo
 import org.jetbrains.anko.backgroundColor
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.textColor
 
 
-class DonateParticipationListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<DonateParticipationInfo>) : RecyclerView.Adapter<DonateParticipationListRecyclerViewAdapter.Holder>(){
+class DonateParticipationListRecyclerViewAdapter(
+    val ctx: Context,
+    val dataList: ArrayList<DonateParticipationInfo>
+) :
+    RecyclerView.Adapter<DonateParticipationListRecyclerViewAdapter.Holder>() {
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): Holder {
-        val view: View = LayoutInflater.from(ctx).inflate(R.layout.li_donate, viewGroup, false )
+        val view: View = LayoutInflater.from(ctx).inflate(R.layout.li_donate, viewGroup, false)
         return Holder(view)
     }
 
     override fun getItemCount(): Int = dataList.size
 
-    override fun onBindViewHolder(holder : Holder, position: Int) {
+    override fun onBindViewHolder(holder: Holder, position: Int) {
 
         holder.d_day.text = " " + dataList[position].d_day
         holder.title.text = dataList[position].title
@@ -40,14 +46,13 @@ class DonateParticipationListRecyclerViewAdapter(val ctx: Context, val dataList:
 
         holder.txt.text = " 베리 기부"
 
-        if(dataList[position].state == 0){
+        if (dataList[position].state == 0) {
             holder.progress.progressDrawable.setColorFilter(Color.parseColor("#da4830"), PorterDuff.Mode.SRC_IN)
             holder.percent_mark.setTextColor(Color.parseColor("#da4830"))
             holder.percent.setTextColor(Color.parseColor("#da4830"))
             holder.state.setBackgroundColor(Color.parseColor("#da4830"))
             holder.state.text = "진행중"
-        }
-        else if (dataList[position].state == 1){
+        } else if (dataList[position].state == 1) {
             holder.d_mark.visibility = View.INVISIBLE
             holder.d_day.visibility = View.INVISIBLE
             holder.progress.progressDrawable.setColorFilter(Color.parseColor("#86b854"), PorterDuff.Mode.SRC_IN)
@@ -55,8 +60,7 @@ class DonateParticipationListRecyclerViewAdapter(val ctx: Context, val dataList:
             holder.percent.setTextColor(Color.parseColor("#86b854"))
             holder.state.setBackgroundColor(Color.parseColor("#86b854"))
             holder.state.text = "마감"
-        }
-        else if (dataList[position].state == 2) {
+        } else if (dataList[position].state == 2) {
             holder.d_mark.visibility = View.INVISIBLE
             holder.d_day.visibility = View.INVISIBLE
             holder.progress.progressDrawable.setColorFilter(Color.parseColor("#464fb2"), PorterDuff.Mode.SRC_IN)
@@ -66,7 +70,14 @@ class DonateParticipationListRecyclerViewAdapter(val ctx: Context, val dataList:
             holder.state.text = "전달 완료"
         }
 
+        holder.container.setOnClickListener {
+            Log.d("heloooo", dataList[position]._id)
+            ctx.startActivity<DonateRecordStatusActivity>(
+                "programId_status" to dataList[position]._id
+            )
+        }
     }
+
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var d_mark = itemView.findViewById(R.id.li_donate_d) as TextView
         var container = itemView.findViewById(R.id.li_donate_container) as RelativeLayout

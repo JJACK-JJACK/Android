@@ -72,16 +72,10 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_donate_record)
-        initialUI()
-
-
         getDonateRecordResponse()
         getDonateParticipationResponse()
 
-//
-//        donateParticipationListRecyclerViewAdapter = DonateParticipationListRecyclerViewAdapter(this, dataList)
-//        rv_donate_record.adapter = donateParticipationListRecyclerViewAdapter
-//        rv_donate_record.layoutManager = LinearLayoutManager(this)
+        initialUI()
     }
 
     private fun initialUI() {
@@ -111,7 +105,6 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
         donateParticipationListRecyclerViewAdapter = DonateParticipationListRecyclerViewAdapter(this, dataList)
         rv_donate_record.adapter = donateParticipationListRecyclerViewAdapter
         rv_donate_record.layoutManager = LinearLayoutManager(this)
-
     }
 
     override fun drawerUI() {
@@ -175,6 +168,7 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
 
     private fun getDonateRecordResponse() {
         var token: String = SharedPreferenceController.getAuthorization(this)
+
 
         val getDonateRecordResponse =
             networkService.getDonateRecordResponse(token)
@@ -250,7 +244,7 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
                                     DonateParticipationInfo(
                                         receiveData[i]._id,
                                         receiveData[i].thumbnail,
-                                        converteDday(receiveData[i].finish),
+                                        "- " + converteDday(receiveData[i].finish),
                                         receiveData[i].title,
                                         receiveData[i].centerName,
                                         receiveData[i].percentage.toString(),
