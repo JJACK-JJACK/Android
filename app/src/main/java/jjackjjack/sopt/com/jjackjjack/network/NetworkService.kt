@@ -76,11 +76,13 @@ interface NetworkService {
         @Header("token") token: String
     ): Call<GetDonateParticipationBerryNumResponse>
 
-
     //기부 참여 상세 조회(작성 예정)
 
-
-
+    //마이페이지 이용 내역
+    @GET("/banking")
+    fun getBerryHistoryResponse(
+        @Header("token") token: String
+    ): Call<GetBerryHistoryResponse>
 
 
 }

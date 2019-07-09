@@ -169,7 +169,6 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
     private fun getDonateRecordResponse() {
         var token: String = SharedPreferenceController.getAuthorization(this)
 
-
         val getDonateRecordResponse =
             networkService.getDonateRecordResponse(token)
 
@@ -193,6 +192,7 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
     }
 
     private fun getDonateParticipationResponse() {
+
 
         var token: String = SharedPreferenceController.getAuthorization(this)
 
