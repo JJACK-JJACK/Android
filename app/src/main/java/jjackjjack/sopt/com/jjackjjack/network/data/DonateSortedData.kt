@@ -27,9 +27,9 @@ data class DonateSortedData(
     val deliver: String
 ){
     fun toDonateInfo() : DonateInfo{
-        var d = DonateInfo(_id = _id, thumnail = "", d_day = "", title = "",
+        var d = DonateInfo(_id = _id, thumbnail = "", d_day = "", title = "",
             centerName = "", percent = "", maxBerry = "")
-        d.thumnail = thumbnail
+        d.thumbnail = thumbnail
         d.title = title
         d.centerName = centerName
         d.percent = percentage.toString()
@@ -41,7 +41,8 @@ data class DonateSortedData(
     private fun converteDday(finish: String) : String{
 
         var dday : Int = 0
-        var Dday: String =""
+        var Dday: String = ""
+
 
         if(finish != null) {
 
@@ -65,6 +66,7 @@ data class DonateSortedData(
             }
         }
         return Dday
+
     }
 }
 

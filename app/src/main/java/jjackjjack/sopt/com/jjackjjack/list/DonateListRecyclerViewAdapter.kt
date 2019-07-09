@@ -8,12 +8,10 @@ import android.view.ViewGroup
 import android.webkit.URLUtil
 import android.widget.*
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import jjackjjack.sopt.com.jjackjjack.activities.donate.DonateDetailedActivity
 import jjackjjack.sopt.com.jjackjjack.R
 import jjackjjack.sopt.com.jjackjjack.activities.donaterecord.DonateRecordStatusActivity
 import jjackjjack.sopt.com.jjackjjack.model.DonateInfo
-import jjackjjack.sopt.com.jjackjjack.network.data.DonateSortedData
 import org.jetbrains.anko.startActivity
 
 
@@ -29,14 +27,14 @@ class DonateListRecyclerViewAdapter (val ctx: Context, var list: ArrayList<Donat
     override fun getItemCount(): Int = list.size
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.d_day.text = " " + list[position].d_day
+        holder.d_day.text = list[position].d_day
         holder.title.text = list[position].title
         holder.association.text = list[position].centerName
         holder.percent.text = list[position].percent
         holder.progress.progress = list[position].percent.toInt()
         holder.berry_num.text = list[position].maxBerry
-        if(URLUtil.isValidUrl(list[position].thumnail)){
-            Glide.with(ctx).load(list[position].thumnail).into(holder.thumbnail)
+        if(URLUtil.isValidUrl(list[position].thumbnail)){
+            Glide.with(ctx).load(list[position].thumbnail).into(holder.thumbnail)
         }
 
         if (isDonateHistory){
