@@ -6,6 +6,7 @@ import jjackjjack.sopt.com.jjackjjack.network.response.post.PostBerryChargeRespo
 import jjackjjack.sopt.com.jjackjjack.network.data.DonateSortedData
 import jjackjjack.sopt.com.jjackjjack.network.data.DonatedDetailedData
 import jjackjjack.sopt.com.jjackjjack.network.response.get.*
+import jjackjjack.sopt.com.jjackjjack.network.response.post.PostDonateResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostLoginResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostNicknameCheckResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostSignUpResponse
@@ -86,6 +87,19 @@ interface NetworkService {
         @Header("token") token: String
     ): Call<GetDonateParticipationBerryNumResponse>
 
+    //마이페이지 이용 내역
+    @GET("/banking")
+    fun getBerryHistoryResponse(
+        @Header("token") token: String
+    ): Call<GetBerryHistoryResponse>
+
+    //기부하기
+    @POST("/userHistory/:programId")
+    fun postDonateResponse(
+        @Header("token") token: String,
+        @Path("programId") programId: String,
+        @Body() body: JsonObject
+    ): Call<PostDonateResponse>
 
     //기부 참여 상세 조회
     @GET("/history/detail/{programId}")

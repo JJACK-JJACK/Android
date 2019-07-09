@@ -151,6 +151,8 @@ class DonateRecordStatusActivity : AppCompatActivity() {
                                             .into(use_story_img)
                                     }
 
+                                    var sum = 0
+
                                     for (z in 0 until receiveData[i].plan!!.size) {
                                         dataList_DonateRecordStatus.add(
                                             DonateUsePlan(
@@ -159,8 +161,10 @@ class DonateRecordStatusActivity : AppCompatActivity() {
                                                 receiveData[i].plan!![z].price.toString()
                                             )
                                         )
+                                        sum = sum +  receiveData[i].plan!![z].price.toString().toInt()
                                         updateDonateRecordStatus(dataList_DonateRecordStatus)
                                     }
+                                    use_berry_total.text = sum.toString()
                                 }
                             }
                         }
