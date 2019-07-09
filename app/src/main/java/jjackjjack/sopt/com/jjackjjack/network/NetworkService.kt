@@ -1,12 +1,11 @@
 package jjackjjack.sopt.com.jjackjjack.network
 
 import com.google.gson.JsonObject
-import jjackjjack.sopt.com.jjackjjack.network.data.DonateSortedData
-import jjackjjack.sopt.com.jjackjjack.network.data.DonatedDetailedData
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateDetailedResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateRecordResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateParticipationResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateSortedListResponse
+import jjackjjack.sopt.com.jjackjjack.network.response.post.PostBerryChargeResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostLoginResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostNicknameCheckResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostSignUpResponse
@@ -72,4 +71,12 @@ interface NetworkService {
     fun getDonateParticipationResponse(
         @Header("Content-Type") content_type: String
     ): Call<GetDonateParticipationResponse>
+
+    //베리충전
+    @POST("/berryHistory")
+    fun postBerryChargeResponse(
+        @Header("Content-Type") content_type: String,
+        @Header("token") token: String,
+        @Body() body: JsonObject
+    ): Call<PostBerryChargeResponse>
 }

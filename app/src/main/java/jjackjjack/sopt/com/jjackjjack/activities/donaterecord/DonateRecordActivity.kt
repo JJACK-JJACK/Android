@@ -23,6 +23,7 @@ import jjackjjack.sopt.com.jjackjjack.interfaces.onDrawer
 import jjackjjack.sopt.com.jjackjjack.network.ApplicationController
 import jjackjjack.sopt.com.jjackjjack.network.NetworkService
 import jjackjjack.sopt.com.jjackjjack.network.data.DonateRecordData
+import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateParticipationResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateRecordResponse
 import jjackjjack.sopt.com.jjackjjack.utillity.Constants
 import kotlinx.android.synthetic.main.activity_donate_record.ly_drawer
@@ -166,8 +167,7 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
                             total_berry.text = receiveData[0].toString()
                             participation_num.text = receiveData[1].toString()
                         }
-                    }
-                    else if(response.body()!!.status == 600){
+                    } else if (response.body()!!.status == 600) {
                         toast(response.body()!!.message)
                     }
                 }
