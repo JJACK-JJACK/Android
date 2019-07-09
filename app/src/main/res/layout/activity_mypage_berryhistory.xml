@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:textColor="@color/white"
+            android:textColor="@color/darkGrayA"
             android:text="@string/own_berry"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="40dp"
@@ -50,7 +50,7 @@
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="32dp"
-            android:background="@color/lightGrayC"
+            android:background="@color/grayD"
     android:layout_marginTop="29dp">
         <TextView
                 android:layout_width="wrap_content"

@@ -14,6 +14,7 @@ import jjackjjack.sopt.com.jjackjjack.activities.donaterecord.DonateRecordStatus
 import jjackjjack.sopt.com.jjackjjack.model.DonateInfo
 import org.jetbrains.anko.startActivity
 
+
 //세번쨰 변수 수정 부분
 class DonateListRecyclerViewAdapter (val ctx: Context, var list: ArrayList<DonateInfo>, val isDonateHistory: Boolean): RecyclerView.Adapter<DonateListRecyclerViewAdapter.Holder>() {
 
@@ -44,6 +45,7 @@ class DonateListRecyclerViewAdapter (val ctx: Context, var list: ArrayList<Donat
                     "percent" to list[position].percent,
                     "maxBerry" to list[position].maxBerry,
                     "d_day" to list[position].d_day
+
                     //"isDonateHistory" to isDonateHistory
                 )
             }

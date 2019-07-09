@@ -26,12 +26,12 @@ class DonateRecordStatusActivity : AppCompatActivity() {
             finish()
         }
 
-        li_state_berry_num.text = intent.getStringExtra("maxBerry")
-        li_state_d_day.text = intent.getStringExtra("d_day")
-        li_state_percent.text = intent.getStringExtra("percent")
-        li_state_progress.progress = intent.getStringExtra("percent").toInt()
-        donate_detailed_title.text = intent.getStringExtra("title")
-        donate_detailed_association.text = intent.getStringExtra("centerName")
+//        li_state_berry_num.text = intent.getStringExtra("maxBerry")
+//        li_state_d_day.text = intent.getStringExtra("d_day")
+//        li_state_percent.text = intent.getStringExtra("percent")
+//        li_state_progress.progress = intent.getStringExtra("percent").toInt()
+//        donate_detailed_title.text = intent.getStringExtra("title")
+//        donate_detailed_association.text = intent.getStringExtra("centerName")
 
         var list: ArrayList<DonateUsePlan> = ArrayList()
 

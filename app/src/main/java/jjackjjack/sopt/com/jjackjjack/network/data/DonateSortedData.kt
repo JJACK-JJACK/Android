@@ -39,13 +39,14 @@ data class DonateSortedData(
     }
 
     private fun converteDday(finish: String) : String{
+
         var dday : Int = 0
         var Dday: String = ""
+
 
         if(finish != null) {
 
             val today = Calendar.getInstance()
-
             val finishdateFormat = SimpleDateFormat("yyyy-MM-dd").parse(finish.split("T")[0])
             val instance: Calendar = Calendar.getInstance()
             instance.setTime(finishdateFormat)
@@ -57,12 +58,12 @@ data class DonateSortedData(
 
             dday = sub.toInt() + 1
 
-            if(dday > 0){
+            if(dday >0){
                 Dday = "+$dday"
-            }else{
-                Dday = dday.toString()
             }
-
+            else{
+                Dday = "$dday"
+            }
         }
         return Dday
 
