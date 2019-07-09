@@ -1,10 +1,7 @@
 package jjackjjack.sopt.com.jjackjjack.network
 
 import com.google.gson.JsonObject
-import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateDetailedResponse
-import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateRecordResponse
-import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateParticipationResponse
-import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateSortedListResponse
+import jjackjjack.sopt.com.jjackjjack.network.response.get.*
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostBerryChargeResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostLoginResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostNicknameCheckResponse
@@ -48,7 +45,7 @@ interface NetworkService {
 //    )
 
     //홈 카테고리별 기부 카드 필터링
-    @GET("/program/:categoryId/:filterId")
+    @GET("/program/{categoryId}/{filterId}")
     fun getDonateSortedListResponse(
         @Path("categoryId") categoryId : Int,
         @Path("filterId") filterId : Int
@@ -72,7 +69,15 @@ interface NetworkService {
         @Header("Content-Type") content_type: String
     ): Call<GetDonateParticipationResponse>
 
-    //베리충전
+    //기부 참여 상세 조회
+    @GET("/history/detail:programId")
+    fun getDonateParticipationDetailResponse(
+        @Header("Content-Type") content_type: String,
+        @Header("token") token: String,
+        @Path("programId") programId : String
+    ): Call<GetDonateParticipationDetailResponse>
+
+   //베리 충전
     @POST("/berryHistory")
     fun postBerryChargeResponse(
         @Header("Content-Type") content_type: String,

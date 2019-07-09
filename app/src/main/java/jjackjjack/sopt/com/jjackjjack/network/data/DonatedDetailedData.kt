@@ -20,3 +20,4 @@ data class DonatedDetailedData(
     val finish: String,
     val deliver: String
 )
+

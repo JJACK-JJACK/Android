@@ -1,5 +1,6 @@
 package jjackjjack.sopt.com.jjackjjack.activities.berrycharge
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -13,17 +14,19 @@ import jjackjjack.sopt.com.jjackjjack.db.SharedPreferenceController
 import jjackjjack.sopt.com.jjackjjack.network.ApplicationController
 import jjackjjack.sopt.com.jjackjjack.network.NetworkService
 import kotlinx.android.synthetic.main.activity_berry_deposit.*
-import org.json.JSONObject
 import retrofit2.Callback
 import retrofit2.Response
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostBerryChargeResponse
 import jjackjjack.sopt.com.jjackjjack.utillity.Secret
+import kotlinx.android.synthetic.main.activity_payment_finish.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
+import org.json.JSONObject
 import retrofit2.Call
 
 
 class DepositActivity : AppCompatActivity(){
+
     val networkService: NetworkService by lazy{
         ApplicationController.instance.networkService
     }
@@ -38,6 +41,7 @@ class DepositActivity : AppCompatActivity(){
 
     var now_berry : Int = 0
 
+//    var nextIntent = Intent(this@DepositActivity, PaymentActivity::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,7 +68,7 @@ class DepositActivity : AppCompatActivity(){
             deposit_img_1, deposit_img_2, deposit_img_3, deposit_img_4, deposit_img_5
         )
         berryList = arrayOf(
-            10, 50, 100, 300, 500
+            1100, 5500, 11000, 33000, 55000
         )
 
 
@@ -88,40 +92,33 @@ class DepositActivity : AppCompatActivity(){
         btn_berry_deposit_charge.setOnClickListener {
             if( clickTest.sum()>0){
                 //계좌뜨는 다이얼로그 창
-                postBerryChargeResponse()
+                BerryChargeResponse()
             }
         }
     }
 
-    private fun postBerryChargeResponse(){
-        Log.d("hi2", "2")
+    private fun BerryChargeResponse(){
         var jsonObject = JSONObject()
-        jsonObject.put("chargeBerry", now_berry)
+        jsonObject.put("chargeBerry",now_berry)
 
         val gsonObject = JsonParser().parse(jsonObject.toString()) as JsonObject
 
         val token = SharedPreferenceController.getAuthorization(this)
 
-        Log.d("hi", token.toString())
-
         val postBerryChargeResponse:Call<PostBerryChargeResponse> =
             networkService.postBerryChargeResponse("application/json", token, gsonObject)
-
-        Log.d("hi10", "10")
 
         postBerryChargeResponse.enqueue(object : Callback<PostBerryChargeResponse> {
 
             override fun onFailure(call: Call<PostBerryChargeResponse>, t: Throwable){
-                Log.d("hi3", "3")
                 Log.e("DB error", t.toString())
+                toast("DB error")
             }
 
             override fun onResponse(call: Call<PostBerryChargeResponse>, response: Response<PostBerryChargeResponse>){
                 if(response.isSuccessful){
-                    Log.d("hi4", "4")
                     if(response.body()!!.status == Secret.NETWORK_LIST_SUCCESS){
-                        Log.d("hi5", "5")
-                        //startActivity<PaymentActivity>()
+                        startActivity<PaymentActivity>("berry_charge" to now_berry)
                         finish()
                     }
                     else{
@@ -193,6 +190,7 @@ class DepositActivity : AppCompatActivity(){
 
 
 }
+
 
 
 
