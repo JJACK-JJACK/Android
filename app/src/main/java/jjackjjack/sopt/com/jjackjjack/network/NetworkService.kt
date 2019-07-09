@@ -3,10 +3,7 @@ package jjackjjack.sopt.com.jjackjjack.network
 import com.google.gson.JsonObject
 import jjackjjack.sopt.com.jjackjjack.network.data.DonateSortedData
 import jjackjjack.sopt.com.jjackjjack.network.data.DonatedDetailedData
-import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateDetailedResponse
-import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateRecordResponse
-import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateParticipationResponse
-import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateSortedListResponse
+import jjackjjack.sopt.com.jjackjjack.network.response.get.*
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostLoginResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostNicknameCheckResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostSignUpResponse
@@ -64,12 +61,26 @@ interface NetworkService {
     //기부 횟수, 총 베리
     @GET("/donate")
     fun getDonateRecordResponse(
-        @Header("Content-Type") content_type: String
+        @Header("token") token: String
     ): Call<GetDonateRecordResponse>
 
     //기부 참여 현황
-    @GET("/donate")
+    @GET("/history")
     fun getDonateParticipationResponse(
-        @Header("Content-Type") content_type: String
-    ): Call<GetDonateParticipationResponse>
+        @Header("token") token: String
+    ): Call <GetDonateParticipationResponse>
+
+    //기부 베리 조회
+    @GET("/history/berry")
+    fun getDonateParticipationBerryNumResponse(
+        @Header("token") token: String
+    ): Call<GetDonateParticipationBerryNumResponse>
+
+
+    //기부 참여 상세 조회(작성 예정)
+
+
+
+
+
 }
