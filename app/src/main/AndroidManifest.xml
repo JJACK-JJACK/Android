@@ -59,6 +59,8 @@
         </activity>
         <activity android:name=".activities.payment.PaymentActivity">
         </activity>
+        <activity android:name=".activities.stamp.StampActivity">
+        </activity>
     </application>
 
 </manifest>

@@ -20,16 +20,27 @@ import jjackjjack.sopt.com.jjackjjack.activities.mypage.MyPageActivity
 import jjackjjack.sopt.com.jjackjjack.activities.rank.RankActivity
 import jjackjjack.sopt.com.jjackjjack.db.SharedPreferenceController
 import jjackjjack.sopt.com.jjackjjack.interfaces.onDrawer
+import jjackjjack.sopt.com.jjackjjack.network.ApplicationController
+import jjackjjack.sopt.com.jjackjjack.network.NetworkService
+import jjackjjack.sopt.com.jjackjjack.network.response.get.GetmyBerryResponse
 import jjackjjack.sopt.com.jjackjjack.utillity.Constants
+import jjackjjack.sopt.com.jjackjjack.utillity.Secret
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_mypage_berryhistory.*
 import kotlinx.android.synthetic.main.content_activity_main.*
 import kotlinx.android.synthetic.main.fragment_main_activity_image_slider.*
 import kotlinx.android.synthetic.main.nav_drawer.*
 import org.jetbrains.anko.startActivity
-
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.text.DecimalFormat
 
 
 class MainActivity : AppCompatActivity(), onDrawer {
+    val networkService: NetworkService by lazy {
+        ApplicationController.instance.networkService
+    }
 
     lateinit var btnFset: Array<ImageView>
 
@@ -62,6 +73,7 @@ class MainActivity : AppCompatActivity(), onDrawer {
         //dot_indicator_activity_main.setupWithViewPager(main_activity_slider_pager, true)
 
         drawerUI()
+        getmyBerryResponse()
     }
 
     override fun onResume() { //로그아웃 후에 이 뷰는 꺼지게
@@ -161,5 +173,37 @@ class MainActivity : AppCompatActivity(), onDrawer {
         else{
             super.onBackPressed()
         }
+    }
+
+    private fun getmyBerryResponse(){
+        var token:String = SharedPreferenceController.getAuthorization(this)
+
+        val getmyBerryResponse =
+            networkService.getmyBerryResponse("application/json",token)
+
+        getmyBerryResponse.enqueue(object : Callback<GetmyBerryResponse> {
+            override fun onFailure(call: Call<GetmyBerryResponse>, t: Throwable) {
+                Log.d("No berry", "No Berry")
+            }
+
+            override fun onResponse(call: Call<GetmyBerryResponse>, response: Response<GetmyBerryResponse>) {
+                if(response.isSuccessful){
+                    if(response.body()!!.status == Secret.NETWORK_LIST_SUCCESS){
+                        val receiveData = response.body()?.data
+
+                        val dec = DecimalFormat("#,000")
+                        val dec_berry : String
+
+                        if(receiveData.toString().length <= 3){
+                            dec_berry = receiveData.toString()
+                        }else{
+                            dec_berry = dec.format(receiveData)
+                        }
+
+                        drawer_myberry.text = dec_berry
+                    }
+                }
+            }
+        })
     }
 }

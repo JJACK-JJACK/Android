@@ -109,8 +109,22 @@ interface NetworkService {
         @Path("programId") programId : String
     ): Call<GetDonateParticipationDetailResponse>
 
+    //보유베리
+    @GET("/berryHistory/myBerry")
+    fun getmyBerryResponse(
+        @Header("Content-Type") content_type: String,
+        @Header("token") token: String
+    ): Call<GetmyBerryResponse>
+
+    //스탬프 조회
+    @GET("/stamp")
+    fun getStampResponse(
+        @Header("token") token: String
+    ):Call<GetStampResponse>
+
     //전달 후기
     @GET("/ranking")
     fun getDeliveryReviewResponse(
     ): Call<GetDonateParticipationDetailResponse>
+
 }

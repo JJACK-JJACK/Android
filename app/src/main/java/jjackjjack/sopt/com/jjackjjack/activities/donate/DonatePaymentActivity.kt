@@ -15,16 +15,19 @@ import jjackjjack.sopt.com.jjackjjack.db.SharedPreferenceController
 import jjackjjack.sopt.com.jjackjjack.network.ApplicationController
 import jjackjjack.sopt.com.jjackjjack.network.NetworkService
 import jjackjjack.sopt.com.jjackjjack.network.data.DonateData
+import jjackjjack.sopt.com.jjackjjack.network.response.get.GetmyBerryResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostDonateResponse
 import jjackjjack.sopt.com.jjackjjack.utillity.Secret
 import kotlinx.android.synthetic.main.activity_donate_payment.*
 import kotlinx.android.synthetic.main.activity_donate_payment.view.*
+import kotlinx.android.synthetic.main.activity_mypage_berryhistory.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.DecimalFormat
 
 
 class DonatePaymentActivity : AppCompatActivity() {
@@ -37,6 +40,8 @@ class DonatePaymentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_donate_payment)
         initialUI()
+
+        getmyBerryResponse()
     }
 
     private fun initialUI(){
@@ -123,6 +128,37 @@ class DonatePaymentActivity : AppCompatActivity() {
                     }
                 } else if (response.body()!!.status == 600) {
                     toast(response.body()!!.message)
+                }
+            }
+        })
+    }
+    private fun getmyBerryResponse(){
+        var token:String = SharedPreferenceController.getAuthorization(this)
+
+        val getmyBerryResponse =
+            networkService.getmyBerryResponse("application/json",token)
+
+        getmyBerryResponse.enqueue(object : Callback<GetmyBerryResponse>{
+            override fun onFailure(call: Call<GetmyBerryResponse>, t: Throwable) {
+                Log.d("No berry", "No Berry")
+            }
+
+            override fun onResponse(call: Call<GetmyBerryResponse>, response: Response<GetmyBerryResponse>) {
+                if(response.isSuccessful){
+                    if(response.body()!!.status == Secret.NETWORK_LIST_SUCCESS){
+                        val receiveData = response.body()?.data
+
+                        val dec = DecimalFormat("#,000")
+                        val dec_berry : String
+
+                        if(receiveData.toString().length <= 3){
+                            dec_berry = receiveData.toString()
+                        }else{
+                            dec_berry = dec.format(receiveData)
+                        }
+
+                        payment_myberry.text = dec_berry
+                    }
                 }
             }
         })

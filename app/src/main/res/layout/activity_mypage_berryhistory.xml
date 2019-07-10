@@ -30,6 +30,7 @@
                   android:orientation="horizontal"
                   android:layout_marginTop="12dp">
         <TextView
+                android:id="@+id/berryhistory_myberry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="30sp"

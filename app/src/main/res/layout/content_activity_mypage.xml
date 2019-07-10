@@ -8,7 +8,8 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:showIn="@layout/activity_my_page">
+        tools:showIn="@layout/activity_my_page"
+        >
 
     <include
             layout="@layout/toolbar_with_hamburger">
@@ -97,15 +98,45 @@
                 android:textColor="@color/grayB"
                 android:text="@string/berry_manage"
         />
-        <TextView
-                android:paddingVertical="6dp"
+        <LinearLayout
+                android:layout_marginTop="6dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="20dp"
-                android:textSize="16sp"
-                android:textColor="@color/darkGrayC"
-                android:text="@string/own_berry"
-        />
+                android:layout_height="wrap_content">
+            <TextView
+                    android:paddingVertical="6dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@color/darkGrayC"
+                    android:text="@string/own_berry"
+                    android:layout_marginLeft="20dp"
+                    android:layout_gravity="bottom"
+            />
+            <TextView
+                    android:layout_weight="1"
+                    android:id="@+id/mypage_myberry"
+                    android:textSize="14sp"
+                    android:letterSpacing="0.06"
+                    android:gravity="end"
+                    tools:text="353,542"
+                    android:paddingVertical="6dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/darkGrayC"
+                    android:text="@string/own_berry"
+                    android:layout_marginLeft="20dp"
+                    android:layout_gravity="bottom"/>
+            <TextView
+                    android:layout_gravity="bottom"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/berry"
+                    android:textSize="14sp"
+                    android:textColor="#666666"
+                    tools:text="베리"/>
+        </LinearLayout>
 
         <TextView
                 android:paddingVertical="6dp"

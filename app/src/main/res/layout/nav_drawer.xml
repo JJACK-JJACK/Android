@@ -81,35 +81,41 @@
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                <TextView
-                        android:text="128"
-                        android:layout_gravity="center_vertical"
-                        android:textSize="24sp"
-                        android:textColor="@color/darkGrayA"
-                        android:textStyle="bold"
-                        android:letterSpacing="0.06"
+                <LinearLayout
+                        android:layout_weight="1"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                <TextView
-                        android:text="@string/berry"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="4dp"
-                        android:textSize="16sp"
-                        android:textColor="@color/grayA"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                    <TextView
+                            android:id="@+id/drawer_myberry"
+                            android:text="1212"
+                            android:layout_gravity="center_vertical"
+                            android:textSize="24sp"
+                            android:textColor="@color/darkGrayA"
+                            android:textStyle="bold"
+                            android:letterSpacing="0.06"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    <TextView
+                            android:text="@string/berry"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="4dp"
+                            android:textSize="16sp"
+                            android:textColor="@color/grayA"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                </LinearLayout>
                 
-                <ImageView 
+                <ImageView
                         android:src="@drawable/ic_charge"
                         android:id="@+id/btn_drawer_berrycharge"
-                        android:layout_marginLeft="73dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
                 <ImageView
+                        android:layout_marginLeft="16dp"
                         android:src="@drawable/ic_usehistory"
                         android:id="@+id/btn_drawer_usehistory"
-                        android:layout_marginLeft="16dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
