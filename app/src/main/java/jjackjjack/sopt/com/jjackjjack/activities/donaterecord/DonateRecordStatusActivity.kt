@@ -64,7 +64,6 @@ class DonateRecordStatusActivity : AppCompatActivity() {
 
         var list: ArrayList<DonateUsePlan> = ArrayList()
         initialUI_status()
-
     }
 
     private fun getDonateParticipateDetailResponse() {

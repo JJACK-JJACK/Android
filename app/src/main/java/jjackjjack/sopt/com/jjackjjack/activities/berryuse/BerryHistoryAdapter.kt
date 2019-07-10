@@ -19,9 +19,11 @@ class BerryHistoryAdapter(val context: Context, val berryhistoryItem: ArrayList<
         holder?.bind(berryhistoryItem[position], context)
 
         if(berryhistoryItem[position].li_berryhistory_group == ""){
+            holder.li_berryhistory_berry!!.setTextColor(Color.parseColor("#ffc21f"))
+        }
+        else{
             holder.li_berryhistory_berry!!.setTextColor(Color.parseColor("#da4830"))
         }
-
     }
 /* (1) Adapter의 파라미터에 람다식 itemClick을 넣는다. */
 
