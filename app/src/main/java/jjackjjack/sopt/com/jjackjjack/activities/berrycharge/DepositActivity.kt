@@ -132,7 +132,6 @@ class DepositActivity : AppCompatActivity(){
                         finish()
                     }
                     else{
-
                     }
                 }
             }
