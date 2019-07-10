@@ -219,6 +219,4 @@ class SignUpActivity : AppCompatActivity() {
         btn_duplicate_verification.visibility = View.VISIBLE
         viewnumber = 3
     }
-
-
 }

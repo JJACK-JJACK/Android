@@ -36,9 +36,7 @@ class DonatePaymentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_donate_payment)
-
         initialUI()
-
     }
 
     private fun initialUI(){
@@ -52,10 +50,6 @@ class DonatePaymentActivity : AppCompatActivity() {
                 finish()
             }
         }
-
-        btn_berry_charge.setOnClickListener {
-            startActivity<BerryChargeActivity>()
-        }
         var edtString = edt_donate_berry_num.text.toString()
         btn_erase_all.setOnClickListener {
             edtString = "0"
@@ -65,8 +59,6 @@ class DonatePaymentActivity : AppCompatActivity() {
         btn_payment_back.setOnClickListener {
             finish()
         }
-
-
 
         btn_plus_10_berry.setOnClickListener {
             if(edtString.length > 0){
@@ -95,15 +87,24 @@ class DonatePaymentActivity : AppCompatActivity() {
             }
             edt_donate_berry_num.setText(edtString)
         }
-
+        btn_berry_charge.setOnClickListener {
+            //if(edtString < 보유 베리){
+            postDonateResponse(edtString)
+            startActivity<BerryChargeActivity>()
+        //}
+//            else{
+//            toast("보유 베리가 부족합니다")
+//        }
+        }
     }
 
-    private fun postDonateResponse() {
+    private fun postDonateResponse(donateBerry : String) {
 
+       // val programId : String = intent.getStringExtra("programId")
         var token: String = SharedPreferenceController.getAuthorization(this)
 
         var jsonObject = JSONObject()
-        jsonObject.put("donateBerry", 2500)
+        jsonObject.put("donateBerry", donateBerry)
 
         val gsonObject = JsonParser().parse(jsonObject.toString()) as JsonObject
         val postDonateResponse =
@@ -116,8 +117,8 @@ class DonatePaymentActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<PostDonateResponse>, response: Response<PostDonateResponse>) {
                 if (response.isSuccessful) {
-                    if (response.body()!!.status == Secret.NETWORK_SUCCESS) {
-                        val receiveData: ArrayList<DonateData> = response.body()!!.data
+                    if (response.body()!!.status == 201) {
+                        val receiveData: DonateData? = response.body()!!.data
                         //추가 예정
                     }
                 } else if (response.body()!!.status == 600) {
