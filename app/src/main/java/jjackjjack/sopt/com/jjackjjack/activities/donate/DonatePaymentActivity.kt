@@ -128,7 +128,10 @@ class DonatePaymentActivity : AppCompatActivity() {
             override fun onResponse(call: Call<PostDonateResponse>, response: Response<PostDonateResponse>) {
                 if (response.isSuccessful) {
                     if (response.body()!!.status == 201) {
+                        toast("hello")
                         val receiveData: DonateData? = response.body()!!.data
+
+                        Log.d("berry", receiveData!!.totalBerry.toString())
                         currStamp = receiveData!!.stamps
                     }
                 } else if (response.body()!!.status == 600) {
@@ -156,6 +159,7 @@ class DonatePaymentActivity : AppCompatActivity() {
 
                         val dec = DecimalFormat("#,000")
                         val dec_berry: String
+
 
                         currMyBerry = receiveData!!
 
