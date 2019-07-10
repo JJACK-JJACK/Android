@@ -62,6 +62,9 @@ data class DonateSortedData(
             if(dday >0){
                 Dday = "+$dday"
             }
+            else if(dday == 0){
+                Dday = "-$dday"
+            }
             else{
                 Dday = "$dday"
             }
