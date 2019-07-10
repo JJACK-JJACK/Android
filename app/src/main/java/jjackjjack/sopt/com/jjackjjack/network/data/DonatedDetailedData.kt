@@ -19,7 +19,6 @@ data class DonatedDetailedData(
     val percentage: Int,
     val review: ArrayList<ReviewData>,
 
-
     val start: String,
     val finish: String,
     val deliver: String

@@ -77,8 +77,8 @@ class BerryreviewActivity : AppCompatActivity() {
                     if (response.body()!!.status == 201) {
                         val receiveData: ArrayList<DonatedDetailedData> = response.body()!!.data
                         if (idx + 1 <= receiveData.size) {
-                            if (URLUtil.isValidUrl(receiveData[idx].thumbnail)) {
-                                Glide.with(this@BerryreviewActivity).load(receiveData[idx].thumbnail)
+                            if (URLUtil.isValidUrl(receiveData[0].thumbnail)) {
+                                Glide.with(this@BerryreviewActivity).load(receiveData[0].thumbnail)
                                     .into(header_image_view)
                             }
                             donate_detailed_title.text = receiveData[idx].title
@@ -94,27 +94,29 @@ class BerryreviewActivity : AppCompatActivity() {
                             li_state_percent_mark.setTextColor(Color.parseColor("#464fb2"))
                             li_state_percent.setTextColor(Color.parseColor("#464fb2"))
 
-                            use_story_title.text = receiveData[idx].review[idx].story!![idx].subTitle
-                            use_story_content1.text = receiveData[idx].review[idx].story!![idx].content!![0]
-                            use_story_content2.text = receiveData[idx].review[idx].story!![idx].content!![1]
+                            Log.d("what", receiveData[idx].review[0].story!![0].subTitle )
 
-                            if (URLUtil.isValidUrl(receiveData[idx].review[idx].story!![idx].img)) {
+                            use_story_title.text = receiveData[idx].review[0].story!![0].subTitle
+                            use_story_content1.text = receiveData[idx].review[0].story!![0].content!![0]
+                            use_story_content2.text = receiveData[idx].review[0].story!![0].content!![1]
+
+                            if (URLUtil.isValidUrl(receiveData[idx].review[0].story!![0].img)) {
                                 Glide.with(this@BerryreviewActivity)
-                                    .load(receiveData[idx].review[idx].story!![idx].img)
+                                    .load(receiveData[idx].review[0].story!![0].img)
                                     .into(use_story_img)
                             }
 
                             var sum = 0
 
-                            for (i in 0 until receiveData[idx].plan!!.size) {
+                            for (i in 0 until receiveData[0].plan!!.size) {
                                 dataList_use_plan.add(
                                     DonateUsePlan(
                                         (i + 1).toString(),
-                                        receiveData[i].plan!![i].purpose,
-                                        receiveData[i].plan!![i].price.toString()
+                                        receiveData[idx].plan!![i].purpose,
+                                        receiveData[idx].plan!![i].price.toString()
                                     )
                                 )
-                                sum = sum + receiveData[i].plan!![i].price.toString().toInt()
+                                sum = sum + receiveData[idx].plan!![i].price.toString().toInt()
                                 updateDonateRecordStatus(dataList_use_plan)
                             }
                             use_berry_total.text = sum.toString()
