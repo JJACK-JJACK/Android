@@ -11,6 +11,7 @@ import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import jjackjjack.sopt.com.jjackjjack.R
 import jjackjjack.sopt.com.jjackjjack.activities.berrycharge.BerryChargeActivity
+import jjackjjack.sopt.com.jjackjjack.activities.stamp.StampActivity
 import jjackjjack.sopt.com.jjackjjack.db.SharedPreferenceController
 import jjackjjack.sopt.com.jjackjjack.network.ApplicationController
 import jjackjjack.sopt.com.jjackjjack.network.NetworkService
@@ -36,6 +37,8 @@ class DonatePaymentActivity : AppCompatActivity() {
         ApplicationController.instance.networkService
     }
 
+    var currStamp = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_donate_payment)
@@ -45,16 +48,6 @@ class DonatePaymentActivity : AppCompatActivity() {
     }
 
     private fun initialUI(){
-        btn_donate.setOnClickListener {
-            val builder = AlertDialog.Builder(this)
-            val dialogView = layoutInflater.inflate(R.layout.dialog_donate_payment, null)
-            val dialogbutton = dialogView.findViewById<Button>(R.id.btn_close)
-            builder.setView(dialogView)
-            builder.show()
-            dialogbutton.setOnClickListener{
-                finish()
-            }
-        }
         var edtString = edt_donate_berry_num.text.toString()
         btn_erase_all.setOnClickListener {
             edtString = "0"
@@ -92,14 +85,23 @@ class DonatePaymentActivity : AppCompatActivity() {
             }
             edt_donate_berry_num.setText(edtString)
         }
+        btn_donate.setOnClickListener {
+            if(currStamp == 10) {
+                val builder = AlertDialog.Builder(this)
+                val dialogView = layoutInflater.inflate(R.layout.dialog_donate_payment, null)
+                val dialogbutton = dialogView.findViewById<Button>(R.id.btn_close)
+                builder.setView(dialogView)
+                builder.show()
+                dialogbutton.setOnClickListener {
+                    finish()
+                }
+            }
+            else{
+                startActivity<StampActivity>()
+            }
+        }
         btn_berry_charge.setOnClickListener {
-            //if(edtString < 보유 베리){
-            postDonateResponse(edtString)
             startActivity<BerryChargeActivity>()
-        //}
-//            else{
-//            toast("보유 베리가 부족합니다")
-//        }
         }
     }
 
@@ -124,7 +126,7 @@ class DonatePaymentActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     if (response.body()!!.status == 201) {
                         val receiveData: DonateData? = response.body()!!.data
-                        //추가 예정
+                        currStamp = receiveData!!.stamps
                     }
                 } else if (response.body()!!.status == 600) {
                     toast(response.body()!!.message)
@@ -156,7 +158,6 @@ class DonatePaymentActivity : AppCompatActivity() {
                         }else{
                             dec_berry = dec.format(receiveData)
                         }
-
                         payment_myberry.text = dec_berry
                     }
                 }
