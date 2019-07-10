@@ -6,8 +6,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
->
-    <!--tools:showIn="@layout/activity_ranking"-->
+        tools:showIn="@layout/activity_ranking">
     <include layout="@layout/toolbar_with_hamburger">
 
     </include>
@@ -75,6 +74,7 @@
                         <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginLeft="7dp"
                                 android:text="@string/berry"
                                 android:textSize="16sp"/>
                     </LinearLayout>
@@ -82,6 +82,7 @@
             </RelativeLayout>
 
             <LinearLayout
+                    android:layout_marginTop="24dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
