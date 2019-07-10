@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity(), onDrawer {
 
         initialUI()
 
-
+        Log.d("token", SharedPreferenceController.getAuthorization(this))
 
 //        pageIndicatorView.setViewPager(main_activity_slider_pager, true)
 //

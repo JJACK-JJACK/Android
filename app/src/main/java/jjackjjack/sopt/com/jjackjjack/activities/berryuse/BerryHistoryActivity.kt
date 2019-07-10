@@ -33,16 +33,8 @@ class BerryHistoryActivity : AppCompatActivity() {
     val dataList_berryhistory: ArrayList<BerryHistoryItem> by lazy {
         ArrayList<BerryHistoryItem>()
     }
-    lateinit var berryhistoryAdapter: BerryHistoryAdapter
 
-//    var BerryHistoryList = arrayListOf<BerryHistoryItem>(
-//        BerryHistoryItem("베리충전", "2019.05.30 10:59","+128","장애인재단"),
-//        BerryHistoryItem("베리충전", "2019.05.30 10:59","+128","장애인재단"),
-//        BerryHistoryItem("베리충전", "2019.05.30 10:59","+11238","장애인재단"),
-//        BerryHistoryItem("베리충전", "2019.05.30 10:59","+128","장애인재단"),
-//        BerryHistoryItem("베리충전", "2019.05.30 10:59","+128","장애인재단"),
-//        BerryHistoryItem("베리충전", "2019.05.30 10:59","+128","장애인재단")
-//    )
+    lateinit var berryhistoryAdapter: BerryHistoryAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,7 +76,7 @@ class BerryHistoryActivity : AppCompatActivity() {
                             if(receiveData.history[i].centerName == null){
                                 dataList_berryhistory.add(
                                     BerryHistoryItem(
-                                        "베리 충전", //대체 예정
+                                        receiveData.history[i].title,
                                         receiveData.history[i].date,
                                         receiveData.history[i].berry,
                                         ""
@@ -94,7 +86,7 @@ class BerryHistoryActivity : AppCompatActivity() {
                             else {
                                 dataList_berryhistory.add(
                                     BerryHistoryItem(
-                                        "기부",
+                                        receiveData.history[i].title,
                                         receiveData.history[i].date,
                                         receiveData.history[i].berry,
                                         receiveData.history[i].centerName!!

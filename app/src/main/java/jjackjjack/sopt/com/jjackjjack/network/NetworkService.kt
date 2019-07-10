@@ -94,7 +94,7 @@ interface NetworkService {
     ): Call<GetBerryHistoryResponse>
 
     //기부하기
-    @POST("/userHistory/:programId")
+    @POST("/userHistory/{programId}")
     fun postDonateResponse(
         @Header("token") token: String,
         @Path("programId") programId: String,
@@ -121,4 +121,10 @@ interface NetworkService {
     fun getStampResponse(
         @Header("token") token: String
     ):Call<GetStampResponse>
+
+    //전달 후기
+    @GET("/ranking")
+    fun getDeliveryReviewResponse(
+    ): Call<GetDonateParticipationDetailResponse>
+
 }
