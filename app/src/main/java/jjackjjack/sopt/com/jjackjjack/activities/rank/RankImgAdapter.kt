@@ -23,9 +23,9 @@ class RankImgAdapter(val context: Context, val rankImgItemList: ArrayList<RankIm
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder?.bind(rankImgItemList[position], context)
-        if(URLUtil.isValidUrl(rankImgItemList[position].thumbnail)){
-            Glide.with(context).load(rankImgItemList[position].thumbnail).into(holder.thumbnail)
-        }
+//        if(URLUtil.isValidUrl(rankImgItemList[position].thumbnail)){
+//            Glide.with(context).load(rankImgItemList[position].thumbnail).into(holder.thumbnail)
+//        }
 
         holder.thumbnail.setOnClickListener {
             //Toast.makeText(this, "number is ${rankimg.thumbnail}", Toast.LENGTH_SHORT).show()
