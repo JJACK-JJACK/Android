@@ -68,6 +68,12 @@
     <string name="msg_delivery_review">우리의 기부금은\n어떻게 사용되었을까요?</string>
     <string name="msg_get_stamp">10개의 스탬프를 다 모으면 총 기부한 베리의\n10% 내에서 랜덤으로 베리를 수확 가능해요</string>
 
-
+    <string-array name="bank">
+        <item>국민 67070204087002</item>
+        <item name="bank2">신한 110499030264</item>
+        <item>우리 1002659283912</item>
+        <item>하나 50391038504107</item>
+        <item name="bank5">카카오 3333048166414</item>
+    </string-array>
 
 </resources>

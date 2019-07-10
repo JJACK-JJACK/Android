@@ -10,12 +10,15 @@ import jjackjjack.sopt.com.jjackjjack.network.ApplicationController
 import jjackjjack.sopt.com.jjackjjack.network.NetworkService
 import jjackjjack.sopt.com.jjackjjack.network.response.get.BerryHistory
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GetBerryHistoryResponse
+import jjackjjack.sopt.com.jjackjjack.network.response.get.GetmyBerryResponse
+import jjackjjack.sopt.com.jjackjjack.utillity.Secret.Companion.NETWORK_LIST_SUCCESS
 import kotlinx.android.synthetic.main.activity_mypage_berryhistory.*
 import kotlinx.android.synthetic.main.fragment_berryuse_review.*
 import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.DecimalFormat
 
 class BerryHistoryActivity : AppCompatActivity() {
 
@@ -55,6 +58,7 @@ class BerryHistoryActivity : AppCompatActivity() {
         rv_berryhistory.setHasFixedSize(true)
 
         getBerryHistoryResponse()
+        getmyBerryResponse()
 
         btn_toolbar_back.setOnClickListener {
             finish()
@@ -69,7 +73,7 @@ class BerryHistoryActivity : AppCompatActivity() {
 
         getBerryHistoryResponse.enqueue(object : Callback<GetBerryHistoryResponse> {
             override fun onFailure(call: Call<GetBerryHistoryResponse>, t: Throwable) {
-                Log.d("hello", t.toString())
+                Log.d("DB error", "DB error")
             }
 
             override fun onResponse(call: Call<GetBerryHistoryResponse>, response: Response<GetBerryHistoryResponse>) {
@@ -102,6 +106,38 @@ class BerryHistoryActivity : AppCompatActivity() {
                     }
                 } else if (response.body()!!.status == 600) {
                     toast(response.body()!!.message)
+                }
+            }
+        })
+    }
+
+    private fun getmyBerryResponse(){
+        var token:String = SharedPreferenceController.getAuthorization(this)
+
+        val getmyBerryResponse =
+                networkService.getmyBerryResponse("application/json",token)
+
+        getmyBerryResponse.enqueue(object : Callback<GetmyBerryResponse>{
+            override fun onFailure(call: Call<GetmyBerryResponse>, t: Throwable) {
+                Log.d("No berry", "No Berry")
+            }
+
+            override fun onResponse(call: Call<GetmyBerryResponse>, response: Response<GetmyBerryResponse>) {
+                if(response.isSuccessful){
+                    if(response.body()!!.status == NETWORK_LIST_SUCCESS){
+                        val receiveData = response.body()?.data
+
+                        val dec = DecimalFormat("#,000")
+                        val dec_berry : String
+
+                        if(receiveData.toString().length <= 3){
+                            dec_berry = receiveData.toString()
+                        }else{
+                            dec_berry = dec.format(receiveData)
+                        }
+
+                        berryhistory_myberry.text = dec_berry
+                    }
                 }
             }
         })
