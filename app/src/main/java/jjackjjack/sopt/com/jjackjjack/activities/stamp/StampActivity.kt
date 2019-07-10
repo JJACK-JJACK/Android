@@ -24,6 +24,10 @@ class StampActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_stamp)
 
+        btn_toolbar_back.setOnClickListener {
+            finish()
+        }
+
         stamp.setOnClickListener {
             getStampResponse()
         }

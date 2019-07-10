@@ -16,6 +16,7 @@ import jjackjjack.sopt.com.jjackjjack.activities.berryuse.BerryHistoryActivity
 import jjackjjack.sopt.com.jjackjjack.activities.donate.DonateActivity
 import jjackjjack.sopt.com.jjackjjack.activities.mypage.MyPageActivity
 import jjackjjack.sopt.com.jjackjjack.activities.rank.RankActivity
+import jjackjjack.sopt.com.jjackjjack.activities.stamp.StampActivity
 import jjackjjack.sopt.com.jjackjjack.db.SharedPreferenceController
 import jjackjjack.sopt.com.jjackjjack.interfaces.donateListData
 import jjackjjack.sopt.com.jjackjjack.interfaces.onDrawer
@@ -85,6 +86,10 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
         btn_home.setOnClickListener {
             startActivity<MainActivity>()
             finish()
+        }
+
+        donate_record_stamp.setOnClickListener {
+            startActivity<StampActivity>()
         }
         drawerUI()
         getmyBerryResponse()
