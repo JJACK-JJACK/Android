@@ -127,4 +127,8 @@ interface NetworkService {
     fun getDeliveryReviewResponse(
     ): Call<GetDonateParticipationDetailResponse>
 
+    //전체 프로그램 기부 금액
+    @GET("/program")
+    fun gettotalDonateResponse(
+    ):Call<GettotalDonateResponse>
 }

@@ -20,11 +20,14 @@ import jjackjjack.sopt.com.jjackjjack.activities.donate.DonateActivity
 import jjackjjack.sopt.com.jjackjjack.activities.donaterecord.DonateRecordActivity
 import jjackjjack.sopt.com.jjackjjack.activities.mypage.MyPageActivity
 import jjackjjack.sopt.com.jjackjjack.interfaces.onDrawer
+import jjackjjack.sopt.com.jjackjjack.model.TotalDonateInfo
 import jjackjjack.sopt.com.jjackjjack.network.ApplicationController
 import jjackjjack.sopt.com.jjackjjack.network.NetworkService
 import jjackjjack.sopt.com.jjackjjack.network.data.DonatedDetailedData
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateParticipationDetailResponse
+import jjackjjack.sopt.com.jjackjjack.network.response.get.GettotalDonateResponse
 import jjackjjack.sopt.com.jjackjjack.utillity.Constants
+import jjackjjack.sopt.com.jjackjjack.utillity.Secret.Companion.NETWORK_LIST_SUCCESS
 import kotlinx.android.synthetic.main.activity_ranking.*
 import kotlinx.android.synthetic.main.content_activity_ranking.*
 import kotlinx.android.synthetic.main.nav_drawer.*
@@ -83,6 +86,8 @@ class RankActivity : AppCompatActivity(), onDrawer {
         mRecyclerView.layoutManager = lm
         lm.setOrientation(LinearLayoutManager.HORIZONTAL)
         mRecyclerView.setHasFixedSize(true)
+
+        gettotalDonateResponse()
     }
 
     override fun drawerUI() {
@@ -178,5 +183,25 @@ class RankActivity : AppCompatActivity(), onDrawer {
         dataList.clear()
         dataList.addAll(list)
         mAdapter.notifyDataSetChanged()
+    }
+
+    private fun gettotalDonateResponse(){
+        val gettotalDonateResponse =
+                networkService.gettotalDonateResponse()
+
+        gettotalDonateResponse.enqueue(object : Callback<GettotalDonateResponse>{
+            override fun onFailure(call: Call<GettotalDonateResponse>, t: Throwable) {
+                Log.d("Response error","조회실패")
+            }
+
+            override fun onResponse(call: Call<GettotalDonateResponse>, response: Response<GettotalDonateResponse>) {
+                if(response.isSuccessful){
+                    if(response.body()!!.status == NETWORK_LIST_SUCCESS){
+                        val receiveData : ArrayList<TotalDonateInfo> = response.body()!!.data
+                        rank_totalDonate.text = receiveData[0].totalDonate.toString()
+                    }
+                }
+            }
+        })
     }
 }
