@@ -6,7 +6,8 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:showIn="@layout/activity_ranking">
+>
+    <!--tools:showIn="@layout/activity_ranking"-->
     <include layout="@layout/toolbar_with_hamburger">
 
     </include>
@@ -31,42 +32,53 @@
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="0dp"
                         android:src="#ffc21f"/>
-
-                <TextView
-                        android:textStyle="bold"
-                        android:layout_width="wrap_content"
+                <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="50dp"
-                        android:textColor="@color/darkGrayA"
-                        android:text="@string/delivery_review"
-                        android:textSize="30sp"/>
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="128dp"
-                        android:text="우리가 모은 기부금"
-                        android:textSize="14sp"/>
-
-                <TextView
-                        android:textStyle="bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="153dp"
-                        android:layout_marginBottom="60dp"
-                        android:text="144,353,012"
-                        android:textSize="24sp"/>
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="155dp"
-                        android:layout_marginTop="161dp"
-                        android:text="@string/berry"
-                        android:textSize="16sp"/>
+                        android:orientation="vertical">
+                    <LinearLayout android:layout_width="match_parent"
+                                  android:layout_height="wrap_content">
+                        <TextView
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="50dp"
+                                android:textColor="@color/darkGrayA"
+                                android:text="@string/delivery_review"
+                                android:textSize="30sp"/>
+                    </LinearLayout>
+                    <LinearLayout
+                            android:layout_marginTop="35dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:text="우리가 모은 기부금"
+                                android:textSize="14sp"/>
+                    </LinearLayout>
+                    <LinearLayout
+                            android:layout_marginTop="2dp"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        <TextView
+                                android:id="@+id/rank_totalDonate"
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                tools:text="144,353,012"
+                                android:textSize="24sp"/>
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/berry"
+                                android:textSize="16sp"/>
+                    </LinearLayout>
+                </LinearLayout>
             </RelativeLayout>
 
             <LinearLayout
