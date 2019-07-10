@@ -53,7 +53,7 @@ interface NetworkService {
     ): Call<GetDonateSortedListResponse>
 
     //------기부 카드 상세(스토리 & 계획)
-    @GET("/program/detail/:programId")
+    @GET("/program/detail/{programId}")
     fun getDonateDetailedResponse(
         @Path("programId") programId: String
     ): Call<GetDonateDetailedResponse>
