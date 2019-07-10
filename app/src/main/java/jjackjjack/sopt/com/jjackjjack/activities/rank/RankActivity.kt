@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.ImageView
@@ -19,36 +20,45 @@ import jjackjjack.sopt.com.jjackjjack.activities.donate.DonateActivity
 import jjackjjack.sopt.com.jjackjjack.activities.donaterecord.DonateRecordActivity
 import jjackjjack.sopt.com.jjackjjack.activities.mypage.MyPageActivity
 import jjackjjack.sopt.com.jjackjjack.interfaces.onDrawer
+import jjackjjack.sopt.com.jjackjjack.model.TotalDonateInfo
+import jjackjjack.sopt.com.jjackjjack.network.ApplicationController
+import jjackjjack.sopt.com.jjackjjack.network.NetworkService
+import jjackjjack.sopt.com.jjackjjack.network.data.DonatedDetailedData
+import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateParticipationDetailResponse
+import jjackjjack.sopt.com.jjackjjack.network.response.get.GettotalDonateResponse
 import jjackjjack.sopt.com.jjackjjack.utillity.Constants
+import jjackjjack.sopt.com.jjackjjack.utillity.Secret.Companion.NETWORK_LIST_SUCCESS
 import kotlinx.android.synthetic.main.activity_ranking.*
 import kotlinx.android.synthetic.main.content_activity_ranking.*
 import kotlinx.android.synthetic.main.nav_drawer.*
 import kotlinx.android.synthetic.main.toolbar_with_hamburger.*
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class RankActivity : AppCompatActivity(), onDrawer {
+
+    lateinit var mAdapter: RankImgAdapter
 
     lateinit var btnFset: Array<ImageView>
 
     lateinit var btnAset: Array<View>
 
-    lateinit var actSet : Array<Class<out AppCompatActivity>>
+    lateinit var actSet: Array<Class<out AppCompatActivity>>
 
+    val networkService: NetworkService by lazy {
+        ApplicationController.instance.networkService
+    }
 
-    var RankImageList = arrayListOf<RankImgItem>(
-        RankImgItem("00"),
-        RankImgItem("01"),
-        RankImgItem("02"),
-        RankImgItem("03"),
-        RankImgItem("04"),
-        RankImgItem("05"),
-        RankImgItem("06"),
-        RankImgItem("07"),
-        RankImgItem("08"),
-        RankImgItem("09"),
-        RankImgItem("10")
-    )
+    val dataList: ArrayList<RankImgItem> by lazy {
+        ArrayList<RankImgItem>()
+    }
+    val dataList_img: ArrayList<RankImgItem> by lazy {
+        ArrayList<RankImgItem>()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,32 +66,28 @@ class RankActivity : AppCompatActivity(), onDrawer {
         initialUI()
         //이거 나중에 함수로 빼주기!
 
-        val mAdapter = RankImgAdapter(this, RankImageList) { rankimg ->
-            //Toast.makeText(this, "number is ${rankimg.photo}", Toast.LENGTH_SHORT).show()
-            startActivity<BerryreviewActivity>()
-        }
-
+        getDonateImageResponse()
         mRecyclerView.adapter = mAdapter
-
         mRecyclerView.setOnClickListener {
             startActivity<BerryreviewActivity>()
         }
+    }
+
+    private fun initialUI() {
+        btn_home.setOnClickListener {
+            startActivity<MainActivity>()
+            finish()
+        }
+        drawerUI()
+
+        mAdapter = RankImgAdapter(this, dataList)
 
         val lm = LinearLayoutManager(this)
         mRecyclerView.layoutManager = lm
         lm.setOrientation(LinearLayoutManager.HORIZONTAL)
         mRecyclerView.setHasFixedSize(true)
 
-
-    }
-
-
-    private fun initialUI(){
-        btn_home.setOnClickListener {
-            startActivity<MainActivity>()
-            finish()
-        }
-        drawerUI()
+        gettotalDonateResponse()
     }
 
     override fun drawerUI() {
@@ -98,28 +104,27 @@ class RankActivity : AppCompatActivity(), onDrawer {
 
         btnAset = arrayOf(
             btn_drawer_home, btn_drawer_donate_record, btn_drawer_rank,
-            btn_drawer_mypage, btn_drawer_berrycharge,btn_drawer_usehistory
+            btn_drawer_mypage, btn_drawer_berrycharge, btn_drawer_usehistory
         )
-
         drawerBtnSetting(Constants.ACTIVITY_RANK)
     }
 
     override fun drawerBtnSetting(activityType: Int) {
         btn_hambuger.setOnClickListener {
-            if(!ly_drawer.isDrawerOpen(Gravity.END)){
+            if (!ly_drawer.isDrawerOpen(Gravity.END)) {
                 ly_drawer.openDrawer(Gravity.END)
             }
         }
 
         btn_cancel.setOnClickListener {
-            if(ly_drawer.isDrawerOpen(Gravity.END)){
+            if (ly_drawer.isDrawerOpen(Gravity.END)) {
                 ly_drawer.closeDrawer(Gravity.END)
             }
         }
 
 
-        for(i in 0 until btnAset.size){
-            btnAset[i].setOnClickListener{
+        for (i in 0 until btnAset.size) {
+            btnAset[i].setOnClickListener {
                 val intent = Intent(this, actSet[i])
                 ly_drawer.closeDrawer(Gravity.END)
                 startActivity(intent)
@@ -127,21 +132,76 @@ class RankActivity : AppCompatActivity(), onDrawer {
             }
         }
 
-        for(i in 0 until btnFset.size){
+        for (i in 0 until btnFset.size) {
             btnFset[i].setOnClickListener {
                 startActivity<DonateActivity>("fragment" to i)
-                Handler().postDelayed({ly_drawer.closeDrawer(Gravity.END)}, 110)
+                Handler().postDelayed({ ly_drawer.closeDrawer(Gravity.END) }, 110)
                 finish()
             }
         }
     }
 
     override fun onBackPressed() {
-        if(ly_drawer.isDrawerOpen(Gravity.END)){
+        if (ly_drawer.isDrawerOpen(Gravity.END)) {
             ly_drawer.closeDrawer(Gravity.END)
-        }
-        else{
+        } else {
             super.onBackPressed()
         }
+    }
+
+    private fun getDonateImageResponse() {
+        val getDonateImageResponse =
+            networkService.getDeliveryReviewResponse()
+
+        getDonateImageResponse.enqueue(object : Callback<GetDonateParticipationDetailResponse> {
+            override fun onFailure(call: Call<GetDonateParticipationDetailResponse>, t: Throwable) {
+                Log.d("hello", t.toString())
+            }
+
+            override fun onResponse(
+                call: Call<GetDonateParticipationDetailResponse>,
+                response: Response<GetDonateParticipationDetailResponse>
+            ) {
+                if (response.isSuccessful) {
+                    if (response.body()!!.status == 201) {
+                        val receiveData: ArrayList<DonatedDetailedData> = response.body()!!.data
+                        if (receiveData.size > 0) {
+                            for (i in 0 until receiveData.size) {
+                                dataList_img.add(RankImgItem(receiveData[i].thumbnail))
+                            }
+                        }
+                        updateDonateList(dataList_img)
+                    }
+                } else if (response.body()!!.status == 600) {
+                    toast(response.body()!!.message)
+                }
+            }
+        })
+    }
+
+    private fun updateDonateList(list: ArrayList<RankImgItem>) {
+        dataList.clear()
+        dataList.addAll(list)
+        mAdapter.notifyDataSetChanged()
+    }
+
+    private fun gettotalDonateResponse(){
+        val gettotalDonateResponse =
+                networkService.gettotalDonateResponse()
+
+        gettotalDonateResponse.enqueue(object : Callback<GettotalDonateResponse>{
+            override fun onFailure(call: Call<GettotalDonateResponse>, t: Throwable) {
+                Log.d("Response error","조회실패")
+            }
+
+            override fun onResponse(call: Call<GettotalDonateResponse>, response: Response<GettotalDonateResponse>) {
+                if(response.isSuccessful){
+                    if(response.body()!!.status == NETWORK_LIST_SUCCESS){
+                        val receiveData : ArrayList<TotalDonateInfo> = response.body()!!.data
+                        rank_totalDonate.text = receiveData[0].totalDonate.toString()
+                    }
+                }
+            }
+        })
     }
 }

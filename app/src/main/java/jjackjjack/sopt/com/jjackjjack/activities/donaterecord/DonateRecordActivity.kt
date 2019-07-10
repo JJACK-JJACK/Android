@@ -16,6 +16,7 @@ import jjackjjack.sopt.com.jjackjjack.activities.berryuse.BerryHistoryActivity
 import jjackjjack.sopt.com.jjackjjack.activities.donate.DonateActivity
 import jjackjjack.sopt.com.jjackjjack.activities.mypage.MyPageActivity
 import jjackjjack.sopt.com.jjackjjack.activities.rank.RankActivity
+import jjackjjack.sopt.com.jjackjjack.activities.stamp.StampActivity
 import jjackjjack.sopt.com.jjackjjack.db.SharedPreferenceController
 import jjackjjack.sopt.com.jjackjjack.interfaces.donateListData
 import jjackjjack.sopt.com.jjackjjack.interfaces.onDrawer
@@ -29,6 +30,7 @@ import jjackjjack.sopt.com.jjackjjack.network.data.DonatedDetailedData
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateParticipationBerryNumResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateParticipationResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateRecordResponse
+import jjackjjack.sopt.com.jjackjjack.network.response.get.GetmyBerryResponse
 import jjackjjack.sopt.com.jjackjjack.utillity.Constants
 import jjackjjack.sopt.com.jjackjjack.utillity.Secret
 import kotlinx.android.synthetic.main.activity_donate_record.ly_drawer
@@ -40,6 +42,7 @@ import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -84,7 +87,12 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
             startActivity<MainActivity>()
             finish()
         }
+
+        donate_record_stamp.setOnClickListener {
+            startActivity<StampActivity>()
+        }
         drawerUI()
+        getmyBerryResponse()
 
 //        list.add(
 //            DonateInfo(
@@ -169,7 +177,6 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
     private fun getDonateRecordResponse() {
         var token: String = SharedPreferenceController.getAuthorization(this)
 
-
         val getDonateRecordResponse =
             networkService.getDonateRecordResponse(token)
 
@@ -193,6 +200,7 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
     }
 
     private fun getDonateParticipationResponse() {
+
 
         var token: String = SharedPreferenceController.getAuthorization(this)
 
@@ -262,6 +270,37 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
             }
         })
     }
+    private fun getmyBerryResponse(){
+        var token:String = SharedPreferenceController.getAuthorization(this)
+
+        val getmyBerryResponse =
+            networkService.getmyBerryResponse("application/json",token)
+
+        getmyBerryResponse.enqueue(object : Callback<GetmyBerryResponse> {
+            override fun onFailure(call: Call<GetmyBerryResponse>, t: Throwable) {
+                Log.d("No berry", "No Berry")
+            }
+
+            override fun onResponse(call: Call<GetmyBerryResponse>, response: Response<GetmyBerryResponse>) {
+                if(response.isSuccessful){
+                    if(response.body()!!.status == Secret.NETWORK_LIST_SUCCESS){
+                        val receiveData = response.body()?.data
+
+                        val dec = DecimalFormat("#,000")
+                        val dec_berry : String
+
+                        if(receiveData.toString().length <= 3){
+                            dec_berry = receiveData.toString()
+                        }else{
+                            dec_berry = dec.format(receiveData)
+                        }
+                        drawer_myberry.text = dec_berry
+                    }
+                }
+            }
+        })
+    }
+
     private fun updateDonateList(list: ArrayList<DonateParticipationInfo>){
         dataList.clear()
         dataList.addAll(list)

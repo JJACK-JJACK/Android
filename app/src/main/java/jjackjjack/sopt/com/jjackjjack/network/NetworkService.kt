@@ -1,9 +1,12 @@
 package jjackjjack.sopt.com.jjackjjack.network
 
 import com.google.gson.JsonObject
+import jjackjjack.sopt.com.jjackjjack.network.response.get.*
+import jjackjjack.sopt.com.jjackjjack.network.response.post.PostBerryChargeResponse
 import jjackjjack.sopt.com.jjackjjack.network.data.DonateSortedData
 import jjackjjack.sopt.com.jjackjjack.network.data.DonatedDetailedData
 import jjackjjack.sopt.com.jjackjjack.network.response.get.*
+import jjackjjack.sopt.com.jjackjjack.network.response.post.PostDonateResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostLoginResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostNicknameCheckResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostSignUpResponse
@@ -70,17 +73,62 @@ interface NetworkService {
         @Header("token") token: String
     ): Call <GetDonateParticipationResponse>
 
+   //베리 충전
+    @POST("/berryHistory")
+    fun postBerryChargeResponse(
+        @Header("Content-Type") content_type: String,
+        @Header("token") token: String,
+        @Body() body: JsonObject
+    ): Call<PostBerryChargeResponse>
+
     //기부 베리 조회
     @GET("/history/berry")
     fun getDonateParticipationBerryNumResponse(
         @Header("token") token: String
     ): Call<GetDonateParticipationBerryNumResponse>
 
+    //마이페이지 이용 내역
+    @GET("/banking")
+    fun getBerryHistoryResponse(
+        @Header("token") token: String
+    ): Call<GetBerryHistoryResponse>
 
-    //기부 참여 상세 조회(작성 예정)
+    //기부하기
+    @POST("/userHistory/{programId}")
+    fun postDonateResponse(
+        @Header("token") token: String,
+        @Path("programId") programId: String,
+        @Body() body: JsonObject
+    ): Call<PostDonateResponse>
 
+    //기부 참여 상세 조회
+    @GET("/history/detail/{programId}")
+    fun getDonateParticipationDetailResponse(
+        @Header("Content-Type") content_type: String,
+        @Header("token") token: String,
+        @Path("programId") programId : String
+    ): Call<GetDonateParticipationDetailResponse>
 
+    //보유베리
+    @GET("/berryHistory/myBerry")
+    fun getmyBerryResponse(
+        @Header("Content-Type") content_type: String,
+        @Header("token") token: String
+    ): Call<GetmyBerryResponse>
 
+    //스탬프 조회
+    @GET("/stamp")
+    fun getStampResponse(
+        @Header("token") token: String
+    ):Call<GetStampResponse>
 
+    //전달 후기
+    @GET("/ranking")
+    fun getDeliveryReviewResponse(
+    ): Call<GetDonateParticipationDetailResponse>
 
+    //전체 프로그램 기부 금액
+    @GET("/program")
+    fun gettotalDonateResponse(
+    ):Call<GettotalDonateResponse>
 }

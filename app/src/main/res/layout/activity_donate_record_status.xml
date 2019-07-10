@@ -21,11 +21,20 @@
                     android:src="@drawable/ic_back"
                     android:id="@+id/btn_toolbar_back"/>
         </android.support.v7.widget.Toolbar>
+        <View
+                android:layout_gravity="center"
+                android:background="@color/colorPrimary"
+                android:layout_marginTop="40dp"
+                android:layout_width="320dp"
+                android:layout_height="1dp">
+        </View>
+
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
             <include
+                    android:id="@+id/status_header_img"
                     layout="@layout/header_img"></include>
 
             <include
@@ -40,6 +49,7 @@
                     android:layout_height="1dp">
             </View>
             <LinearLayout
+                    android:id="@+id/donate_record_status"
                     android:layout_marginTop="50dp"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -66,15 +76,8 @@
             </LinearLayout>
 
         </LinearLayout>
-        <View
-                android:layout_gravity="center"
-                android:background="@color/colorPrimary"
-                android:layout_marginTop="40dp"
-                android:layout_width="320dp"
-                android:layout_height="1dp">
-        </View>
-
         <include
+                android:id="@+id/donate_record_status_review"
                 layout="@layout/fragment_berryuse_review">
         </include>
 

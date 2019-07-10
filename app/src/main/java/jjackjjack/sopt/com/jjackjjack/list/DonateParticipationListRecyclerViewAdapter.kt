@@ -39,7 +39,7 @@ class DonateParticipationListRecyclerViewAdapter(
         holder.centerName.text = dataList[position].centerName
         holder.percent.text = dataList[position].percent
         holder.progress.progress = dataList[position].percent.toInt()
-        holder.berry.text = " - " + dataList[position].berry.toString()
+        holder.berry.text = dataList[position].berry.toString()
         if (URLUtil.isValidUrl(dataList[position].thumbnail)) {
             Glide.with(ctx).load(dataList[position].thumbnail).into(holder.thumbnail)
         }

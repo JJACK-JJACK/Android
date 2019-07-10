@@ -1,6 +1,7 @@
 package jjackjjack.sopt.com.jjackjjack.network.data
 
 import jjackjjack.sopt.com.jjackjjack.model.DonateInfo
+import jjackjjack.sopt.com.jjackjjack.model.DonateRecordStatusInfo
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList

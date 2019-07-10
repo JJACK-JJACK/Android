@@ -1,10 +1,14 @@
 package jjackjjack.sopt.com.jjackjjack.network.data
 
+
 import jjackjjack.sopt.com.jjackjjack.model.DonateDetail
 import java.text.SimpleDateFormat
 import java.util.*
 
 import kotlin.collections.ArrayList
+
+import jjackjjack.sopt.com.jjackjjack.model.DonateRecordStatusInfo
+
 
 data class DonatedDetailedData(
 
@@ -14,6 +18,7 @@ data class DonatedDetailedData(
 
     val centerName: String,//ㅇ
     val thumbnail: String,//ㅇ
+
 
     val story: ArrayList<StoryData>,//ㅇ-리사이클러
     val plan: ArrayList<UsePlanData>,//ㅇ-리사이클러
@@ -70,4 +75,17 @@ data class DonatedDetailedData(
         }
         return Dday
     }
+   fun toDonateRecordStatusInfo() : DonateRecordStatusInfo {
+        var dr = DonateRecordStatusInfo(_id=_id, thumbnail = "", title = "",
+            centerName = "", percentage = "", totalBerry = "", maxBerry = "")
+        dr.thumbnail = thumbnail
+        dr.title = title
+        dr.centerName = centerName
+        dr.percentage = percentage.toString()
+        dr.totalBerry = totalBerry.toString()
+        dr.maxBerry = maxBerry.toString()
+        return dr
+    }
 }
+
+
