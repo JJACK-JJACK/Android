@@ -29,6 +29,7 @@ import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.DecimalFormat
 
 class DonateDetailedActivity : AppCompatActivity() {
 
@@ -55,6 +56,8 @@ class DonateDetailedActivity : AppCompatActivity() {
     private val tempUsePlanList : ArrayList<DonateUsePlan> by lazy {
         ArrayList<DonateUsePlan>()
     }
+
+    val dec = DecimalFormat("#,000")
 
     lateinit var donateStoryRecyclerViewAdapter: DonateStoryRecyclerViewAdapter
     lateinit var donateUsePlanRecyclerViewAdapter: DonateUsePlanRecyclerViewAdapter
@@ -91,7 +94,7 @@ class DonateDetailedActivity : AppCompatActivity() {
                         li_state_d_day.text = temp[0].toDonateDetail().d_day
                         li_state_percent.text = temp[0].toDonateDetail().percentage.toString()
                         li_state_berry_num.text = temp[0].toDonateDetail().totalBerry
-                        li_state_total_num.text = temp[0].toDonateDetail().maxBerry
+                        li_state_total_num.text = dec.format(temp[0].toDonateDetail().maxBerry.toInt())
                         li_state_progress.progress = temp[0].toDonateDetail().percentage
                         donate_detailed_title.text = temp[0].toDonateDetail().title
                         donate_detailed_association.text = temp[0].toDonateDetail().centerName
