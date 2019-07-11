@@ -57,7 +57,10 @@ class MainActivity : AppCompatActivity(), onDrawer {
         Log.d("token", SharedPreferenceController.getAuthorization(this))
 
         drawerUI()
-        //getmyBerryResponse()
+        getmyBerryResponse()
+        logo.setOnClickListener {
+            startActivity<GetBerryActivity>()
+        }
     }
 
     override fun onResume() { //로그아웃 후에 이 뷰는 꺼지게
@@ -184,7 +187,6 @@ class MainActivity : AppCompatActivity(), onDrawer {
                         }else{
                             dec_berry = dec.format(receiveData)
                         }
-
                         drawer_myberry.text = dec_berry
                     }
                 }

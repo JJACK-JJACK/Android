@@ -90,7 +90,7 @@ class DonateDetailedActivity : AppCompatActivity() {
                     if(response.body()!!.status == Secret.NETWORK_LIST_SUCCESS){
                         clearStoryDataList()
                         clearUsePlanDataList()
-                        val temp: ArrayList<DonatedDetailedData> = response.body()!!.data
+                        val temp: ArrayList<DonatedDetailedData> = response.body()!!.data //temp가 없을 때 터짐
                         li_state_d_day.text = temp[0].toDonateDetail().d_day
                         li_state_percent.text = temp[0].toDonateDetail().percentage.toString()
                         li_state_berry_num.text = temp[0].toDonateDetail().totalBerry

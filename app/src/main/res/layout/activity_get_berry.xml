@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical">
+    <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:backgroundTint="@color/white"
+            android:theme="?attr/actionBarTheme"
+            android:id="@+id/toolbar">
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back"
+                android:id="@+id/btn_toolbar_back"/>
+    </android.support.v7.widget.Toolbar>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textColor="@color/black"
+            android:letterSpacing="0.06"
+            android:gravity="center_horizontal"
+            android:text="럭키! 싱싱한"
+            android:layout_marginLeft="96.5dp"
+            android:layout_marginTop="56dp"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="42sp"
+                android:textColor="@color/red"
+                android:letterSpacing="0.06"
+                android:gravity="center_horizontal"
+                android:text="4"
+                android:layout_marginLeft="136.5dp"
+        />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:textColor="@color/black"
+                android:letterSpacing="0.06"
+                android:gravity="center_horizontal"
+                android:text="@string/berry"
+                android:layout_marginLeft="4dp"></TextView>
+    </LinearLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+            android:layout_marginTop="27dp"
+            android:id="@+id/animation_get_berry"
+            android:layout_gravity="center"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            app:lottie_autoPlay="true"/>
+
+
+    <Button android:layout_width="320dp"
+            android:layout_height="56dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="50dp"
+            android:text="@string/check"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:letterSpacing="-0.07"
+            android:lineSpacingExtra="2sp"
+            android:background="@drawable/shape_redbtn_4dp"
+    />
+</LinearLayout>

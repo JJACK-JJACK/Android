@@ -79,4 +79,5 @@ class DonateListRecyclerViewAdapter (val ctx: Context, var list: ArrayList<Donat
         var berry_num = itemView.findViewById(R.id.li_donate_berry_num) as TextView
         var progress = itemView.findViewById(R.id.li_donate_progress) as ProgressBar
     }
+
 }
