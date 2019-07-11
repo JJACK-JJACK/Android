@@ -110,7 +110,7 @@ class DonatePaymentActivity : AppCompatActivity() {
     }
 
     private fun postDonateResponse(donateBerry: String) {
-
+        Log.d("hi1","hi1")
         val programId: String = intent.getStringExtra("programId")
         var token: String = SharedPreferenceController.getAuthorization(this)
 

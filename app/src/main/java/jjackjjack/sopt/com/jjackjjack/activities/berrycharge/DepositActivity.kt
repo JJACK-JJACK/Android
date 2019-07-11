@@ -19,7 +19,7 @@ import retrofit2.Response
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostBerryChargeResponse
 import jjackjjack.sopt.com.jjackjjack.utillity.Secret
 import kotlinx.android.synthetic.main.activity_payment_finish.*
-import kotlinx.android.synthetic.main.deposit_spinner.*
+
 import org.jetbrains.anko.spinner
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
@@ -43,21 +43,22 @@ class DepositActivity : AppCompatActivity(){
 
     lateinit var berryList_money : Array<Int>
 
-
     var now_berry : Int = 0
 
     var now_money : Int = 0
 
-    var spinner_List = {R.array.bank}
+    var deposit_list = ArrayList<String>()
 
-    //var spinner_adapter = ArrayAdapter(this, R.layout.deposit_spinner, spinner_List)
-
-
-
+    lateinit var selected_bank : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_berry_deposit)
+
+
+
+
+
         InitialUI()
     }
 
@@ -81,7 +82,25 @@ class DepositActivity : AppCompatActivity(){
             1100, 5500, 11000, 33000, 55000
         )
 
+        deposit_list.add("국민은행 67070204087002")
+        deposit_list.add("신한은행 110499030264")
+        deposit_list.add("우리은행 1002659283912")
+        deposit_list.add("하나은행 50391038504107")
+        deposit_list.add("카카오뱅크 3333048166414")
 
+        val deposit_adapter = ArrayAdapter(this@DepositActivity, R.layout.support_simple_spinner_dropdown_item, deposit_list)
+        berry_deposit_spinner.adapter= deposit_adapter as SpinnerAdapter?
+
+        berry_deposit_spinner.onItemSelectedListener=
+            object :AdapterView.OnItemSelectedListener{
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    selected_bank = berry_deposit_spinner.getItemAtPosition(position).toString()
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                    toast("입금하실 은행을 선택해주세요")
+                }
+            }
 
       for(i in 0 until lyList.size){
           lyList[i].setOnClickListener {
@@ -96,6 +115,7 @@ class DepositActivity : AppCompatActivity(){
           }
       }
     }
+
 
     override fun onResume() {
         super.onResume()
@@ -128,7 +148,7 @@ class DepositActivity : AppCompatActivity(){
             override fun onResponse(call: Call<PostBerryChargeResponse>, response: Response<PostBerryChargeResponse>){
                 if(response.isSuccessful){
                     if(response.body()!!.status == Secret.NETWORK_LIST_SUCCESS){
-                        startActivity<PaymentActivity>("berry_charge" to now_money)
+                        startActivity<PaymentActivity>("berry_charge" to now_money, "selected_bank" to selected_bank)
                         finish()
                     }
                     else{
@@ -137,6 +157,9 @@ class DepositActivity : AppCompatActivity(){
             }
         })
 
+    }
+    fun getValues(view: View){
+        toast(berry_deposit_spinner.selectedItem.toString())
     }
 }
 

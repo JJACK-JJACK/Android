@@ -48,7 +48,7 @@
 
     <string name="donation_step_ing">진행중</string>
     <string name="donation_step_end">마감</string>
-    <string name="donation_step_delivery">전달 완료</string>
+    <string name="donation_step_delivery">전달완료</string>
 
 
     <string name="input_berry">금액을 입력해주세요</string>
@@ -69,11 +69,11 @@
     <string name="msg_get_stamp">10개의 스탬프를 다 모으면 총 기부한 베리의\n10% 내에서 랜덤으로 베리를 수확 가능해요</string>
 
     <string-array name="bank">
-        <item>국민 67070204087002</item>
-        <item name="bank2">신한 110499030264</item>
-        <item>우리 1002659283912</item>
-        <item>하나 50391038504107</item>
-        <item name="bank5">카카오 3333048166414</item>
+        <item>국민은행 67070204087002</item>
+        <item>신한은행 110499030264</item>
+        <item>우리은행 1002659283912</item>
+        <item>하나은행 50391038504107</item>
+        <item>카카오뱅크 3333048166414</item>
     </string-array>
 
 </resources>
