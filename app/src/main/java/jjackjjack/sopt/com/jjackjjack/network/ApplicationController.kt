@@ -18,6 +18,7 @@ class ApplicationController : Application(){
         instance = this
         buildNetWork()
     }
+
     private fun buildNetWork(){
         val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl(baseURL)

@@ -35,6 +35,7 @@
                 android:gravity="center_vertical"
                 android:layout_height="91dp">
             <ImageView
+                    android:id="@+id/iv_drawer_profileimg"
                     android:src="@drawable/ic_account_circle_black_24dp"
                     android:layout_width="60dp"
                     android:layout_height="60dp"/>
@@ -46,6 +47,7 @@
                     android:layout_height="wrap_content">
                 <TextView
                         android:text="차눈눈누"
+                        android:id="@+id/tv_drawer_nickname"
                         android:textColor="@color/black"
                         android:textSize="20sp"
                         android:layout_width="wrap_content"
@@ -54,6 +56,7 @@
                         android:layout_marginTop="4dp"
                         android:textSize="14sp"
                         android:textColor="@color/grayB"
+                        android:id="@+id/tv_drawer_email"
                         android:text="parkce37@gmail.com"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>

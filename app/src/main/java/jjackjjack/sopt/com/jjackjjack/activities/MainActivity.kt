@@ -9,7 +9,10 @@ import android.support.v4.app.FragmentManager
 import android.util.Log
 import android.view.Gravity
 import android.view.View
+import android.webkit.URLUtil
 import android.widget.ImageView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import jjackjjack.sopt.com.jjackjjack.R
 import jjackjjack.sopt.com.jjackjjack.activities.berrycharge.BerryChargeActivity
 import jjackjjack.sopt.com.jjackjjack.activities.berryuse.BerryHistoryActivity
@@ -30,6 +33,7 @@ import kotlinx.android.synthetic.main.activity_mypage_berryhistory.*
 import kotlinx.android.synthetic.main.content_activity_main.*
 import kotlinx.android.synthetic.main.fragment_main_activity_image_slider.*
 import kotlinx.android.synthetic.main.nav_drawer.*
+import org.jetbrains.anko.image
 import org.jetbrains.anko.startActivity
 import retrofit2.Call
 import retrofit2.Callback
@@ -126,6 +130,14 @@ class MainActivity : AppCompatActivity(), onDrawer {
                 ly_drawer.closeDrawer(Gravity.END)
             }
         }
+
+
+        tv_drawer_nickname.text = SharedPreferenceController.getUserNickname(this)//닉네임 DB 저장한 거 가져오는거
+        tv_drawer_email.text = SharedPreferenceController.getUserEmail(this) // 이메일 DB 저장한 거
+        if(URLUtil.isValidUrl(SharedPreferenceController.getUserImg(this))){
+            Glide.with(this).load(SharedPreferenceController.getUserImg(this))
+                .apply(RequestOptions.circleCropTransform())?.into(iv_drawer_profileimg)
+        } //이미지 DB에서 가져오기 나중에 없을때 default 이미지 뜨게 처리해야함
 
         btn_drawer_usehistory.setOnClickListener {
             startActivity<BerryHistoryActivity>()
