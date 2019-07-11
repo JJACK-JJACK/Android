@@ -37,7 +37,7 @@
                         android:layout_marginStart="3dp"
                         android:layout_alignParentStart="true"
                         android:layout_marginTop="0dp"
-                        android:text="43"
+                        tools:text="43"
                         android:textStyle="bold"
                         android:textColor="@color/red"
                         android:textSize="14sp"
@@ -62,7 +62,7 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="69"
+                        tools:text="69"
                         android:textStyle="bold"
                         android:textColor="@color/red"
                         android:textSize="12sp"
@@ -83,7 +83,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/darkGrayA"
                         android:textStyle="bold"
-                        android:text="353,542"
+                        tools:text="353,542"
                         android:id="@+id/li_state_berry_num"/>
 
                 <TextView
@@ -105,7 +105,7 @@
                         android:textColor="@color/darkGrayA"
                         android:layout_weight="1"
                         android:textStyle="bold"
-                        android:text="9,900,000"
+                        tools:text="9,900,000"
                         android:gravity="right"
                         android:id="@+id/li_state_total_num"/>
 
@@ -127,4 +127,5 @@
             android:layout_height="1dp"
             android:background="@color/colorPrimary"
             android:layout_gravity="end"/>
+
 </RelativeLayout>

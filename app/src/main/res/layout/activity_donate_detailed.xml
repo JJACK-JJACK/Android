@@ -179,4 +179,11 @@
                 android:id="@+id/btn_donate"/>
     </LinearLayout>
 
+    <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_centerInParent="true"
+            android:indeterminateTint="@color/darkYellow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
 </RelativeLayout>
