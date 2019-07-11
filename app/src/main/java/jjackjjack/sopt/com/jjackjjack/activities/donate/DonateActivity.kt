@@ -72,7 +72,6 @@ class DonateActivity : AppCompatActivity(), onDrawer {
         }
         getmyBerryResponse()
 
-
     }
 
     private fun initialUI(){
