@@ -24,5 +24,21 @@
     <style name="tab_text" parent="@android:style/TextAppearance.Widget.TabWidget">
         <item name="android:textSize">14sp</item>
     </style>
+    
+    <!-- Custom font style -->
+    <style name="DemiLight">
+        <item name="android:fontFamily">@font/notosans_demilight</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    
+    <style name="reqular" parent="@android:style/Widget.DeviceDefault.TextView">
+        <item name="android:fontFamily">@font/notosans_regular</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="medium">
+        <item name="android:fontFamily">@font/notosans_medium</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
 
 </resources>
