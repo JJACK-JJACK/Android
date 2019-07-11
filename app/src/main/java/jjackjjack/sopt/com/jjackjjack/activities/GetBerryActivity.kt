@@ -14,7 +14,7 @@ class GetBerryActivity : AppCompatActivity() {
         setContentView(R.layout.activity_get_berry)
 
 
-        animation_get_berry.setAnimation("berrydata.json")
+        animation_get_berry.setAnimation("berrydata3.json")
         animation_get_berry.playAnimation()
     }
 }

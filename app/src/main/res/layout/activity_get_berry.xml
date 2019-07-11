@@ -55,15 +55,15 @@
             android:layout_marginTop="27dp"
             android:id="@+id/animation_get_berry"
             android:layout_gravity="center"
-            android:layout_width="256dp"
-            android:layout_height="256dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
             app:lottie_autoPlay="true"/>
 
 
     <Button android:layout_width="320dp"
             android:layout_height="56dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="82dp"
+            android:layout_marginTop="50dp"
             android:text="@string/check"
             android:textSize="16sp"
             android:textColor="@color/white"

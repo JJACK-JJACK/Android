@@ -57,10 +57,10 @@ class MainActivity : AppCompatActivity(), onDrawer {
         Log.d("token", SharedPreferenceController.getAuthorization(this))
 
         drawerUI()
-        //getmyBerrAyResponse()
-//        logo.setOnClickListener { anko practice
-//            startActivity<GetBerryActivity>()
-//        }
+        getmyBerryResponse()
+        logo.setOnClickListener {
+            startActivity<GetBerryActivity>()
+        }
     }
 
     override fun onResume() { //로그아웃 후에 이 뷰는 꺼지게
