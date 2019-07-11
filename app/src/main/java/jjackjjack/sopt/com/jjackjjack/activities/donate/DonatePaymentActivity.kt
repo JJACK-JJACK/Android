@@ -11,6 +11,7 @@ import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import jjackjjack.sopt.com.jjackjjack.R
 import jjackjjack.sopt.com.jjackjjack.activities.berrycharge.BerryChargeActivity
+import jjackjjack.sopt.com.jjackjjack.activities.stamp.StampActivity
 import jjackjjack.sopt.com.jjackjjack.db.SharedPreferenceController
 import jjackjjack.sopt.com.jjackjjack.network.ApplicationController
 import jjackjjack.sopt.com.jjackjjack.network.NetworkService
@@ -36,6 +37,9 @@ class DonatePaymentActivity : AppCompatActivity() {
         ApplicationController.instance.networkService
     }
 
+    var currStamp = 0
+    var currMyBerry = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_donate_payment)
@@ -44,17 +48,7 @@ class DonatePaymentActivity : AppCompatActivity() {
         getmyBerryResponse()
     }
 
-    private fun initialUI(){
-        btn_donate.setOnClickListener {
-            val builder = AlertDialog.Builder(this)
-            val dialogView = layoutInflater.inflate(R.layout.dialog_donate_payment, null)
-            val dialogbutton = dialogView.findViewById<Button>(R.id.btn_close)
-            builder.setView(dialogView)
-            builder.show()
-            dialogbutton.setOnClickListener{
-                finish()
-            }
-        }
+    private fun initialUI() {
         var edtString = edt_donate_berry_num.text.toString()
         btn_erase_all.setOnClickListener {
             edtString = "0"
@@ -66,46 +60,57 @@ class DonatePaymentActivity : AppCompatActivity() {
         }
 
         btn_plus_10_berry.setOnClickListener {
-            if(edtString.length > 0){
+            if (edtString.length > 0) {
                 edtString = (edtString.toInt() + 10).toString()
-            }
-            else{
+            } else {
                 edtString = "10"
             }
             edt_donate_berry_num.setText(edtString)
         }
         btn_plus_20_berry.setOnClickListener {
-            if(edtString.length > 0){
+            if (edtString.length > 0) {
                 edtString = (edtString.toInt() + 20).toString()
-            }
-            else{
+            } else {
                 edtString = "20"
             }
             edt_donate_berry_num.setText(edtString)
         }
         btn_plus_50_berry.setOnClickListener {
-            if(edtString.length > 0){
+            if (edtString.length > 0) {
                 edtString = (edtString.toInt() + 50).toString()
-            }
-            else{
+            } else {
                 edtString = "50"
             }
             edt_donate_berry_num.setText(edtString)
         }
+
+
+        btn_donate.setOnClickListener {
+            var finaledtString = edt_donate_berry_num.text.toString()
+            if (finaledtString.toInt() <= currMyBerry && finaledtString.toInt() != 0) {
+                postDonateResponse(edtString)
+                if (currStamp != 10) {
+                    val builder = AlertDialog.Builder(this)
+                    val dialogView = layoutInflater.inflate(R.layout.dialog_donate_payment, null)
+                    val dialogbutton = dialogView.findViewById<Button>(R.id.btn_close)
+                    builder.setView(dialogView)
+                    builder.show()
+                    dialogbutton.setOnClickListener {
+                        finish()
+                    }
+                } else {
+                    startActivity<StampActivity>()
+                }
+            }
+        }
         btn_berry_charge.setOnClickListener {
-            //if(edtString < 보유 베리){
-            postDonateResponse(edtString)
             startActivity<BerryChargeActivity>()
-        //}
-//            else{
-//            toast("보유 베리가 부족합니다")
-//        }
         }
     }
 
-    private fun postDonateResponse(donateBerry : String) {
+    private fun postDonateResponse(donateBerry: String) {
 
-       // val programId : String = intent.getStringExtra("programId")
+        val programId: String = intent.getStringExtra("programId")
         var token: String = SharedPreferenceController.getAuthorization(this)
 
         var jsonObject = JSONObject()
@@ -113,7 +118,7 @@ class DonatePaymentActivity : AppCompatActivity() {
 
         val gsonObject = JsonParser().parse(jsonObject.toString()) as JsonObject
         val postDonateResponse =
-            networkService.postDonateResponse(token,"5d21f1ca41cb4a7984d17911",gsonObject)
+            networkService.postDonateResponse(token, programId, gsonObject)
 
         postDonateResponse.enqueue(object : Callback<PostDonateResponse> {
             override fun onFailure(call: Call<PostDonateResponse>, t: Throwable) {
@@ -123,8 +128,11 @@ class DonatePaymentActivity : AppCompatActivity() {
             override fun onResponse(call: Call<PostDonateResponse>, response: Response<PostDonateResponse>) {
                 if (response.isSuccessful) {
                     if (response.body()!!.status == 201) {
+                        toast("hello")
                         val receiveData: DonateData? = response.body()!!.data
-                        //추가 예정
+
+                        Log.d("berry", receiveData!!.totalBerry.toString())
+                        currStamp = receiveData!!.stamps
                     }
                 } else if (response.body()!!.status == 600) {
                     toast(response.body()!!.message)
@@ -132,31 +140,34 @@ class DonatePaymentActivity : AppCompatActivity() {
             }
         })
     }
-    private fun getmyBerryResponse(){
-        var token:String = SharedPreferenceController.getAuthorization(this)
+
+    private fun getmyBerryResponse() {
+        var token: String = SharedPreferenceController.getAuthorization(this)
 
         val getmyBerryResponse =
-            networkService.getmyBerryResponse("application/json",token)
+            networkService.getmyBerryResponse("application/json", token)
 
-        getmyBerryResponse.enqueue(object : Callback<GetmyBerryResponse>{
+        getmyBerryResponse.enqueue(object : Callback<GetmyBerryResponse> {
             override fun onFailure(call: Call<GetmyBerryResponse>, t: Throwable) {
                 Log.d("No berry", "No Berry")
             }
 
             override fun onResponse(call: Call<GetmyBerryResponse>, response: Response<GetmyBerryResponse>) {
-                if(response.isSuccessful){
-                    if(response.body()!!.status == Secret.NETWORK_LIST_SUCCESS){
+                if (response.isSuccessful) {
+                    if (response.body()!!.status == Secret.NETWORK_LIST_SUCCESS) {
                         val receiveData = response.body()?.data
 
                         val dec = DecimalFormat("#,000")
-                        val dec_berry : String
+                        val dec_berry: String
 
-                        if(receiveData.toString().length <= 3){
+
+                        currMyBerry = receiveData!!
+
+                        if (receiveData.toString().length <= 3) {
                             dec_berry = receiveData.toString()
-                        }else{
+                        } else {
                             dec_berry = dec.format(receiveData)
                         }
-
                         payment_myberry.text = dec_berry
                     }
                 }

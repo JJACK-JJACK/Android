@@ -23,6 +23,7 @@
                     android:layout_marginLeft="3dp"
                     android:background="@drawable/shape_donate_status_rec"/>
             <TextView
+                    android:id="@+id/participation_status_date_ing"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
@@ -62,6 +63,7 @@
                     android:layout_marginLeft="3dp"
                     android:background="@drawable/shape_donate_status_rec"/>
             <TextView
+                    android:id="@+id/participation_status_date_end"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
@@ -101,6 +103,7 @@
                     android:layout_marginLeft="3dp"
                     android:background="@drawable/shape_donate_status_rec"/>
             <TextView
+                    android:id="@+id/participation_status_date_finish"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"

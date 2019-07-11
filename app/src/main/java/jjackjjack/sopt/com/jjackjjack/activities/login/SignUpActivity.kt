@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.InputType
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import jjackjjack.sopt.com.jjackjjack.R
@@ -213,6 +214,7 @@ class SignUpActivity : AppCompatActivity() {
         tv_signup_section1.text="닉네임"
         et_signup_section1.hint="동동이"
         et_signup_section1.setText("")
+        et_signup_section1.privateImeOptions = "defaultInputmode=korea;"
         et_signup_section1.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_NORMAL
         ly_signup_section2.visibility = View.GONE
         btn_signup_next.text ="확인"

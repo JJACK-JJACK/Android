@@ -33,9 +33,11 @@ class BerryreviewActivity : AppCompatActivity() {
     val dataList: ArrayList<DonateUsePlan> by lazy {
         ArrayList<DonateUsePlan>()
     }
+
     val dataList_use_plan: ArrayList<DonateUsePlan> by lazy {
         ArrayList<DonateUsePlan>()
     }
+
     lateinit var donateUsePlanRecyclerViewAdapter: DonateUsePlanRecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {

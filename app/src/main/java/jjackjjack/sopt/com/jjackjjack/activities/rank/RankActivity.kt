@@ -37,6 +37,7 @@ import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.DecimalFormat
 
 
 class RankActivity : AppCompatActivity(), onDrawer {
@@ -198,7 +199,11 @@ class RankActivity : AppCompatActivity(), onDrawer {
                 if(response.isSuccessful){
                     if(response.body()!!.status == NETWORK_LIST_SUCCESS){
                         val receiveData : ArrayList<TotalDonateInfo> = response.body()!!.data
-                        rank_totalDonate.text = receiveData[0].totalDonate.toString()
+
+                        val dec = DecimalFormat("#,000")
+                        val total_berry = dec.format(receiveData[0].totalDonate.toInt())
+
+                        rank_totalDonate.text = total_berry.toString()
                     }
                 }
             }

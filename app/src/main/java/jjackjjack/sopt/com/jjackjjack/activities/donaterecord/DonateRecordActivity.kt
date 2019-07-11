@@ -53,14 +53,14 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
         ApplicationController.instance.networkService
     }
 
-    val dataList : ArrayList<DonateParticipationInfo> by lazy{
+    val dataList: ArrayList<DonateParticipationInfo> by lazy {
         ArrayList<DonateParticipationInfo>()
     }
-    val dataList_donateParticipateInfo : ArrayList<DonateParticipationInfo> by lazy {
+    val dataList_donateParticipateInfo: ArrayList<DonateParticipationInfo> by lazy {
         ArrayList<DonateParticipationInfo>()
     }
 
-    val dataList_donateberrynum : ArrayList<Int> by lazy {
+    val dataList_donateberrynum: ArrayList<Int> by lazy {
         ArrayList<Int>()
     }
 
@@ -187,20 +187,30 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
 
             override fun onResponse(call: Call<GetDonateRecordResponse>, response: Response<GetDonateRecordResponse>) {
                 if (response.isSuccessful) {
+                    Log.d("response",response.body()!!.status.toString() )
                     if (response.body()!!.status == Secret.NETWORK_SUCCESS) {
-                        val receiveData: DonateRecordData = response.body()!!.data
-                        total_berry.text = receiveData.donateBerry.toString()
-                        participation_num.text = receiveData.donate.toString()
+                        Log.d("response", response.body()!!.data.toString())
+                        response.body()!!.data?.donate?.let {
+                            Log.d("hello", "im innocent")
+                            total_berry.text = response.body()!!.data.donateBerry.toString()
+                            participation_num.text = response.body()!!.data.donate.toString()
+                        }
+                        if(response.body()!!.data?.donate == null){
+                            total_berry.text = 0.toString()
+                            participation_num.text = 0.toString()
+                        }
+
+
                     }
-                } else if (response.body()!!.status == 600) {
-                    toast(response.body()!!.message)
+                    else if (response.body()!!.status == 600) {
+                        toast(response.body()!!.message)
+                    }
                 }
             }
         })
     }
 
     private fun getDonateParticipationResponse() {
-
 
         var token: String = SharedPreferenceController.getAuthorization(this)
 
@@ -210,7 +220,7 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
         val getDonateParticipationBerryNumResponse =
             networkService.getDonateParticipationBerryNumResponse(token)
 
-        getDonateParticipationBerryNumResponse.enqueue(object : Callback<GetDonateParticipationBerryNumResponse>{
+        getDonateParticipationBerryNumResponse.enqueue(object : Callback<GetDonateParticipationBerryNumResponse> {
             override fun onFailure(call: Call<GetDonateParticipationBerryNumResponse>, t: Throwable) {
                 Log.e("hello", t.toString())
             }
@@ -223,12 +233,12 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
                     if (response.body()!!.status == Secret.NETWORK_SUCCESS) {
                         val receiveData: ArrayList<DonateBerryData>? = response.body()?.data
                         if (receiveData!!.size > 0) {
-                            for (i in 0 until receiveData.size){
+                            for (i in 0 until receiveData.size) {
                                 dataList_donateberrynum.add(receiveData[i].berry)
                             }
                         }
                     } else if (response.body()!!.status == 600) {
-                        toast(response.body()!!.message)
+                        toast("dkdk")
                     }
                 }
             }
@@ -247,7 +257,7 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
                     if (response.body()!!.status == Secret.NETWORK_SUCCESS) {
                         val receiveData: ArrayList<DonatedDetailedData>? = response.body()?.data
                         if (receiveData!!.size > 0) {
-                            for (i in 0 until receiveData.size){
+                            for (i in 0 until receiveData.size) {
                                 dataList_donateParticipateInfo.add(
                                     DonateParticipationInfo(
                                         receiveData[i]._id,
@@ -264,17 +274,18 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
                             updateDonateList(dataList_donateParticipateInfo)
                         }
                     } else if (response.body()!!.status == 600) {
-                        toast(response.body()!!.message)
+                        toast(response.body()!!.message )
                     }
                 }
             }
         })
     }
-    private fun getmyBerryResponse(){
-        var token:String = SharedPreferenceController.getAuthorization(this)
+
+    private fun getmyBerryResponse() {
+        var token: String = SharedPreferenceController.getAuthorization(this)
 
         val getmyBerryResponse =
-            networkService.getmyBerryResponse("application/json",token)
+            networkService.getmyBerryResponse("application/json", token)
 
         getmyBerryResponse.enqueue(object : Callback<GetmyBerryResponse> {
             override fun onFailure(call: Call<GetmyBerryResponse>, t: Throwable) {
@@ -282,16 +293,16 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
             }
 
             override fun onResponse(call: Call<GetmyBerryResponse>, response: Response<GetmyBerryResponse>) {
-                if(response.isSuccessful){
-                    if(response.body()!!.status == Secret.NETWORK_LIST_SUCCESS){
+                if (response.isSuccessful) {
+                    if (response.body()!!.status == Secret.NETWORK_LIST_SUCCESS) {
                         val receiveData = response.body()?.data
 
                         val dec = DecimalFormat("#,000")
-                        val dec_berry : String
+                        val dec_berry: String
 
-                        if(receiveData.toString().length <= 3){
+                        if (receiveData.toString().length <= 3) {
                             dec_berry = receiveData.toString()
-                        }else{
+                        } else {
                             dec_berry = dec.format(receiveData)
                         }
                         drawer_myberry.text = dec_berry
@@ -301,17 +312,18 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
         })
     }
 
-    private fun updateDonateList(list: ArrayList<DonateParticipationInfo>){
+    private fun updateDonateList(list: ArrayList<DonateParticipationInfo>) {
         dataList.clear()
         dataList.addAll(list)
         donateParticipationListRecyclerViewAdapter.notifyDataSetChanged()
     }
-    private fun converteDday(finish: String) : String{
 
-        var dday : Int = 0
-        var Dday: String =""
+    private fun converteDday(finish: String): String {
 
-        if(finish != null) {
+        var dday: Int = 0
+        var Dday: String = ""
+
+        if (finish != null) {
 
             val today = Calendar.getInstance()
             val finishdateFormat = SimpleDateFormat("yyyy-MM-dd").parse(finish.split("T")[0])

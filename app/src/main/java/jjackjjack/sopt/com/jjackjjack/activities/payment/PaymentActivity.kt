@@ -33,7 +33,7 @@ class PaymentActivity : AppCompatActivity() {
         tv_payment_money.setText(credits+"원")
         tv_payment_bank.setText(set_selected_bank[0])
         tv_payment_account.setText(set_selected_bank[1])
-        tv_payment_date.setText(df.format(cal.time).toString()+"까지")
+        tv_payment_date.setText(df.format(cal.time).toString()+" 까지")
 
 
 

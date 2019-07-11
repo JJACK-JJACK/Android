@@ -1,6 +1,6 @@
 package jjackjjack.sopt.com.jjackjjack.model
 
-class DonateUsePlan (
+data class DonateUsePlan (
     var idx : String,
     var plan_detail : String,
     var berry_num : String

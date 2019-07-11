@@ -48,7 +48,7 @@
 
     <string name="donation_step_ing">진행중</string>
     <string name="donation_step_end">마감</string>
-    <string name="donation_step_delivery">전달 완료</string>
+    <string name="donation_step_delivery">전달완료</string>
 
 
     <string name="input_berry">금액을 입력해주세요</string>
