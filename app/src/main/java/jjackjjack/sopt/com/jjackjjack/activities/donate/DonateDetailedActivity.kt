@@ -69,6 +69,8 @@ class DonateDetailedActivity : AppCompatActivity() {
 
     }
 
+
+
     private fun getDonateDetailResponse(programId: String){ //programId 넘겨주기
         val getDonateDetailResponse = networkService.getDonateDetailedResponse(programId)
 

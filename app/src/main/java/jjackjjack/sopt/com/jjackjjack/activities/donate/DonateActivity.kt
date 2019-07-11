@@ -70,6 +70,7 @@ class DonateActivity : AppCompatActivity(), onDrawer {
             donate_pager.setCurrentItem(fragnum)
 
         }
+        getmyBerryResponse()
 
 
     }

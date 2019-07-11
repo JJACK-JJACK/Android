@@ -28,14 +28,12 @@ class PaymentActivity : AppCompatActivity() {
         val cal = Calendar.getInstance()
         cal.time = Date()
         val df: DateFormat = SimpleDateFormat("yyyy-MM-dd")
-        cal.add(Calendar.DATE, 2)
+        cal.add(Calendar.DATE, 1)
 
         tv_payment_money.setText(credits+"원")
         tv_payment_bank.setText(set_selected_bank[0])
         tv_payment_account.setText(set_selected_bank[1])
         tv_payment_date.setText(df.format(cal.time).toString()+" 까지")
-
-
 
         btn_payment_ok.setOnClickListener {
             startActivity<MainActivity>()

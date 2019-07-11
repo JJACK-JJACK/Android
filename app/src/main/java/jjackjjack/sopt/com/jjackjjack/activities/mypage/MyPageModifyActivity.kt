@@ -6,7 +6,10 @@ import android.os.Bundle
 import jjackjjack.sopt.com.jjackjjack.R
 import kotlinx.android.synthetic.main.activity_my_page_modify.*
 import android.R.attr.data
+import android.content.pm.PackageManager
+import android.os.Build
 import kotlinx.android.synthetic.main.activity_mypage_berryhistory.*
+import java.util.jar.Manifest
 
 
 class MyPageModifyActivity : AppCompatActivity() {
@@ -24,6 +27,20 @@ class MyPageModifyActivity : AppCompatActivity() {
         btn_back.setOnClickListener {
             finish()
         }
+//        btn_profile_img_change.setOnClickListener{
+//            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+//                if(checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED){
+//                    val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
+//                     requestPermissions(permissions,PERMISSION_CODE)
+//                }
+//                else{
+//                    pickImageFromGallery()
+//                }
+//            }
+//            else{
+//                pickImageFromGallery()
+//            }
+//        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -39,4 +56,9 @@ class MyPageModifyActivity : AppCompatActivity() {
         }
     }
 
+//    private fun pickImageFromGallery(){
+//        val intent = Intent(Intent.ACTION_PICK)
+//        intent.type = "image/*"
+//       startActivityForResult(intent. IMAGE_PICK_CODE)
+//    }
 }

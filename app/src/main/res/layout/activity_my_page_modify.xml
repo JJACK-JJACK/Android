@@ -36,6 +36,7 @@
                     android:src="@drawable/img_home_jjack" />
 
             <ImageView
+                    android:id="@+id/btn_profile_img_change"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="207dp"

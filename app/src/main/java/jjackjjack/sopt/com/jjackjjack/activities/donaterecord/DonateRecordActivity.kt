@@ -72,6 +72,8 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
 
     lateinit var donateParticipationListRecyclerViewAdapter: DonateParticipationListRecyclerViewAdapter
 
+    val dec = DecimalFormat("#,000")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_donate_record)
@@ -187,22 +189,32 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
 
             override fun onResponse(call: Call<GetDonateRecordResponse>, response: Response<GetDonateRecordResponse>) {
                 if (response.isSuccessful) {
-                    Log.d("response",response.body()!!.status.toString() )
+                    Log.d("response", response.body()!!.status.toString())
                     if (response.body()!!.status == Secret.NETWORK_SUCCESS) {
                         Log.d("response", response.body()!!.data.toString())
                         response.body()!!.data?.donate?.let {
                             Log.d("hello", "im innocent")
+
                             total_berry.text = response.body()!!.data.donateBerry.toString()
                             participation_num.text = response.body()!!.data.donate.toString()
+
+//                            if (response.body()!!.data.donate.toString().length <= 3)
+//                                participation_num.text = response.body()!!.data.donate.toString()
+//                            else
+//                                total_berry.text = dec.format(response.body()!!.data.donateBerry).toString()
+//
+//                            if (response.body()!!.data.donateBerry.toString().length <= 3)
+//                                total_berry.text = response.body()!!.data.donateBerry.toString()
+//                            else
+//                                participation_num.text = dec.format(response.body()!!.data.donate).toString()
                         }
-                        if(response.body()!!.data?.donate == null){
+                        if (response.body()!!.data?.donate == null) {
                             total_berry.text = 0.toString()
                             participation_num.text = 0.toString()
                         }
 
 
-                    }
-                    else if (response.body()!!.status == 600) {
+                    } else if (response.body()!!.status == 600) {
                         toast(response.body()!!.message)
                     }
                 }
@@ -274,7 +286,7 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
                             updateDonateList(dataList_donateParticipateInfo)
                         }
                     } else if (response.body()!!.status == 600) {
-                        toast(response.body()!!.message )
+                        toast(response.body()!!.message)
                     }
                 }
             }

@@ -57,6 +57,9 @@ class StampActivity : AppCompatActivity() {
 
                         toast(receiveData.toString())
                     }
+
+                }else{
+                    toast("스탬프 조회 실패")
                 }
             }
         })
