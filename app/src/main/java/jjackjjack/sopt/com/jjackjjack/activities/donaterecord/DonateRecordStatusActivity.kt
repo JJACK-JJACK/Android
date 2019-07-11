@@ -150,6 +150,7 @@ class DonateRecordStatusActivity : AppCompatActivity() {
 
                                     if (receiveData[0].review.size > 0) { //수정해야함
                                         donate_record_status_review.visibility = View.VISIBLE
+                                        participation_status_finish.visibility = View.INVISIBLE
 
                                         use_story_title.text = receiveData[i].review[i].story!![i].subTitle
                                         use_story_content1.text = receiveData[i].review[i].story!![i].content!![0]
@@ -161,6 +162,7 @@ class DonateRecordStatusActivity : AppCompatActivity() {
                                                 .into(use_story_img)
                                         }
                                     }
+
 
                                     var sum = 0
 

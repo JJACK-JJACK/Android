@@ -223,8 +223,7 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
 
     private fun getDonateParticipationResponse() {
 
-
-        val dataList_donateberrynum = arrayListOf<Int>()
+        var dataList_donateberrynum = arrayListOf<Int>()
 
         var token: String = SharedPreferenceController.getAuthorization(this)
 
@@ -351,7 +350,6 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
 
             dday = Math.abs(sub.toInt() + 1)
             Dday = "$dday"
-
         }
         return Dday
     }
