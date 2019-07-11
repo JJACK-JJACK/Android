@@ -6,5 +6,8 @@ data class PostLoginResponse(
     val data: LoginData
 )
 data class LoginData(
-    val token: String
+    val token: String,
+    val nickname: String,
+    val email: String,
+    val profileImg: String?
 )
