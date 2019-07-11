@@ -68,10 +68,8 @@ class DonateActivity : AppCompatActivity(), onDrawer {
         if(fragnum != -1){
             Log.d("fragnum", fragnum.toString())
             donate_pager.setCurrentItem(fragnum)
-
         }
         getmyBerryResponse()
-
     }
 
     private fun initialUI(){

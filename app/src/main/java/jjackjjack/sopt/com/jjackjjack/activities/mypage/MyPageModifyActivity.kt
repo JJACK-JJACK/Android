@@ -6,13 +6,21 @@ import android.os.Bundle
 import jjackjjack.sopt.com.jjackjjack.R
 import kotlinx.android.synthetic.main.activity_my_page_modify.*
 import android.R.attr.data
+import android.app.Activity
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
+import android.provider.MediaStore
+import android.support.v4.content.CursorLoader
 import kotlinx.android.synthetic.main.activity_mypage_berryhistory.*
+import org.jetbrains.anko.startActivityForResult
+import org.jetbrains.annotations.Nullable
+import java.io.IOException
 import java.util.jar.Manifest
 
 
 class MyPageModifyActivity : AppCompatActivity() {
+    val PICK_IMAGE_REQUEST = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,20 +35,9 @@ class MyPageModifyActivity : AppCompatActivity() {
         btn_back.setOnClickListener {
             finish()
         }
-//        btn_profile_img_change.setOnClickListener{
-//            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-//                if(checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED){
-//                    val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
-//                     requestPermissions(permissions,PERMISSION_CODE)
-//                }
-//                else{
-//                    pickImageFromGallery()
-//                }
-//            }
-//            else{
-//                pickImageFromGallery()
-//            }
-//        }
+        btn_profile_img_change.setOnClickListener{
+            chooseImage()
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -49,16 +46,34 @@ class MyPageModifyActivity : AppCompatActivity() {
         if (resultCode === RESULT_OK) {
             when (requestCode) {
                 3000 -> {
-                    curr_nickname.setText(data?.getStringExtra("nickname_changed"))
-                    curr_nickname2.setText(data?.getStringExtra("nickname_changed"))
+                    curr_nickname.text = data?.getStringExtra("nickname_changed")
+                    curr_nickname2.text = data?.getStringExtra("nickname_changed")
                 }
+            }
+        }
+        if(requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null){
+            val uri = data.data
+
+            try{
+
+                val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, uri)
+                imageView_round.setImageBitmap(bitmap)
+            }catch(e: IOException){
+                e.printStackTrace()
             }
         }
     }
 
-//    private fun pickImageFromGallery(){
-//        val intent = Intent(Intent.ACTION_PICK)
-//        intent.type = "image/*"
-//       startActivityForResult(intent. IMAGE_PICK_CODE)
+    private fun chooseImage(){
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST)
+    }
+
+//    fun getRealPathFromURI(cotent:Uri) : String{
+//        val proj = arrayOf(MediaStore.Images.Media.DATA)
+//        val loader : CursorLoader = CursorLoader(this, content, proj, null,null,null)
+//
 //    }
 }

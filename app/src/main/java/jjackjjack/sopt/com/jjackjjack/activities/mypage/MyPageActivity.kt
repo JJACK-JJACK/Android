@@ -125,6 +125,7 @@ class MyPageActivity : AppCompatActivity(), onDrawer {
             if(!ly_drawer.isDrawerOpen(Gravity.END)){
                 ly_drawer.openDrawer(Gravity.END)
             }
+            getmyBerryResponse()
         }
 
         btn_cancel.setOnClickListener {
