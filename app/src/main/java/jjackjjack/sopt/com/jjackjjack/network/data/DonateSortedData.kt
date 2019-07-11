@@ -2,6 +2,7 @@ package jjackjjack.sopt.com.jjackjjack.network.data
 
 import jjackjjack.sopt.com.jjackjjack.model.DonateInfo
 import jjackjjack.sopt.com.jjackjjack.model.DonateRecordStatusInfo
+import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -28,13 +29,15 @@ data class DonateSortedData(
     val deliver: String
 ){
     fun toDonateInfo() : DonateInfo{
+        val dec = DecimalFormat("#,000")
+
         var d = DonateInfo(_id = _id, thumbnail = "", d_day = "", title = "",
             centerName = "", percent = "", maxBerry = "")
         d.thumbnail = thumbnail
         d.title = title
         d.centerName = centerName
         d.percent = percentage.toString()
-        d.maxBerry = maxBerry.toString()
+        d.maxBerry = dec.format(maxBerry).toString()
         d.d_day = converteDday(finish).toString()
         return d
     }

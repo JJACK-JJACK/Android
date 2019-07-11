@@ -27,6 +27,7 @@
                     android:layout_weight="1"
                     android:layout_width="103dp"
                     android:layout_height="103dp"
+                    android:scaleType="center"
                     android:src="@drawable/img_home_jjack"
                     android:layout_marginRight="20dp"
                     android:id="@+id/li_donate_img_url"/>
