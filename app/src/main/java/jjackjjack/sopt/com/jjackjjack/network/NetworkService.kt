@@ -137,5 +137,10 @@ interface NetworkService {
     ):Call<PostNicknameResponse>
 
     //프로필 수정
-
+    @POST("/mypage/profile")
+    fun postProfileResponse(
+        @Header("Content-Type") content_type: String,
+        @Header("token") token: String,
+        @Body() body: JsonObject
+    ):Call<PostProfileResponse>
 }
