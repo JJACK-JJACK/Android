@@ -148,16 +148,18 @@ class DonateRecordStatusActivity : AppCompatActivity() {
                                     tv_participation_finish.setTextColor(Color.parseColor("#464fb2"))
                                     participation_status_finish.setTextColor(Color.parseColor("#333333"))
 
-                                    use_story_title.text = receiveData[i].review[i].story!![i].subTitle
+                                    if (receiveData[0].review.size > 0) { //수정해야함
+                                        donate_record_status_review.visibility = View.VISIBLE
 
+                                        use_story_title.text = receiveData[i].review[i].story!![i].subTitle
+                                        use_story_content1.text = receiveData[i].review[i].story!![i].content!![0]
+                                        use_story_content2.text = receiveData[i].review[i].story!![i].content!![1]
 
-                                    use_story_content1.text = receiveData[i].review[i].story!![i].content!![0]
-                                    use_story_content2.text = receiveData[i].review[i].story!![i].content!![1]
-
-                                    if (URLUtil.isValidUrl(receiveData[i].review[i].story!![i].img)) {
-                                        Glide.with(this@DonateRecordStatusActivity)
-                                            .load(receiveData[i].review[i].story!![i].img)
-                                            .into(use_story_img)
+                                        if (URLUtil.isValidUrl(receiveData[i].review[i].story!![i].img)) {
+                                            Glide.with(this@DonateRecordStatusActivity)
+                                                .load(receiveData[i].review[i].story!![i].img)
+                                                .into(use_story_img)
+                                        }
                                     }
 
                                     var sum = 0
@@ -170,7 +172,7 @@ class DonateRecordStatusActivity : AppCompatActivity() {
                                                 dec.format(receiveData[i].plan!![z].price).toString()
                                             )
                                         )
-                                        sum = sum +  receiveData[i].plan!![z].price.toString().toInt()
+                                        sum = sum + receiveData[i].plan!![z].price.toString().toInt()
                                         updateDonateRecordStatus(dataList_DonateRecordStatus)
                                     }
                                     use_berry_total.text = dec.format(sum).toString()

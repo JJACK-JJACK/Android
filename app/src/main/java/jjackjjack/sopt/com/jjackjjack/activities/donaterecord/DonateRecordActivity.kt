@@ -60,9 +60,9 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
         ArrayList<DonateParticipationInfo>()
     }
 
-    val dataList_donateberrynum: ArrayList<Int> by lazy {
-        ArrayList<Int>()
-    }
+//    val dataList_donateberrynum: ArrayList<Int> by lazy {
+//        ArrayList<Int>()
+//    }
 
     lateinit var btnFset: Array<ImageView>
 
@@ -183,6 +183,7 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
             networkService.getDonateRecordResponse(token)
 
         getDonateRecordResponse.enqueue(object : Callback<GetDonateRecordResponse> {
+
             override fun onFailure(call: Call<GetDonateRecordResponse>, t: Throwable) {
                 Log.d("hello", t.toString())
             }
@@ -212,8 +213,6 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
                             total_berry.text = 0.toString()
                             participation_num.text = 0.toString()
                         }
-
-
                     } else if (response.body()!!.status == 600) {
                         toast(response.body()!!.message)
                     }
@@ -223,6 +222,9 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
     }
 
     private fun getDonateParticipationResponse() {
+
+
+        val dataList_donateberrynum = arrayListOf<Int>()
 
         var token: String = SharedPreferenceController.getAuthorization(this)
 
@@ -250,7 +252,7 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
                             }
                         }
                     } else if (response.body()!!.status == 600) {
-                        toast("dkdk")
+                        toast(response.body()!!.message)
                     }
                 }
             }
