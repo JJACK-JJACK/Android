@@ -63,8 +63,7 @@
                         android:id="@+id/btn_nickname_edit"
                         android:src="@drawable/ic_edit_large"
                         android:layout_alignParentRight="true"
-                        android:layout_marginRight="40dp"
-                />
+                        android:layout_marginRight="40dp"/>
             </RelativeLayout>
 
             <TextView
@@ -110,8 +109,8 @@
                     android:textColor="@color/darkGrayC"
                     android:text="@string/own_berry"
                     android:layout_marginLeft="20dp"
-                    android:layout_gravity="bottom"
-            />
+                    android:layout_gravity="bottom"/>
+
             <TextView
                     android:layout_weight="1"
                     android:id="@+id/mypage_myberry"
@@ -123,7 +122,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/darkGrayC"
-                    android:text="@string/own_berry"
                     android:layout_marginLeft="20dp"
                     android:layout_gravity="bottom"/>
             <TextView

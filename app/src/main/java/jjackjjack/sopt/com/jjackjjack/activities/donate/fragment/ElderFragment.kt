@@ -115,7 +115,9 @@ class ElderFragment : Fragment(), View.OnClickListener{
                     if(response.body()!!.status == Secret.NETWORK_LIST_SUCCESS){
                         val temp: ArrayList<DonateSortedData> = response.body()!!.data
                         for(i in 0 until temp.size){
-                            dataList_DonateInfo.add(temp[i].toDonateInfo())
+                            if(temp[i].state == 0) { //진행중인 아이템만 추가
+                                dataList_DonateInfo.add(temp[i].toDonateInfo())
+                            }
                         }
 
                         updateDonateList(dataList_DonateInfo)

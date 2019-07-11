@@ -71,7 +71,6 @@ class DonateActivity : AppCompatActivity(), onDrawer {
 
         }
 
-
     }
 
     private fun initialUI(){

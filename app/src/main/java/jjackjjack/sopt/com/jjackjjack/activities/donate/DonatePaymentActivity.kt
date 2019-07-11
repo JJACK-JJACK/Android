@@ -83,6 +83,10 @@ class DonatePaymentActivity : AppCompatActivity() {
             }
             edt_donate_berry_num.setText(edtString)
         }
+        btn_plus_all_berry.setOnClickListener {
+            edtString = currMyBerry.toString()
+            edt_donate_berry_num.setText(edtString)
+        }
 
 
         btn_donate.setOnClickListener {
