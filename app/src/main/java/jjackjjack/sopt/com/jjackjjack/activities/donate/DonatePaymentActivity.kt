@@ -88,6 +88,7 @@ class DonatePaymentActivity : AppCompatActivity() {
         btn_donate.setOnClickListener {
             var finaledtString = edt_donate_berry_num.text.toString()
             if (finaledtString.toInt() <= currMyBerry && finaledtString.toInt() != 0) {
+                toast("donate start!")
                 postDonateResponse(edtString)
                 if (currStamp != 10) {
                     val builder = AlertDialog.Builder(this)
@@ -128,9 +129,8 @@ class DonatePaymentActivity : AppCompatActivity() {
             override fun onResponse(call: Call<PostDonateResponse>, response: Response<PostDonateResponse>) {
                 if (response.isSuccessful) {
                     if (response.body()!!.status == 201) {
-                        toast("hello")
+                        toast("success")
                         val receiveData: DonateData? = response.body()!!.data
-
                         Log.d("berry", receiveData!!.totalBerry.toString())
                         currStamp = receiveData!!.stamps
                     }

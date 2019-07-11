@@ -39,7 +39,7 @@ class EnvironmentFragment : Fragment(), View.OnClickListener {
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
     }
-    var CategoryId = 5
+    var CategoryId = 3
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {

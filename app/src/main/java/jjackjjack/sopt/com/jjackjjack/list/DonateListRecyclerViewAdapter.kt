@@ -1,6 +1,8 @@
 package jjackjjack.sopt.com.jjackjjack.list
 
 import android.content.Context
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -36,6 +38,8 @@ class DonateListRecyclerViewAdapter (val ctx: Context, var list: ArrayList<Donat
         if(URLUtil.isValidUrl(list[position].thumbnail)){
             Glide.with(ctx).load(list[position].thumbnail).into(holder.thumbnail)
         }
+
+        holder.progress.progressDrawable.setColorFilter(Color.parseColor("#da4830"), PorterDuff.Mode.SRC_IN)
 
         if (isDonateHistory){
             holder.container.setOnClickListener {

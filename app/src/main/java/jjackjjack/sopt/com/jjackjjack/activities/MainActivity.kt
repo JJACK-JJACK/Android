@@ -56,24 +56,8 @@ class MainActivity : AppCompatActivity(), onDrawer {
 
         Log.d("token", SharedPreferenceController.getAuthorization(this))
 
-//        pageIndicatorView.setViewPager(main_activity_slider_pager, true)
-//
-//        main_activity_slider_pager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-//            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {/*empty*/
-//            }
-//
-//            override fun onPageSelected(position: Int) {
-//                pageIndicatorView.selection = position
-//            }
-//
-//            override fun onPageScrollStateChanged(state: Int) {/*empty*/
-//            }
-//        })
-
-        //dot_indicator_activity_main.setupWithViewPager(main_activity_slider_pager, true)
-
         drawerUI()
-        getmyBerryResponse()
+        //getmyBerryResponse()
     }
 
     override fun onResume() { //로그아웃 후에 이 뷰는 꺼지게
@@ -112,6 +96,7 @@ class MainActivity : AppCompatActivity(), onDrawer {
         fragmentAdapter.notifyDataSetChanged()
     }
     override fun drawerUI(){
+        getmyBerryResponse()
         actSet = arrayOf(
             MainActivity::class.java, DonateRecordActivity::class.java,
             RankActivity::class.java, MyPageActivity::class.java,
