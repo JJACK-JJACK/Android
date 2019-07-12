@@ -14,6 +14,7 @@ import jjackjjack.sopt.com.jjackjjack.network.ApplicationController
 import jjackjjack.sopt.com.jjackjjack.network.NetworkService
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostNicknameCheckResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostNicknameResponse
+import jjackjjack.sopt.com.jjackjjack.utillity.ColorToast
 import jjackjjack.sopt.com.jjackjjack.utillity.Secret
 import jjackjjack.sopt.com.jjackjjack.utillity.Secret.Companion.NETWORK_LIST_SUCCESS
 import jjackjjack.sopt.com.jjackjjack.utillity.Secret.Companion.NETWORK_PW_FAIL
@@ -29,9 +30,9 @@ class MyPageNicknameModifyActivity : AppCompatActivity() {
         ApplicationController.instance.networkService
     }
 
-    var nickname : String = ""
+    var nickname: String = ""
 
-    private var send_nickname : String = ""
+    private var send_nickname: String = ""
 
     private var duplicateCheck = false //중복확인체크 하고 넘어갔는지 아닌지
 
@@ -51,21 +52,38 @@ class MyPageNicknameModifyActivity : AppCompatActivity() {
 
         btn_check.setOnClickListener {
             var edtString = edt_nickname_modify.text.toString()
-            if(edtString ==  ""){
+            if (edtString == "") {
                 edtString = intent.getStringExtra("nickname")
             }
-            postNicknameResponse()
-            val resultIntent = Intent()
-            resultIntent.putExtra("nickname_changed", edtString)
-            setResult(RESULT_OK, resultIntent)
-            finish()
+
+            if(edt_nickname_modify.toString()==""){
+                ColorToast(this@MyPageNicknameModifyActivity, "닉네임을 입력해주세요")
+            }else{
+                if (duplicateCheck == true) {
+                    postNicknameResponse()
+                    val resultIntent = Intent()
+                    resultIntent.putExtra("nickname_changed", edtString)
+                    setResult(RESULT_OK, resultIntent)
+                    finish()
+
+                } else if(!(edt_nickname_modify.toString()=="")&&duplicateCheck == false) {
+                    ColorToast(this@MyPageNicknameModifyActivity, "중복확인을 해주세요")
+                }
+            }
+
         }
 
         btn_nickname_duplicate.setOnClickListener {
-            NicknameResponseData()
+            var edtString = edt_nickname_modify.text.toString()
+            if (edtString.isEmpty()) {
+                ColorToast(this@MyPageNicknameModifyActivity, "닉네임을 입력해주세요")
+            } else {
+                NicknameResponseData()
+            }
         }
     }
-    private fun postNicknameResponse(){
+
+    private fun postNicknameResponse() {
         var token: String = SharedPreferenceController.getAuthorization(this)
 
         nickname = edt_nickname_modify.toString()
@@ -75,26 +93,26 @@ class MyPageNicknameModifyActivity : AppCompatActivity() {
 
         val gsonObject = JsonParser().parse(jsonObject.toString()) as JsonObject
         val postNicknameResponse =
-                networkService.postNicknameResponse("application/json", token, gsonObject)
+            networkService.postNicknameResponse("application/json", token, gsonObject)
 
-        postNicknameResponse.enqueue(object: Callback<PostNicknameResponse>{
+        postNicknameResponse.enqueue(object : Callback<PostNicknameResponse> {
             override fun onFailure(call: Call<PostNicknameResponse>, t: Throwable) {
                 Log.d("Not Existence", t.toString())
             }
 
             override fun onResponse(call: Call<PostNicknameResponse>, response: Response<PostNicknameResponse>) {
-                if(response.isSuccessful){
-                    if(response.body()!!.status == NETWORK_LIST_SUCCESS){
-                        toast("success")
+                if (response.isSuccessful) {
+                    if (response.body()!!.status == NETWORK_LIST_SUCCESS) {
+                        ColorToast(this@MyPageNicknameModifyActivity, "닉네임이 변경되었습니다.")
                     }
-                }else if(response.body()!!.status == NETWORK_PW_FAIL){
-                    toast("닉네임을 입력하세요")
+                } else if (response.body()!!.status == NETWORK_PW_FAIL) {
+                    ColorToast(this@MyPageNicknameModifyActivity, "닉네임을 입력해주세요")
                 }
             }
         })
     }
 
-    private fun NicknameResponseData(){
+    private fun NicknameResponseData() {
         nickname = edt_nickname_modify.toString()
 
         var jsonObject = JSONObject()
@@ -105,7 +123,7 @@ class MyPageNicknameModifyActivity : AppCompatActivity() {
         val postNicknameCheckResponse: Call<PostNicknameCheckResponse> =
             networkService.postNicknameCheckResponse("application/json", gsonObject)
 
-        postNicknameCheckResponse.enqueue(object: Callback<PostNicknameCheckResponse>{
+        postNicknameCheckResponse.enqueue(object : Callback<PostNicknameCheckResponse> {
             override fun onFailure(call: Call<PostNicknameCheckResponse>, t: Throwable) {
                 Log.e("duplicate check fail", t.toString())
                 toast("중복 확인 실패")
@@ -115,14 +133,13 @@ class MyPageNicknameModifyActivity : AppCompatActivity() {
                 call: Call<PostNicknameCheckResponse>,
                 response: Response<PostNicknameCheckResponse>
             ) {
-                if(response.isSuccessful){
-                    if(response.body()!!.status == Secret.NETWORK_SUCCESS){
-                        toast("사용 가능한 닉네임입니다.")
+                if (response.isSuccessful) {
+                    if (response.body()!!.status == Secret.NETWORK_SUCCESS) {
+                        ColorToast(this@MyPageNicknameModifyActivity,"사용 가능한 닉네임입니다.")
                         duplicateCheck = true
                         nickname = edt_nickname_modify.text.toString()
                         setUserNickname(this@MyPageNicknameModifyActivity, nickname)
-                    }
-                    else{
+                    } else {
                         toast(response.body()!!.message)
                         duplicateCheck = false
                     }
