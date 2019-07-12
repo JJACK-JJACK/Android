@@ -127,7 +127,7 @@ class DonateActivity : AppCompatActivity(), onDrawer {
             }
         }
 
-        tv_drawer_nickname.text = SharedPreferenceController.getUserNickname(this)//닉네임 DB 저장한 거 가져오는거
+        tv_drawer_nickname.text = SharedPreferenceController.getUserNickname(this) //닉네임 DB 저장한 거 가져오는거
         tv_drawer_email.text = SharedPreferenceController.getUserEmail(this) // 이메일 DB 저장한 거
         if(URLUtil.isValidUrl(SharedPreferenceController.getUserImg(this))){
             Glide.with(this).load(SharedPreferenceController.getUserImg(this))

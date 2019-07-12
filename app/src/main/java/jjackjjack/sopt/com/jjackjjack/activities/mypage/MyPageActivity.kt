@@ -22,6 +22,9 @@ import jjackjjack.sopt.com.jjackjjack.activities.login.BeginningActivity
 import jjackjjack.sopt.com.jjackjjack.activities.login.LoginActivity
 import jjackjjack.sopt.com.jjackjjack.activities.rank.RankActivity
 import jjackjjack.sopt.com.jjackjjack.db.SharedPreferenceController
+import jjackjjack.sopt.com.jjackjjack.db.SharedPreferenceController.getUserEmail
+import jjackjjack.sopt.com.jjackjjack.db.SharedPreferenceController.getUserImg
+import jjackjjack.sopt.com.jjackjjack.db.SharedPreferenceController.getUserNickname
 import jjackjjack.sopt.com.jjackjjack.interfaces.onDrawer
 import jjackjjack.sopt.com.jjackjjack.network.ApplicationController
 import jjackjjack.sopt.com.jjackjjack.network.NetworkService
@@ -31,8 +34,10 @@ import jjackjjack.sopt.com.jjackjjack.utillity.Secret
 import kotlinx.android.synthetic.main.activity_my_page.*
 import kotlinx.android.synthetic.main.activity_mypage_berryhistory.*
 import kotlinx.android.synthetic.main.content_activity_mypage.*
+import kotlinx.android.synthetic.main.fragment_berryuse_review.*
 import kotlinx.android.synthetic.main.nav_drawer.*
 import kotlinx.android.synthetic.main.toolbar_with_hamburger.*
+import org.jetbrains.anko.imageResource
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 import retrofit2.Call
@@ -65,6 +70,18 @@ class MyPageActivity : AppCompatActivity(), onDrawer {
             startActivity(intent)
         }
     }
+    override fun onResume() { //로그인 후에 이 뷰는 꺼지게
+        super.onResume()
+
+        Glide.with(this@MyPageActivity)
+            .load(getUserImg(this))
+            .into(img_temp_profile)
+        Log.d("url_get", getUserImg(this))
+
+        mypage_nickname.text = getUserNickname(this)
+
+        tv_mypage_email.text = getUserEmail(this)
+    }
     private fun initialUI(){
         btn_home.setOnClickListener {
             startActivity<MainActivity>()
@@ -77,6 +94,10 @@ class MyPageActivity : AppCompatActivity(), onDrawer {
         }
         drawerUI()
         getmyBerryResponse()
+
+        if(URLUtil.isValidUrl(getUserImg(this))){
+            Log.d("aaaaaaaaa", "sdf")
+        }
     }
 
     override fun onBackPressed() {
@@ -142,7 +163,10 @@ class MyPageActivity : AppCompatActivity(), onDrawer {
         if(URLUtil.isValidUrl(SharedPreferenceController.getUserImg(this))){
             Glide.with(this).load(SharedPreferenceController.getUserImg(this))
                 .apply(RequestOptions.circleCropTransform())?.into(iv_drawer_profileimg)
-        } //이미지 DB에서 가져오기 나중에 없을때 default 이미지 뜨게 처리해야함
+        }
+        //이미지 DB에서 가져오기 나중에 없을때 default 이미지 뜨게 처리해야함
+        //img_temp_profile.
+
 
 
         for(i in 0 until btnAset.size){

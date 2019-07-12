@@ -24,6 +24,7 @@ import kotlinx.android.synthetic.main.li_state.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.DecimalFormat
 
 class BerryreviewActivity : AppCompatActivity() {
 
@@ -37,6 +38,7 @@ class BerryreviewActivity : AppCompatActivity() {
     val dataList_use_plan: ArrayList<DonateUsePlan> by lazy {
         ArrayList<DonateUsePlan>()
     }
+    val dec = DecimalFormat("#,000")
 
     lateinit var donateUsePlanRecyclerViewAdapter: DonateUsePlanRecyclerViewAdapter
 
@@ -86,7 +88,7 @@ class BerryreviewActivity : AppCompatActivity() {
                             donate_detailed_title.text = receiveData[idx].title
                             donate_detailed_association.text = receiveData[idx].centerName
                             li_state_percent.text = receiveData[idx].percentage.toString()
-                            li_state_berry_num.text = receiveData[idx].totalBerry.toString()
+                            li_state_berry_num.text = dec.format(receiveData[idx].totalBerry).toString()
                             li_state_progress.progress = receiveData[idx].percentage
 
                             li_state_progress.progressDrawable.setColorFilter(
@@ -115,13 +117,13 @@ class BerryreviewActivity : AppCompatActivity() {
                                     DonateUsePlan(
                                         (i + 1).toString(),
                                         receiveData[idx].plan!![i].purpose,
-                                        receiveData[idx].plan!![i].price.toString()
+                                        dec.format(receiveData[idx].plan!![i].price).toString()
                                     )
                                 )
                                 sum = sum + receiveData[idx].plan!![i].price.toString().toInt()
                                 updateDonateRecordStatus(dataList_use_plan)
                             }
-                            use_berry_total.text = sum.toString()
+                            use_berry_total.text = dec.format(sum).toString()
                         }
                     }
                 }

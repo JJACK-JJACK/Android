@@ -126,6 +126,7 @@ class MainActivity : AppCompatActivity(), onDrawer {
             if(!ly_drawer.isDrawerOpen(Gravity.END)){
                 ly_drawer.openDrawer(Gravity.END)
             }
+            Log.d("nickname", tv_drawer_nickname.toString())
         }
 
         btn_cancel.setOnClickListener {
