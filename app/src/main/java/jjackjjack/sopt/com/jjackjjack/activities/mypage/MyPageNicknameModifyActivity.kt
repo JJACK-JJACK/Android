@@ -51,10 +51,7 @@ class MyPageNicknameModifyActivity : AppCompatActivity() {
         }
 
         btn_check.setOnClickListener {
-            var edtString = edt_nickname_modify.text.toString()
-            if (edtString == "") {
-                edtString = intent.getStringExtra("nickname")
-            }
+            var edtString = ""
 
             if(edt_nickname_modify.toString()==""){
                 ColorToast(this@MyPageNicknameModifyActivity, "닉네임을 입력해주세요")
@@ -86,7 +83,7 @@ class MyPageNicknameModifyActivity : AppCompatActivity() {
     private fun postNicknameResponse() {
         var token: String = SharedPreferenceController.getAuthorization(this)
 
-        nickname = edt_nickname_modify.toString()
+        nickname = edt_nickname_modify.text.toString()
 
         var jsonObject = JSONObject()
         jsonObject.put("nickname", nickname)
@@ -113,7 +110,7 @@ class MyPageNicknameModifyActivity : AppCompatActivity() {
     }
 
     private fun NicknameResponseData() {
-        nickname = edt_nickname_modify.toString()
+        nickname = edt_nickname_modify.text.toString()
 
         var jsonObject = JSONObject()
         jsonObject.put("nickname", send_nickname)

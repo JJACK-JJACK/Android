@@ -13,6 +13,7 @@
         android:id="@+id/review_container">
 
     <ImageView
+            android:scaleType="fitXY"
             android:id="@+id/PhotoImg"
             android:padding="10dp"
             android:layout_width="285dp"
