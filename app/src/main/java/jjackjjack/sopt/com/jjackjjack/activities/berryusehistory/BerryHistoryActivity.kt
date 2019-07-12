@@ -11,6 +11,7 @@ import jjackjjack.sopt.com.jjackjjack.network.NetworkService
 import jjackjjack.sopt.com.jjackjjack.network.response.get.BerryHistory
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GetBerryHistoryResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GetmyBerryResponse
+import jjackjjack.sopt.com.jjackjjack.utillity.ColorToast
 import jjackjjack.sopt.com.jjackjjack.utillity.Secret.Companion.NETWORK_LIST_SUCCESS
 import kotlinx.android.synthetic.main.activity_mypage_berryhistory.*
 import org.jetbrains.anko.toast
@@ -73,6 +74,7 @@ class BerryHistoryActivity : AppCompatActivity() {
         getBerryHistoryResponse.enqueue(object : Callback<GetBerryHistoryResponse> {
             override fun onFailure(call: Call<GetBerryHistoryResponse>, t: Throwable) {
                 Log.d("DB error", "DB error")
+                ColorToast(this@BerryHistoryActivity, "잠시 후 다시 접속해주세요")
             }
 
             override fun onResponse(call: Call<GetBerryHistoryResponse>, response: Response<GetBerryHistoryResponse>) {
@@ -104,7 +106,7 @@ class BerryHistoryActivity : AppCompatActivity() {
                         updateDataList(dataList_berryhistory)
                     }
                 } else if (response.body()!!.status == 600) {
-                    toast(response.body()!!.message)
+                    ColorToast(this@BerryHistoryActivity,response.body()!!.message)
                 }
             }
         })
@@ -119,6 +121,7 @@ class BerryHistoryActivity : AppCompatActivity() {
         getmyBerryResponse.enqueue(object : Callback<GetmyBerryResponse>{
             override fun onFailure(call: Call<GetmyBerryResponse>, t: Throwable) {
                 Log.d("No berry", "No Berry")
+                ColorToast(this@BerryHistoryActivity, "잠시 후 다시 접속해주세요")
             }
 
             override fun onResponse(call: Call<GetmyBerryResponse>, response: Response<GetmyBerryResponse>) {

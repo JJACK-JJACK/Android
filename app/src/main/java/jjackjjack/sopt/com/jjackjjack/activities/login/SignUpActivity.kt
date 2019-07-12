@@ -13,6 +13,7 @@ import jjackjjack.sopt.com.jjackjjack.network.ApplicationController
 import jjackjjack.sopt.com.jjackjjack.network.NetworkService
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostNicknameCheckResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostSignUpResponse
+import jjackjjack.sopt.com.jjackjjack.utillity.ColorToast
 import jjackjjack.sopt.com.jjackjjack.utillity.Secret
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import org.jetbrains.anko.startActivity
@@ -62,18 +63,18 @@ class SignUpActivity : AppCompatActivity() {
         postSignUpResponse.enqueue(object: Callback<PostSignUpResponse>{
             override fun onFailure(call: Call<PostSignUpResponse>, t: Throwable) {
                 Log.e("Sign fail", t.toString())
-                toast("회원가입 실패")
+                ColorToast(this@SignUpActivity, "잠시 후 다시 접속해주세요")
             }
 
             override fun onResponse(call: Call<PostSignUpResponse>, response: Response<PostSignUpResponse>) {
                 if(response.isSuccessful){
                     if(response.body()!!.status == Secret.NETWORK_SUCCESS){
-                        toast("가입 성공")
+                        ColorToast(this@SignUpActivity,"회원가입 되셨습니다")
                         startActivity<LoginActivity>()
                         finish()
                     }
                     else{
-                        toast(response.body()!!.message)
+                        ColorToast(this@SignUpActivity, response.body()!!.message)
                         startActivity<LoginActivity>()
                         finish()
                     }
@@ -93,7 +94,7 @@ class SignUpActivity : AppCompatActivity() {
             if(!send_nickname.contentEquals("")){
                 NicknameResponseData()
             }else{
-                toast("닉네임을 적어주세요")
+                ColorToast(this@SignUpActivity, "닉네임을 적어주세요")
             }
 
         }
@@ -111,7 +112,7 @@ class SignUpActivity : AppCompatActivity() {
         postNicknameCheckResponse.enqueue(object: Callback<PostNicknameCheckResponse>{
             override fun onFailure(call: Call<PostNicknameCheckResponse>, t: Throwable) {
                 Log.e("duplicate check fail", t.toString())
-                toast("중복 확인 실패")
+                ColorToast(this@SignUpActivity, "잠시 후 다시 접속해주세요")
             }
 
             override fun onResponse(
@@ -120,11 +121,11 @@ class SignUpActivity : AppCompatActivity() {
             ) {
                 if(response.isSuccessful){
                     if(response.body()!!.status == Secret.NETWORK_SUCCESS){
-                        toast("사용 가능한 닉네임입니다.")
+                        ColorToast(this@SignUpActivity, "사용 가능한 닉네임입니다")
                         duplicateCheck = true
                     }
                     else{
-                        toast(response.body()!!.message)
+                        ColorToast(this@SignUpActivity, response.body()!!.message)
                         duplicateCheck = false
                     }
                 }
@@ -135,7 +136,6 @@ class SignUpActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        //이거 if-else가 길어질 각이 왔다 onResume으로 옮길수도
         btn_signup_next.setOnClickListener {
 
 
@@ -154,7 +154,7 @@ class SignUpActivity : AppCompatActivity() {
                     send_pw = input_pw
                     viewThirdUI()
                 }else if(!input_pw.contentEquals(input_pw_verification)){
-                    toast("비밀번호가 일치하지 않습니다.")
+                    ColorToast(this@SignUpActivity, "비밀번호가 일치하지 않습니다")
                 }
             }
             else{
@@ -166,7 +166,7 @@ class SignUpActivity : AppCompatActivity() {
                     if(duplicateCheck){
                         SignUpResponseData()
                     }else{
-                        toast("중복확인 체크를 해주세요!")
+                        ColorToast(this@SignUpActivity, "중복확인 체크를 해주세요!")
                     }
                 }
             }
