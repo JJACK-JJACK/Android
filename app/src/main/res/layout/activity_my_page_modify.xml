@@ -138,6 +138,7 @@
                     android:textColor="@color/darkGrayC"
                     android:letterSpacing="0.06"
                     android:gravity="end"
+                    android:layout_marginRight="35dp"
                     tools:text="parkce37@gmail.com"/>
         </LinearLayout>
     </LinearLayout>
