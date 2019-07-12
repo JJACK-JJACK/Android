@@ -132,6 +132,14 @@ class DonateParticipationActivity : AppCompatActivity(), onDrawer {
             getmyBerryResponse()
             tv_drawer_nickname.text = SharedPreferenceController.getUserNickname(this) //닉네임 DB 저장한 거 가져오는거
             tv_drawer_email.text = SharedPreferenceController.getUserEmail(this) // 이메일 DB 저장한 거
+            if((SharedPreferenceController.getUserImg(this))!!.isNotEmpty()){
+                Glide.with(this@DonateParticipationActivity)
+                .load(SharedPreferenceController.getUserImg(this)).apply(RequestOptions.circleCropTransform())?.into(iv_drawer_profileimg)
+            }else{
+                Glide.with(this@DonateParticipationActivity)
+                    .load(R.drawable.pofile)
+                    .apply(RequestOptions.circleCropTransform())?.into(iv_drawer_profileimg)
+            }
         }
 
         btn_cancel.setOnClickListener {
