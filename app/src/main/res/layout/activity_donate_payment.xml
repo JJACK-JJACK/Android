@@ -84,7 +84,7 @@
                 android:layout_marginTop="15.5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="46dp">
+                android:paddingLeft="43dp">
 
             <TextView
                     android:includeFontPadding = "false"

@@ -48,7 +48,7 @@
                 <TextView
                         android:includeFontPadding = "false"
                         android:fontFamily="@font/notosans_medium"
-                        android:text="차눈눈누"
+                        tools:text="차눈눈누"
                         android:id="@+id/tv_drawer_nickname"
                         android:textColor="@color/black"
                         android:textSize="20sp"
@@ -61,7 +61,7 @@
                         android:textSize="14sp"
                         android:textColor="@color/grayB"
                         android:id="@+id/tv_drawer_email"
-                        android:text="parkce37@gmail.com"
+                        tools:text="parkce37@gmail.com"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
             </LinearLayout>
@@ -168,19 +168,19 @@
                         android:layout_gravity="center_vertical"
                         android:src="@drawable/ic_my_donation"
                         android:id="@+id/btn_drawer_donate_record"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"/>
                 <ImageView
                         android:layout_weight="1"
                         android:src="@drawable/ic_delivery_review"
                         android:id="@+id/btn_drawer_rank"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"/>
                 <ImageView
                         android:layout_weight="1"
                         android:src="@drawable/ic_mypage"
                         android:id="@+id/btn_drawer_mypage"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"/>
 
             </LinearLayout>
@@ -220,20 +220,20 @@
                         android:layout_weight="1"
                         android:src="@drawable/ic_children"
                         android:id="@+id/btn_drawer_f_child"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
                 <ImageView
                         android:layout_weight="1"
                         android:src="@drawable/ic_senior"
                         android:id="@+id/btn_drawer_f_senior"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
                 <ImageView
                         android:layout_weight="1"
                         android:src="@drawable/ic_animal"
                         android:id="@+id/btn_drawer_f_animal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
 
             </LinearLayout>
             <LinearLayout
@@ -243,24 +243,24 @@
                     android:layout_marginLeft="2dp"
                     android:weightSum="3"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent">
                 <ImageView
                         android:layout_weight="1"
                         android:src="@drawable/ic_disabled"
                         android:id="@+id/btn_drawer_f_disabled"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"/>
                 <ImageView
                         android:layout_weight="1"
                         android:src="@drawable/ic_environment"
                         android:id="@+id/btn_drawer_f_env"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"/>
                 <ImageView
                         android:layout_weight="1"
                         android:src="@drawable/ic_emergency"
                         android:id="@+id/btn_drawer_f_emergency"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"/>
             </LinearLayout>
         </LinearLayout>

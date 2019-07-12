@@ -93,7 +93,7 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingVertical="16dp">
+            android:paddingVertical="6dp">
         <TextView
                 android:includeFontPadding = "false"
                 android:fontFamily="@font/notosans_regular"
@@ -178,7 +178,7 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingVertical="16dp">
+            android:paddingVertical="6dp">
         <TextView
                 android:includeFontPadding = "false"
                 android:fontFamily="@font/notosans_regular"

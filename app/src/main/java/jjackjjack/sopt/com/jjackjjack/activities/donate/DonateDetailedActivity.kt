@@ -2,10 +2,7 @@ package jjackjjack.sopt.com.jjackjjack.activities.donate
 
 import android.content.Intent
 import android.graphics.Color
-<<<<<<< HEAD
 import android.graphics.PorterDuff
-=======
->>>>>>> 7c39a16bbc34ba7d8a341fe90a3a953a9c43085a
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.TabLayout

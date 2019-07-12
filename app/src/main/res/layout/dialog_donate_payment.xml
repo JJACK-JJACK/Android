@@ -6,16 +6,17 @@
         android:orientation="vertical"
         android:layout_width="320dp"
         android:layout_height="468dp"
-        android:backgroundTint="#ffffff"
+        android:backgroundTint="@color/white"
         android:background="@drawable/radius"
         android:gravity="center_horizontal">
 
     <ImageView
             android:layout_width="match_parent"
             android:layout_height="187dp"
-            app:srcCompat="@color/colorAccent"
+            android:background="@drawable/img_ad_stamp_100"
             android:id="@+id/imageView3"
             android:layout_marginBottom="16dp"/>
+
     <TextView
             android:includeFontPadding = "false"
             android:fontFamily="@font/notosans_medium"
@@ -23,7 +24,6 @@
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:textColor="@color/darkGrayB"
-            android:lineSpacingExtra="5.5sp"
             android:gravity="center_horizontal"
             android:text="@string/msg_donate_success"
             android:textStyle="bold"
@@ -34,12 +34,11 @@
             android:fontFamily="@font/notosans_demilight"
             android:textSize="14sp"
             android:textColor="@color/grayB"
-            android:lineSpacingExtra="4sp"
             android:gravity="center_horizontal"
             android:text="@string/msg_dialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="15dp"/>
     <Button
             android:includeFontPadding = "false"
             android:fontFamily="@font/notosans_medium"
@@ -47,7 +46,7 @@
             android:textColor="@color/white"
             android:text="@string/check_stamp"
             android:layout_width="280dp"
-            android:layout_height="56dp"
+            android:layout_height="50dp"
             style="?android:attr/borderlessButtonStyle"
             android:backgroundTint="@color/goldenYellow"
             android:background="@drawable/radius"
@@ -64,7 +63,6 @@
             android:background="@drawable/radius"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="280dp"
-            android:layout_height="56dp"
+            android:layout_height="50dp"
             android:id="@+id/btn_close"/>
-
 </LinearLayout>

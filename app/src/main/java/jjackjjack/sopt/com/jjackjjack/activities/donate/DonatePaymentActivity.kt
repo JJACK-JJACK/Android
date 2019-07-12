@@ -99,11 +99,11 @@ class DonatePaymentActivity : AppCompatActivity() {
                     postDonateResponse(finaledtString)
                 }
                 else{
-                    toast("보유 베리가 부족합니다")
+                    ColorToast(this, "보유 베리가 부족합니다")
                 }
             }
             else{
-                toast("베리를 입력해주세요")
+                ColorToast(this, "베리를 입력해주세요")
             }
         }
         btn_berry_charge.setOnClickListener {
