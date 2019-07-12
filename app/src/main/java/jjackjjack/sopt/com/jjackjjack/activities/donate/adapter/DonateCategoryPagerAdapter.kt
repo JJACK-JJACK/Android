@@ -10,7 +10,6 @@ class DonateCategoryPagerAdapter : FragmentPagerAdapter {
 
     constructor(fragmentPagerAdapter: FragmentManager) : super(fragmentPagerAdapter){
     }
-
     companion object { //싱글톤 design pattern ( 기존에 생성된 객체 재사용, 그때그때마다 새롭게 생성 방지 )
 
         private var animalFragment: AnimalFragment? = null

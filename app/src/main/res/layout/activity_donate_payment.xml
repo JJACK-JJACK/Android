@@ -19,29 +19,34 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp">
             <ImageView
+                    android:id="@+id/btn_payment_back"
                     android:layout_gravity="center_vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_back"/>
 
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
                     android:layout_marginLeft="119dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="기부하기"
-                    android:textColor="#111111"
+                    android:text="@string/donate"
+                    android:textColor="@color/darkGrayA"
                     android:gravity="center_vertical">
             </TextView>
 
         </LinearLayout>
 
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_regular"
                 android:layout_marginTop="53dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:textColor="#666666"
-                android:text="기부할 베리"
+                android:textColor="@color/grayA"
+                android:text="@string/berry_for_donate"
         />
 
         <LinearLayout
@@ -55,20 +60,23 @@
                     app:srcCompat="@drawable/berry_r_icon"
             />
             <EditText
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
                     android:textSize="20sp"
                     android:textColor="#111111"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="금액을 입력해주세요"
+                    android:hint="@string/input_berry"
                     android:inputType="number"
-                    android:id="@+id/edt_donate_berry_num" android:layout_weight="1"
-                    android:backgroundTint="#ffc21f"
+                    android:id="@+id/edt_donate_berry_num"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/goldenYellow"
             />
             <ImageView
                 android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_cancle_small"
+                    android:src="@drawable/ic_cancel_small"
                     android:id="@+id/btn_erase_all"></ImageView>
         </LinearLayout>
 
@@ -76,37 +84,46 @@
                 android:layout_marginTop="15.5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="46dp">
+                android:paddingLeft="43dp">
 
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
-                    android:textColor="#666666"
-                    android:text="보유 베리"
+                    android:textColor="@color/grayA"
+                    android:text="@string/own_berry"
             />
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
+                    android:id="@+id/payment_myberry"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:textSize="14sp"
-                    android:textColor="#111111"
+                    android:textColor="@color/darkGrayA"
                     android:text="310.000"
                     android:textStyle="bold"
             />
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_regular"
+                    android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
-                    android:textColor="#666666"
-                    android:text="  베리"
+                    android:textColor="@color/grayA"
+                    android:text="@string/berry"
+                    android:layout_marginLeft="2dp"
             />
 
                 <ImageView
-                        android:layout_marginLeft="50dp"
+                        android:id="@+id/btn_berry_charge"
+                        android:layout_gravity="right"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:textColor="#da4830"
                         android:src="@drawable/charge_allow_button"
                 />
 
@@ -119,14 +136,18 @@
                 android:paddingLeft="17dp">
 
             <Button
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_regular"
                     style="?android:attr/borderlessButtonStyle"
                     android:background="@drawable/shape_border_donatechargebtn"
                     android:layout_width="65dp"
                     android:layout_height="30dp"
                     android:textColor="@color/grayA"
                     android:id="@+id/btn_plus_10_berry"
-                    android:text="+ 10"/>
+                    android:text="@string/plus_10"/>
             <Button
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_regular"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_marginLeft="8dp"
                     android:background="@drawable/shape_border_donatechargebtn"
@@ -134,8 +155,10 @@
                     android:layout_height="30dp"
                     android:textColor="@color/grayA"
                     android:id="@+id/btn_plus_20_berry"
-                    android:text="+ 20"/>
+                    android:text="@string/plus_20"/>
             <Button
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_regular"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_marginLeft="8dp"
                     android:background="@drawable/shape_border_donatechargebtn"
@@ -143,8 +166,10 @@
                     android:textColor="@color/grayA"
                     android:id="@+id/btn_plus_50_berry"
                     android:layout_height="30dp"
-                    android:text="+ 50"/>
+                    android:text="@string/plus_50"/>
             <Button
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_regular"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_marginLeft="8dp"
                     android:background="@drawable/shape_border_donatechargebtn"
@@ -152,20 +177,19 @@
                     android:textColor="@color/grayA"
                     android:id="@+id/btn_plus_all_berry"
                     android:layout_height="30dp"
-                    android:text="전액"/>
-
-
+                    android:text="@string/total_money"/>
         </LinearLayout>
 
     </LinearLayout>
 
     <Button
+            android:includeFontPadding = "false"
+            android:fontFamily="@font/notosans_medium"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:text="기부하기"
+            android:text="@string/donate"
             android:layout_alignParentBottom="true"
-            android:textColor="#ffffff"
-            android:textStyle="bold"
+            android:textColor="@color/white"
             android:background="@drawable/shape_redbtn_8dp"
             android:id="@+id/btn_donate"
             android:layout_marginBottom="20dp"

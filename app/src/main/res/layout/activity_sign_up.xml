@@ -10,46 +10,56 @@
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" android:layout_alignParentStart="true"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true">
-        <ImageView
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginLeft="12dp"
-                android:id="@+id/btn_back"
-                android:src="@drawable/ic_back"
-                android:layout_width="27dp"
-                android:layout_height="32dp"/>
+                android:layout_marginLeft="12dp">
+            <ImageView
+                    android:id="@+id/btn_back"
+                    android:src="@drawable/ic_back"
+                    android:layout_width="27dp"
+                    android:layout_height="32dp"/>
+            <TextView
+                    android:id="@+id/btn_signup_next"
+                    android:layout_marginLeft="270dp"
+                    android:layout_marginRight="20dp"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/next"
+                    android:textColor="@color/red"/>
+
+        </LinearLayout>
 
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_regular"
                 android:text="이메일 주소를"
                 android:textSize="24sp"
                 android:layout_marginLeft="29dp"
                 android:paddingTop="48dp"
                 android:id="@+id/tv_signup_head"
-                android:textColor="#444444"
-                android:letterSpacing="0.01"
-                android:lineSpacingExtra="12sp"
+                android:textColor="@color/darkGrayD"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
         <TextView
-                android:paddingTop="10dp"
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_regular"
                 android:text="입력해주세요"
                 android:textSize="24sp"
                 android:layout_marginLeft="29dp"
-                android:textColor="#444444"
-                android:letterSpacing="0.01"
-                android:lineSpacingExtra="12sp"
+                android:textColor="@color/darkGrayD"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
-
         <RelativeLayout
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-
-
             <LinearLayout
                     android:layout_marginTop="24dp"
                     android:paddingHorizontal="30dp"
@@ -60,50 +70,51 @@
                     android:layout_height="wrap_content">
 
                 <TextView
-                        android:text="이메일"
+                        android:includeFontPadding = "false"
+                        android:fontFamily="@font/notosans_regular"
+                        android:text="@string/email"
                         android:textSize="12sp"
                         android:id="@+id/tv_signup_section1"
-                        android:textColor="@color/darkGrayC"
-                        android:letterSpacing="0.01"
+                        android:textColor="@color/darkGrayD"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="11dp"/>
                 <EditText
-                        android:paddingBottom="3.5dp"
-                        android:paddingTop="16dp"
+                        android:includeFontPadding = "false"
+                        android:fontFamily="@font/notosans_regular"
                         android:lines="1"
                         android:maxLines="1"
-                        android:maxLength="13"
+                        android:paddingBottom="8dp"
+                        android:maxLength="20"
                         android:inputType="textEmailAddress"
                         android:hint="ex) mrpic@naver.com"
                         android:id="@+id/et_signup_section1"
                         android:textSize="20sp"
-                        android:textColor="#444444"
+                        android:textColor="@color/darkGrayD"
                         android:background="@drawable/shape_bottom_line_yellow"
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"/>
-
-
+                <RelativeLayout
+                        android:background="@drawable/shape_graybtn_8dp"
+                        android:layout_width="58dp"
+                        android:layout_height="26dp"
+                        android:id="@+id/btn_duplicate_verification"
+                        android:visibility="gone"
+                        android:layout_alignLeft="@+id/ly_signup_section1"
+                        android:layout_alignTop="@+id/ly_signup_section1"
+                        android:layout_marginLeft="238dp"
+                        android:layout_marginTop="6dp">
+                    <TextView
+                            android:includeFontPadding = "false"
+                            android:fontFamily="@font/notosans_regular"
+                            android:layout_centerInParent="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:textColor="@color/darkGrayD"
+                            android:text="중복확인"/>
+                </RelativeLayout>
             </LinearLayout>
-            <RelativeLayout
-                    android:background="@drawable/shape_graybtn_8dp"
-                    android:layout_width="58dp"
-                    android:layout_height="26dp"
-                    android:id="@+id/btn_duplicate_verification"
-                    android:visibility="gone"
-                    android:layout_alignLeft="@id/ly_signup_section1"
-                    android:layout_alignTop="@+id/ly_signup_section1"
-                    android:layout_marginLeft="261dp"
-                    android:layout_marginTop="24dp">
-                <TextView
-                        android:layout_centerInParent="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="12sp"
-                        android:textColor="#444444"
-                        android:text="중복확인"/>
-
-            </RelativeLayout>
-
         </RelativeLayout>
 
 
@@ -118,24 +129,28 @@
                 android:layout_height="wrap_content">
 
             <TextView
-                    android:text="비밀번호 확인"
+                    android:fontFamily="@font/notosans_regular"
+                    android:includeFontPadding = "false"
+                    android:text="@string/password_check"
                     android:textSize="12sp"
-                    android:textColor="#444444"
+                    android:textColor="@color/darkGrayD"
                     android:id="@+id/tv_signup_section2"
                     android:letterSpacing="0.01"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             <EditText
+                    android:fontFamily="@font/notosans_regular"
+                    android:includeFontPadding = "false"
                     android:paddingBottom="3.5dp"
                     android:paddingTop="16dp"
                     android:lines="1"
                     android:maxLines="1"
-                    android:maxLength="10"
+                    android:maxLength="20"
                     android:inputType="textPassword"
-                    android:hint="비밀번호 확인"
+                    android:hint="@string/password_check"
                     android:id="@+id/et_signup_section2"
                     android:textSize="19sp"
-                    android:textColor="#444444"
+                    android:textColor="@color/darkGrayD"
                     android:background="@drawable/shape_bottom_line_yellow"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"/>
@@ -143,27 +158,5 @@
 
 
     </LinearLayout>
-
-
-
-    <RelativeLayout
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="20dp"
-            android:layout_marginHorizontal="29dp"
-            android:background="@drawable/shape_redbtn_8dp"
-            android:id="@+id/btn_signup_next"
-            android:layout_width="match_parent"
-            android:layout_height="64dp">
-        <TextView
-                android:textSize="16sp"
-                android:textColor="#ffffff"
-                android:letterSpacing="0.01"
-                android:text="다음"
-                android:id="@+id/tv_signup_next"
-                android:layout_centerInParent="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-    </RelativeLayout>
 
 </RelativeLayout>

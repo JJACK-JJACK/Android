@@ -5,8 +5,8 @@
         xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" tools:showIn="@layout/activity_ranking">
-
+        android:layout_height="match_parent"
+        tools:showIn="@layout/content_activity_ranking">
     <include layout="@layout/toolbar_with_hamburger">
 
     </include>
@@ -19,7 +19,6 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-
             <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -31,54 +30,80 @@
                         android:layout_alignParentTop="true"
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="0dp"
-                        android:src="#ffc21f"/>
-
-                <TextView
-                        android:layout_width="wrap_content"
+                        android:src="@drawable/img_ad_review_bg"/>
+                <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="50dp"
-                        android:text="랭킹"
-                        android:textSize="30sp"/>
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="128dp"
-                        android:text="우리가 모은 기부금"
-                        android:textSize="14sp"/>
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="153dp"
-                        android:layout_marginBottom="60dp"
-                        android:text="144,353,012"
-                        android:textSize="24sp"/>
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="151dp"
-                        android:layout_marginTop="161dp"
-                        android:text="베리"
-                        android:textSize="16sp"/>
+                        android:orientation="vertical">
+                    <LinearLayout android:layout_width="match_parent"
+                                  android:layout_height="wrap_content">
+                        <TextView
+                                android:includeFontPadding = "false"
+                                android:fontFamily="@font/notosans_medium"
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="50dp"
+                                android:textColor="@color/darkGrayA"
+                                android:text="@string/delivery_review"
+                                android:textSize="30sp"/>
+                    </LinearLayout>
+                    <LinearLayout
+                            android:layout_marginTop="35dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        <TextView
+                                android:includeFontPadding = "false"
+                                android:fontFamily="@font/notosans_medium"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:text="우리가 모은 기부금"
+                                android:textSize="14sp"/>
+                    </LinearLayout>
+                    <LinearLayout
+                            android:layout_marginTop="2dp"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        <TextView
+                                android:includeFontPadding = "false"
+                                android:fontFamily="@font/notosans_medium"
+                                android:id="@+id/rank_totalDonate"
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                tools:text="144,353,012"
+                                android:textSize="24sp"/>
+                        <TextView
+                                android:includeFontPadding = "false"
+                                android:fontFamily="@font/notosans_regular"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="7dp"
+                                android:text="@string/berry"
+                                android:textSize="16sp"/>
+                    </LinearLayout>
+                </LinearLayout>
             </RelativeLayout>
 
             <LinearLayout
+                    android:layout_marginTop="24dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                 <TextView
+                        android:includeFontPadding = "false"
+                        android:fontFamily="@font/notosans_medium"
+                        android:textColor="@color/darkGrayA"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
                         android:layout_marginLeft="20dp"
-                        android:text="우리의 기부금은
-어떻게 사용되었을까요?"
+                        android:text="우리의 기부금은\n어떻게 사용되었을까요?"
                         android:textSize="16sp"/>
             </LinearLayout>
 
@@ -101,58 +126,8 @@
                         android:layout_height="1dp"
                         android:layout_alignParentBottom="true"
                         android:layout_gravity="center"
-                        android:background="#eeeeee"/>
+                        android:background="@color/colorPrimary"/>
             </LinearLayout>
-
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_marginStart="26dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="44.5dp"
-                        android:text="기부분야별 랭킹"
-                        android:textSize="16sp"/>
-
-                <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="13dp"
-                        android:layout_marginTop="44.5dp"
-                        android:src="@drawable/ic_crown"/>
-            </LinearLayout>
-
-
-            <android.support.v7.widget.RecyclerView
-                    android:id="@+id/mRecyclerView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="8dp"
-                    >
-            </android.support.v7.widget.RecyclerView>
-
-            <android.support.v7.widget.RecyclerView
-                    android:id="@+id/mRecyclerView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="8dp">
-            </android.support.v7.widget.RecyclerView>
-
         </LinearLayout>
-
     </android.support.v4.widget.NestedScrollView>
-
-
 </LinearLayout>

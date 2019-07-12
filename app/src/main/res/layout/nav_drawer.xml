@@ -2,7 +2,8 @@
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent" xmlns:tools="http://schemas.android.com/tools"
+        android:background="@color/white">
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -21,7 +22,7 @@
                     android:layout_centerVertical="true"
                     android:layout_width="27dp"
                     android:layout_height="29dp"
-                    android:src="@drawable/ic_cancle_large"
+                    android:src="@drawable/ic_cancel_large"
                     android:layout_alignParentRight="true"
                     android:id="@+id/btn_cancel"/>
         </RelativeLayout>
@@ -34,6 +35,7 @@
                 android:gravity="center_vertical"
                 android:layout_height="91dp">
             <ImageView
+                    android:id="@+id/iv_drawer_profileimg"
                     android:src="@drawable/ic_account_circle_black_24dp"
                     android:layout_width="60dp"
                     android:layout_height="60dp"/>
@@ -44,27 +46,31 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                 <TextView
-                        android:text="차눈눈누"
-                        android:textColor="#000000"
+                        android:includeFontPadding = "false"
+                        android:fontFamily="@font/notosans_medium"
+                        tools:text="차눈눈누"
+                        android:id="@+id/tv_drawer_nickname"
+                        android:textColor="@color/black"
                         android:textSize="20sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                 <TextView
+                        android:includeFontPadding = "false"
+                        android:fontFamily="@font/notosans_demilight"
                         android:layout_marginTop="4dp"
                         android:textSize="14sp"
-                        android:textColor="#999999"
-                        android:text="parkce37@gmail.com"
+                        android:textColor="@color/grayB"
+                        android:id="@+id/tv_drawer_email"
+                        tools:text="parkce37@gmail.com"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
             </LinearLayout>
         </LinearLayout>
-        
         <View
                 android:layout_gravity="center_horizontal"
-                android:background="#f5f5f5"
+                android:background="@color/lightGrayB"
                 android:layout_width="336dp"
                 android:layout_height="2dp"/>
-
         <LinearLayout
                 android:layout_marginTop="20dp"
                 android:orientation="vertical"
@@ -72,9 +78,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <TextView
-                    android:text="@string/ownberry"
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_regular"
+                    android:text="@string/own_berry"
                     android:textSize="14sp"
-                    android:textColor="#999999"
+                    android:textColor="@color/grayB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             <LinearLayout
@@ -82,51 +90,53 @@
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                <TextView
-                        android:text="128"
-                        android:layout_gravity="center_vertical"
-                        android:textSize="24sp"
-                        android:textColor="#111111"
-                        android:textStyle="bold"
-                        android:letterSpacing="0.06"
+                <LinearLayout
+                        android:layout_weight="1"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                <TextView
-                        android:text="베리"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="4dp"
-                        android:textSize="16sp"
-                        android:textColor="#666666"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                    <TextView
+                            android:includeFontPadding = "false"
+                            tools:text="1000"
+                            android:fontFamily="@font/notosans_medium"
+                            android:id="@+id/drawer_myberry"
+                            android:layout_gravity="center_vertical"
+                            android:textSize="24sp"
+                            android:textColor="@color/darkGrayA"
+                            android:textStyle="bold"
+                            android:letterSpacing="0.06"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    <TextView
+                            android:includeFontPadding = "false"
+                            android:fontFamily="@font/notosans_regular"
+                            android:text="@string/berry"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="4dp"
+                            android:textSize="16sp"
+                            android:textColor="@color/grayA"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                </LinearLayout>
                 
-                <ImageView 
+                <ImageView
                         android:src="@drawable/ic_charge"
                         android:id="@+id/btn_drawer_berrycharge"
-                        android:layout_marginLeft="73dp"
-                        android:layout_width="76dp"
-                        android:layout_height="30dp"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
 
                 <ImageView
+                        android:layout_marginLeft="16dp"
                         android:src="@drawable/ic_usehistory"
                         android:id="@+id/btn_drawer_usehistory"
-                        android:layout_marginLeft="16dp"
-                        android:layout_width="75dp"
-                        android:layout_height="30dp"/>
-
-
-
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
             </LinearLayout>
-
-
-
         </LinearLayout>
-
-
         <View
                 android:layout_marginTop="19.5dp"
                 android:layout_gravity="center_horizontal"
-                android:background="#f5f5f5"
+                android:background="@color/lightGrayB"
                 android:layout_width="336dp"
                 android:layout_height="2dp"
         />
@@ -138,45 +148,49 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <TextView
-                    android:text="메뉴"
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_regular"
+                    android:text="@string/menu"
                     android:textSize="14sp"
-                    android:textColor="#999999"
+                    android:textColor="@color/grayB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             <LinearLayout
+                    android:layout_marginTop="27dp"
+                    android:paddingHorizontal="3dp"
                     android:orientation="horizontal"
                     android:paddingVertical="5dp"
                     android:weightSum="3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
                 <ImageView
                         android:layout_weight="1"
-                        android:src="@drawable/ic_usagelist"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_my_donation"
                         android:id="@+id/btn_drawer_donate_record"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
                 <ImageView
                         android:layout_weight="1"
-                        android:src="@drawable/ic_ranking"
+                        android:src="@drawable/ic_delivery_review"
                         android:id="@+id/btn_drawer_rank"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
                 <ImageView
                         android:layout_weight="1"
                         android:src="@drawable/ic_mypage"
                         android:id="@+id/btn_drawer_mypage"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
 
             </LinearLayout>
 
         </LinearLayout>
 
-
         <View
                 android:layout_marginTop="20dp"
                 android:layout_gravity="center_horizontal"
-                android:background="#f5f5f5"
+                android:background="@color/lightGrayB"
                 android:layout_width="336dp"
                 android:layout_height="2dp"
         />
@@ -188,68 +202,69 @@
                 android:layout_width="match_parent"
                 android:layout_height="225dp">
             <TextView
-                    android:text="카테고리"
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_regular"
+                    android:text="@string/category"
                     android:textSize="14sp"
-                    android:textColor="#999999"
+                    android:textColor="@color/grayB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             <LinearLayout
+                    android:layout_marginTop="23dp"
                     android:orientation="horizontal"
                     android:weightSum="3"
                     android:paddingVertical="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                <ImageView
-                        android:layout_weight="1"
-                        android:src="@drawable/ic_animal"
-                        android:id="@+id/btn_drawer_f_animal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                <ImageView
-                        android:layout_weight="1"
-                        android:src="@drawable/ic_environment"
-                        android:id="@+id/btn_drawer_f_env"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
                 <ImageView
                         android:layout_weight="1"
                         android:src="@drawable/ic_children"
                         android:id="@+id/btn_drawer_f_child"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-            <LinearLayout
-                    android:paddingVertical="5dp"
-                    android:orientation="horizontal"
-                    android:weightSum="3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                <ImageView
-                        android:layout_weight="1"
-                        android:src="@drawable/ic_disabled"
-                        android:id="@+id/btn_drawer_f_disabled"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                <ImageView
-                        android:layout_weight="1"
-                        android:src="@drawable/ic_emergency"
-                        android:id="@+id/btn_drawer_f_emergency"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
                 <ImageView
                         android:layout_weight="1"
                         android:src="@drawable/ic_senior"
                         android:id="@+id/btn_drawer_f_senior"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+                <ImageView
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_animal"
+                        android:id="@+id/btn_drawer_f_animal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
 
             </LinearLayout>
-
+            <LinearLayout
+                    android:layout_marginTop="47dp"
+                    android:paddingVertical="5dp"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="2dp"
+                    android:weightSum="3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                <ImageView
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_disabled"
+                        android:id="@+id/btn_drawer_f_disabled"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+                <ImageView
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_environment"
+                        android:id="@+id/btn_drawer_f_env"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+                <ImageView
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_emergency"
+                        android:id="@+id/btn_drawer_f_emergency"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+            </LinearLayout>
         </LinearLayout>
 
-
     </LinearLayout>
-
 
 </RelativeLayout>

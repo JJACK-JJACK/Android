@@ -6,7 +6,7 @@
     <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:backgroundTint="#ffffff"
+            android:backgroundTint="@color/white"
             android:theme="?attr/actionBarTheme"
             android:id="@+id/toolbar">
         <ImageView
@@ -19,49 +19,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_regular"
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:textColor="#000000"
+                android:textColor="@color/black"
                 android:letterSpacing="0.01"
                 android:gravity="center_horizontal"
                 android:layout_marginTop="7dp"
                 android:layout_marginLeft="20dp"
-                android:text="나의 스탬프"
-        />
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:textColor="#444444"
-                android:letterSpacing="-0.07"
-                android:lineSpacingExtra="6sp"
-                android:layout_marginTop="7dp"
-                android:layout_marginLeft="138dp"
-                android:text="수확 가능횟수"
-        />
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:textColor="#111111"
-                android:letterSpacing="-0.07"
-                android:lineSpacingExtra="6sp"
-                android:layout_marginTop="7dp"
-                android:layout_marginLeft="1dp"
-                android:text=" 0"
-        />
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:textColor="#111111"
-                android:letterSpacing="-0.07"
-                android:lineSpacingExtra="6sp"
-                android:layout_marginTop="7dp"
-                android:layout_marginLeft="1dp"
-                android:text="회"
-        />
+                android:text="@string/my_stamp"></TextView>
     </LinearLayout>
     <LinearLayout
             android:layout_width="match_parent"
@@ -69,34 +38,167 @@
             android:layout_marginTop="15dp"
             android:orientation="vertical">
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_demilight"
                 android:layout_width="221dp"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
-                android:textColor="#000000"
-                android:letterSpacing="-0.07"
+                android:textColor="@color/black"
                 android:lineSpacingExtra="6sp"
                 android:layout_marginLeft="20dp"
-                android:text="10개의 스탬프를 다 모으면 총 기부한 베리의
-10% 내에서 랜덤으로 베리를 수확 가능해요"
+                android:text="@string/msg_get_stamp"
         />
 
-        <ImageView
-                android:layout_width="320dp"
-                android:layout_height="395dp"
-                android:layout_marginLeft="20dp"
+        <RelativeLayout
+                android:layout_gravity="center"
+                android:paddingHorizontal="40dp"
                 android:layout_marginTop="21dp"
-                android:background="#ffc21f"
-                />
-        <Button android:layout_width="320dp"
-                android:layout_height="56dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:text="베리 수확"
-                android:textSize="16sp"
-                android:textColor="#ffffff"
-                android:letterSpacing="-0.07"
-                android:lineSpacingExtra="2sp"
-                android:background="@drawable/shape_redbtn_4dp"
-        />
+                android:gravity="center"
+                android:layout_width="320dp"
+                android:layout_height="460dp"
+                android:background="@drawable/img_stamp_bg">
+            <LinearLayout
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                <LinearLayout
+                        android:layout_marginVertical="25dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:weightSum="3">
+                    <LinearLayout
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        <ImageView
+                                android:gravity="center"
+                                android:id="@+id/stamp_1"
+                                android:src="@drawable/ic_non_bry_stamp"
+                                android:layout_alignParentTop="true"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <LinearLayout
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        <ImageView
+                                android:gravity="center"
+                                android:id="@+id/stamp_2"
+                                android:src="@drawable/ic_non_bry_stamp"
+                                android:layout_alignParentTop="true"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <LinearLayout
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        <ImageView
+                                android:gravity="center"
+                                android:id="@+id/stamp_3"
+                                android:src="@drawable/ic_non_bry_stamp"
+                                android:layout_alignParentTop="true"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                        android:layout_marginVertical="25dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:weightSum="3">
+                    <LinearLayout
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        <ImageView
+                                android:gravity="center"
+                                android:id="@+id/stamp_4"
+                                android:src="@drawable/ic_non_bry_stamp"
+                                android:layout_alignParentTop="true"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <LinearLayout
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        <ImageView
+                                android:gravity="center"
+                                android:id="@+id/stamp_5"
+                                android:src="@drawable/ic_non_bry_stamp"
+                                android:layout_alignParentTop="true"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <LinearLayout
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        <ImageView
+                                android:gravity="center"
+                                android:id="@+id/stamp_6"
+                                android:src="@drawable/ic_non_bry_stamp"
+                                android:layout_alignParentTop="true"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                        android:layout_marginVertical="25dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:weightSum="3">
+                    <LinearLayout
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        <ImageView
+                                android:gravity="center"
+                                android:id="@+id/stamp_7"
+                                android:src="@drawable/ic_non_bry_stamp"
+                                android:layout_alignParentTop="true"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <LinearLayout
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        <ImageView
+                                android:gravity="center"
+                                android:id="@+id/stamp_8"
+                                android:src="@drawable/ic_non_bry_stamp"
+                                android:layout_alignParentTop="true"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <LinearLayout
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        <ImageView
+                                android:gravity="center"
+                                android:id="@+id/stamp_9"
+                                android:src="@drawable/ic_non_bry_stamp"
+                                android:layout_alignParentTop="true"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
     </LinearLayout>
 </LinearLayout>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
+              android:layout_height="match_parent" xmlns:tools="http://schemas.android.com/tools"
               android:orientation="vertical">
     <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:backgroundTint="#ffffff"
+            android:backgroundTint="@color/white"
             android:theme="?attr/actionBarTheme"
             android:id="@+id/toolbar">
         <ImageView
@@ -17,11 +17,13 @@
     </android.support.v7.widget.Toolbar>
 
     <TextView
+            android:includeFontPadding = "false"
+            android:fontFamily="@font/notosans_medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:textColor="#111111"
-            android:text="보유베리"
+            android:textColor="@color/darkGrayA"
+            android:text="@string/own_berry"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="40dp"
     />
@@ -30,38 +32,47 @@
                   android:orientation="horizontal"
                   android:layout_marginTop="12dp">
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_medium"
+                android:id="@+id/berryhistory_myberry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="30sp"
-                android:textColor="#111111"
+                android:textStyle="bold"
+                android:textColor="@color/darkGrayA"
                 android:layout_marginLeft="20dp"
-                android:text="349,900"
+                tools:text="349,900"
         />
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_demilight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:textColor="#111111"
-                android:text="베리"
-                android:layout_marginLeft="3dp"
-        />
+                android:textColor="@color/darkGrayA"
+                android:text="@string/berry"
+                android:layout_marginLeft="3dp"/>
     </LinearLayout>
+
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="32dp"
-            android:background="#f9f9f9"
+            android:background="@color/grayD"
     android:layout_marginTop="29dp">
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="최근 베리 사용내역"
+                android:text="@string/recent_use_berry"
                 android:paddingTop="6dp"
                 android:paddingBottom="8dp"
                 android:layout_marginLeft="20dp"
                 android:textSize="12sp"
-                android:textColor="#666666"/>
+                android:textColor="@color/grayA"/>
     </LinearLayout>
     <android.support.v7.widget.RecyclerView
+            android:layout_marginTop="15dp"
             android:id="@+id/rv_berryhistory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">

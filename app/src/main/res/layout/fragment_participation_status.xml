@@ -12,36 +12,45 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
+                    android:id="@+id/tv_participation_ing"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
-                    android:textColor="#da4830"
-                    android:text="진행중"/>
+                    android:text="@string/donation_step_ing"/>
             <ImageView
+                    android:fontFamily="@font/notosans_demilight"
                     android:layout_width="1dp"
                     android:layout_height="10dp"
                     android:layout_marginLeft="3dp"
                     android:background="@drawable/shape_donate_status_rec"/>
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_demilight"
+                    android:id="@+id/participation_status_date_ing"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
-                    android:textColor="#999999"
+                    android:textColor="@color/grayB"
                     android:layout_marginLeft="3dp"
                     android:text="2019. 06. 18 ~"/>
         </LinearLayout>
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_regular"
+                android:id="@+id/participation_status_ing"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:textColor="#333333"
+                android:textColor="@color/grayB"
                 android:letterSpacing="-0.07"
                 android:layout_marginTop="5dp"
-                android:text="아직 베리가 차곡차곡 모아지는 중이에요!"
+                android:text="@string/msg_donate_step_ing"
         />
     </LinearLayout>
     <LinearLayout
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="28dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -49,36 +58,45 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
+                    android:id="@+id/tv_participation_end"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
-                    android:textColor="#999999"
-                    android:text="마감"/>
+                    android:textColor="@color/grayB"
+                    android:text="@string/donation_step_end"/>
             <ImageView
                     android:layout_width="1dp"
                     android:layout_height="10dp"
                     android:layout_marginLeft="3dp"
                     android:background="@drawable/shape_donate_status_rec"/>
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_demilight"
+                    android:id="@+id/participation_status_date_end"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
-                    android:textColor="#999999"
+                    android:textColor="@color/grayB"
                     android:layout_marginLeft="3dp"
                     android:text="~ 2019. 8. 30"/>
         </LinearLayout>
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_regular"
+                android:id="@+id/participation_status_end"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:textColor="#333333"
+                android:textColor="@color/grayB"
                 android:letterSpacing="-0.07"
                 android:layout_marginTop="5dp"
-                android:text="모금된 베리가 전달을 기다리고 있어요!"
+                android:text="@string/msg_donate_step_end"
         />
     </LinearLayout>
     <LinearLayout
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -86,35 +104,41 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
+                    android:id="@+id/tv_participation_finish"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
-                    android:textColor="#999999"
-                    android:text="전달완료"/>
+                    android:textColor="@color/grayB"
+                    android:text="@string/donation_step_delivery"/>
             <ImageView
                     android:layout_width="1dp"
                     android:layout_height="10dp"
                     android:layout_marginLeft="3dp"
                     android:background="@drawable/shape_donate_status_rec"/>
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_demilight"
+                    android:id="@+id/participation_status_date_finish"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
-                    android:textColor="#999999"
+                    android:textColor="@color/grayB"
                     android:layout_marginLeft="3dp"
                     android:text="2019. 9. 22 (예정)"/>
         </LinearLayout>
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_regular"
+                android:id="@+id/participation_status_finish"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:textColor="#333333"
+                android:textColor="@color/grayB"
                 android:letterSpacing="-0.07"
                 android:layout_marginTop="5dp"
-                android:text="추후 후기를 작성할 계획입니다!"
-        />
+                android:text="@string/msg_donate_step_delivery"/>
+
     </LinearLayout>
-
-
-
 </LinearLayout>

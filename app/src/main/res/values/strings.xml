@@ -1,4 +1,78 @@
 <resources>
-    <string name="app_name">Jjackjjack</string>
-    <string name="ownberry">보유 베리</string>
+
+    <string name="app_name">짹</string>
+
+    <string name="jjack_slogan">세상을 바꾸는\n작은 기부, 짹 !</string>
+
+
+    <string name="nickname">닉네임</string>
+    <string name="login">로그인</string>
+    <string name="sign_up">회원 가입</string>
+    <string name="email">이메일</string>
+    <string name="password">비밀번호</string>
+    <string name="password_check">비밀번호 확인</string>
+    <string name="email_login">이메일 로그인</string>
+    <string name="email_signup">이메일 회원가입</string>
+
+
+    <string name="berry">베리</string>
+    <string name="own_berry">보유 베리</string>
+    <string name="goal_berry">목표 베리</string>
+    <string name="berry_for_donate">기부할 베리</string>
+    <string name="berry_donated">기부한 베리</string>
+    <string name="use_berry">사용 베리</string>
+    <string name="berry_manage">베리 관리</string>
+    <string name="berry_for_charge">충전할 베리</string>
+    <string name="recent_use_berry">최근 베리 사용내역</string>
+
+    <string name="next">다음</string>
+    <string name="menu">메뉴</string>
+    <string name="category">카테고리</string>
+    <string name="donate">기부하기</string>
+    <string name="skip">건너뛰기</string>
+    <string name="donate_history">나의 기부</string>
+    <string name="donate_num">참여 횟수</string>
+    <string name="times">회</string>
+    <string name="participate_status">참여 현황</string>
+    <string name="check_stamp">스탬프 확인하러 가기</string>
+    <string name="check_duplicate">중복확인</string>
+    <string name="mypage">마이 페이지</string>
+    <string name="charge">충전하기</string>
+    <string name="cheer">응원하기</string>
+    <string name="check">확인</string>
+    <string name="my_stamp">나의 스탬프</string>
+    <string name="delivery_review">전달후기</string>
+    <string name="donation">기부</string>
+
+
+    <string name="donation_step_ing">진행중</string>
+    <string name="donation_step_end">마감</string>
+    <string name="donation_step_delivery">전달완료</string>
+
+
+    <string name="input_berry">금액을 입력해주세요</string>
+    <string name="plus_10">+ 10</string>
+    <string name="plus_20">+ 20</string>
+    <string name="plus_50">+ 50</string>
+    <string name="total_money">전액</string>
+
+    <string name="msg_signup_notice">회원가입 진행 시 짹의 서비스 약관,\n개인정보 보호정책에 동의한 것으로 간주합니다.</string>
+    <string name="msg_donate_success">기부 성공\n스탬프 1개 받기 완료!</string>
+    <string name="msg_dialog">기부해주신 베리는 수수료 없이\n100% 전달됩니다</string>
+    <string name="msg_use_berry_history">기부받은 베리는 이렇게 사용했습니다!</string>
+    <string name="msg_donate_step_ing">아직 베리가 차곡차곡 모아지는 중이에요!</string>
+    <string name="msg_donate_step_end">모금된 베리가 전달을 기다리고 있어요!</string>
+    <string name="msg_donate_step_delivery">추후 후기를 작성할 계획입니다!</string>
+    <string name="msg_donate_charge">원하는 결제수단을 선택해주세요!\n여러분의 베리들이 모여 더 나은 세상이 됩니다.</string>
+    <string name="msg_delivery_review">우리의 기부금은\n어떻게 사용되었을까요?</string>
+    <string name="msg_get_stamp">10개의 스탬프를 다 모으면 총 기부한 베리의\n10% 내에서 랜덤으로 베리를 수확 가능해요</string>
+
+    <string-array name="bank">
+        <item>국민은행 67070204087002</item>
+        <item>신한은행 110499030264</item>
+        <item>우리은행 1002659283912</item>
+        <item>하나은행 50391038504107</item>
+        <item>카카오뱅크 3333048166414</item>
+    </string-array>
+
 </resources>

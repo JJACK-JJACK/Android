@@ -8,68 +8,154 @@
         android:layout_height="match_parent"
         tools:context=".DonateDetailedActivity">
 
-
-
-<android.support.v4.widget.NestedScrollView
-        android:fillViewport="true"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <LinearLayout
+    <android.support.v4.widget.NestedScrollView
+            android:id="@+id/donate_detailed_scroll_view"
+            android:fillViewport="true"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-        <include layout="@layout/header_img"/>
-
-        <include
-                layout="@layout/li_state"
-                android:id="@+id/donate_li_state">
-        </include>
-
-        <android.support.design.widget.TabLayout
-                android:layout_marginTop="5dp"
+            android:layout_height="match_parent">
+        <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                app:tabTextColor="#999999"
-                app:tabSelectedTextColor="#000000"
-                app:tabIndicatorHeight="1dp"
-                app:tabIndicatorColor="#da4830"
-                app:tabTextAppearance="@style/tabTheme2"
-                app:tabMode = "scrollable"
-                android:id="@+id/donate_detailed_tab">
-        </android.support.design.widget.TabLayout>
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+            <android.support.v7.widget.Toolbar
+                    android:layout_alignParentTop="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:backgroundTint="@color/white"
+                    android:theme="?attr/actionBarTheme"
+                    android:id="@+id/toolbar">
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_back"
+                        android:id="@+id/btn_toolbar_back"/>
+            </android.support.v7.widget.Toolbar>
 
-        <!--<android.support.v4.view.ViewPager-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:id="@+id/donate_detailed_pager">-->
-        <!--</android.support.v4.view.ViewPager>-->
-        <FrameLayout
-        android:id="@+id/donate_detailed_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+            <include layout="@layout/header_img"/>
 
-        </FrameLayout>
-    </LinearLayout>
-</android.support.v4.widget.NestedScrollView>
+            <include
+                    layout="@layout/li_state"
+                    android:id="@+id/donate_li_state">
+            </include>
 
+            <android.support.design.widget.TabLayout
+                    android:fontFamily="@font/notosans_regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    app:tabTextColor="@color/grayB"
+                    app:tabSelectedTextColor="@color/black"
+                    app:tabIndicatorHeight="1dp"
+                    app:tabIndicatorColor="@color/red"
+                    app:tabTextAppearance="@style/tabTheme2"
+                    app:tabMode ="fixed"
+                    app:tabIndicatorFullWidth="false"
+                    android:id="@+id/donate_detailed_tab">
+            </android.support.design.widget.TabLayout>
 
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:id="@+id/ly_donate_detail_story"
+                    android:visibility="visible"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="100dp">
+                <android.support.v7.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/rv_donate_story">
+                </android.support.v7.widget.RecyclerView>
 
-    <android.support.v7.widget.Toolbar
-            android:layout_alignParentTop="true"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:backgroundTint="#ffffff"
-            android:theme="?attr/actionBarTheme"
-            android:id="@+id/toolbar">
-        <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_back"
-                android:id="@+id/btn_toolbar_back"/>
-    </android.support.v7.widget.Toolbar>
+            </LinearLayout>
+            <LinearLayout
+                          android:orientation="vertical"
+                          android:paddingHorizontal="20dp"
+                          android:paddingTop="30dp"
+                          android:visibility="gone"
+                          android:id="@+id/ly_donate_detail_use_plan"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content">
+
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                    <TextView
+                            android:includeFontPadding = "false"
+                            android:fontFamily="@font/notosans_regular"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp"
+                            android:textColor="@color/darkGrayA"
+                            android:letterSpacing="0.02"
+                            android:lineSpacingExtra="5sp"
+                            android:text="베리는 이렇게 사용될 예정입니다!"
+                            android:layout_marginBottom="34dp"
+                    />
+
+                    <android.support.v7.widget.RecyclerView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/rv_donate_use_plan_container"
+                    >
+                    </android.support.v7.widget.RecyclerView>
+
+                    <ImageView
+                            android:layout_marginTop="20dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/grey_line"/>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp"
+                            android:gravity="center"
+                            android:layout_marginBottom="100dp">
+                        <TextView
+                                android:includeFontPadding = "false"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/goal_berry"
+                                android:fontFamily="@font/notosans_regular"
+                                android:textSize="16sp"
+                                android:textColor="@color/darkGrayC"/>
+
+                        <TextView
+                                android:includeFontPadding = "false"
+                                android:paddingHorizontal="4dp"
+                                android:id="@+id/tv_use_plan_maxberry"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:textSize="24sp"
+                                android:letterSpacing="0.06"
+                                android:textColor="@color/darkGrayA"
+                                android:fontFamily="@font/notosans_regular"
+                                android:text="100.000"/>
+                        <TextView
+                                android:includeFontPadding = "false"
+                                android:fontFamily="@font/notosans_demilight"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="16sp"
+                                android:textColor="@color/grayA"
+                                android:text="@string/berry"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--<FrameLayout-->
+                    <!--android:id="@+id/donate_detailed_container"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent">-->
+            <!--</FrameLayout>-->
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
 
     <LinearLayout
+            android:layout_alignParentEnd="true"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:orientation="horizontal"
@@ -77,26 +163,37 @@
             android:id="@+id/donate_detailed_button_layout">
 
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_medium"
+                android:id="@+id/btn_cheer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="응원하기"
-                android:background="#ffc21f"
+                android:text="@string/cheer"
+                android:background="@color/goldenYellow"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="#ffffff"
+                android:textColor="@color/white"
                 android:layout_weight="7"
                 android:gravity="center"/>
 
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_medium"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="기부하기"
-                android:background="#da4830"
+                android:background="@color/red"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="#ffffff"
+                android:textColor="@color/white"
                 android:layout_weight="3"
                 android:gravity="center"
                 android:id="@+id/btn_donate"/>
     </LinearLayout>
+
+    <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_centerInParent="true"
+            android:indeterminateTint="@color/darkYellow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
 </RelativeLayout>

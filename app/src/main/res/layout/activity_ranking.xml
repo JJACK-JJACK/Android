@@ -10,8 +10,7 @@
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             tools:openDrawer="end"
-            android:id="@+id/ly_drawer"
-    >
+            android:id="@+id/ly_drawer">
 
         <include
                 android:layout_height="match_parent"
