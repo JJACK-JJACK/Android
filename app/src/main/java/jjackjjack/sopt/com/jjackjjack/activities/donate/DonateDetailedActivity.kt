@@ -124,7 +124,6 @@ class DonateDetailedActivity : AppCompatActivity() {
                     }
                     else{
                         ColorToast(this@DonateDetailedActivity, response.body()!!.message)
-                        toast(response.body()!!.message)
                     }
                 }
             }

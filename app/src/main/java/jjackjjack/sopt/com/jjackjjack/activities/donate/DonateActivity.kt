@@ -94,6 +94,7 @@ class DonateActivity : AppCompatActivity(), onDrawer {
         drawerUI()
     }
 
+    
     override fun drawerUI() {
         actSet = arrayOf(
             MainActivity::class.java, DonateParticipationActivity::class.java,
