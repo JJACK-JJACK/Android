@@ -16,6 +16,7 @@ import jjackjjack.sopt.com.jjackjjack.network.ApplicationController
 import jjackjjack.sopt.com.jjackjjack.network.NetworkService
 import jjackjjack.sopt.com.jjackjjack.network.data.DonateSortedData
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateSortedListResponse
+import jjackjjack.sopt.com.jjackjjack.utillity.ColorToast
 import jjackjjack.sopt.com.jjackjjack.utillity.Constants
 import jjackjjack.sopt.com.jjackjjack.utillity.Secret
 import kotlinx.android.synthetic.main.fragment_child_category.rv_recent_category
@@ -107,7 +108,7 @@ class ChildFragment : Fragment(), View.OnClickListener{
         val getDonateSortedListResponse = networkService.getDonateSortedListResponse(CategoryId, filterId)
         getDonateSortedListResponse.enqueue(object : Callback<GetDonateSortedListResponse> {
             override fun onFailure(call: Call<GetDonateSortedListResponse>, t: Throwable) {
-                Log.e("Sorted List fail", t.toString())
+                ColorToast(activity?.applicationContext, "잠시 후 다시 접속해주세요")
             }
 
             override fun onResponse(
@@ -125,7 +126,7 @@ class ChildFragment : Fragment(), View.OnClickListener{
                         updateDonateList(dataList_DonateInfo)
                     }
                     else{
-                        toast(response.body()!!.message)
+                        ColorToast(activity?.applicationContext, response.body()!!.message)
                     }
 
                 }

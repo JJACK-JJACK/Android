@@ -17,6 +17,7 @@ import jjackjjack.sopt.com.jjackjjack.network.NetworkService
 import jjackjjack.sopt.com.jjackjjack.network.data.DonateData
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GetmyBerryResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostDonateResponse
+import jjackjjack.sopt.com.jjackjjack.utillity.ColorToast
 import jjackjjack.sopt.com.jjackjjack.utillity.Secret
 import kotlinx.android.synthetic.main.activity_donate_payment.*
 import org.jetbrains.anko.ctx
@@ -89,6 +90,7 @@ class DonatePaymentActivity : AppCompatActivity() {
 
 
         btn_donate.setOnClickListener {
+
             var finaledtString = edt_donate_berry_num?.text.toString()
             if (finaledtString != "") {
                 if (finaledtString.toInt() <= currMyBerry) {
@@ -143,15 +145,16 @@ class DonatePaymentActivity : AppCompatActivity() {
         postDonateResponse.enqueue(object : Callback<PostDonateResponse> {
             override fun onFailure(call: Call<PostDonateResponse>, t: Throwable) {
                 Log.d("hello", t.toString())
+                ColorToast(this@DonatePaymentActivity, "잠시 후 다시 접속해주세요")
             }
 
             override fun onResponse(call: Call<PostDonateResponse>, response: Response<PostDonateResponse>) {
                 if (response.isSuccessful) {
                     if (response.body()!!.status == 201) {
-                        toast("success")
                         val receiveData: DonateData? = response.body()!!.data
                         Log.d("berry", receiveData!!.totalBerry.toString())
                         currStamp = receiveData!!.stamps
+                        ColorToast(this@DonatePaymentActivity, "기부되었습니다!")
                         if (currStamp == 10) {
                             ctx.startActivity<GetBerryActivity>(
                                 "rewardBerry" to receiveData!!.rewordsBerry
@@ -160,7 +163,7 @@ class DonatePaymentActivity : AppCompatActivity() {
                         }
                     }
                 } else if (response.body()!!.status == 600) {
-                    toast(response.body()!!.message)
+                    ColorToast(this@DonatePaymentActivity, response.body()!!.message)
                 }
             }
         })
@@ -177,6 +180,7 @@ class DonatePaymentActivity : AppCompatActivity() {
         getmyBerryResponse.enqueue(object : Callback<GetmyBerryResponse> {
             override fun onFailure(call: Call<GetmyBerryResponse>, t: Throwable) {
                 Log.d("No berry", "No Berry")
+                ColorToast(this@DonatePaymentActivity, "잠시 후 다시 접속해주세요")
             }
 
             override fun onResponse(call: Call<GetmyBerryResponse>, response: Response<GetmyBerryResponse>) {
