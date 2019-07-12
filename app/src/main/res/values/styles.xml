@@ -60,5 +60,4 @@
         <item name="android:fontFamily">@font/notosans_medium</item>
         <item name="android:includeFontPadding">false</item>
     </style>
-
 </resources>

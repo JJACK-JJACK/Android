@@ -180,6 +180,7 @@ class DonateDetailedActivity : AppCompatActivity() {
             val intent = Intent()
             intent.action = Intent.ACTION_SEND
             intent.type = "text/plain"
+            intent.putExtra(Intent.EXTRA_TEXT,"https://dustn959595.wixsite.com/jjack")
             intent.addCategory(Intent.CATEGORY_DEFAULT)
 
             startActivity(Intent.createChooser(intent, "공유"))

@@ -47,7 +47,7 @@ class DepositActivity : AppCompatActivity() {
 
     var deposit_list = ArrayList<String>()
 
-    lateinit var selected_bank: String
+    var selected_bank: String =""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -97,10 +97,6 @@ class DepositActivity : AppCompatActivity() {
                     ColorToast(this@DepositActivity,"입금하실 은행을 선택해주세요")
                 }
             }
-
-
-
-
         for (i in 0 until lyList.size) {
             lyList[i].setOnClickListener {
                 clickTest[i] = 1 - clickTest[i]
@@ -110,45 +106,36 @@ class DepositActivity : AppCompatActivity() {
                     now_money = berryList_money[i]
                 }
                 ivList[i].isSelected = true
-
             }
         }
     }
-
-
     override fun onResume() {
         super.onResume()
         btn_berry_deposit_charge.setOnClickListener {
-            if (clickTest.sum() > 0) {
+            if (clickTest.sum() > 0 && !(selected_bank=="")) {
                 //계좌뜨는 다이얼로그 창
                 BerryChargeResponse()
             }
         }
     }
-
     private fun BerryChargeResponse() {
         var jsonObject = JSONObject()
         jsonObject.put("chargeBerry", now_berry)
-
         val gsonObject = JsonParser().parse(jsonObject.toString()) as JsonObject
-
         val token = SharedPreferenceController.getAuthorization(this)
-
         val postBerryChargeResponse: Call<PostBerryChargeResponse> =
             networkService.postBerryChargeResponse("application/json", token, gsonObject)
-
         postBerryChargeResponse.enqueue(object : Callback<PostBerryChargeResponse> {
-
             override fun onFailure(call: Call<PostBerryChargeResponse>, t: Throwable) {
                 Log.e("DB error", t.toString())
                 ColorToast(this@DepositActivity, "잠시 후 다시 접속해주세요")
             }
-
             override fun onResponse(call: Call<PostBerryChargeResponse>, response: Response<PostBerryChargeResponse>) {
                 if (response.isSuccessful) {
                     if (response.body()!!.status == Secret.NETWORK_LIST_SUCCESS) {
-                        startActivity<PaymentActivity>("berry_charge" to now_money, "selected_bank" to selected_bank)
-                        finish()
+                            startActivity<PaymentActivity>("berry_charge" to now_money, "selected_bank" to selected_bank)
+                            finish()
+
                     } else {
                         toast("베리 충전 실패")
                     }
@@ -158,17 +145,12 @@ class DepositActivity : AppCompatActivity() {
     }
     class HintAdapter(context: Context, textViewResourceId: Int)
         : ArrayAdapter<String>(context, textViewResourceId) {
-
         override fun getCount(): Int {
             val count = super.getCount()
             return if (count > 0) count - 1 else count
         }
-
-
     }
-
 }
-
 
 
 
