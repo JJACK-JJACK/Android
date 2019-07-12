@@ -4,7 +4,6 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.support.v4.app.ActivityCompat
 import android.util.Log
 import android.view.Gravity
 import android.view.View
@@ -12,15 +11,13 @@ import android.webkit.URLUtil
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import jjackjjack.sopt.com.jjackjjack.activities.donaterecord.DonateRecordActivity
-import jjackjjack.sopt.com.jjackjjack.activities.MainActivity
+import jjackjjack.sopt.com.jjackjjack.activities.donateparicipation.DonateParticipationActivity
+import jjackjjack.sopt.com.jjackjjack.activities.home.MainActivity
 import jjackjjack.sopt.com.jjackjjack.R
 import jjackjjack.sopt.com.jjackjjack.activities.berrycharge.BerryChargeActivity
-import jjackjjack.sopt.com.jjackjjack.activities.berryuse.BerryHistoryActivity
+import jjackjjack.sopt.com.jjackjjack.activities.berryusehistory.BerryHistoryActivity
 import jjackjjack.sopt.com.jjackjjack.activities.donate.DonateActivity
-import jjackjjack.sopt.com.jjackjjack.activities.login.BeginningActivity
-import jjackjjack.sopt.com.jjackjjack.activities.login.LoginActivity
-import jjackjjack.sopt.com.jjackjjack.activities.rank.RankActivity
+import jjackjjack.sopt.com.jjackjjack.activities.deliveryreview.DeliveryReviewActivity
 import jjackjjack.sopt.com.jjackjjack.db.SharedPreferenceController
 import jjackjjack.sopt.com.jjackjjack.db.SharedPreferenceController.getUserEmail
 import jjackjjack.sopt.com.jjackjjack.db.SharedPreferenceController.getUserImg
@@ -32,14 +29,12 @@ import jjackjjack.sopt.com.jjackjjack.network.response.get.GetmyBerryResponse
 import jjackjjack.sopt.com.jjackjjack.utillity.Constants
 import jjackjjack.sopt.com.jjackjjack.utillity.Secret
 import kotlinx.android.synthetic.main.activity_my_page.*
-import kotlinx.android.synthetic.main.activity_mypage_berryhistory.*
 import kotlinx.android.synthetic.main.content_activity_mypage.*
 import kotlinx.android.synthetic.main.fragment_berryuse_review.*
 import kotlinx.android.synthetic.main.nav_drawer.*
 import kotlinx.android.synthetic.main.toolbar_with_hamburger.*
 import org.jetbrains.anko.imageResource
 import org.jetbrains.anko.startActivity
-import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -60,15 +55,7 @@ class MyPageActivity : AppCompatActivity(), onDrawer {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_page)
         initialUI()
-
-        btn_nickname_edit.setOnClickListener {
-            val intent = Intent(this, MyPageModifyActivity::class.java)
-            startActivity(intent)
-        }
-        btn_berry_history.setOnClickListener{
-            val intent = Intent(this, BerryHistoryActivity::class.java)
-            startActivity(intent)
-        }
+        Log.d("tokennnnnnn", SharedPreferenceController.getAuthorization(this))
     }
     override fun onResume() { //로그인 후에 이 뷰는 꺼지게
         super.onResume()
@@ -92,6 +79,15 @@ class MyPageActivity : AppCompatActivity(), onDrawer {
             SharedPreferenceController.clearUserSharedPreferences(this)
             finish()
         }
+
+        btn_nickname_edit.setOnClickListener {
+            val intent = Intent(this, MyPageModifyActivity::class.java)
+            startActivity(intent)
+        }
+        btn_berry_history.setOnClickListener{
+            val intent = Intent(this, BerryHistoryActivity::class.java)
+            startActivity(intent)
+        }
         drawerUI()
         getmyBerryResponse()
 
@@ -111,6 +107,7 @@ class MyPageActivity : AppCompatActivity(), onDrawer {
         }
     }
 
+
 //    private var backPressedTime: Long = 0
 //    private fun doubleBackPress(){
 //        var temp: Long = System.currentTimeMillis()
@@ -126,8 +123,8 @@ class MyPageActivity : AppCompatActivity(), onDrawer {
 
     override fun drawerUI() {
         actSet = arrayOf(
-            MainActivity::class.java, DonateRecordActivity::class.java,
-            RankActivity::class.java, MyPageActivity::class.java,
+            MainActivity::class.java, DonateParticipationActivity::class.java,
+            DeliveryReviewActivity::class.java, MyPageActivity::class.java,
             BerryChargeActivity::class.java, BerryHistoryActivity::class.java
         )
 

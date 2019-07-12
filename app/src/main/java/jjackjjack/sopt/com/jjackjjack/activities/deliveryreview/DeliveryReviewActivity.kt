@@ -1,4 +1,4 @@
-package jjackjjack.sopt.com.jjackjjack.activities.rank
+package jjackjjack.sopt.com.jjackjjack.activities.deliveryreview
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -10,18 +10,17 @@ import android.view.Gravity
 import android.view.View
 import android.webkit.URLUtil
 import android.widget.ImageView
-import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.kmj.imageslider.RankImgAdapter
+import com.example.kmj.imageslider.DeliveryReviewImageAdapter
 import jjackjjack.sopt.com.jjackjjack.*
-import jjackjjack.sopt.com.jjackjjack.activities.MainActivity
+import jjackjjack.sopt.com.jjackjjack.activities.home.MainActivity
 import jjackjjack.sopt.com.jjackjjack.activities.berrycharge.BerryChargeActivity
-import jjackjjack.sopt.com.jjackjjack.activities.berryreview.BerryreviewActivity
-import jjackjjack.sopt.com.jjackjjack.activities.berryuse.BerryHistoryActivity
+import jjackjjack.sopt.com.jjackjjack.activities.berryusehistory.BerryHistoryActivity
 import jjackjjack.sopt.com.jjackjjack.activities.donate.DonateActivity
-import jjackjjack.sopt.com.jjackjjack.activities.donaterecord.DonateRecordActivity
+import jjackjjack.sopt.com.jjackjjack.activities.donateparicipation.DonateParticipationActivity
 import jjackjjack.sopt.com.jjackjjack.activities.mypage.MyPageActivity
+import jjackjjack.sopt.com.jjackjjack.model.DeliveryReviewImageInfo
 import jjackjjack.sopt.com.jjackjjack.db.SharedPreferenceController
 import jjackjjack.sopt.com.jjackjjack.interfaces.onDrawer
 import jjackjjack.sopt.com.jjackjjack.model.TotalDonateInfo
@@ -46,9 +45,9 @@ import retrofit2.Response
 import java.text.DecimalFormat
 
 
-class RankActivity : AppCompatActivity(), onDrawer {
+class DeliveryReviewActivity : AppCompatActivity(), onDrawer {
 
-    lateinit var mAdapter: RankImgAdapter
+    lateinit var mAdapter: DeliveryReviewImageAdapter
 
     lateinit var btnFset: Array<ImageView>
 
@@ -60,26 +59,30 @@ class RankActivity : AppCompatActivity(), onDrawer {
         ApplicationController.instance.networkService
     }
 
-    val dataList: ArrayList<RankImgItem> by lazy {
-        ArrayList<RankImgItem>()
+    val dataList: ArrayList<DeliveryReviewImageInfo> by lazy {
+        ArrayList<DeliveryReviewImageInfo>()
     }
-    val dataList_img: ArrayList<RankImgItem> by lazy {
-        ArrayList<RankImgItem>()
+    val dataList_img: ArrayList<DeliveryReviewImageInfo> by lazy {
+        ArrayList<DeliveryReviewImageInfo>()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ranking)
         initialUI()
-        //이거 나중에 함수로 빼주기!
 
-        getDonateImageResponse()
+
         mRecyclerView.adapter = mAdapter
         mRecyclerView.setOnClickListener {
-            startActivity<BerryreviewActivity>()
+            startActivity<BerryReviewActivity>()
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        gettotalDonateResponse()
+        getDonateImageResponse()
+    }
     private fun initialUI() {
         btn_home.setOnClickListener {
             startActivity<MainActivity>()
@@ -87,20 +90,18 @@ class RankActivity : AppCompatActivity(), onDrawer {
         }
         drawerUI()
 
-        mAdapter = RankImgAdapter(this, dataList)
+        mAdapter = DeliveryReviewImageAdapter(this, dataList)
 
         val lm = LinearLayoutManager(this)
         mRecyclerView.layoutManager = lm
         lm.setOrientation(LinearLayoutManager.HORIZONTAL)
         mRecyclerView.setHasFixedSize(true)
-
-        gettotalDonateResponse()
     }
 
     override fun drawerUI() {
         actSet = arrayOf(
-            MainActivity::class.java, DonateRecordActivity::class.java,
-            RankActivity::class.java, MyPageActivity::class.java,
+            MainActivity::class.java, DonateParticipationActivity::class.java,
+            DeliveryReviewActivity::class.java, MyPageActivity::class.java,
             BerryChargeActivity::class.java, BerryHistoryActivity::class.java
         )
 
@@ -182,7 +183,11 @@ class RankActivity : AppCompatActivity(), onDrawer {
                         val receiveData: ArrayList<DonatedDetailedData> = response.body()!!.data
                         if (receiveData.size > 0) {
                             for (i in 0 until receiveData.size) {
-                                dataList_img.add(RankImgItem(receiveData[i].thumbnail))
+                                dataList_img.add(
+                                    DeliveryReviewImageInfo(
+                                        receiveData[i].thumbnail
+                                    )
+                                )
                             }
                         }
                         updateDonateList(dataList_img)
@@ -194,7 +199,7 @@ class RankActivity : AppCompatActivity(), onDrawer {
         })
     }
 
-    private fun updateDonateList(list: ArrayList<RankImgItem>) {
+    private fun updateDonateList(list: ArrayList<DeliveryReviewImageInfo>) {
         dataList.clear()
         dataList.addAll(list)
         mAdapter.notifyDataSetChanged()

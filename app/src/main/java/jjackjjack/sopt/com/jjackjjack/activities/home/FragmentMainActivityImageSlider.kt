@@ -1,4 +1,4 @@
-package jjackjjack.sopt.com.jjackjjack.activities
+package jjackjjack.sopt.com.jjackjjack.activities.home
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
