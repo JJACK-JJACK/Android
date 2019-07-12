@@ -6,7 +6,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:showIn="@layout/activity_ranking">
+        tools:showIn="@layout/content_activity_ranking">
     <include layout="@layout/toolbar_with_hamburger">
 
     </include>
@@ -30,7 +30,7 @@
                         android:layout_alignParentTop="true"
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="0dp"
-                        android:src="#ffc21f"/>
+                        android:src="@drawable/img_ad_review_bg"/>
                 <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -38,6 +38,8 @@
                     <LinearLayout android:layout_width="match_parent"
                                   android:layout_height="wrap_content">
                         <TextView
+                                android:includeFontPadding = "false"
+                                android:fontFamily="@font/notosans_medium"
                                 android:textStyle="bold"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -52,6 +54,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
                         <TextView
+                                android:includeFontPadding = "false"
+                                android:fontFamily="@font/notosans_medium"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="20dp"
@@ -64,6 +68,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
                         <TextView
+                                android:includeFontPadding = "false"
+                                android:fontFamily="@font/notosans_medium"
                                 android:id="@+id/rank_totalDonate"
                                 android:textStyle="bold"
                                 android:layout_width="wrap_content"
@@ -72,6 +78,8 @@
                                 tools:text="144,353,012"
                                 android:textSize="24sp"/>
                         <TextView
+                                android:includeFontPadding = "false"
+                                android:fontFamily="@font/notosans_regular"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="7dp"
@@ -88,6 +96,8 @@
                     android:orientation="horizontal">
 
                 <TextView
+                        android:includeFontPadding = "false"
+                        android:fontFamily="@font/notosans_medium"
                         android:textColor="@color/darkGrayA"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

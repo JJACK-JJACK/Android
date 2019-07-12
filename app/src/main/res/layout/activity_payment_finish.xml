@@ -1,231 +1,266 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+
+<RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-    <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="267dp"
-            android:background="@color/colorPrimaryDark"/>
+        android:layout_height="match_parent">
+
     <LinearLayout
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@color/white">
+
         <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            <TextView
-                    android:layout_marginLeft="72dp"
+                android:layout_height="48dp">
+            <ImageView
+                    android:layout_marginLeft="11dp"
+                    android:id="@+id/btn_payment_back"
+                    android:layout_gravity="center_vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:textColor="#111111"
-                    android:letterSpacing="-0.02"
-                    android:gravity="center_horizontal"
-                    android:text="결제가 "
-            />
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:textColor="#ff0000"
-                    android:letterSpacing="-0.02"
-                    android:gravity="center_horizontal"
-                    android:text="완료"
-            />
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:textColor="#111111"
-                    android:letterSpacing="-0.02"
-                    android:gravity="center_horizontal"
-                    android:text="되었습니다"
-            />
+                    android:src="@drawable/ic_back"/>
+
         </LinearLayout>
+        <RelativeLayout
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="196dp">
+            <ImageView
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/img_ad_berry_100"/>
+        </RelativeLayout>
+
+        <LinearLayout
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            <LinearLayout
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <TextView
+                        android:includeFontPadding="false"
+                        android:fontFamily="@font/notosans_medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:textColor="@color/darkGrayA"
+                        android:letterSpacing="-0.02"
+                        android:text="결제가 "
+                />
+                <TextView
+                        android:includeFontPadding="false"
+                        android:fontFamily="@font/notosans_medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:textColor="#ff0000"
+                        android:letterSpacing="-0.02"
+                        android:gravity="center_horizontal"
+                        android:text="완료"/>
+                <TextView
+                        android:includeFontPadding="false"
+                        android:fontFamily="@font/notosans_medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:textColor="@color/darkGrayA"
+                        android:letterSpacing="-0.02"
+                        android:gravity="center_horizontal"
+                        android:text=" 되었습니다"
+                />
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                <TextView
+                        android:includeFontPadding="false"
+                        android:fontFamily="@font/notosans_demilight"
+                        android:gravity="center"
+                        android:layout_marginTop="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000000"
+                        android:text="아래 안내된 계좌로입금이 완료되면 베리가 충전됩니다.\n기한 내 입금되지 않으면, 충전이 자동 취소됩니다."
+                />
+                <TextView
+                        android:includeFontPadding="false"
+                        android:fontFamily="@font/notosans_medium"
+                        android:layout_marginTop="25dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:textColor="@color/darkGrayA"
+                        android:letterSpacing="-0.02"
+                        android:text="결제 정보"
+                />
+                <View
+                        android:layout_marginTop="17dp"
+                        android:layout_width="320dp"
+                        android:layout_height="1dp"
+                        android:background="@color/colorPrimary"/>
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+                android:layout_marginTop="14dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+            <TextView
+                    android:includeFontPadding="false"
+                    android:fontFamily="@font/notosans_demilight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#da4830"
+                    android:text="결제 금액"
+            />
+            <LinearLayout
+                    android:paddingRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <TextView
+                        android:includeFontPadding="false"
+                        android:fontFamily="@font/notosans_medium"
+                        android:gravity="right|end"
+                        android:id="@+id/tv_payment_money"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="#da4830"
+                        android:text="5,500"/>
+            </LinearLayout>
+
+        </LinearLayout>
+        <View
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#eeeeee"
+        >
+        </View>
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-            <TextView
-                    android:layout_marginTop="16dp"
-                    android:layout_marginLeft="25dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="#000000"
-                    android:letterSpacing="-0.07"
-                    android:lineSpacingExtra="7sp"
-                    android:gravity="center_horizontal"
-                    android:text="아래 안내된 계좌로 입금이 완료되면 베리가 충전됩니다.\n기한 내 입금되지 않으면, 충전이 자동 취소됩니다."
-            />
-            <TextView
-                    android:layout_marginTop="38dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:textColor="#111111"
-                    android:letterSpacing="-0.02"
-                    android:text="결제 정보"
-            />
-            <View
-                    android:layout_marginTop="17dp"
-                    android:layout_width="320dp"
-                    android:layout_height="1dp"
-                    android:background="#eeeeee"/>
-        </LinearLayout>
-
-    </LinearLayout>
-
-
-
-    <LinearLayout
-            android:layout_marginTop="14dp"
-            android:layout_marginLeft="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textColor="#da4830"
-                android:letterSpacing="-0.02"
-                android:text="결제 금액"
-        />
-        <LinearLayout
-                android:paddingRight="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-            <TextView
-                    android:gravity="right|end"
-                    android:id="@+id/tv_payment_money"
+            <LinearLayout
+                    android:layout_marginTop="12.5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="#da4830"
-                    android:letterSpacing="-0.02"
-                    android:text="5,500"
-            />
-        </LinearLayout>
+                    android:orientation="horizontal">
+                <TextView
+                        android:includeFontPadding="false"
+                        android:fontFamily="@font/notosans_demilight"
+                        android:layout_marginLeft="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="#999999"
+                        android:letterSpacing="-0.02"
+                        android:text="무통장입금"
+                />
+                <TextView
+                        android:includeFontPadding="false"
+                        android:fontFamily="@font/notosans_medium"
+                        android:paddingRight="20dp"
+                        android:gravity="right|end"
+                        android:id="@+id/tv_payment_bank"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="#111111"
+                        android:text="국민은행"
+                />
+            </LinearLayout>
 
-    </LinearLayout>
-    <View
-            android:layout_marginTop="16dp"
-            android:layout_marginLeft="20dp"
-            android:layout_width="320dp"
-            android:layout_height="1dp"
-            android:background="#eeeeee"
-    >
-    </View>
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-        <LinearLayout
-                android:layout_marginTop="12.5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-            <TextView
-                    android:layout_marginLeft="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="#999999"
-                    android:letterSpacing="-0.02"
-                    android:text="무통장입금"
-            />
-            <TextView
-                    android:paddingRight="20dp"
-                    android:gravity="right|end"
-                    android:id="@+id/tv_payment_bank"
-                    android:layout_gravity=""
+            <LinearLayout
+                    android:layout_marginTop="13dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="#111111"
-                    android:letterSpacing="-0.02"
-                    android:text="국민은행"
-            />
-        </LinearLayout>
+                    android:orientation="horizontal">
+                <TextView
+                        android:includeFontPadding="false"
+                        android:fontFamily="@font/notosans_demilight"
+                        android:layout_marginLeft="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="#999999"
+                        android:letterSpacing="-0.02"
+                        android:text="계좌번호"
+                />
+                <TextView
+                        android:includeFontPadding="false"
+                        android:fontFamily="@font/notosans_medium"
+                        android:id="@+id/tv_payment_account"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="#111111"
+                        android:letterSpacing="-0.02"
+                        android:gravity="right|end"
+                        android:paddingRight="20dp"
+                        android:text="67070204087002"
+                />
+            </LinearLayout>
 
-        <LinearLayout
-                android:layout_marginTop="13dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-            <TextView
-                    android:layout_marginLeft="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="#999999"
-                    android:letterSpacing="-0.02"
-                    android:text="계좌번호"
-            />
-            <TextView
-                    android:id="@+id/tv_payment_account"
+            <LinearLayout
+                    android:layout_marginTop="13dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="#111111"
-                    android:letterSpacing="-0.02"
-                    android:gravity="right|end"
-                    android:paddingRight="20dp"
-                    android:text="67070204087002"
-            />
-        </LinearLayout>
-
-        <LinearLayout
-                android:layout_marginTop="13dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-            <TextView
-                    android:layout_marginLeft="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="#999999"
-                    android:letterSpacing="-0.02"
-                    android:text="입금 기한"
-            />
-            <TextView
-                    android:id="@+id/tv_payment_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="#111111"
-                    android:letterSpacing="-0.02"
-                    android:paddingRight="20dp"
-                    android:gravity="right|end"
-                    android:text="2019.07. 14"
-            />
+                    android:orientation="horizontal">
+                <TextView
+                        android:includeFontPadding="false"
+                        android:fontFamily="@font/notosans_demilight"
+                        android:layout_marginLeft="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="#999999"
+                        android:letterSpacing="-0.02"
+                        android:text="입금 기한"
+                />
+                <TextView
+                        android:includeFontPadding="false"
+                        android:fontFamily="@font/notosans_medium"
+                        android:id="@+id/tv_payment_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="@color/darkGrayA"
+                        android:paddingRight="20dp"
+                        android:gravity="right|end"
+                        android:text="2019.07. 14"
+                />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-    <LinearLayout
-            android:layout_alignParentEnd="true"
+    <TextView
             android:id="@+id/btn_payment_ok"
+            android:background="@color/goldenYellow"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="18dp"
+            android:includeFontPadding="false"
+            android:fontFamily="@font/notosans_medium"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="@color/colorPrimaryDark">
-        <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textSize="16sp"
-                android:textColor="#ffffff"
-                android:lineSpacingExtra="2sp"
-                android:gravity="center"
-                android:text="확인"/>
-    </LinearLayout>
-
-</LinearLayout>
+            android:textSize="16sp"
+            android:textColor="#ffffff"
+            android:lineSpacingExtra="2sp"
+            android:gravity="center"
+            android:text="확인"/>
+</RelativeLayout>

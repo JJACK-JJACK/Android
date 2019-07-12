@@ -3,16 +3,19 @@
         android:orientation="vertical"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" xmlns:tools="http://schemas.android.com/tools">
+        android:layout_height="104dp"
+        xmlns:tools="http://schemas.android.com/tools">
     <LinearLayout
+            android:paddingVertical="15dp"
             android:layout_width="match_parent"
-            android:layout_height="104dp"
+            android:layout_height="match_parent"
             android:orientation="vertical">
         <LinearLayout
-                android:layout_marginTop="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
                     android:id="@+id/li_berryhistory_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -23,38 +26,43 @@
             />
         </LinearLayout>
         <LinearLayout
-                android:layout_marginTop="6dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <TextView
+                    android:gravity="bottom"
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_regular"
                     android:id="@+id/li_berryhistory_time"
                     android:layout_marginLeft="20dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="12sp"
+                    android:layout_height="match_parent"
+                    android:textSize="10sp"
                     android:textColor="@color/grayB"
                     android:text="2019.05.30 10:59"
                     android:layout_gravity="bottom"
             />
             <TextView
+                    android:includeFontPadding="false"
+                    android:fontFamily="@font/notosans_medium"
                     android:layout_weight="1"
                     android:layout_gravity="end"
                     android:layout_width="match_parent"
                     android:id="@+id/li_berryhistory_berry"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textColor="@color/goldenYellow"
-                    android:letterSpacing="0.06"
                     android:gravity="end"
                     android:textStyle="bold"
                     android:text="- 128"/>
             <TextView
-                    android:layout_gravity="bottom"
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_demilight"
+                    android:gravity="center"
                     android:layout_marginRight="20dp"
                     android:layout_marginLeft="4dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
+                    android:layout_height="match_parent"
+                    android:textSize="10sp"
                     android:textColor="#666666"
                     android:text="@string/berry"/>
         </LinearLayout>
@@ -62,22 +70,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
             <TextView
+                    android:textSize="10sp"
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_regular"
                     android:id="@+id/li_berryhistory_group"
                     android:layout_marginLeft="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
                     android:textColor="@color/grayA"
                     android:gravity="end"
                     android:text="장애인재단">
             </TextView>
         </LinearLayout>
+
+
+        <View
+                android:layout_marginTop="14dp"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="20dp"
+                android:layout_height="1dp"
+                android:background="#eeeeee"/>
     </LinearLayout>
 
-    <View
-            android:layout_width="match_parent"
-            android:layout_marginHorizontal="20dp"
-            android:layout_height="1dp"
-            android:background="@color/colorPrimary"
-            android:layout_gravity="end"/>
+
 </LinearLayout>
