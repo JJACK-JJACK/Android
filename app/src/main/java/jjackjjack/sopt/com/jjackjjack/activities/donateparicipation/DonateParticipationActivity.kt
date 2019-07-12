@@ -130,6 +130,8 @@ class DonateParticipationActivity : AppCompatActivity(), onDrawer {
                 ly_drawer.openDrawer(Gravity.END)
             }
             getmyBerryResponse()
+            tv_drawer_nickname.text = SharedPreferenceController.getUserNickname(this) //닉네임 DB 저장한 거 가져오는거
+            tv_drawer_email.text = SharedPreferenceController.getUserEmail(this) // 이메일 DB 저장한 거
         }
 
         btn_cancel.setOnClickListener {

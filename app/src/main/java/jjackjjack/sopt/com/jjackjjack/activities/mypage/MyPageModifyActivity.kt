@@ -8,8 +8,6 @@ import kotlinx.android.synthetic.main.activity_my_page_modify.*
 import android.app.Activity
 import android.content.pm.PackageManager
 import android.database.Cursor
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.net.Uri
 import android.provider.MediaStore
 import android.support.v4.app.ActivityCompat
@@ -88,7 +86,7 @@ class MyPageModifyActivity : AppCompatActivity() {
                     Glide.with(this).load(selectedImageUri)
                         .apply(RequestOptions.circleCropTransform())?.into(imageView_round)
 
-              //      Glide.with(this@MyPageModifyActivity).load(selectedImageUri).thumbnail(0.1f).into(imageView_round)
+                    //      Glide.with(this@MyPageModifyActivity).load(selectedImageUri).thumbnail(0.1f).into(imageView_round)
                     postaImageRegisterResponse()
                     var sendURL = SharedPreferenceController.getUserImg(this@MyPageModifyActivity)
                     Log.d("eeeee!!", sendURL.toString()+"오잉오잉")

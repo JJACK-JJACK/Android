@@ -14,6 +14,8 @@
             app:srcCompat="@color/colorPrimary">
     </ImageView>
     <TextView
+            android:includeFontPadding = "false"
+            android:fontFamily="@font/notosans_medium"
             android:singleLine="true"
             android:ellipsize="end"
             android:paddingLeft="16dp"
@@ -30,6 +32,8 @@
             android:layout_alignRight="@id/header_image_view"
             android:layout_alignBottom="@id/header_image_view"/>
     <TextView
+            android:includeFontPadding = "false"
+            android:fontFamily="@font/notosans_regular"
             android:paddingLeft="16dp"
             android:paddingTop="174dp"
             tools:text="어빙지역아동센터"

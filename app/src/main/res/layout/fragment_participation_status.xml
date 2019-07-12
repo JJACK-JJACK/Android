@@ -12,17 +12,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
                     android:id="@+id/tv_participation_ing"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:text="@string/donation_step_ing"/>
             <ImageView
+                    android:fontFamily="@font/notosans_demilight"
                     android:layout_width="1dp"
                     android:layout_height="10dp"
                     android:layout_marginLeft="3dp"
                     android:background="@drawable/shape_donate_status_rec"/>
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_demilight"
                     android:id="@+id/participation_status_date_ing"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -32,6 +37,8 @@
                     android:text="2019. 06. 18 ~"/>
         </LinearLayout>
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_regular"
                 android:id="@+id/participation_status_ing"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -51,6 +58,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
                     android:id="@+id/tv_participation_end"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -63,6 +72,8 @@
                     android:layout_marginLeft="3dp"
                     android:background="@drawable/shape_donate_status_rec"/>
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_demilight"
                     android:id="@+id/participation_status_date_end"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -72,6 +83,8 @@
                     android:text="~ 2019. 8. 30"/>
         </LinearLayout>
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_regular"
                 android:id="@+id/participation_status_end"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -91,6 +104,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
                     android:id="@+id/tv_participation_finish"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -103,6 +118,8 @@
                     android:layout_marginLeft="3dp"
                     android:background="@drawable/shape_donate_status_rec"/>
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_demilight"
                     android:id="@+id/participation_status_date_finish"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -112,6 +129,8 @@
                     android:text="2019. 9. 22 (예정)"/>
         </LinearLayout>
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_regular"
                 android:id="@+id/participation_status_finish"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

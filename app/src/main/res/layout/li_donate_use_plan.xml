@@ -20,6 +20,8 @@
             android:orientation="vertical"
             android:paddingHorizontal="8dp">
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_demilight"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -34,6 +36,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
                     android:gravity="right"
                     android:textStyle="bold"
                     android:text="30.000"
@@ -45,6 +49,8 @@
                     android:layout_height="match_parent"
                     android:id="@+id/li_donate_use_plan_berry_num"/>
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_demilight"
                     android:textColor="@color/grayA"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"

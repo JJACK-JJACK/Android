@@ -87,8 +87,7 @@ class SignUpActivity : AppCompatActivity() {
     private fun duplicateNicknameCheck(){
         btn_duplicate_verification.setOnClickListener{
             if(btn_duplicate_verification.visibility == View.VISIBLE){
-                val input_nickname: String = et_signup_section1.text.toString()
-                send_nickname = input_nickname
+               send_nickname = et_signup_section1.text.toString()
             }
 
             if(!send_nickname.contentEquals("")){
@@ -96,7 +95,6 @@ class SignUpActivity : AppCompatActivity() {
             }else{
                 ColorToast(this@SignUpActivity, "닉네임을 적어주세요")
             }
-
         }
     }
 
@@ -105,7 +103,6 @@ class SignUpActivity : AppCompatActivity() {
         jsonObject.put("nickname", send_nickname)
 
         val gsonObject = JsonParser().parse(jsonObject.toString()) as JsonObject
-
         val postNicknameCheckResponse: Call<PostNicknameCheckResponse> =
                 networkService.postNicknameCheckResponse("application/json", gsonObject)
 

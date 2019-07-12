@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
+              android:layout_height="match_parent" xmlns:tools="http://schemas.android.com/tools"
               android:orientation="vertical">
     <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
@@ -17,6 +17,8 @@
     </android.support.v7.widget.Toolbar>
 
     <TextView
+            android:includeFontPadding = "false"
+            android:fontFamily="@font/notosans_medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
@@ -30,6 +32,8 @@
                   android:orientation="horizontal"
                   android:layout_marginTop="12dp">
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_medium"
                 android:id="@+id/berryhistory_myberry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -37,9 +41,11 @@
                 android:textStyle="bold"
                 android:textColor="@color/darkGrayA"
                 android:layout_marginLeft="20dp"
-                android:text="349,900"
+                tools:text="349,900"
         />
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_demilight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
@@ -54,6 +60,8 @@
             android:background="@color/grayD"
     android:layout_marginTop="29dp">
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/recent_use_berry"
@@ -64,6 +72,7 @@
                 android:textColor="@color/grayA"/>
     </LinearLayout>
     <android.support.v7.widget.RecyclerView
+            android:layout_marginTop="15dp"
             android:id="@+id/rv_berryhistory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">

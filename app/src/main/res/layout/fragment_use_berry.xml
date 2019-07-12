@@ -11,6 +11,8 @@
             android:layout_height="match_parent">
 
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_medium"
                 android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -39,6 +41,8 @@
                 android:layout_height="56dp"
                 android:gravity="center">
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/use_berry"
@@ -46,6 +50,8 @@
                     android:textColor="@color/darkGrayC"/>
 
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
                     android:paddingHorizontal="4dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -53,10 +59,11 @@
                     android:gravity="right"
                     android:textSize="24sp"
                     android:textColor="@color/darkGrayA"
-                    android:textStyle="bold"
                     android:id="@+id/use_berry_total"
                     tools:text="100.000"/>
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_demilight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"

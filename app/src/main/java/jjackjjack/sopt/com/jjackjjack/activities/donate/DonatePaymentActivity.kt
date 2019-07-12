@@ -49,6 +49,7 @@ class DonatePaymentActivity : AppCompatActivity() {
     }
 
     private fun initialUI() {
+        var currStamp = 0
         var edtString = edt_donate_berry_num.text.toString()
         btn_erase_all.setOnClickListener {
             edtString = "0"
@@ -88,36 +89,19 @@ class DonatePaymentActivity : AppCompatActivity() {
             edt_donate_berry_num.setText(edtString)
         }
 
-
         btn_donate.setOnClickListener {
 
             var finaledtString = edt_donate_berry_num?.text.toString()
             if (finaledtString != "") {
                 if (finaledtString.toInt() <= currMyBerry) {
-                    toast("donate start!")
-
-                    val temp = postDonateResponse(finaledtString)
-                    Log.d("hello",temp.toString() )
-
-                    val builder = AlertDialog.Builder(this)
-                    val dialogView = layoutInflater.inflate(R.layout.dialog_donate_payment, null)
-
-                    val btn_dialog_close = dialogView.findViewById<Button>(R.id.btn_close)
-                    val btn_dialog_check_stamp = dialogView.findViewById<Button>(R.id.btn_check)
-
-                    builder.setView(dialogView)
-                    builder.show()
-
-                    btn_dialog_check_stamp.setOnClickListener {
-                        ctx.startActivity<StampActivity>()
-                        finish()
-                    }
-
-                    btn_dialog_close.setOnClickListener {
-                        finish()
-                    }
-
+                    postDonateResponse(finaledtString)
                 }
+                else{
+                    ColorToast(this, "보유 베리가 부족합니다")
+                }
+            }
+            else{
+                ColorToast(this, "베리를 입력해주세요")
             }
         }
         btn_berry_charge.setOnClickListener {
@@ -130,7 +114,8 @@ class DonatePaymentActivity : AppCompatActivity() {
         getmyBerryResponse()
     }
 
-    private fun postDonateResponse(donateBerry: String): Int {
+    private fun postDonateResponse(donateBerry: String){
+
         var currStamp: Int = 0
         val programId: String = intent.getStringExtra("programId")
         var token: String = SharedPreferenceController.getAuthorization(this)
@@ -161,13 +146,15 @@ class DonatePaymentActivity : AppCompatActivity() {
                             )
                             finish()
                         }
+                        else{
+                            showDialog()
+                        }
                     }
                 } else if (response.body()!!.status == 600) {
                     ColorToast(this@DonatePaymentActivity, response.body()!!.message)
                 }
             }
         })
-        return currStamp
     }
 
     private fun getmyBerryResponse() {
@@ -203,5 +190,26 @@ class DonatePaymentActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    private fun showDialog(){
+        val builder = AlertDialog.Builder(this)
+        val dialogView = layoutInflater.inflate(R.layout.dialog_donate_payment, null)
+
+        val btn_dialog_close = dialogView.findViewById<Button>(R.id.btn_close)
+        val btn_dialog_check_stamp = dialogView.findViewById<Button>(R.id.btn_check)
+
+        builder.setView(dialogView)
+        builder.show()
+
+        btn_dialog_check_stamp.setOnClickListener {
+            ctx.startActivity<StampActivity>()
+            finish()
+        }
+
+        btn_dialog_close.setOnClickListener {
+            finish()
+        }
+
     }
 }

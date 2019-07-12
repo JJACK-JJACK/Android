@@ -36,25 +36,24 @@
         </LinearLayout>
 
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_regular"
                 android:text="이메일 주소를"
                 android:textSize="24sp"
                 android:layout_marginLeft="29dp"
                 android:paddingTop="48dp"
                 android:id="@+id/tv_signup_head"
                 android:textColor="@color/darkGrayD"
-                android:letterSpacing="0.01"
-                android:lineSpacingExtra="12sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
         <TextView
-                android:paddingTop="10dp"
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_regular"
                 android:text="입력해주세요"
                 android:textSize="24sp"
                 android:layout_marginLeft="29dp"
                 android:textColor="@color/darkGrayD"
-                android:letterSpacing="0.01"
-                android:lineSpacingExtra="12sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -71,18 +70,21 @@
                     android:layout_height="wrap_content">
 
                 <TextView
+                        android:includeFontPadding = "false"
+                        android:fontFamily="@font/notosans_regular"
                         android:text="@string/email"
                         android:textSize="12sp"
                         android:id="@+id/tv_signup_section1"
                         android:textColor="@color/darkGrayD"
-                        android:letterSpacing="0.01"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="11dp"/>
                 <EditText
-                        android:paddingBottom="3.5dp"
-                        android:paddingTop="16dp"
+                        android:includeFontPadding = "false"
+                        android:fontFamily="@font/notosans_regular"
                         android:lines="1"
                         android:maxLines="1"
+                        android:paddingBottom="8dp"
                         android:maxLength="20"
                         android:inputType="textEmailAddress"
                         android:hint="ex) mrpic@naver.com"
@@ -103,6 +105,8 @@
                         android:layout_marginLeft="238dp"
                         android:layout_marginTop="6dp">
                     <TextView
+                            android:includeFontPadding = "false"
+                            android:fontFamily="@font/notosans_regular"
                             android:layout_centerInParent="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -125,6 +129,8 @@
                 android:layout_height="wrap_content">
 
             <TextView
+                    android:fontFamily="@font/notosans_regular"
+                    android:includeFontPadding = "false"
                     android:text="@string/password_check"
                     android:textSize="12sp"
                     android:textColor="@color/darkGrayD"
@@ -133,6 +139,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             <EditText
+                    android:fontFamily="@font/notosans_regular"
+                    android:includeFontPadding = "false"
                     android:paddingBottom="3.5dp"
                     android:paddingTop="16dp"
                     android:lines="1"
@@ -150,24 +158,5 @@
 
 
     </LinearLayout>
-    <!--<RelativeLayout-->
-            <!--android:layout_alignParentBottom="true"-->
-            <!--android:layout_centerHorizontal="true"-->
-            <!--android:layout_marginBottom="20dp"-->
-            <!--android:layout_marginHorizontal="29dp"-->
-            <!--android:background="@drawable/shape_redbtn_8dp"-->
-            <!--android:id="@+id/btn_signup_next"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="64dp">-->
-        <!--<TextView-->
-                <!--android:textSize="16sp"-->
-                <!--android:textColor="@color/white"-->
-                <!--android:letterSpacing="0.01"-->
-                <!--android:text="@string/next"-->
-                <!--android:id="@+id/tv_signup_next"-->
-                <!--android:layout_centerInParent="true"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"/>-->
-    <!--</RelativeLayout>-->
 
 </RelativeLayout>
