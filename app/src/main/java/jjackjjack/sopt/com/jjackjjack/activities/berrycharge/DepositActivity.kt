@@ -1,5 +1,6 @@
 package jjackjjack.sopt.com.jjackjjack.activities.berrycharge
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -24,9 +25,9 @@ import org.json.JSONObject
 import retrofit2.Call
 
 
-class DepositActivity : AppCompatActivity(){
+class DepositActivity : AppCompatActivity() {
 
-    val networkService: NetworkService by lazy{
+    val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
     }
 
@@ -36,17 +37,17 @@ class DepositActivity : AppCompatActivity(){
 
     lateinit var lyList: Array<LinearLayout>
 
-    lateinit var berryList : Array<Int>
+    lateinit var berryList: Array<Int>
 
-    lateinit var berryList_money : Array<Int>
+    lateinit var berryList_money: Array<Int>
 
-    var now_berry : Int = 0
+    var now_berry: Int = 0
 
-    var now_money : Int = 0
+    var now_money: Int = 0
 
     var deposit_list = ArrayList<String>()
 
-    lateinit var selected_bank : String
+    lateinit var selected_bank: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,7 +55,7 @@ class DepositActivity : AppCompatActivity(){
         InitialUI()
     }
 
-    private fun InitialUI(){
+    private fun InitialUI() {
 
         btn_back.setOnClickListener {
             finish()
@@ -79,11 +80,15 @@ class DepositActivity : AppCompatActivity(){
         deposit_list.add("하나은행 50391038504107")
         deposit_list.add("카카오뱅크 3333048166414")
 
-        val deposit_adapter = ArrayAdapter(this@DepositActivity, R.layout.support_simple_spinner_dropdown_item, deposit_list)
-        berry_deposit_spinner.adapter= deposit_adapter as SpinnerAdapter?
 
-        berry_deposit_spinner.onItemSelectedListener=
-            object :AdapterView.OnItemSelectedListener{
+        var hint_adapter = HintAdapter(this, R.layout.support_simple_spinner_dropdown_item)
+        hint_adapter.addAll(deposit_list)
+        hint_adapter.add("입금하실 은행 선택")
+
+        berry_deposit_spinner.adapter = hint_adapter
+        berry_deposit_spinner.setSelection(hint_adapter.getCount())
+        berry_deposit_spinner.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                     selected_bank = berry_deposit_spinner.getItemAtPosition(position).toString()
                 }
@@ -93,62 +98,75 @@ class DepositActivity : AppCompatActivity(){
                 }
             }
 
-      for(i in 0 until lyList.size){
-          lyList[i].setOnClickListener {
-              clickTest[i] = 1 - clickTest[i]
-              for(j in 0 until ivList.size) {
-                  ivList[j].isSelected = false
-                  now_berry = berryList[i]
-                  now_money = berryList_money[i]
-              }
-              ivList[i].isSelected=true
 
-          }
-      }
+
+
+        for (i in 0 until lyList.size) {
+            lyList[i].setOnClickListener {
+                clickTest[i] = 1 - clickTest[i]
+                for (j in 0 until ivList.size) {
+                    ivList[j].isSelected = false
+                    now_berry = berryList[i]
+                    now_money = berryList_money[i]
+                }
+                ivList[i].isSelected = true
+
+            }
+        }
     }
 
 
     override fun onResume() {
         super.onResume()
         btn_berry_deposit_charge.setOnClickListener {
-            if( clickTest.sum()>0){
+            if (clickTest.sum() > 0) {
                 //계좌뜨는 다이얼로그 창
                 BerryChargeResponse()
             }
         }
     }
 
-    private fun BerryChargeResponse(){
+    private fun BerryChargeResponse() {
         var jsonObject = JSONObject()
-        jsonObject.put("chargeBerry",now_berry)
+        jsonObject.put("chargeBerry", now_berry)
 
         val gsonObject = JsonParser().parse(jsonObject.toString()) as JsonObject
 
         val token = SharedPreferenceController.getAuthorization(this)
 
-        val postBerryChargeResponse:Call<PostBerryChargeResponse> =
+        val postBerryChargeResponse: Call<PostBerryChargeResponse> =
             networkService.postBerryChargeResponse("application/json", token, gsonObject)
 
         postBerryChargeResponse.enqueue(object : Callback<PostBerryChargeResponse> {
 
-            override fun onFailure(call: Call<PostBerryChargeResponse>, t: Throwable){
+            override fun onFailure(call: Call<PostBerryChargeResponse>, t: Throwable) {
                 Log.e("DB error", t.toString())
                 ColorToast(this@DepositActivity, "잠시 후 다시 접속해주세요")
             }
 
-            override fun onResponse(call: Call<PostBerryChargeResponse>, response: Response<PostBerryChargeResponse>){
-                if(response.isSuccessful){
-                    if(response.body()!!.status == Secret.NETWORK_LIST_SUCCESS){
+            override fun onResponse(call: Call<PostBerryChargeResponse>, response: Response<PostBerryChargeResponse>) {
+                if (response.isSuccessful) {
+                    if (response.body()!!.status == Secret.NETWORK_LIST_SUCCESS) {
                         startActivity<PaymentActivity>("berry_charge" to now_money, "selected_bank" to selected_bank)
                         finish()
-                    }
-                    else{
+                    } else {
                         toast("베리 충전 실패")
                     }
                 }
             }
         })
     }
+    class HintAdapter(context: Context, textViewResourceId: Int)
+        : ArrayAdapter<String>(context, textViewResourceId) {
+
+        override fun getCount(): Int {
+            val count = super.getCount()
+            return if (count > 0) count - 1 else count
+        }
+
+
+    }
+
 }
 
 
