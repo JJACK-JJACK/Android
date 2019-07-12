@@ -66,6 +66,7 @@ class BerryReviewActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        dataList_use_plan.clear()
         getDonateReviewResponse()
     }
 

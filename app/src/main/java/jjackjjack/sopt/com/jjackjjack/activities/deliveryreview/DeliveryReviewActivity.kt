@@ -81,6 +81,7 @@ class DeliveryReviewActivity : AppCompatActivity(), onDrawer {
 
     override fun onResume() {
         super.onResume()
+        dataList_img.clear()
         gettotalDonateResponse()
         getDonateImageResponse()
     }

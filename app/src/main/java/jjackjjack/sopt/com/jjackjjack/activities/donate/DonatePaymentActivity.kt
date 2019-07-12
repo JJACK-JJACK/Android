@@ -89,13 +89,11 @@ class DonatePaymentActivity : AppCompatActivity() {
             edt_donate_berry_num.setText(edtString)
         }
 
-
         btn_donate.setOnClickListener {
 
             var finaledtString = edt_donate_berry_num?.text.toString()
             if (finaledtString != "") {
                 if (finaledtString.toInt() <= currMyBerry) {
-                    toast("donate start!")
                     postDonateResponse(finaledtString)
                 }
                 else{

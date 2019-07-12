@@ -34,7 +34,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="88dp"
-                    android:src="@drawable/img_home_jjack" />
+                    android:src="@drawable/ic_account_circle_black_24dp" />
 
             <ImageView
                     android:id="@+id/btn_profile_img_change"

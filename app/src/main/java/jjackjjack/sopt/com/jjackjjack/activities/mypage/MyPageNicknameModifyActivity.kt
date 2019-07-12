@@ -14,9 +14,11 @@ import jjackjjack.sopt.com.jjackjjack.network.ApplicationController
 import jjackjjack.sopt.com.jjackjjack.network.NetworkService
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostNicknameCheckResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostNicknameResponse
+import jjackjjack.sopt.com.jjackjjack.utillity.ColorToast
 import jjackjjack.sopt.com.jjackjjack.utillity.Secret
 import jjackjjack.sopt.com.jjackjjack.utillity.Secret.Companion.NETWORK_LIST_SUCCESS
 import jjackjjack.sopt.com.jjackjjack.utillity.Secret.Companion.NETWORK_PW_FAIL
+import org.jetbrains.anko.ctx
 import org.jetbrains.anko.toast
 import org.json.JSONObject
 import retrofit2.Call
@@ -85,10 +87,10 @@ class MyPageNicknameModifyActivity : AppCompatActivity() {
             override fun onResponse(call: Call<PostNicknameResponse>, response: Response<PostNicknameResponse>) {
                 if(response.isSuccessful){
                     if(response.body()!!.status == NETWORK_LIST_SUCCESS){
-                        toast("success")
+                        ColorToast(ctx, "닉네임을 수정했습니다")
                     }
                 }else if(response.body()!!.status == NETWORK_PW_FAIL){
-                    toast("닉네임을 입력하세요")
+                    ColorToast(ctx, "닉네임을 입력하세요")
                 }
             }
         })
@@ -117,19 +119,17 @@ class MyPageNicknameModifyActivity : AppCompatActivity() {
             ) {
                 if(response.isSuccessful){
                     if(response.body()!!.status == Secret.NETWORK_SUCCESS){
-                        toast("사용 가능한 닉네임입니다.")
+                        ColorToast(ctx, "사용 가능한 닉네임입니다")
                         duplicateCheck = true
                         nickname = edt_nickname_modify.text.toString()
                         setUserNickname(this@MyPageNicknameModifyActivity, nickname)
                     }
                     else{
-                        toast(response.body()!!.message)
+                        ColorToast(ctx, response.body()!!.message)
                         duplicateCheck = false
                     }
                 }
             }
         })
-
     }
-
 }

@@ -6,7 +6,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.URLUtil
 import android.widget.ImageView
+import com.bumptech.glide.Glide
 import jjackjjack.sopt.com.jjackjjack.R
 import jjackjjack.sopt.com.jjackjjack.activities.deliveryreview.BerryReviewActivity
 import jjackjjack.sopt.com.jjackjjack.model.DeliveryReviewImageInfo
@@ -20,9 +22,9 @@ class DeliveryReviewImageAdapter(val context: Context, val deliveryReviewImageIn
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder?.bind(deliveryReviewImageInfoList[position], context)
-//        if(URLUtil.isValidUrl(deliveryReviewImageInfoList[position].thumbnail)){
-//            Glide.with(context).load(deliveryReviewImageInfoList[position].thumbnail).into(holder.thumbnail)
-//        }
+        if(URLUtil.isValidUrl(deliveryReviewImageInfoList[position].thumbnail)){
+            Glide.with(context).load(deliveryReviewImageInfoList[position].thumbnail).into(holder.thumbnail)
+        }
 
         holder.thumbnail.setOnClickListener {
             //Toast.makeText(this, "number is ${rankimg.thumbnail}", Toast.LENGTH_SHORT).show()

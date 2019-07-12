@@ -27,7 +27,7 @@
             android:gravity="center_horizontal"
             android:text="@string/msg_donate_success"
             android:textStyle="bold"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="15dp"/>
 
     <TextView
             android:includeFontPadding = "false"
