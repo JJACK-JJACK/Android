@@ -130,6 +130,7 @@ class DonateParticipationStateActivity : AppCompatActivity() {
                                     li_state_d_mark.visibility = View.INVISIBLE
                                     li_state_d_day.visibility = View.INVISIBLE
                                     li_state_total_num.visibility = View.INVISIBLE
+                                    li_state_berry_num.text = dec.format(receiveData[i].totalBerry).toString()
                                     li_state_total_num_berry.visibility = View.INVISIBLE
                                     li_state_progress.progressDrawable.setColorFilter(
                                         Color.parseColor("#464fb2"),

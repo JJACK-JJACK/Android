@@ -5,3 +5,4 @@ data class DonateUsePlan (
     var plan_detail : String,
     var berry_num : String
 )
+
