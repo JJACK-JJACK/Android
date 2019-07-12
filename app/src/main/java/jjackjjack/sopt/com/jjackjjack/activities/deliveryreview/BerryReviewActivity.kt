@@ -120,7 +120,7 @@ class BerryReviewActivity : AppCompatActivity() {
 
                             var sum = 0
 
-                            for (i in 0 until receiveData[0].plan!!.size) {
+                            for (i in 0 until receiveData[idx].plan!!.size) {
                                 dataList_use_plan.add(
                                     DonateUsePlan(
                                         (i + 1).toString(),
