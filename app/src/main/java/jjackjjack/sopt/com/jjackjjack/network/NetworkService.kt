@@ -3,6 +3,7 @@ package jjackjjack.sopt.com.jjackjjack.network
 import com.google.gson.JsonObject
 import jjackjjack.sopt.com.jjackjjack.network.response.get.*
 import jjackjjack.sopt.com.jjackjjack.network.response.post.*
+import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.http.*
 import retrofit2.http.Body
@@ -141,10 +142,11 @@ interface NetworkService {
         @Body() body: JsonObject
     ):Call<PostProfileModifyResponse>
 
-//    //이미지 등록
-//    @FormUrlEncoded
-//    @POST("/image")
-//    fun postProfileRegisterResponse(
-//        @Body() body :
-//    )
+    //이미지 등록
+    @Multipart
+    @POST("/image")
+    fun postImageRegisterResponse(
+        @Header("token") token: String,
+        @Part image: MultipartBody.Part?
+    ):Call<PostImageResponse>
 }

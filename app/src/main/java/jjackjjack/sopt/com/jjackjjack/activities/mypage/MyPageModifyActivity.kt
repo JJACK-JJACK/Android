@@ -24,7 +24,9 @@ import jjackjjack.sopt.com.jjackjjack.db.SharedPreferenceController.getUserNickn
 import jjackjjack.sopt.com.jjackjjack.db.SharedPreferenceController.setUserImg
 import jjackjjack.sopt.com.jjackjjack.network.ApplicationController
 import jjackjjack.sopt.com.jjackjjack.network.NetworkService
+import jjackjjack.sopt.com.jjackjjack.network.response.post.PostImageResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostProfileModifyResponse
+import jjackjjack.sopt.com.jjackjjack.utillity.ColorToast
 import jjackjjack.sopt.com.jjackjjack.utillity.Secret.Companion.NETWORK_LIST_SUCCESS
 import jjackjjack.sopt.com.jjackjjack.utillity.Secret.Companion.NETWORK_PW_FAIL
 import okhttp3.MediaType
@@ -35,14 +37,21 @@ import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.ByteArrayOutputStream
 import java.io.File
+import java.io.InputStream
 
 class MyPageModifyActivity : AppCompatActivity() {
     val MY_READ_STORAGE_REQUEST_CODE = 1
     val REQUEST_CODE_SELECT_IMAGE: Int = 1004
-    private var mImage: MultipartBody.Part? = null
+
+    //private var mImage: MultipartBody.Part? = null
+    private var mImageURL: String? = null
+
     var imageURI = ""
-    var real_URI = ""
+    //var real_URI = ""
+
+    private var receiveURL: String? = ""
 
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
@@ -54,6 +63,42 @@ class MyPageModifyActivity : AppCompatActivity() {
 
         InitialUI()
     }
+
+    override fun onResume() {
+        super.onResume()
+        curr_nickname.text = getUserNickname(this)
+        curr_nickname2.text = getUserNickname(this)
+        tv_mypage_modify_email.text = getUserEmail(this)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == REQUEST_CODE_SELECT_IMAGE) {
+            if (resultCode == Activity.RESULT_OK) {
+                if (data != null) {
+                    //postProfileResponse()
+
+                    val selectedImageUri: Uri = data.data
+                    mImageURL = getRealPathFromURI(selectedImageUri)
+                    Log.d("eeeee1", mImageURL)
+
+                    Glide.with(this).load(selectedImageUri)
+                        .apply(RequestOptions.circleCropTransform())?.into(imageView_round)
+
+                    //      Glide.with(this@MyPageModifyActivity).load(selectedImageUri).thumbnail(0.1f).into(imageView_round)
+                    postaImageRegisterResponse()
+                    var sendURL = SharedPreferenceController.getUserImg(this@MyPageModifyActivity)
+                    Log.d("eeeee!!", sendURL.toString()+"오잉오잉")
+                    if(!receiveURL.isNullOrEmpty()){
+                        postProfileModifyResponse()
+                    }
+
+                }
+            }
+        }
+    }
+
 
     private fun InitialUI() {
         btn_modify_nickname.setOnClickListener {
@@ -69,60 +114,72 @@ class MyPageModifyActivity : AppCompatActivity() {
             //chooseImage()
             requestReadExternalStoragePermission()
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
         curr_nickname.text = getUserNickname(this)
         curr_nickname2.text = getUserNickname(this)
+        Log.d("email", getUserEmail(this))
         tv_mypage_modify_email.text = getUserEmail(this)
     }
-//    private fun postProfileResponse() {
-//        var token: String = SharedPreferenceController.getAuthorization(this)
-//
-//        var jsonObject = JSONObject()
-//
-//        val file: File = File(imageURI)
-//        val requestfile: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file)
-//        val data: MultipartBody.Part = MultipartBody.Part.createFormData("photo", file.name, requestfile)
-//
-//        Log.d("asdfsdfad", imageURI.toString())
-//
-//        real_URI = "https:/" + imageURI
-//        jsonObject.put("profile", real_URI)
-//        //real_URI = "https:/" + imageURI
-//        //Log.d("real", real_URI)
-//        jsonObject.put("profile", file)
-//
-//        val gsonObject = JsonParser().parse(jsonObject.toString()) as JsonObject
-//
-//        val postProfileResponse =
-//            networkService.postProfileModifyResponse("application/json", token, gsonObject)
-//
-//        postProfileResponse.enqueue(object : Callback<PostProfileModifyResponse> {
-//
-//            override fun onFailure(call: Call<PostProfileModifyResponse>, t: Throwable) {
-//                Log.d("hi1", "hi1")
-//                Log.d("write fail", t.toString())
-//            }
-//
-//            override fun onResponse(call: Call<PostProfileModifyResponse>, modifyResponse: Response<PostProfileModifyResponse>) {
-//                if (modifyResponse.isSuccessful) {
-//                    Log.d("h2", "h2")
-//                    if (modifyResponse.body()!!.status == NETWORK_LIST_SUCCESS) {
-//                        Log.d("123", "123")
-//                        toast("success")
-//
-//                        setUserImg(this@MyPageModifyActivity, data.toString())
-//                        Log.d("url", imageURI)
-//                    }
-//                } else if (modifyResponse.body()!!.status == NETWORK_PW_FAIL) {
-//                    Log.d("h3", "h3")
-//                    toast("fail")
-//                }
-//            }
-//        })
-//    }
+
+
+
+
+    private fun postaImageRegisterResponse(){
+        val file: File = File(mImageURL)
+        val requestFile: RequestBody = RequestBody.create(MediaType.parse("application/json"), file)
+        val data: MultipartBody.Part = MultipartBody.Part.createFormData("image", file.name, requestFile)
+        val postImageRegisterResponse = networkService.postImageRegisterResponse(SharedPreferenceController.getAuthorization(this), data)
+        Log.d("eeeee2", "보냈음")
+        postImageRegisterResponse.enqueue(object: Callback<PostImageResponse>{
+            override fun onFailure(call: Call<PostImageResponse>, t: Throwable) {
+                ColorToast(this@MyPageModifyActivity, "잠시 후 다시 접속해주세요")
+            }
+
+            override fun onResponse(call: Call<PostImageResponse>, response: Response<PostImageResponse>) {
+                if(response.isSuccessful){
+                    //ColorToast(this@MyPageModifyActivity, "등록 성공")
+                    Log.d("eeeee2", response.body()!!.data.toString()+"아 왜 안떠 설마 null?")
+                    response.body()!!.data?.let{
+                        receiveURL = response.body()!!.data
+                        SharedPreferenceController.setUserImg(this@MyPageModifyActivity, response.body()!!.data)
+                        Log.d("eeeeeeeeeeeeee", SharedPreferenceController.getUserImg(this@MyPageModifyActivity)+"???")
+                        Log.d("eeeee2", response.body()!!.data.toString()+"아 왜 안떠")
+                        Log.d("eeee2", receiveURL+"오잉")
+                    }
+                }
+            }
+        })
+    }
+
+    private fun postProfileModifyResponse(){
+        val input_profile : String = receiveURL.toString()
+
+        if(!input_profile.isNullOrEmpty()){
+            var jsonObject = JSONObject()
+            jsonObject.put("profile", input_profile)
+
+            val gsonObject = JsonParser().parse(jsonObject.toString()) as JsonObject
+
+            val postProfileModifyResponse =
+                networkService.postProfileModifyResponse("application/json", SharedPreferenceController.getAuthorization(this),gsonObject)
+
+            postProfileModifyResponse.enqueue(object : Callback<PostProfileModifyResponse>{
+                override fun onFailure(call: Call<PostProfileModifyResponse>, t: Throwable) {
+                    ColorToast(this@MyPageModifyActivity, "잠시 후 다시 접속해주세요")
+                }
+
+                override fun onResponse(
+                    call: Call<PostProfileModifyResponse>,
+                    response: Response<PostProfileModifyResponse>
+                ) {
+                    if(response.isSuccessful){
+                        ColorToast(this@MyPageModifyActivity, "등록 성공하셨습니다")
+                    }else{
+                        ColorToast(this@MyPageModifyActivity, response.body()!!.message)
+                    }
+                }
+            })
+        }
+    }
 
     private fun requestReadExternalStoragePermission() {
         if (ContextCompat.checkSelfPermission(
@@ -165,37 +222,6 @@ class MyPageModifyActivity : AppCompatActivity() {
         startActivityForResult(intent, REQUEST_CODE_SELECT_IMAGE)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == REQUEST_CODE_SELECT_IMAGE) {
-            if (resultCode == Activity.RESULT_OK) {
-//                data?.let{
-//                    var selectedPictureUri = it.data
-//                    val options = BitmapFactory.Options()
-//                    val inputStream: InputStream = contentResolver.openInputStream(selectedPictureUri)
-//                    val bitmap = BitmapFactory.decodeStream(inputStream, null, options)
-//                    val byteArrayOutputStream = ByteArrayOutputStream()
-//                    bitmap.compress(Bitmap.CompressFormat.JPEG, 20, byteArrayOutputStream)
-//                    val photoBody = RequestBody.create(MediaType.parse("image/jpg"), byteArrayOutputStream.toByteArray())
-//                    mImage = MultipartBody.Part.createFormData("photo", File(selectedPictureUri.toString()).name, photoBody)
-//                    Glide.with(this@MyPageModifyActivity).load(selectedPictureUri).thumbnail(0.1f).into(imageView_round)
-//                }
-                if (data != null) {
-                    //postProfileResponse()
-                    val selectedImageUri: Uri = data.data
-
-                    imageURI = getRealPathFromURI(selectedImageUri)
-                    Log.d("kim", imageURI)
-
-                    Glide.with(this).load(selectedImageUri)
-                        .apply(RequestOptions.circleCropTransform())?.into(imageView_round)
-
-                    //Glide.with(this@MyPageModifyActivity).load(selectedImageUri).thumbnail(0.1f).into(imageView_round)
-                }
-            }
-        }
-    }
 
 
     fun getRealPathFromURI(content: Uri): String {
