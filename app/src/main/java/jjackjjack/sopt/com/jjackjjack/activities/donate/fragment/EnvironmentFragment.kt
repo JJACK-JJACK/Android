@@ -108,6 +108,7 @@ class EnvironmentFragment : Fragment(), View.OnClickListener {
         val getDonateSortedListResponse = networkService.getDonateSortedListResponse(CategoryId, filterId)
         getDonateSortedListResponse.enqueue(object : Callback<GetDonateSortedListResponse> {
             override fun onFailure(call: Call<GetDonateSortedListResponse>, t: Throwable) {
+                progress_bar.visibility = View.GONE
                 Log.e("Sorted List fail", t.toString())
                 ColorToast(activity?.applicationContext, "잠시 후 다시 접속해주세요")
             }
@@ -116,6 +117,7 @@ class EnvironmentFragment : Fragment(), View.OnClickListener {
                 call: Call<GetDonateSortedListResponse>,
                 response: Response<GetDonateSortedListResponse>
             ) {
+                progress_bar.visibility = View.GONE
                 if(response.isSuccessful){
                     if(response.body()!!.status == Secret.NETWORK_LIST_SUCCESS){
                         val temp: ArrayList<DonateSortedData> = response.body()!!.data
@@ -139,7 +141,6 @@ class EnvironmentFragment : Fragment(), View.OnClickListener {
 
     override fun onResume() {
         super.onResume()
-        clearDataList()
         getDonateSortedListResponse(Constants.TAB_RECENT)
     }
 

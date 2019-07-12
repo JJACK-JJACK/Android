@@ -19,10 +19,7 @@ import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateSortedListRe
 import jjackjjack.sopt.com.jjackjjack.utillity.ColorToast
 import jjackjjack.sopt.com.jjackjjack.utillity.Constants
 import jjackjjack.sopt.com.jjackjjack.utillity.Secret
-import kotlinx.android.synthetic.main.fragment_child_category.rv_recent_category
-import kotlinx.android.synthetic.main.fragment_child_category.tv_sorted_popular
-import kotlinx.android.synthetic.main.fragment_child_category.tv_sorted_recent
-import kotlinx.android.synthetic.main.fragment_child_category.tv_sorted_unpopular
+import kotlinx.android.synthetic.main.fragment_child_category.*
 import org.jetbrains.anko.support.v4.toast
 import retrofit2.Call
 import retrofit2.Callback
@@ -108,6 +105,7 @@ class ChildFragment : Fragment(), View.OnClickListener{
         val getDonateSortedListResponse = networkService.getDonateSortedListResponse(CategoryId, filterId)
         getDonateSortedListResponse.enqueue(object : Callback<GetDonateSortedListResponse> {
             override fun onFailure(call: Call<GetDonateSortedListResponse>, t: Throwable) {
+                progress_bar.visibility = View.GONE
                 ColorToast(activity?.applicationContext, "잠시 후 다시 접속해주세요")
             }
 
@@ -115,6 +113,7 @@ class ChildFragment : Fragment(), View.OnClickListener{
                 call: Call<GetDonateSortedListResponse>,
                 response: Response<GetDonateSortedListResponse>
             ) {
+                progress_bar.visibility = View.GONE
                 if(response.isSuccessful){
                     if(response.body()!!.status == Secret.NETWORK_LIST_SUCCESS){
                         val temp: ArrayList<DonateSortedData> = response.body()!!.data
