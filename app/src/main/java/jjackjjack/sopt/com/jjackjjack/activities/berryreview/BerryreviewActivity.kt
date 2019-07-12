@@ -16,6 +16,7 @@ import jjackjjack.sopt.com.jjackjjack.network.ApplicationController
 import jjackjjack.sopt.com.jjackjjack.network.NetworkService
 import jjackjjack.sopt.com.jjackjjack.network.data.DonatedDetailedData
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateParticipationDetailResponse
+import jjackjjack.sopt.com.jjackjjack.utillity.ColorToast
 import kotlinx.android.synthetic.main.activity_rank_berryreview.*
 import kotlinx.android.synthetic.main.fragment_berryuse_review.*
 import kotlinx.android.synthetic.main.fragment_use_berry.*
@@ -69,6 +70,7 @@ class BerryreviewActivity : AppCompatActivity() {
         getDonateReviewResponse.enqueue(object : Callback<GetDonateParticipationDetailResponse> {
             override fun onFailure(call: Call<GetDonateParticipationDetailResponse>, t: Throwable) {
                 Log.d("hello", t.toString())
+                ColorToast(this@BerryreviewActivity, "잠시 후 다시 접속해주세요")
             }
 
             override fun onResponse(

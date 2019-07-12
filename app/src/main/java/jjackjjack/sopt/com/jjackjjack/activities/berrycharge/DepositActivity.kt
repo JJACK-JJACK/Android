@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.activity_berry_deposit.*
 import retrofit2.Callback
 import retrofit2.Response
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostBerryChargeResponse
+import jjackjjack.sopt.com.jjackjjack.utillity.ColorToast
 import jjackjjack.sopt.com.jjackjjack.utillity.Secret
 import kotlinx.android.synthetic.main.activity_payment_finish.*
 
@@ -98,7 +99,7 @@ class DepositActivity : AppCompatActivity(){
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
-                    toast("입금하실 은행을 선택해주세요")
+                    ColorToast(this@DepositActivity,"입금하실 은행을 선택해주세요")
                 }
             }
 
@@ -142,7 +143,7 @@ class DepositActivity : AppCompatActivity(){
 
             override fun onFailure(call: Call<PostBerryChargeResponse>, t: Throwable){
                 Log.e("DB error", t.toString())
-                toast("DB error")
+                ColorToast(this@DepositActivity, "잠시 후 다시 접속해주세요")
             }
 
             override fun onResponse(call: Call<PostBerryChargeResponse>, response: Response<PostBerryChargeResponse>){

@@ -8,6 +8,7 @@ import jjackjjack.sopt.com.jjackjjack.db.SharedPreferenceController
 import jjackjjack.sopt.com.jjackjjack.network.ApplicationController
 import jjackjjack.sopt.com.jjackjjack.network.NetworkService
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GetStampResponse
+import jjackjjack.sopt.com.jjackjjack.utillity.ColorToast
 import jjackjjack.sopt.com.jjackjjack.utillity.Secret.Companion.NETWORK_SUCCESS
 import kotlinx.android.synthetic.main.activity_stamp.*
 import org.jetbrains.anko.toast
@@ -46,6 +47,7 @@ class StampActivity : AppCompatActivity() {
             override fun onFailure(call: Call<GetStampResponse>, t: Throwable) {
                 Log.d("hi2", "hi2")
                 Log.d("response fail", "response fail")
+                ColorToast(this@StampActivity, "잠시 후 다시 접속해주세요")
             }
 
             override fun onResponse(call: Call<GetStampResponse>, response: Response<GetStampResponse>) {
@@ -59,7 +61,7 @@ class StampActivity : AppCompatActivity() {
                     }
 
                 }else{
-                    toast("스탬프 조회 실패")
+                    ColorToast(this@StampActivity, "스탬프 조회 실패")
                 }
             }
         })

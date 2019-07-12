@@ -31,6 +31,7 @@ import jjackjjack.sopt.com.jjackjjack.network.data.DonatedDetailedData
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateParticipationDetailResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GetmyBerryResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GettotalDonateResponse
+import jjackjjack.sopt.com.jjackjjack.utillity.ColorToast
 import jjackjjack.sopt.com.jjackjjack.utillity.Constants
 import jjackjjack.sopt.com.jjackjjack.utillity.Secret
 import jjackjjack.sopt.com.jjackjjack.utillity.Secret.Companion.NETWORK_LIST_SUCCESS
@@ -170,6 +171,7 @@ class RankActivity : AppCompatActivity(), onDrawer {
         getDonateImageResponse.enqueue(object : Callback<GetDonateParticipationDetailResponse> {
             override fun onFailure(call: Call<GetDonateParticipationDetailResponse>, t: Throwable) {
                 Log.d("hello", t.toString())
+                ColorToast(this@RankActivity, "잠시 후 다시 접속해주세요")
             }
 
             override fun onResponse(
@@ -187,7 +189,7 @@ class RankActivity : AppCompatActivity(), onDrawer {
                         updateDonateList(dataList_img)
                     }
                 } else if (response.body()!!.status == 600) {
-                    toast(response.body()!!.message)
+                    ColorToast(this@RankActivity, response.body()!!.message)
                 }
             }
         })
@@ -206,6 +208,7 @@ class RankActivity : AppCompatActivity(), onDrawer {
         gettotalDonateResponse.enqueue(object : Callback<GettotalDonateResponse>{
             override fun onFailure(call: Call<GettotalDonateResponse>, t: Throwable) {
                 Log.d("Response error","조회실패")
+                ColorToast(this@RankActivity, "잠시 후 다시 접속해주세요")
             }
 
             override fun onResponse(call: Call<GettotalDonateResponse>, response: Response<GettotalDonateResponse>) {
@@ -231,6 +234,7 @@ class RankActivity : AppCompatActivity(), onDrawer {
         getmyBerryResponse.enqueue(object : Callback<GetmyBerryResponse> {
             override fun onFailure(call: Call<GetmyBerryResponse>, t: Throwable) {
                 Log.d("No berry", "No Berry")
+                ColorToast(this@RankActivity, "잠시 후 다시 접속해주세요")
             }
 
             override fun onResponse(call: Call<GetmyBerryResponse>, response: Response<GetmyBerryResponse>) {

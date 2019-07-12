@@ -14,6 +14,7 @@ import com.google.gson.JsonParser
 import jjackjjack.sopt.com.jjackjjack.network.ApplicationController
 import jjackjjack.sopt.com.jjackjjack.network.NetworkService
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostLoginResponse
+import jjackjjack.sopt.com.jjackjjack.utillity.ColorToast
 import jjackjjack.sopt.com.jjackjjack.utillity.Secret
 import org.jetbrains.anko.toast
 import org.json.JSONObject
@@ -56,7 +57,7 @@ class LoginActivity : AppCompatActivity() {
             postLoginResponse.enqueue(object: Callback<PostLoginResponse>{
                 override fun onFailure(call: Call<PostLoginResponse>, t: Throwable) {
                     Log.e("Login fail", t.toString())
-                    toast("로그인 실패")
+                    ColorToast(this@LoginActivity, "잠시 후 다시 접속해주세요")
                 }
 
                 override fun onResponse(call: Call<PostLoginResponse>, response: Response<PostLoginResponse>) {
@@ -78,7 +79,7 @@ class LoginActivity : AppCompatActivity() {
                             finish()
                         }
                         else{
-                            toast(response.body()!!.message)
+                            ColorToast(this@LoginActivity, response.body()!!.message)
                         }
                     }
                 }
