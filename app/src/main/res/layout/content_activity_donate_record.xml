@@ -7,8 +7,8 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:showIn="@layout/activity_donate_record">
+        android:layout_height="match_parent">
+        <!--tools:showIn="@layout/activity_donate_record">-->
 
     <include
             layout="@layout/toolbar_with_hamburger">
@@ -115,13 +115,32 @@
             android:layout_width="320dp"
             android:layout_height="1dp"
     />
-    <ImageView
-            android:id="@+id/donate_record_stamp"
-            android:paddingHorizontal="20dp"
+    <RelativeLayout
             android:layout_marginTop="19dp"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            app:srcCompat="@android:color/darker_gray"/>
+            android:layout_height="wrap_content">
+
+        <ImageView
+                android:id="@+id/donate_record_stamp"
+                android:paddingHorizontal="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@drawable/img_sm_stamp"/>
+        <TextView
+                android:textStyle="bold"
+                android:text="나의 스탬프"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:layout_alignParentTop="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/donate_record_stamp"
+                android:layout_alignTop="@id/donate_record_stamp"
+                android:layout_alignRight="@id/donate_record_stamp"
+                android:layout_alignBottom="@id/donate_record_stamp"/>
+
+    </RelativeLayout>
+
     <View
             android:layout_marginTop="20dp"
             android:layout_gravity="center_horizontal"

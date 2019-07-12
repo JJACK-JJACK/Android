@@ -15,15 +15,15 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true">
-        <activity android:name=".activities.GetBerryActivity">
+        <activity android:name=".activities.stamp.GetBerryActivity">
         </activity>
         <activity android:name=".activities.mypage.MyPageNicknameModifyActivity">
         </activity>
         <activity android:name=".activities.mypage.MyPageModifyActivity">
         </activity>
-        <activity android:name=".activities.donaterecord.DonateRecordStatusActivity">
+        <activity android:name=".activities.donateparicipation.DonateParticipationStateActivity">
         </activity>
-        <activity android:name=".activities.donaterecord.DonateRecordActivity">
+        <activity android:name=".activities.donateparicipation.DonateParticipationActivity">
         </activity>
         <activity
                 android:name=".activities.donate.DonatePaymentActivity"
@@ -37,7 +37,7 @@
         </activity>
         <activity android:name=".activities.mypage.MyPageActivity">
         </activity>
-        <activity android:name=".activities.MainActivity">
+        <activity android:name=".activities.home.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -52,15 +52,15 @@
                 android:name=".activities.login.SignUpActivity"
                 android:windowSoftInputMode="adjustResize">
         </activity>
-        <activity android:name=".activities.rank.RankActivity">
+        <activity android:name=".activities.deliveryreview.DeliveryReviewActivity">
         </activity>
         <activity android:name=".activities.berrycharge.DepositActivity">
         </activity>
-        <activity android:name=".activities.berryuse.BerryHistoryActivity">
+        <activity android:name=".activities.berryusehistory.BerryHistoryActivity">
         </activity>
-        <activity android:name=".activities.berryreview.BerryreviewActivity">
+        <activity android:name=".activities.deliveryreview.BerryReviewActivity">
         </activity>
-        <activity android:name=".activities.payment.PaymentActivity">
+        <activity android:name=".activities.berrycharge.PaymentActivity">
         </activity>
         <activity android:name=".activities.stamp.StampActivity">
         </activity>

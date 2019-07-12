@@ -1,11 +1,9 @@
-package jjackjjack.sopt.com.jjackjjack.activities.payment
+package jjackjjack.sopt.com.jjackjjack.activities.berrycharge
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import jjackjjack.sopt.com.jjackjjack.R
-import jjackjjack.sopt.com.jjackjjack.activities.MainActivity
-import jjackjjack.sopt.com.jjackjjack.network.ApplicationController
-import jjackjjack.sopt.com.jjackjjack.network.NetworkService
+import jjackjjack.sopt.com.jjackjjack.activities.home.MainActivity
 import kotlinx.android.synthetic.main.activity_payment_finish.*
 import org.jetbrains.anko.startActivity
 import java.text.DateFormat
@@ -37,6 +35,7 @@ class PaymentActivity : AppCompatActivity() {
 
         btn_payment_ok.setOnClickListener {
             startActivity<MainActivity>()
+            finish()
         }
     }
     private fun converteDday(finish: String) : String{

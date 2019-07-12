@@ -1,4 +1,4 @@
-package jjackjjack.sopt.com.jjackjjack.activities.berryuse
+package jjackjjack.sopt.com.jjackjjack.activities.berryusehistory
 
 class BerryHistoryItem(
     val li_berryhistory_title: String,

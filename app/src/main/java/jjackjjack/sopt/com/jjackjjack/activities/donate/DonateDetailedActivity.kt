@@ -36,8 +36,6 @@ import java.text.DecimalFormat
 
 class DonateDetailedActivity : AppCompatActivity() {
 
-//    var fragmentAdapter: DetailFragmentAdapter by Delegates.notNull()
-
     val networkService: NetworkService by lazy{
         ApplicationController.instance.networkService
     }
@@ -71,11 +69,9 @@ class DonateDetailedActivity : AppCompatActivity() {
 
         ProgramId = intent.getStringExtra("programId")
         initialUI()
+
         getDonateDetailResponse(ProgramId)
     }
-
-
-
 
     private fun getDonateDetailResponse(programId: String){ //programId 넘겨주기
         val getDonateDetailResponse = networkService.getDonateDetailedResponse(programId)
@@ -101,7 +97,8 @@ class DonateDetailedActivity : AppCompatActivity() {
                         val temp: ArrayList<DonatedDetailedData> = response.body()!!.data //temp가 없을 때 터짐
                         li_state_d_day.text = temp[0].toDonateDetail().d_day
                         li_state_percent.text = temp[0].toDonateDetail().percentage.toString()
-                        li_state_berry_num.text = temp[0].toDonateDetail().totalBerry
+                        li_state_berry_num.text = dec.format(temp[0].toDonateDetail().totalBerry.toInt()
+                        )
                         li_state_total_num.text = dec.format(temp[0].toDonateDetail().maxBerry.toInt())
                         li_state_progress.progress = temp[0].toDonateDetail().percentage
                         donate_detailed_title.text = temp[0].toDonateDetail().title
@@ -116,12 +113,11 @@ class DonateDetailedActivity : AppCompatActivity() {
                             tempStoryList.add(storytemp[i])
                         }
 
-                        tv_use_plan_maxberry.text = temp[0].toDonateDetail().maxBerry
+                        tv_use_plan_maxberry.text = dec.format(temp[0].toDonateDetail().maxBerry.toInt())
                         val usePlantemp: ArrayList<UsePlanData> = temp[0].plan
                         for(i in 0 until usePlantemp.size){
                             tempUsePlanList.add(usePlantemp[i].toDonateUsePlan(i+1))
                         }
-
                         updateStoryDataList(tempStoryList)
                         updateUsePlanDataList(tempUsePlanList)
                     }
@@ -140,13 +136,7 @@ class DonateDetailedActivity : AppCompatActivity() {
         ProgramId = intent.getStringExtra("programId")
 
         getDonateDetailResponse(ProgramId)
-       // FragmentUI()
-
-
-
     }
-
-
 
     private fun initialUI(){
         btn_toolbar_back.setOnClickListener {
@@ -193,7 +183,6 @@ class DonateDetailedActivity : AppCompatActivity() {
             startActivity<DonatePaymentActivity>("programId" to ProgramId)
         }
 
-
         donateStoryRecyclerViewAdapter = DonateStoryRecyclerViewAdapter(this, storyList)
         rv_donate_story.adapter = donateStoryRecyclerViewAdapter
         rv_donate_story.layoutManager = LinearLayoutManager(this)
@@ -226,5 +215,4 @@ class DonateDetailedActivity : AppCompatActivity() {
         tempUsePlanList.clear()
         usePlanList.clear()
     }
-
 }

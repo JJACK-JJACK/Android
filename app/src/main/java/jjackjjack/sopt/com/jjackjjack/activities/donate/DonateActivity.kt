@@ -13,13 +13,13 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import jjackjjack.sopt.com.jjackjjack.R
-import jjackjjack.sopt.com.jjackjjack.activities.MainActivity
+import jjackjjack.sopt.com.jjackjjack.activities.home.MainActivity
 import jjackjjack.sopt.com.jjackjjack.activities.berrycharge.BerryChargeActivity
-import jjackjjack.sopt.com.jjackjjack.activities.berryuse.BerryHistoryActivity
+import jjackjjack.sopt.com.jjackjjack.activities.berryusehistory.BerryHistoryActivity
 import jjackjjack.sopt.com.jjackjjack.activities.donate.adapter.DonateCategoryPagerAdapter
-import jjackjjack.sopt.com.jjackjjack.activities.donaterecord.DonateRecordActivity
+import jjackjjack.sopt.com.jjackjjack.activities.donateparicipation.DonateParticipationActivity
 import jjackjjack.sopt.com.jjackjjack.activities.mypage.MyPageActivity
-import jjackjjack.sopt.com.jjackjjack.activities.rank.RankActivity
+import jjackjjack.sopt.com.jjackjjack.activities.deliveryreview.DeliveryReviewActivity
 import jjackjjack.sopt.com.jjackjjack.db.SharedPreferenceController
 import jjackjjack.sopt.com.jjackjjack.interfaces.onDrawer
 import jjackjjack.sopt.com.jjackjjack.network.ApplicationController
@@ -63,7 +63,6 @@ class DonateActivity : AppCompatActivity(), onDrawer {
         setContentView(R.layout.activity_donate)
 
         initialUI()
-
     }
 
     override fun onResume() {
@@ -73,7 +72,6 @@ class DonateActivity : AppCompatActivity(), onDrawer {
             Log.d("fragnum", fragnum.toString())
             donate_pager.setCurrentItem(fragnum)
         }
-        getmyBerryResponse()
     }
 
     private fun initialUI(){
@@ -92,14 +90,12 @@ class DonateActivity : AppCompatActivity(), onDrawer {
             finish()
         }
         drawerUI()
-
-        getmyBerryResponse()
     }
 
     override fun drawerUI() {
         actSet = arrayOf(
-            MainActivity::class.java, DonateRecordActivity::class.java,
-            RankActivity::class.java, MyPageActivity::class.java,
+            MainActivity::class.java, DonateParticipationActivity::class.java,
+            DeliveryReviewActivity::class.java, MyPageActivity::class.java,
             BerryChargeActivity::class.java, BerryHistoryActivity::class.java
         )
 
@@ -120,6 +116,7 @@ class DonateActivity : AppCompatActivity(), onDrawer {
             if(!ly_drawer.isDrawerOpen(Gravity.END)){
                 ly_drawer.openDrawer(Gravity.END)
             }
+            getmyBerryResponse()
         }
 
         btn_cancel.setOnClickListener {
@@ -128,7 +125,7 @@ class DonateActivity : AppCompatActivity(), onDrawer {
             }
         }
 
-        tv_drawer_nickname.text = SharedPreferenceController.getUserNickname(this)//닉네임 DB 저장한 거 가져오는거
+        tv_drawer_nickname.text = SharedPreferenceController.getUserNickname(this) //닉네임 DB 저장한 거 가져오는거
         tv_drawer_email.text = SharedPreferenceController.getUserEmail(this) // 이메일 DB 저장한 거
         if(URLUtil.isValidUrl(SharedPreferenceController.getUserImg(this))){
             Glide.with(this).load(SharedPreferenceController.getUserImg(this))
@@ -198,6 +195,4 @@ class DonateActivity : AppCompatActivity(), onDrawer {
             }
         })
     }
-
-
 }

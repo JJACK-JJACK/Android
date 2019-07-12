@@ -1,6 +1,5 @@
 package jjackjjack.sopt.com.jjackjjack.activities.berrycharge
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -9,7 +8,6 @@ import android.widget.*
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import jjackjjack.sopt.com.jjackjjack.R
-import jjackjjack.sopt.com.jjackjjack.activities.payment.PaymentActivity
 import jjackjjack.sopt.com.jjackjjack.db.SharedPreferenceController
 import jjackjjack.sopt.com.jjackjjack.network.ApplicationController
 import jjackjjack.sopt.com.jjackjjack.network.NetworkService
@@ -19,9 +17,7 @@ import retrofit2.Response
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostBerryChargeResponse
 import jjackjjack.sopt.com.jjackjjack.utillity.ColorToast
 import jjackjjack.sopt.com.jjackjjack.utillity.Secret
-import kotlinx.android.synthetic.main.activity_payment_finish.*
 
-import org.jetbrains.anko.spinner
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 import org.json.JSONObject
@@ -55,14 +51,8 @@ class DepositActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_berry_deposit)
-
-
-
-
-
         InitialUI()
     }
-
 
     private fun InitialUI(){
 
@@ -153,14 +143,11 @@ class DepositActivity : AppCompatActivity(){
                         finish()
                     }
                     else{
+                        toast("베리 충전 실패")
                     }
                 }
             }
         })
-
-    }
-    fun getValues(view: View){
-        toast(berry_deposit_spinner.selectedItem.toString())
     }
 }
 

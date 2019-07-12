@@ -2,7 +2,7 @@ package jjackjjack.sopt.com.jjackjjack.activities.login
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import jjackjjack.sopt.com.jjackjjack.activities.MainActivity
+import jjackjjack.sopt.com.jjackjjack.activities.home.MainActivity
 import jjackjjack.sopt.com.jjackjjack.R
 import jjackjjack.sopt.com.jjackjjack.db.SharedPreferenceController
 import kotlinx.android.synthetic.main.activity_beginning.*
@@ -20,7 +20,6 @@ class BeginningActivity : AppCompatActivity() {
             startActivity<MainActivity>()
             finish()
         }
-
 
     }
 

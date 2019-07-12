@@ -1,4 +1,4 @@
-package jjackjjack.sopt.com.jjackjjack.activities.berryreview
+package jjackjjack.sopt.com.jjackjjack.activities.deliveryreview
 
 import android.graphics.Color
 import android.graphics.PorterDuff
@@ -25,8 +25,9 @@ import kotlinx.android.synthetic.main.li_state.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.DecimalFormat
 
-class BerryreviewActivity : AppCompatActivity() {
+class BerryReviewActivity : AppCompatActivity() {
 
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
@@ -38,6 +39,7 @@ class BerryreviewActivity : AppCompatActivity() {
     val dataList_use_plan: ArrayList<DonateUsePlan> by lazy {
         ArrayList<DonateUsePlan>()
     }
+    val dec = DecimalFormat("#,000")
 
     lateinit var donateUsePlanRecyclerViewAdapter: DonateUsePlanRecyclerViewAdapter
 
@@ -45,19 +47,26 @@ class BerryreviewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rank_berryreview)
 
-        li_state_day.visibility = (View.GONE)
-        li_state_total_num.visibility = (View.GONE)
-        li_state_total_num_berry.visibility = (View.GONE)
-
-        getDonateReviewResponse()
+        initialUI()
 
         donateUsePlanRecyclerViewAdapter = DonateUsePlanRecyclerViewAdapter(this, dataList)
         rv_donate_use_container.adapter = donateUsePlanRecyclerViewAdapter
         rv_donate_use_container.layoutManager = LinearLayoutManager(this)
+    }
+
+    private fun initialUI() {
+        li_state_day.visibility = (View.GONE)
+        li_state_total_num.visibility = (View.GONE)
+        li_state_total_num_berry.visibility = (View.GONE)
 
         btn_toolbar_back.setOnClickListener {
             finish()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getDonateReviewResponse()
     }
 
     private fun getDonateReviewResponse() {
@@ -70,7 +79,7 @@ class BerryreviewActivity : AppCompatActivity() {
         getDonateReviewResponse.enqueue(object : Callback<GetDonateParticipationDetailResponse> {
             override fun onFailure(call: Call<GetDonateParticipationDetailResponse>, t: Throwable) {
                 Log.d("hello", t.toString())
-                ColorToast(this@BerryreviewActivity, "잠시 후 다시 접속해주세요")
+                ColorToast(this@BerryReviewActivity, "잠시 후 다시 접속해주세요")
             }
 
             override fun onResponse(
@@ -82,13 +91,13 @@ class BerryreviewActivity : AppCompatActivity() {
                         val receiveData: ArrayList<DonatedDetailedData> = response.body()!!.data
                         if (idx + 1 <= receiveData.size) {
                             if (URLUtil.isValidUrl(receiveData[0].thumbnail)) {
-                                Glide.with(this@BerryreviewActivity).load(receiveData[0].thumbnail)
+                                Glide.with(this@BerryReviewActivity).load(receiveData[0].thumbnail)
                                     .into(header_image_view)
                             }
                             donate_detailed_title.text = receiveData[idx].title
                             donate_detailed_association.text = receiveData[idx].centerName
                             li_state_percent.text = receiveData[idx].percentage.toString()
-                            li_state_berry_num.text = receiveData[idx].totalBerry.toString()
+                            li_state_berry_num.text = dec.format(receiveData[idx].totalBerry).toString()
                             li_state_progress.progress = receiveData[idx].percentage
 
                             li_state_progress.progressDrawable.setColorFilter(
@@ -98,14 +107,12 @@ class BerryreviewActivity : AppCompatActivity() {
                             li_state_percent_mark.setTextColor(Color.parseColor("#464fb2"))
                             li_state_percent.setTextColor(Color.parseColor("#464fb2"))
 
-                            Log.d("what", receiveData[idx].review[0].story!![0].subTitle )
-
                             use_story_title.text = receiveData[idx].review[0].story!![0].subTitle
                             use_story_content1.text = receiveData[idx].review[0].story!![0].content!![0]
                             use_story_content2.text = receiveData[idx].review[0].story!![0].content!![1]
 
                             if (URLUtil.isValidUrl(receiveData[idx].review[0].story!![0].img)) {
-                                Glide.with(this@BerryreviewActivity)
+                                Glide.with(this@BerryReviewActivity)
                                     .load(receiveData[idx].review[0].story!![0].img)
                                     .into(use_story_img)
                             }
@@ -117,13 +124,13 @@ class BerryreviewActivity : AppCompatActivity() {
                                     DonateUsePlan(
                                         (i + 1).toString(),
                                         receiveData[idx].plan!![i].purpose,
-                                        receiveData[idx].plan!![i].price.toString()
+                                        dec.format(receiveData[idx].plan!![i].price).toString()
                                     )
                                 )
                                 sum = sum + receiveData[idx].plan!![i].price.toString().toInt()
                                 updateDonateRecordStatus(dataList_use_plan)
                             }
-                            use_berry_total.text = sum.toString()
+                            use_berry_total.text = dec.format(sum).toString()
                         }
                     }
                 }

@@ -4,13 +4,12 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.util.Log
-import android.view.View
 import android.widget.Button
-import android.widget.Toast
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import jjackjjack.sopt.com.jjackjjack.R
 import jjackjjack.sopt.com.jjackjjack.activities.berrycharge.BerryChargeActivity
+import jjackjjack.sopt.com.jjackjjack.activities.stamp.GetBerryActivity
 import jjackjjack.sopt.com.jjackjjack.activities.stamp.StampActivity
 import jjackjjack.sopt.com.jjackjjack.db.SharedPreferenceController
 import jjackjjack.sopt.com.jjackjjack.network.ApplicationController
@@ -21,8 +20,7 @@ import jjackjjack.sopt.com.jjackjjack.network.response.post.PostDonateResponse
 import jjackjjack.sopt.com.jjackjjack.utillity.ColorToast
 import jjackjjack.sopt.com.jjackjjack.utillity.Secret
 import kotlinx.android.synthetic.main.activity_donate_payment.*
-import kotlinx.android.synthetic.main.activity_donate_payment.view.*
-import kotlinx.android.synthetic.main.activity_mypage_berryhistory.*
+import org.jetbrains.anko.ctx
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 import org.json.JSONObject
@@ -38,8 +36,9 @@ class DonatePaymentActivity : AppCompatActivity() {
         ApplicationController.instance.networkService
     }
 
-    var currStamp = 0
+    //var currStamp = 0
     var currMyBerry = 0
+    //var rewardBerry = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -91,20 +90,33 @@ class DonatePaymentActivity : AppCompatActivity() {
 
 
         btn_donate.setOnClickListener {
-            var finaledtString = edt_donate_berry_num.text.toString()
-            if (finaledtString.toInt() <= currMyBerry && finaledtString.toInt() != 0) {
-                postDonateResponse(edtString)
-                if (currStamp != 10) {
+
+            var finaledtString = edt_donate_berry_num?.text.toString()
+            if (finaledtString != "") {
+                if (finaledtString.toInt() <= currMyBerry) {
+                    toast("donate start!")
+
+                    val temp = postDonateResponse(finaledtString)
+                    Log.d("hello",temp.toString() )
+
                     val builder = AlertDialog.Builder(this)
                     val dialogView = layoutInflater.inflate(R.layout.dialog_donate_payment, null)
-                    val dialogbutton = dialogView.findViewById<Button>(R.id.btn_close)
+
+                    val btn_dialog_close = dialogView.findViewById<Button>(R.id.btn_close)
+                    val btn_dialog_check_stamp = dialogView.findViewById<Button>(R.id.btn_check)
+
                     builder.setView(dialogView)
                     builder.show()
-                    dialogbutton.setOnClickListener {
+
+                    btn_dialog_check_stamp.setOnClickListener {
+                        ctx.startActivity<StampActivity>()
                         finish()
                     }
-                } else {
-                    startActivity<StampActivity>()
+
+                    btn_dialog_close.setOnClickListener {
+                        finish()
+                    }
+
                 }
             }
         }
@@ -113,8 +125,13 @@ class DonatePaymentActivity : AppCompatActivity() {
         }
     }
 
-    private fun postDonateResponse(donateBerry: String) {
-        Log.d("hi1","hi1")
+    override fun onResume() {
+        super.onResume()
+        getmyBerryResponse()
+    }
+
+    private fun postDonateResponse(donateBerry: String): Int {
+        var currStamp: Int = 0
         val programId: String = intent.getStringExtra("programId")
         var token: String = SharedPreferenceController.getAuthorization(this)
 
@@ -138,16 +155,24 @@ class DonatePaymentActivity : AppCompatActivity() {
                         Log.d("berry", receiveData!!.totalBerry.toString())
                         currStamp = receiveData!!.stamps
                         ColorToast(this@DonatePaymentActivity, "기부되었습니다!")
+                        if (currStamp == 10) {
+                            ctx.startActivity<GetBerryActivity>(
+                                "rewardBerry" to receiveData!!.rewordsBerry
+                            )
+                            finish()
+                        }
                     }
                 } else if (response.body()!!.status == 600) {
                     ColorToast(this@DonatePaymentActivity, response.body()!!.message)
                 }
             }
         })
+        return currStamp
     }
 
     private fun getmyBerryResponse() {
         var token: String = SharedPreferenceController.getAuthorization(this)
+        var currStamp: Int
 
         val getmyBerryResponse =
             networkService.getmyBerryResponse("application/json", token)
@@ -165,7 +190,6 @@ class DonatePaymentActivity : AppCompatActivity() {
 
                         val dec = DecimalFormat("#,000")
                         val dec_berry: String
-
 
                         currMyBerry = receiveData!!
 

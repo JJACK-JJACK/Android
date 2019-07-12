@@ -52,7 +52,6 @@ class AnimalFragment : Fragment(), View.OnClickListener{
         super.onActivityCreated(savedInstanceState)
 
         initialUI()
-
     }
 
     override fun onClick(view: View) {
