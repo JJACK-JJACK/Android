@@ -119,10 +119,7 @@
                 android:textColor="@color/grayB"
                 android:letterSpacing="-0.07"
                 android:layout_marginTop="5dp"
-                android:text="@string/msg_donate_step_delivery"
-        />
+                android:text="@string/msg_donate_step_delivery"/>
+
     </LinearLayout>
-
-
-
 </LinearLayout>
