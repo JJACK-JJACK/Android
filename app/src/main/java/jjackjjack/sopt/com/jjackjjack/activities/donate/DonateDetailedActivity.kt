@@ -33,8 +33,6 @@ import java.text.DecimalFormat
 
 class DonateDetailedActivity : AppCompatActivity() {
 
-//    var fragmentAdapter: DetailFragmentAdapter by Delegates.notNull()
-
     val networkService: NetworkService by lazy{
         ApplicationController.instance.networkService
     }
@@ -68,11 +66,10 @@ class DonateDetailedActivity : AppCompatActivity() {
 
         ProgramId = intent.getStringExtra("programId")
         initialUI()
+
         getDonateDetailResponse(ProgramId)
 
     }
-
-
 
     private fun getDonateDetailResponse(programId: String){ //programId 넘겨주기
         val getDonateDetailResponse = networkService.getDonateDetailedResponse(programId)
@@ -113,7 +110,6 @@ class DonateDetailedActivity : AppCompatActivity() {
                         for(i in 0 until usePlantemp.size){
                             tempUsePlanList.add(usePlantemp[i].toDonateUsePlan(i+1))
                         }
-
                         updateStoryDataList(tempStoryList)
                         updateUsePlanDataList(tempUsePlanList)
                     }
@@ -131,13 +127,7 @@ class DonateDetailedActivity : AppCompatActivity() {
         ProgramId = intent.getStringExtra("programId")
 
         getDonateDetailResponse(ProgramId)
-       // FragmentUI()
-
-
-
     }
-
-
 
     private fun initialUI(){
         btn_toolbar_back.setOnClickListener {
@@ -184,7 +174,6 @@ class DonateDetailedActivity : AppCompatActivity() {
             startActivity<DonatePaymentActivity>("programId" to ProgramId)
         }
 
-
         donateStoryRecyclerViewAdapter = DonateStoryRecyclerViewAdapter(this, storyList)
         rv_donate_story.adapter = donateStoryRecyclerViewAdapter
         rv_donate_story.layoutManager = LinearLayoutManager(this)
@@ -217,5 +206,4 @@ class DonateDetailedActivity : AppCompatActivity() {
         tempUsePlanList.clear()
         usePlanList.clear()
     }
-
 }

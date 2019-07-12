@@ -12,7 +12,7 @@ import android.widget.*
 import com.bumptech.glide.Glide
 import jjackjjack.sopt.com.jjackjjack.activities.donate.DonateDetailedActivity
 import jjackjjack.sopt.com.jjackjjack.R
-import jjackjjack.sopt.com.jjackjjack.activities.donaterecord.DonateRecordStatusActivity
+import jjackjjack.sopt.com.jjackjjack.activities.donateparicipation.DonateParticipationStateActivity
 import jjackjjack.sopt.com.jjackjjack.model.DonateInfo
 import org.jetbrains.anko.startActivity
 
@@ -43,27 +43,14 @@ class DonateListRecyclerViewAdapter (val ctx: Context, var list: ArrayList<Donat
 
         if (isDonateHistory){
             holder.container.setOnClickListener {
-                ctx.startActivity<DonateRecordStatusActivity>(
-                    "title" to list[position].title,
-                    "centerName" to list[position].centerName,
-                    "percent" to list[position].percent,
-                    "maxBerry" to list[position].maxBerry,
-                    "d_day" to list[position].d_day
-
-                    //"isDonateHistory" to isDonateHistory
+                ctx.startActivity<DonateParticipationStateActivity>(
                 )
             }
         }
         else if (!isDonateHistory){
             holder.container.setOnClickListener {
                 ctx.startActivity<DonateDetailedActivity>(
-                    "programId" to list[position]._id,
-                    "title" to list[position].title,
-                    "centerName" to list[position].centerName,
-                    "percent" to list[position].percent,
-                    "maxBerry" to list[position].maxBerry,
-                    "d_day" to list[position].d_day
-                    //"isDonateHistory" to isDonateHistory
+                    "programId" to list[position]._id
                 )
             }
         }

@@ -36,9 +36,6 @@ class DonateStoryRecyclerViewAdapter (val ctx: Context, val dataList: ArrayList<
         for(i in 0 until dataList[position].content.size){
             textList[i].text = dataList[position].content[i]
         }
-
-
-
     }
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView){

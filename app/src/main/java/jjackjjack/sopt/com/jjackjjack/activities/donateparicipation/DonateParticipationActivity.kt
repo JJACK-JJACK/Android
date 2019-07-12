@@ -1,4 +1,4 @@
-package jjackjjack.sopt.com.jjackjjack.activities.donaterecord
+package jjackjjack.sopt.com.jjackjjack.activities.donateparicipation
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -12,23 +12,21 @@ import android.webkit.URLUtil
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import jjackjjack.sopt.com.jjackjjack.activities.MainActivity
+import jjackjjack.sopt.com.jjackjjack.activities.home.MainActivity
 import jjackjjack.sopt.com.jjackjjack.R
 import jjackjjack.sopt.com.jjackjjack.activities.berrycharge.BerryChargeActivity
-import jjackjjack.sopt.com.jjackjjack.activities.berryuse.BerryHistoryActivity
+import jjackjjack.sopt.com.jjackjjack.activities.berryusehistory.BerryHistoryActivity
 import jjackjjack.sopt.com.jjackjjack.activities.donate.DonateActivity
 import jjackjjack.sopt.com.jjackjjack.activities.mypage.MyPageActivity
-import jjackjjack.sopt.com.jjackjjack.activities.rank.RankActivity
+import jjackjjack.sopt.com.jjackjjack.activities.deliveryreview.DeliveryReviewActivity
 import jjackjjack.sopt.com.jjackjjack.activities.stamp.StampActivity
 import jjackjjack.sopt.com.jjackjjack.db.SharedPreferenceController
-import jjackjjack.sopt.com.jjackjjack.interfaces.donateListData
 import jjackjjack.sopt.com.jjackjjack.interfaces.onDrawer
 import jjackjjack.sopt.com.jjackjjack.list.DonateParticipationListRecyclerViewAdapter
 import jjackjjack.sopt.com.jjackjjack.model.DonateParticipationInfo
 import jjackjjack.sopt.com.jjackjjack.network.ApplicationController
 import jjackjjack.sopt.com.jjackjjack.network.NetworkService
 import jjackjjack.sopt.com.jjackjjack.network.data.DonateBerryData
-import jjackjjack.sopt.com.jjackjjack.network.data.DonateRecordData
 import jjackjjack.sopt.com.jjackjjack.network.data.DonatedDetailedData
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateParticipationBerryNumResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateParticipationResponse
@@ -50,7 +48,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class DonateRecordActivity : AppCompatActivity(), onDrawer {
+class DonateParticipationActivity : AppCompatActivity(), onDrawer {
 
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
@@ -62,10 +60,6 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
     val dataList_donateParticipateInfo: ArrayList<DonateParticipationInfo> by lazy {
         ArrayList<DonateParticipationInfo>()
     }
-
-//    val dataList_donateberrynum: ArrayList<Int> by lazy {
-//        ArrayList<Int>()
-//    }
 
     lateinit var btnFset: Array<ImageView>
 
@@ -80,10 +74,17 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_donate_record)
-        getDonateRecordResponse()
-        getDonateParticipationResponse()
 
         initialUI()
+    }
+
+    override fun onResume() { //수정부분
+        super.onResume()
+        dataList_donateParticipateInfo.clear()
+        dataList.clear()
+        getDonateRecordResponse()
+        getDonateBerryNum()
+        //getDonateParticipationResponse()
     }
 
     private fun initialUI() {
@@ -97,23 +98,6 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
             startActivity<StampActivity>()
         }
         drawerUI()
-        getmyBerryResponse()
-
-//        list.add(
-//            DonateInfo(
-//                "64", "병제에게 맛있는 한끼를", "솝트", "99", "150.000"
-//            )
-//        )
-//        list.add(
-//            DonateInfo(
-//                "15", "동진에게 맛있는 한끼를", "솝트", "55", "199.999"
-//            )
-//        )
-//        list.add(
-//            DonateInfo(
-//                "33", "연수에게 맛있는 한끼를", "솝트", "20", "130.000"
-//            )
-//        )
 
         donateParticipationListRecyclerViewAdapter = DonateParticipationListRecyclerViewAdapter(this, dataList)
         rv_donate_record.adapter = donateParticipationListRecyclerViewAdapter
@@ -122,8 +106,8 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
 
     override fun drawerUI() {
         actSet = arrayOf(
-            MainActivity::class.java, DonateRecordActivity::class.java,
-            RankActivity::class.java, MyPageActivity::class.java,
+            MainActivity::class.java, DonateParticipationActivity::class.java,
+            DeliveryReviewActivity::class.java, MyPageActivity::class.java,
             BerryChargeActivity::class.java, BerryHistoryActivity::class.java
         )
 
@@ -145,6 +129,7 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
             if (!ly_drawer.isDrawerOpen(Gravity.END)) {
                 ly_drawer.openDrawer(Gravity.END)
             }
+            getmyBerryResponse()
         }
 
         btn_cancel.setOnClickListener {
@@ -231,14 +216,11 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
         })
     }
 
-    private fun getDonateParticipationResponse() {
+    private fun getDonateBerryNum(){
 
-        var dataList_donateberrynum = arrayListOf<Int>()
+        var dataList_donateberrynum = ArrayList<Int>()
 
         var token: String = SharedPreferenceController.getAuthorization(this)
-
-        val getDonateParticipationResponse =
-            networkService.getDonateParticipationResponse(token)
 
         val getDonateParticipationBerryNumResponse =
             networkService.getDonateParticipationBerryNumResponse(token)
@@ -255,10 +237,14 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
                 if (response.isSuccessful) {
                     if (response.body()!!.status == Secret.NETWORK_SUCCESS) {
                         val receiveData: ArrayList<DonateBerryData>? = response.body()?.data
+                        Log.d("useberry" ,response.body()?.toString())
                         if (receiveData!!.size > 0) {
                             for (i in 0 until receiveData.size) {
+                                Log.d("useberry" ,receiveData[i].berry.toString())
                                 dataList_donateberrynum.add(receiveData[i].berry)
+                                Log.d("useberry3", dataList_donateberrynum.size.toString() )
                             }
+                            getDonateParticipationResponse(dataList_donateberrynum)
                         }
                     } else if (response.body()!!.status == 600) {
                         toast(response.body()!!.message)
@@ -266,6 +252,15 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
                 }
             }
         })
+        dataList_donateberrynum.clear()
+    }
+
+    private fun getDonateParticipationResponse(berryList : ArrayList<Int>) {
+
+        var token: String = SharedPreferenceController.getAuthorization(this)
+
+        val getDonateParticipationResponse =
+            networkService.getDonateParticipationResponse(token)
 
         getDonateParticipationResponse.enqueue(object : Callback<GetDonateParticipationResponse> {
             override fun onFailure(call: Call<GetDonateParticipationResponse>, t: Throwable) {
@@ -289,7 +284,7 @@ class DonateRecordActivity : AppCompatActivity(), onDrawer {
                                         receiveData[i].title,
                                         receiveData[i].centerName,
                                         receiveData[i].percentage.toString(),
-                                        dataList_donateberrynum[i],
+                                        berryList[i],
                                         receiveData[i].state
                                     )
                                 )
