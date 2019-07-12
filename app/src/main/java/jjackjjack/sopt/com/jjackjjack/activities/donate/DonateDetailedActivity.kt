@@ -95,7 +95,8 @@ class DonateDetailedActivity : AppCompatActivity() {
                         val temp: ArrayList<DonatedDetailedData> = response.body()!!.data //temp가 없을 때 터짐
                         li_state_d_day.text = temp[0].toDonateDetail().d_day
                         li_state_percent.text = temp[0].toDonateDetail().percentage.toString()
-                        li_state_berry_num.text = temp[0].toDonateDetail().totalBerry
+                        li_state_berry_num.text = dec.format(temp[0].toDonateDetail().totalBerry.toInt()
+                        )
                         li_state_total_num.text = dec.format(temp[0].toDonateDetail().maxBerry.toInt())
                         li_state_progress.progress = temp[0].toDonateDetail().percentage
                         donate_detailed_title.text = temp[0].toDonateDetail().title
@@ -110,7 +111,7 @@ class DonateDetailedActivity : AppCompatActivity() {
                             tempStoryList.add(storytemp[i])
                         }
 
-                        tv_use_plan_maxberry.text = temp[0].toDonateDetail().maxBerry
+                        tv_use_plan_maxberry.text = dec.format(temp[0].toDonateDetail().maxBerry.toInt())
                         val usePlantemp: ArrayList<UsePlanData> = temp[0].plan
                         for(i in 0 until usePlantemp.size){
                             tempUsePlanList.add(usePlantemp[i].toDonateUsePlan(i+1))

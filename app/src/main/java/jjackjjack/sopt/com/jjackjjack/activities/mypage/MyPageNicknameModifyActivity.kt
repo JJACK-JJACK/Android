@@ -9,6 +9,7 @@ import android.util.Log
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import jjackjjack.sopt.com.jjackjjack.db.SharedPreferenceController
+import jjackjjack.sopt.com.jjackjjack.db.SharedPreferenceController.setUserNickname
 import jjackjjack.sopt.com.jjackjjack.network.ApplicationController
 import jjackjjack.sopt.com.jjackjjack.network.NetworkService
 import jjackjjack.sopt.com.jjackjjack.network.response.post.PostNicknameCheckResponse
@@ -118,6 +119,8 @@ class MyPageNicknameModifyActivity : AppCompatActivity() {
                     if(response.body()!!.status == Secret.NETWORK_SUCCESS){
                         toast("사용 가능한 닉네임입니다.")
                         duplicateCheck = true
+                        nickname = edt_nickname_modify.text.toString()
+                        setUserNickname(this@MyPageNicknameModifyActivity, nickname)
                     }
                     else{
                         toast(response.body()!!.message)
