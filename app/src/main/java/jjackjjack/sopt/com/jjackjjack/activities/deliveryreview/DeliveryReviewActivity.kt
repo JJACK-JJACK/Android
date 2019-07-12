@@ -127,6 +127,16 @@ class DeliveryReviewActivity : AppCompatActivity(), onDrawer {
             getmyBerryResponse()
             tv_drawer_nickname.text = SharedPreferenceController.getUserNickname(this) //닉네임 DB 저장한 거 가져오는거
             tv_drawer_email.text = SharedPreferenceController.getUserEmail(this) // 이메일 DB 저장한 거
+            if((SharedPreferenceController.getUserImg(this))!!.isNotEmpty()){
+                Glide.with(this@DeliveryReviewActivity)
+                .load(SharedPreferenceController.getUserImg(this))
+                    .apply(RequestOptions.circleCropTransform())?.into(iv_drawer_profileimg)
+
+            }else{
+                Glide.with(this@DeliveryReviewActivity)
+                    .load(R.drawable.pofile)
+                    .apply(RequestOptions.circleCropTransform())?.into(iv_drawer_profileimg)
+            }
         }
 
         btn_cancel.setOnClickListener {
@@ -138,10 +148,10 @@ class DeliveryReviewActivity : AppCompatActivity(), onDrawer {
         tv_drawer_nickname.text = SharedPreferenceController.getUserNickname(this)//닉네임 DB 저장한 거 가져오는거
         tv_drawer_email.text = SharedPreferenceController.getUserEmail(this) // 이메일 DB 저장한 거
 
-        if(URLUtil.isValidUrl(SharedPreferenceController.getUserImg(this))){
-            Glide.with(this).load(SharedPreferenceController.getUserImg(this))
-                .apply(RequestOptions.circleCropTransform())?.into(iv_drawer_profileimg)
-        } //이미지 DB에서 가져오기 나중에 없을때 default 이미지 뜨게 처리해야함
+        //if(URLUtil.isValidUrl(SharedPreferenceController.getUserImg(this))){
+        //    Glide.with(this).load(SharedPreferenceController.getUserImg(this))
+        //        .apply(RequestOptions.circleCropTransform())?.into(iv_drawer_profileimg)
+        //} //이미지 DB에서 가져오기 나중에 없을때 default 이미지 뜨게 처리해야함
 
         for (i in 0 until btnAset.size) {
             btnAset[i].setOnClickListener {

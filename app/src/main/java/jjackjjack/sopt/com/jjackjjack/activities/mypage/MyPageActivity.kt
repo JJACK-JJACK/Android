@@ -50,7 +50,7 @@ class MyPageActivity : AppCompatActivity(), onDrawer {
 
     lateinit var btnAset: Array<View>
 
-    lateinit var actSet : Array<Class<out AppCompatActivity>>
+    lateinit var actSet: Array<Class<out AppCompatActivity>>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,18 +58,27 @@ class MyPageActivity : AppCompatActivity(), onDrawer {
         initialUI()
         Log.d("tokennnnnnn", SharedPreferenceController.getAuthorization(this))
     }
+
     override fun onResume() { //로그인 후에 이 뷰는 꺼지게
         super.onResume()
 
-        Glide.with(this@MyPageActivity)
-            .load(getUserImg(this))
-            .into(img_temp_profile)
+        if ((SharedPreferenceController.getUserImg(this))!!.isNotEmpty()) {
+            Glide.with(this@MyPageActivity)
+                .load(getUserImg(this))
+                .apply(RequestOptions.circleCropTransform())?.into(img_temp_profile)
+        } else {
+            Glide.with(this@MyPageActivity)
+                .load(R.drawable.pofile)
+                .apply(RequestOptions.circleCropTransform())?.into(img_temp_profile)
+        }
+
         Log.d("url_get", getUserImg(this))
 
         mypage_nickname.text = getUserNickname(this)
         tv_mypage_email.text = getUserEmail(this)
     }
-    private fun initialUI(){
+
+    private fun initialUI() {
         btn_home.setOnClickListener {
             startActivity<MainActivity>()
             finish()
@@ -84,24 +93,23 @@ class MyPageActivity : AppCompatActivity(), onDrawer {
             val intent = Intent(this, MyPageModifyActivity::class.java)
             startActivity(intent)
         }
-        btn_berry_history.setOnClickListener{
+        btn_berry_history.setOnClickListener {
             val intent = Intent(this, BerryHistoryActivity::class.java)
             startActivity(intent)
         }
         drawerUI()
         getmyBerryResponse()
 
-        if(URLUtil.isValidUrl(getUserImg(this))){
+        if (URLUtil.isValidUrl(getUserImg(this))) {
             Log.d("aaaaaaaaa", "sdf")
         }
     }
 
     override fun onBackPressed() {
 
-        if(ly_drawer.isDrawerOpen(Gravity.END)){
+        if (ly_drawer.isDrawerOpen(Gravity.END)) {
             ly_drawer.closeDrawer(Gravity.END)
-        }
-        else{
+        } else {
             //doubleBackPress()
             super.onBackPressed()
         }
@@ -143,21 +151,30 @@ class MyPageActivity : AppCompatActivity(), onDrawer {
 
     override fun drawerBtnSetting(activityType: Int) {
         btn_hambuger.setOnClickListener {
-            if(!ly_drawer.isDrawerOpen(Gravity.END)){
+            if (!ly_drawer.isDrawerOpen(Gravity.END)) {
                 ly_drawer.openDrawer(Gravity.END)
             }
             getmyBerryResponse()
+            if ((SharedPreferenceController.getUserImg(this))!!.isNotEmpty()) {
+                Glide.with(this@MyPageActivity)
+                    .load(SharedPreferenceController.getUserImg(this))
+                    .apply(RequestOptions.circleCropTransform())?.into(iv_drawer_profileimg)
+            } else {
+                Glide.with(this@MyPageActivity)
+                    .load(R.drawable.pofile)
+                    .apply(RequestOptions.circleCropTransform())?.into(iv_drawer_profileimg)
+            }
         }
 
         btn_cancel.setOnClickListener {
-            if(ly_drawer.isDrawerOpen(Gravity.END)){
+            if (ly_drawer.isDrawerOpen(Gravity.END)) {
                 ly_drawer.closeDrawer(Gravity.END)
             }
         }
 
         tv_drawer_nickname.text = SharedPreferenceController.getUserNickname(this)//닉네임 DB 저장한 거 가져오는거
         tv_drawer_email.text = SharedPreferenceController.getUserEmail(this) // 이메일 DB 저장한 거
-        if(URLUtil.isValidUrl(SharedPreferenceController.getUserImg(this))){
+        if (URLUtil.isValidUrl(SharedPreferenceController.getUserImg(this))) {
             Glide.with(this).load(SharedPreferenceController.getUserImg(this))
                 .apply(RequestOptions.circleCropTransform())?.into(iv_drawer_profileimg)
         }
@@ -165,9 +182,8 @@ class MyPageActivity : AppCompatActivity(), onDrawer {
         //img_temp_profile.
 
 
-
-        for(i in 0 until btnAset.size){
-            btnAset[i].setOnClickListener{
+        for (i in 0 until btnAset.size) {
+            btnAset[i].setOnClickListener {
                 val intent = Intent(this, actSet[i])
                 ly_drawer.closeDrawer(Gravity.END)
                 startActivity(intent)
@@ -175,20 +191,20 @@ class MyPageActivity : AppCompatActivity(), onDrawer {
             }
         }
 
-        for(i in 0 until btnFset.size){
+        for (i in 0 until btnFset.size) {
             btnFset[i].setOnClickListener {
                 startActivity<DonateActivity>("fragment" to i)
-                Handler().postDelayed({ly_drawer.closeDrawer(Gravity.END)}, 110)
+                Handler().postDelayed({ ly_drawer.closeDrawer(Gravity.END) }, 110)
                 finish()
             }
         }
     }
 
-    private fun getmyBerryResponse(){
-        var token:String = SharedPreferenceController.getAuthorization(this)
+    private fun getmyBerryResponse() {
+        var token: String = SharedPreferenceController.getAuthorization(this)
 
         val getmyBerryResponse =
-            networkService.getmyBerryResponse("application/json",token)
+            networkService.getmyBerryResponse("application/json", token)
 
         getmyBerryResponse.enqueue(object : Callback<GetmyBerryResponse> {
             override fun onFailure(call: Call<GetmyBerryResponse>, t: Throwable) {
@@ -196,16 +212,16 @@ class MyPageActivity : AppCompatActivity(), onDrawer {
             }
 
             override fun onResponse(call: Call<GetmyBerryResponse>, response: Response<GetmyBerryResponse>) {
-                if(response.isSuccessful){
-                    if(response.body()!!.status == Secret.NETWORK_LIST_SUCCESS){
+                if (response.isSuccessful) {
+                    if (response.body()!!.status == Secret.NETWORK_LIST_SUCCESS) {
                         val receiveData = response.body()?.data
 
                         val dec = DecimalFormat("#,000")
-                        val dec_berry : String
+                        val dec_berry: String
 
-                        if(receiveData.toString().length <= 3){
+                        if (receiveData.toString().length <= 3) {
                             dec_berry = receiveData.toString()
-                        }else{
+                        } else {
                             dec_berry = dec.format(receiveData)
                         }
 

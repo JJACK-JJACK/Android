@@ -29,6 +29,7 @@ import jjackjjack.sopt.com.jjackjjack.utillity.ColorToast
 import jjackjjack.sopt.com.jjackjjack.utillity.Constants
 import jjackjjack.sopt.com.jjackjjack.utillity.Secret
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_my_page_modify.*
 import kotlinx.android.synthetic.main.content_activity_main.*
 import kotlinx.android.synthetic.main.fragment_main_activity_image_slider.*
 import kotlinx.android.synthetic.main.nav_drawer.*
@@ -48,7 +49,7 @@ class MainActivity : AppCompatActivity(), onDrawer {
 
     lateinit var btnAset: Array<View>
 
-    lateinit var actSet : Array<Class<out AppCompatActivity>>
+    lateinit var actSet: Array<Class<out AppCompatActivity>>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,14 +64,14 @@ class MainActivity : AppCompatActivity(), onDrawer {
 
     override fun onResume() { //로그아웃 후에 이 뷰는 꺼지게
         super.onResume()
-        if(!SharedPreferenceController.getAuthorization(this).isNotEmpty()){
+        if (!SharedPreferenceController.getAuthorization(this).isNotEmpty()) {
             startActivity<BeginningActivity>()
             finish()
         }
     }
 
-    private fun initialUI(){
-        if(!SharedPreferenceController.getAuthorization(this).isNotEmpty()){
+    private fun initialUI() {
+        if (!SharedPreferenceController.getAuthorization(this).isNotEmpty()) {
             startActivity<BeginningActivity>()
             finish()
         }
@@ -98,7 +99,8 @@ class MainActivity : AppCompatActivity(), onDrawer {
         }
         fragmentAdapter.notifyDataSetChanged()
     }
-    override fun drawerUI(){
+
+    override fun drawerUI() {
         getmyBerryResponse()
         actSet = arrayOf(
             MainActivity::class.java, DonateParticipationActivity::class.java,
@@ -117,24 +119,33 @@ class MainActivity : AppCompatActivity(), onDrawer {
         drawerBtnSetting(Constants.ACTIVITY_MAIN)
     }
 
-    override fun drawerBtnSetting(activityType: Int){
+    override fun drawerBtnSetting(activityType: Int) {
         btn_hambuger.setOnClickListener {
-            if(!ly_drawer.isDrawerOpen(Gravity.END)){
+            if (!ly_drawer.isDrawerOpen(Gravity.END)) {
                 ly_drawer.openDrawer(Gravity.END)
                 getmyBerryResponse()
                 tv_drawer_nickname.text = SharedPreferenceController.getUserNickname(this)//닉네임 DB 저장한 거 가져오는거
                 tv_drawer_email.text = SharedPreferenceController.getUserEmail(this) // 이메일 DB 저장한 거
             }
+            if ((SharedPreferenceController.getUserImg(this))!!.isNotEmpty()) {
+                Glide.with(this@MainActivity)
+                    .load(SharedPreferenceController.getUserImg(this))
+                    .apply(RequestOptions.circleCropTransform())?.into(iv_drawer_profileimg)
+            } else {
+                Glide.with(this@MainActivity)
+                    .load(R.drawable.pofile)
+                    .apply(RequestOptions.circleCropTransform())?.into(iv_drawer_profileimg)
+            }
             Log.d("nickname", tv_drawer_nickname.toString())
         }
 
         btn_cancel.setOnClickListener {
-            if(ly_drawer.isDrawerOpen(Gravity.END)){
+            if (ly_drawer.isDrawerOpen(Gravity.END)) {
                 ly_drawer.closeDrawer(Gravity.END)
             }
         }
 
-        if(URLUtil.isValidUrl(SharedPreferenceController.getUserImg(this))){
+        if (URLUtil.isValidUrl(SharedPreferenceController.getUserImg(this))) {
             Glide.with(this).load(SharedPreferenceController.getUserImg(this))
                 .apply(RequestOptions.circleCropTransform())?.into(iv_drawer_profileimg)
         } //이미지 DB에서 가져오기 나중에 없을때 default 이미지 뜨게 처리해야함
@@ -144,39 +155,38 @@ class MainActivity : AppCompatActivity(), onDrawer {
         }
 
 
-        for(i in 0 until btnAset.size){
-            btnAset[i].setOnClickListener{
+        for (i in 0 until btnAset.size) {
+            btnAset[i].setOnClickListener {
                 val intent = Intent(this, actSet[i])
                 ly_drawer.closeDrawer(Gravity.END)
-                Handler().postDelayed({startActivity(intent)}, 110)
-                if(activityType == i){
+                Handler().postDelayed({ startActivity(intent) }, 110)
+                if (activityType == i) {
                     finish()
                 }
             }
         }
 
-        for(i in 0 until btnFset.size){
+        for (i in 0 until btnFset.size) {
             btnFset[i].setOnClickListener {
                 startActivity<DonateActivity>("fragment" to i)
-                Handler().postDelayed({ ly_drawer.closeDrawer(Gravity.END)}, 110)
+                Handler().postDelayed({ ly_drawer.closeDrawer(Gravity.END) }, 110)
             }
         }
     }
 
     override fun onBackPressed() {
-        if(ly_drawer.isDrawerOpen(Gravity.END)){
+        if (ly_drawer.isDrawerOpen(Gravity.END)) {
             ly_drawer.closeDrawer(Gravity.END)
-        }
-        else{
+        } else {
             super.onBackPressed()
         }
     }
 
-    private fun getmyBerryResponse(){
-        var token:String = SharedPreferenceController.getAuthorization(this)
+    private fun getmyBerryResponse() {
+        var token: String = SharedPreferenceController.getAuthorization(this)
 
         val getmyBerryResponse =
-            networkService.getmyBerryResponse("application/json",token)
+            networkService.getmyBerryResponse("application/json", token)
 
         getmyBerryResponse.enqueue(object : Callback<GetmyBerryResponse> {
             override fun onFailure(call: Call<GetmyBerryResponse>, t: Throwable) {
@@ -185,16 +195,16 @@ class MainActivity : AppCompatActivity(), onDrawer {
             }
 
             override fun onResponse(call: Call<GetmyBerryResponse>, response: Response<GetmyBerryResponse>) {
-                if(response.isSuccessful){
-                    if(response.body()!!.status == Secret.NETWORK_LIST_SUCCESS){
+                if (response.isSuccessful) {
+                    if (response.body()!!.status == Secret.NETWORK_LIST_SUCCESS) {
                         val receiveData = response.body()?.data
 
                         val dec = DecimalFormat("#,000")
-                        val dec_berry : String
+                        val dec_berry: String
 
-                        if(receiveData.toString().length <= 3){
+                        if (receiveData.toString().length <= 3) {
                             dec_berry = receiveData.toString()
-                        }else{
+                        } else {
                             dec_berry = dec.format(receiveData)
                         }
                         drawer_myberry.text = dec_berry

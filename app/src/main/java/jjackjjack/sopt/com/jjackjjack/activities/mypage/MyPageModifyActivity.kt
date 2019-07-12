@@ -14,6 +14,7 @@ import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v4.content.CursorLoader
 import android.util.Log
+import android.webkit.URLUtil
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.gson.JsonObject
@@ -29,6 +30,7 @@ import jjackjjack.sopt.com.jjackjjack.network.response.post.PostProfileModifyRes
 import jjackjjack.sopt.com.jjackjjack.utillity.ColorToast
 import jjackjjack.sopt.com.jjackjjack.utillity.Secret.Companion.NETWORK_LIST_SUCCESS
 import jjackjjack.sopt.com.jjackjjack.utillity.Secret.Companion.NETWORK_PW_FAIL
+import kotlinx.android.synthetic.main.content_activity_mypage.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -66,6 +68,17 @@ class MyPageModifyActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+
+        if((SharedPreferenceController.getUserImg(this))!!.isNotEmpty()){
+            Glide.with(this@MyPageModifyActivity)
+            .load(SharedPreferenceController.getUserImg(this))
+                .apply(RequestOptions.circleCropTransform())?.into(imageView_round)
+        }else{
+            Glide.with(this@MyPageModifyActivity)
+                .load(R.drawable.pofile)
+                .apply(RequestOptions.circleCropTransform())?.into(imageView_round)
+        }
+
         curr_nickname.text = getUserNickname(this)
         curr_nickname2.text = getUserNickname(this)
         tv_mypage_modify_email.text = getUserEmail(this)
@@ -177,6 +190,7 @@ class MyPageModifyActivity : AppCompatActivity() {
                         ColorToast(this@MyPageModifyActivity, response.body()!!.message)
                     }
                 }
+
             })
         }
     }

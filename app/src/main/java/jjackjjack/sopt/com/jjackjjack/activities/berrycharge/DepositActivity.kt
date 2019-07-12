@@ -47,7 +47,7 @@ class DepositActivity : AppCompatActivity() {
 
     var deposit_list = ArrayList<String>()
 
-    var selected_bank: String =""
+    var selected_bank: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -95,6 +95,7 @@ class DepositActivity : AppCompatActivity() {
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
                     ColorToast(this@DepositActivity,"입금하실 은행을 선택해주세요")
+                    selected_bank = null
                 }
             }
         for (i in 0 until lyList.size) {
@@ -112,7 +113,7 @@ class DepositActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         btn_berry_deposit_charge.setOnClickListener {
-            if (clickTest.sum() > 0 && !(selected_bank=="")) {
+            if (clickTest.sum() > 0 && !(selected_bank.isNullOrBlank())) {
                 //계좌뜨는 다이얼로그 창
                 BerryChargeResponse()
             }
