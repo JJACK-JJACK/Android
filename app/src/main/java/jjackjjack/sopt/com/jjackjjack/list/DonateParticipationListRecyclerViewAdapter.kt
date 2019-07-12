@@ -3,7 +3,6 @@ package jjackjjack.sopt.com.jjackjjack.list
 import android.content.Context
 import android.graphics.Color
 import android.graphics.PorterDuff
-import android.support.v4.content.res.ResourcesCompat.getColor
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,11 +12,9 @@ import android.webkit.URLUtil
 import android.widget.*
 import com.bumptech.glide.Glide
 import jjackjjack.sopt.com.jjackjjack.R
-import jjackjjack.sopt.com.jjackjjack.activities.donaterecord.DonateRecordStatusActivity
+import jjackjjack.sopt.com.jjackjjack.activities.donateparicipation.DonateParticipationStateActivity
 import jjackjjack.sopt.com.jjackjjack.model.DonateParticipationInfo
-import org.jetbrains.anko.backgroundColor
 import org.jetbrains.anko.startActivity
-import org.jetbrains.anko.textColor
 
 
 class DonateParticipationListRecyclerViewAdapter(
@@ -72,7 +69,7 @@ class DonateParticipationListRecyclerViewAdapter(
 
         holder.container.setOnClickListener {
             Log.d("heloooo", dataList[position]._id)
-            ctx.startActivity<DonateRecordStatusActivity>(
+            ctx.startActivity<DonateParticipationStateActivity>(
                 "programId_status" to dataList[position]._id
             )
         }

@@ -1,4 +1,4 @@
-package jjackjjack.sopt.com.jjackjjack.activities.berryuse
+package jjackjjack.sopt.com.jjackjjack.activities.berryusehistory
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -13,7 +13,6 @@ import jjackjjack.sopt.com.jjackjjack.network.response.get.GetBerryHistoryRespon
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GetmyBerryResponse
 import jjackjjack.sopt.com.jjackjjack.utillity.Secret.Companion.NETWORK_LIST_SUCCESS
 import kotlinx.android.synthetic.main.activity_mypage_berryhistory.*
-import kotlinx.android.synthetic.main.fragment_berryuse_review.*
 import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
@@ -40,8 +39,9 @@ class BerryHistoryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mypage_berryhistory)
 
-        berryhistoryAdapter = BerryHistoryAdapter(this, dataList)
+        initialUI()
 
+        berryhistoryAdapter = BerryHistoryAdapter(this, dataList)
         rv_berryhistory.adapter = berryhistoryAdapter
 
         val lm = LinearLayoutManager(this)
@@ -49,13 +49,20 @@ class BerryHistoryActivity : AppCompatActivity() {
         lm.setOrientation(LinearLayoutManager.VERTICAL)
         rv_berryhistory.setHasFixedSize(true)
 
-        getBerryHistoryResponse()
-        getmyBerryResponse()
+    }
 
+    private fun initialUI(){
         btn_toolbar_back.setOnClickListener {
             finish()
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        getBerryHistoryResponse()
+        getmyBerryResponse()
+    }
+
 
     private fun getBerryHistoryResponse() {
         var token: String = SharedPreferenceController.getAuthorization(this)

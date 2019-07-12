@@ -35,7 +35,11 @@ class StampActivity : AppCompatActivity() {
         btn_toolbar_back.setOnClickListener {
             finish()
         }
+        getStampResponse()
+    }
 
+    override fun onResume() {
+        super.onResume()
         getStampResponse()
     }
 

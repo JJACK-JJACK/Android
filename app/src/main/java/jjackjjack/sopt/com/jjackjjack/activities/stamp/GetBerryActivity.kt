@@ -1,4 +1,4 @@
-package jjackjjack.sopt.com.jjackjjack.activities
+package jjackjjack.sopt.com.jjackjjack.activities.stamp
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -15,7 +15,12 @@ class GetBerryActivity : AppCompatActivity() {
         animation_get_berry.setAnimation("berrydata3.json")
         animation_get_berry.playAnimation()
 
+        reward_berry.text = intent.getIntExtra("rewardBerry", 0).toString()
+
         btn_toolbar_back.setOnClickListener {
+            finish()
+        }
+        btn_check.setOnClickListener {
             finish()
         }
     }

@@ -1,4 +1,4 @@
-package jjackjjack.sopt.com.jjackjjack.activities.berryuse
+package jjackjjack.sopt.com.jjackjjack.activities.berryusehistory
 
 import android.content.Context
 import android.graphics.Color
