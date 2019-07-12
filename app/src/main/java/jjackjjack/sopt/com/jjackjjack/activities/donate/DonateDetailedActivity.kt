@@ -2,7 +2,10 @@ package jjackjjack.sopt.com.jjackjjack.activities.donate
 
 import android.content.Intent
 import android.graphics.Color
+<<<<<<< HEAD
 import android.graphics.PorterDuff
+=======
+>>>>>>> 7c39a16bbc34ba7d8a341fe90a3a953a9c43085a
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.TabLayout
@@ -22,6 +25,7 @@ import jjackjjack.sopt.com.jjackjjack.network.data.DonatedDetailedData
 import jjackjjack.sopt.com.jjackjjack.network.data.StoryData
 import jjackjjack.sopt.com.jjackjjack.network.data.UsePlanData
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateDetailedResponse
+import jjackjjack.sopt.com.jjackjjack.utillity.ColorToast
 import jjackjjack.sopt.com.jjackjjack.utillity.Constants
 import jjackjjack.sopt.com.jjackjjack.utillity.Secret
 import kotlinx.android.synthetic.main.activity_donate_detailed.*
@@ -80,7 +84,7 @@ class DonateDetailedActivity : AppCompatActivity() {
             override fun onFailure(call: Call<GetDonateDetailedResponse>, t: Throwable) {
                 progress_bar.visibility = View.GONE
                 window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
-                toast("잠시 후 다시 시도해주세요")
+                ColorToast(this@DonateDetailedActivity, "잠시 후 다시 접속해주세요")
                 Log.e("Sorted List fail", t.toString())
             }
 
@@ -122,6 +126,7 @@ class DonateDetailedActivity : AppCompatActivity() {
                         updateUsePlanDataList(tempUsePlanList)
                     }
                     else{
+                        ColorToast(this@DonateDetailedActivity, response.body()!!.message)
                         toast(response.body()!!.message)
                     }
                 }

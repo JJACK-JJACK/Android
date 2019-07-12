@@ -16,9 +16,11 @@ import jjackjjack.sopt.com.jjackjjack.network.ApplicationController
 import jjackjjack.sopt.com.jjackjjack.network.NetworkService
 import jjackjjack.sopt.com.jjackjjack.network.data.DonateSortedData
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateSortedListResponse
+import jjackjjack.sopt.com.jjackjjack.utillity.ColorToast
 import jjackjjack.sopt.com.jjackjjack.utillity.Constants
 import jjackjjack.sopt.com.jjackjjack.utillity.Secret
 import kotlinx.android.synthetic.main.fragment_emergency_category.*
+import org.jetbrains.anko.support.v4.act
 import org.jetbrains.anko.support.v4.toast
 import retrofit2.Call
 import retrofit2.Callback
@@ -105,6 +107,7 @@ class EmergencyFragment : Fragment(), View.OnClickListener{
         val getDonateSortedListResponse = networkService.getDonateSortedListResponse(CategoryId, filterId)
         getDonateSortedListResponse.enqueue(object : Callback<GetDonateSortedListResponse> {
             override fun onFailure(call: Call<GetDonateSortedListResponse>, t: Throwable) {
+                ColorToast(activity?.applicationContext, "잠시 후 다시 접속해주세요")
                 Log.e("Sorted List fail", t.toString())
             }
 
@@ -125,6 +128,7 @@ class EmergencyFragment : Fragment(), View.OnClickListener{
                     }
                     else{
                         toast(response.body()!!.message)
+                        ColorToast(activity?.applicationContext, response.body()!!.message)
                     }
 
                 }
