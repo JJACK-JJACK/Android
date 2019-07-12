@@ -4,9 +4,9 @@ import android.content.Context
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import android.view.View
 import jjackjjack.sopt.com.jjackjjack.activities.home.FragmentMainActivityImageSlider
 import java.util.ArrayList
-
 
 
 class MainActivityImageSliderAdapter : FragmentPagerAdapter {
@@ -30,4 +30,6 @@ class MainActivityImageSliderAdapter : FragmentPagerAdapter {
     fun addImage(fragment: FragmentMainActivityImageSlider, category: Int) {
         imageFragmentList.add(fragment)
     }
+
+
 }
