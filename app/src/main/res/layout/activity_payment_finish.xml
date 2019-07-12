@@ -15,7 +15,7 @@
                 android:layout_width="156dp"
                 android:layout_height="156dp"
                 android:src="@mipmap/ic_launcher"/>
-    </RelativeLayout>
+    </RelativeLayout>0
 
     <LinearLayout
             android:layout_marginHorizontal="20dp"
@@ -29,6 +29,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
@@ -37,6 +39,8 @@
                     android:text="결제가 "
             />
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
@@ -45,6 +49,8 @@
                     android:gravity="center_horizontal"
                     android:text="완료"/>
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
@@ -59,6 +65,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_demilight"
                     android:gravity="center"
                     android:layout_marginTop="16dp"
                     android:layout_width="match_parent"
@@ -66,9 +74,11 @@
                     android:textColor="#000000"
                     android:letterSpacing="-0.07"
                     android:lineSpacingExtra="7sp"
-                    android:text="아래 안내된 계좌로\n입금이 완료되면 베리가 충전됩니다.\n기한 내 입금되지 않으면, 충전이 자동 취소됩니다."
+                    android:text="아래 안내된 계좌로입금이 완료되면 베리가 충전됩니다.\n기한 내 입금되지 않으면, 충전이 자동 취소됩니다."
             />
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
                     android:layout_marginTop="38dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -92,6 +102,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_demilight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
@@ -105,6 +117,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
                     android:gravity="right|end"
                     android:id="@+id/tv_payment_money"
                     android:layout_width="match_parent"
@@ -134,6 +148,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_demilight"
                     android:layout_marginLeft="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -143,6 +159,8 @@
                     android:text="무통장입금"
             />
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
                     android:paddingRight="20dp"
                     android:gravity="right|end"
                     android:id="@+id/tv_payment_bank"
@@ -162,6 +180,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_demilight"
                     android:layout_marginLeft="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -171,6 +191,8 @@
                     android:text="계좌번호"
             />
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
                     android:id="@+id/tv_payment_account"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -189,6 +211,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_demilight"
                     android:layout_marginLeft="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -198,6 +222,8 @@
                     android:text="입금 기한"
             />
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
                     android:id="@+id/tv_payment_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -219,6 +245,8 @@
             android:layout_height="56dp"
             android:background="@color/colorPrimaryDark">
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_medium"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="16sp"

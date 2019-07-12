@@ -17,6 +17,8 @@
             android:id="@+id/imageView3"
             android:layout_marginBottom="16dp"/>
     <TextView
+            android:includeFontPadding = "false"
+            android:fontFamily="@font/notosans_medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
@@ -28,6 +30,8 @@
             android:layout_marginBottom="20dp"/>
 
     <TextView
+            android:includeFontPadding = "false"
+            android:fontFamily="@font/notosans_demilight"
             android:textSize="14sp"
             android:textColor="@color/grayB"
             android:lineSpacingExtra="4sp"
@@ -37,11 +41,11 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"/>
     <Button
-
+            android:includeFontPadding = "false"
+            android:fontFamily="@font/notosans_medium"
             android:textSize="14sp"
             android:textColor="@color/white"
             android:text="@string/check_stamp"
-            android:textStyle="bold"
             android:layout_width="280dp"
             android:layout_height="56dp"
             style="?android:attr/borderlessButtonStyle"
@@ -51,6 +55,8 @@
             android:layout_marginBottom="5dp"/>
 
     <Button
+            android:includeFontPadding = "false"
+            android:fontFamily="@font/notosans_medium"
             android:text="@string/skip"
             android:textSize="14sp"
             android:textColor="@color/grayA"

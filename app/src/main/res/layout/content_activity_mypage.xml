@@ -8,14 +8,15 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:showIn="@layout/activity_my_page"
-        >
+        tools:showIn="@layout/activity_my_page">
 
     <include
             layout="@layout/toolbar_with_hamburger">
     </include>
 
     <TextView
+            android:includeFontPadding = "false"
+            android:fontFamily="@font/notosans_medium"
             android:layout_marginTop="20dp"
             android:paddingLeft="20dp"
             android:layout_width="match_parent"
@@ -40,7 +41,7 @@
 
         <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingLeft="12dp">
 
@@ -49,6 +50,8 @@
                     android:layout_height="wrap_content"
             >
                 <TextView
+                        android:includeFontPadding = "false"
+                        android:fontFamily="@font/notosans_medium"
                         android:id="@+id/mypage_nickname"
                         android:layout_centerVertical="true"
                         android:layout_width="wrap_content"
@@ -68,12 +71,13 @@
             </RelativeLayout>
 
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_demilight"
                     android:id="@+id/tv_mypage_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
                     android:textColor="@color/grayB"
-                    android:text="parkce37@gmail.com"/>
+                    tools:text="parkce37@gmail.com"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -91,6 +95,8 @@
             android:layout_height="wrap_content"
             android:paddingVertical="16dp">
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_regular"
                 android:layout_marginBottom="10dp"
                 android:paddingLeft="20dp"
                 android:layout_width="match_parent"
@@ -104,6 +110,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
                     android:paddingVertical="6dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -114,6 +122,8 @@
                     android:layout_gravity="bottom"/>
 
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
                     android:layout_weight="1"
                     android:id="@+id/mypage_myberry"
                     android:textSize="14sp"
@@ -127,6 +137,8 @@
                     android:layout_marginLeft="20dp"
                     android:layout_gravity="bottom"/>
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_regular"
                     android:layout_gravity="bottom"
                     android:layout_marginRight="20dp"
                     android:layout_marginLeft="4dp"
@@ -139,9 +151,11 @@
         </LinearLayout>
 
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_medium"
                 android:paddingVertical="6dp"
                 android:text="베리 이용 내역"
-        android:gravity="center_vertical"
+                android:gravity="center_vertical"
                 android:paddingLeft="20dp"
                 android:textSize="16sp"
                 android:textColor="@color/darkGrayC"
@@ -166,6 +180,8 @@
             android:layout_height="wrap_content"
             android:paddingVertical="16dp">
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_regular"
                 android:layout_marginBottom="10dp"
                 android:paddingLeft="20dp"
                 android:layout_width="match_parent"
@@ -175,6 +191,8 @@
                 android:text="기타"
         />
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_medium"
                 android:paddingRight="12dp"
                 android:paddingVertical="6dp"
                 android:layout_width="match_parent"
@@ -187,6 +205,8 @@
        />
 
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_medium"
                 android:paddingVertical="6dp"
                 android:text="로그아웃"
                 android:gravity="center_vertical"
@@ -198,6 +218,8 @@
                 android:paddingRight="16dp"
                 android:id="@+id/btn_logout"/>
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_medium"
                 android:paddingVertical="6dp"
                 android:text="탈퇴하기"
                 android:gravity="center_vertical"
@@ -218,6 +240,8 @@
             android:layout_gravity="center"/>
 
     <TextView
+            android:includeFontPadding = "false"
+            android:fontFamily="@font/notosans_medium"
             android:paddingVertical="6dp"
             android:text="오픈소스 라이센스"
             android:gravity="center_vertical"
@@ -229,6 +253,8 @@
             android:drawableRight="@drawable/ic_more_small"
             android:paddingRight="16dp"/>
     <TextView
+            android:includeFontPadding = "false"
+            android:fontFamily="@font/notosans_medium"
             android:paddingVertical="6dp"
             android:text="개인정보 처리방침"
             android:gravity="center_vertical"

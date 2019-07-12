@@ -25,6 +25,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="30sp"
@@ -39,6 +41,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="42sp"
@@ -49,6 +53,8 @@
                     android:id="@+id/reward_berry"
             />
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="30sp"
@@ -74,9 +80,12 @@
             app:lottie_autoPlay="true"/>
 
 
-    <Button android:layout_width="320dp"
+    <Button
+            android:layout_gravity="center"
+            android:includeFontPadding = "false"
+            android:fontFamily="@font/notosans_medium"
+            android:layout_width="320dp"
             android:layout_height="56dp"
-            android:layout_marginLeft="20dp"
             android:layout_marginTop="50dp"
             android:text="@string/check"
             android:textSize="16sp"

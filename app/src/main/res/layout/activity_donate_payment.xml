@@ -26,6 +26,8 @@
                     android:src="@drawable/ic_back"/>
 
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
                     android:layout_marginLeft="119dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -37,6 +39,8 @@
         </LinearLayout>
 
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_regular"
                 android:layout_marginTop="53dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -56,6 +60,8 @@
                     app:srcCompat="@drawable/berry_r_icon"
             />
             <EditText
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
                     android:textSize="20sp"
                     android:textColor="#111111"
                     android:layout_width="wrap_content"
@@ -81,6 +87,8 @@
                 android:paddingLeft="46dp">
 
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
@@ -88,6 +96,8 @@
                     android:text="@string/own_berry"
             />
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
                     android:id="@+id/payment_myberry"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -98,6 +108,8 @@
                     android:textStyle="bold"
             />
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_regular"
                     android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -124,6 +136,8 @@
                 android:paddingLeft="17dp">
 
             <Button
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_regular"
                     style="?android:attr/borderlessButtonStyle"
                     android:background="@drawable/shape_border_donatechargebtn"
                     android:layout_width="65dp"
@@ -132,6 +146,8 @@
                     android:id="@+id/btn_plus_10_berry"
                     android:text="@string/plus_10"/>
             <Button
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_regular"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_marginLeft="8dp"
                     android:background="@drawable/shape_border_donatechargebtn"
@@ -141,6 +157,8 @@
                     android:id="@+id/btn_plus_20_berry"
                     android:text="@string/plus_20"/>
             <Button
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_regular"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_marginLeft="8dp"
                     android:background="@drawable/shape_border_donatechargebtn"
@@ -150,6 +168,8 @@
                     android:layout_height="30dp"
                     android:text="@string/plus_50"/>
             <Button
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_regular"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_marginLeft="8dp"
                     android:background="@drawable/shape_border_donatechargebtn"
@@ -163,12 +183,13 @@
     </LinearLayout>
 
     <Button
+            android:includeFontPadding = "false"
+            android:fontFamily="@font/notosans_medium"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:text="@string/donate"
             android:layout_alignParentBottom="true"
             android:textColor="@color/white"
-            android:textStyle="bold"
             android:background="@drawable/shape_redbtn_8dp"
             android:id="@+id/btn_donate"
             android:layout_marginBottom="20dp"

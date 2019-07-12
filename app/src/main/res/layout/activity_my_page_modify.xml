@@ -3,6 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:orientation="vertical">
     <LinearLayout
             android:layout_width="match_parent"
@@ -44,6 +45,8 @@
                     android:src="@drawable/ic_edit_photo"/>
         </RelativeLayout>
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_medium"
                 android:layout_marginTop="16dp"
                 android:gravity="center"
                 android:id="@+id/curr_nickname"
@@ -63,6 +66,8 @@
         ></View>
 
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_demilight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
@@ -76,6 +81,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
                     android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -85,6 +92,8 @@
                     android:text="@string/nickname"
             />
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:layout_width="wrap_content"
@@ -109,6 +118,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
@@ -117,6 +128,8 @@
                     android:text="이메일"
             />
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
                     android:id="@+id/tv_mypage_modify_email"
                     android:layout_weight="1"
                     android:layout_width="wrap_content"
@@ -125,8 +138,7 @@
                     android:textColor="@color/darkGrayC"
                     android:letterSpacing="0.06"
                     android:gravity="end"
-                    android:text="parkce37@gmail.com"
-            />
+                    tools:text="parkce37@gmail.com"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -66,7 +66,6 @@ class MyPageActivity : AppCompatActivity(), onDrawer {
         Log.d("url_get", getUserImg(this))
 
         mypage_nickname.text = getUserNickname(this)
-
         tv_mypage_email.text = getUserEmail(this)
     }
     private fun initialUI(){

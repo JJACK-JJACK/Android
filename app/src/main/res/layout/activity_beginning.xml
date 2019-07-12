@@ -31,8 +31,8 @@
                     android:layout_width="19dp"
                     android:layout_height="16dp"/>
             <TextView
+                    android:fontFamily="@font/notosans_medium"
                     android:layout_gravity="center_vertical"
-                    android:textSize="14sp"
                     android:paddingLeft="74dp"
                     android:textColor="@color/darkGrayD"
                     android:letterSpacing="0.01"
@@ -48,19 +48,17 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_height="56dp">
             <TextView
+                    android:fontFamily="@font/notosans_medium"
                     android:gravity="center"
-                    android:paddingVertical="16dp"
-                    android:paddingHorizontal="120dp"
                     android:text="@string/sign_up"
-                    android:textSize="14sp"
                     android:textColor="@color/red"
-                    android:letterSpacing="0.01"
                     android:layout_width="300dp"
                     android:layout_height="56dp"/>
 
         </RelativeLayout>
 
         <TextView
+                android:fontFamily="@font/notosans_demilight"
                 android:layout_marginTop="19dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"

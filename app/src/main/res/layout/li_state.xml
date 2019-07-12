@@ -14,6 +14,7 @@
             android:paddingHorizontal="20dp">
 
         <LinearLayout
+                android:layout_marginBottom="6dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -23,6 +24,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                 <TextView
+                        android:fontFamily="@font/notosans_medium"
                         android:id="@+id/li_state_d_mark"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -30,11 +32,11 @@
                         android:textStyle="bold"
                         android:textColor="@color/red"
                         android:textSize="14sp"/>
-
                 <TextView
+                        android:includeFontPadding = "false"
+                        android:fontFamily="@font/notosans_medium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="3dp"
                         android:layout_alignParentStart="true"
                         android:layout_marginTop="0dp"
                         tools:text="43"
@@ -51,7 +53,7 @@
                     android:progress="69"
                     android:progressTint="@color/red"
                     android:progressBackgroundTint="@color/colorPrimary"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginBottom="5dp"
                     android:max="100"
                     android:id="@+id/li_state_progress"/>
 
@@ -60,15 +62,17 @@
                     android:layout_height="wrap_content">
 
                 <TextView
+                        android:includeFontPadding = "false"
+                        android:fontFamily="@font/notosans_medium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         tools:text="69"
-                        android:textStyle="bold"
                         android:textColor="@color/red"
                         android:textSize="12sp"
                         android:id="@+id/li_state_percent"/>
 
                 <TextView
+                        android:fontFamily="@font/notosans_medium"
                         android:id="@+id/li_state_percent_mark"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -78,6 +82,8 @@
                         android:textSize="12sp"/>
 
                 <TextView
+                        android:includeFontPadding = "false"
+                        android:fontFamily="@font/notosans_medium"
                         android:layout_marginLeft="6dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -87,6 +93,8 @@
                         android:id="@+id/li_state_berry_num"/>
 
                 <TextView
+                        android:includeFontPadding = "false"
+                        android:fontFamily="@font/notosans_demilight"
                         android:layout_marginLeft="2dp"
                         android:textColor="@color/grayA"
                         android:layout_width="wrap_content"
@@ -100,6 +108,8 @@
                 </LinearLayout>
 
                 <TextView
+                        android:includeFontPadding = "false"
+                        android:fontFamily="@font/notosans_medium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/darkGrayA"
@@ -110,6 +120,8 @@
                         android:id="@+id/li_state_total_num"/>
 
                 <TextView
+                        android:includeFontPadding = "false"
+                        android:fontFamily="@font/notosans_demilight"
                         android:id="@+id/li_state_total_num_berry"
                         android:layout_marginLeft="1dp"
                         android:textColor="@color/grayA"

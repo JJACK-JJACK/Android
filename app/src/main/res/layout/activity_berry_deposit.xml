@@ -26,8 +26,10 @@
                     android:src="@drawable/ic_back"/>
 
             <TextView
-                    android:layout_width="59dp"
-                    android:layout_height="19dp"
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="113dp"
                     android:text="베리충전"
                     android:textColor="@color/darkGrayA"
@@ -35,6 +37,8 @@
         </android.support.v7.widget.Toolbar>
 
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
@@ -44,6 +48,8 @@
                 android:textSize="14sp"/>
 
         <Spinner
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_regular"
                 android:text="입금하실 은행 선택"
                 android:textSize="20sp"
                 android:textColor="#999999"
@@ -63,6 +69,8 @@
                 android:layout_marginTop="7.5dp"></View>
 
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_regular"
                 android:textColor="@color/darkGrayA"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -91,11 +99,12 @@
                     android:background="@drawable/ic_berrys_small"
                     android:layout_marginLeft="20dp"/>
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
                     android:textColor="@color/darkGrayA"
-                    android:letterSpacing="0.01"
                     android:text="베리 10개"
                     android:layout_marginLeft="8dp"
             />
@@ -105,11 +114,12 @@
                     android:background="@drawable/dot_radio"
                     android:layout_marginLeft="27dp"/>
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
                     android:textColor="@color/darkGrayA"
-                    android:letterSpacing="0.01"
                     android:gravity="right"
                     android:layout_marginLeft="32dp"
                     android:text="1,100원"
@@ -135,11 +145,12 @@
                     android:background="@drawable/ic_berrys_small"
                     android:layout_marginLeft="20dp"/>
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
                     android:textColor="@color/darkGrayA"
-                    android:letterSpacing="0.01"
                     android:text="베리 50개"
                     android:layout_marginLeft="8dp"
             />
@@ -149,11 +160,12 @@
                     android:background="@drawable/dot_radio"
                     android:layout_marginLeft="27dp"/>
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
                     android:textColor="@color/darkGrayA"
-                    android:letterSpacing="0.01"
                     android:gravity="end"
                     android:layout_marginLeft="34dp"
                     android:text="5,500원"
@@ -179,11 +191,12 @@
                     android:background="@drawable/ic_berrys_small"
                     android:layout_marginLeft="20dp"/>
             <TextView
+                    android:includeFontPadding = "false"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
                     android:textColor="@color/darkGrayA"
-                    android:letterSpacing="0.01"
+                    android:fontFamily="@font/notosans_medium"
                     android:text="베리 100개"
                     android:layout_marginLeft="8dp"
             />
@@ -193,11 +206,12 @@
                     android:background="@drawable/dot_radio"
                     android:layout_marginLeft="24dp"/>
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
                     android:textColor="@color/darkGrayA"
-                    android:letterSpacing="0.01"
                     android:gravity="right"
                     android:layout_marginLeft="19dp"
                     android:text="11,000원"
@@ -223,11 +237,12 @@
                     android:background="@drawable/ic_berrys_small"
                     android:layout_marginLeft="20dp"/>
             <TextView
+                    android:includeFontPadding = "false"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
                     android:textColor="@color/darkGrayA"
-                    android:letterSpacing="0.01"
+                    android:fontFamily="@font/notosans_medium"
                     android:text="베리 300개"
                     android:layout_marginLeft="8dp"
             />
@@ -237,11 +252,12 @@
                     android:background="@drawable/dot_radio"
                     android:layout_marginLeft="24dp"/>
             <TextView
+                    android:includeFontPadding = "false"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
                     android:textColor="@color/darkGrayA"
-                    android:letterSpacing="0.01"
+                    android:fontFamily="@font/notosans_regular"
                     android:gravity="end"
                     android:layout_marginLeft="19dp"
                     android:text="33,000원"
@@ -267,11 +283,12 @@
                     android:background="@drawable/ic_berrys_small"
                     android:layout_marginLeft="20dp"/>
             <TextView
+                    android:includeFontPadding = "false"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
                     android:textColor="@color/darkGrayA"
-                    android:letterSpacing="0.01"
+                    android:fontFamily="@font/notosans_medium"
                     android:text="베리 500개"
                     android:layout_marginLeft="8dp"
             />
@@ -281,11 +298,12 @@
                     android:background="@drawable/dot_radio"
                     android:layout_marginLeft="24dp"/>
             <TextView
+                    android:includeFontPadding = "false"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
                     android:textColor="@color/darkGrayA"
-                    android:letterSpacing="0.01"
+                    android:fontFamily="@font/notosans_regular"
                     android:gravity="end"
                     android:layout_marginLeft="19dp"
                     android:text="55,000원"
@@ -297,6 +315,7 @@
 
 
     <Button
+            android:includeFontPadding = "false"
             android:layout_width="fill_parent"
             android:layout_height="56dp"
             android:layout_alignParentBottom="true"

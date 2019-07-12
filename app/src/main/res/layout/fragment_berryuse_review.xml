@@ -11,6 +11,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_medium"
                 android:id="@+id/use_story_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -21,13 +23,14 @@
                 android:text="“이제 아프지 않을 거예요”"
         />
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_demilight"
                 android:id="@+id/use_story_content1"
                 android:layout_marginTop="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
                 android:textColor="@color/darkGrayC"
-                android:lineSpacingExtra="7sp"
                 tools:text="&quot;남양주 유기견 보호소는 굶주림과 수많은 생명의 위험에 놓인 유기동물을 구조해
 치료하는 기부를 주관하여 시민 구조자의 부담은 나누고,
 작은 단위의 동물 구호 활동 활성화를 지원하기 위하여 위기동물 지원을 &apos;짹&apos;을 통해서 진행하고 있습니다.
@@ -38,13 +41,14 @@
 여러분들이 베푼 사랑은 배가 되어 도움이 필요한 생명들에게 전달되었습니다. 감사합니다. &quot;"
         />
         <TextView
+                android:includeFontPadding = "false"
+                android:fontFamily="@font/notosans_regular"
                 android:id="@+id/use_story_content2"
                 android:layout_marginTop="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
                 android:textColor="@color/darkGrayC"
-                android:lineSpacingExtra="7sp"
                 tools:text="&quot;남양주 유기견 보호소는 굶주림과 수많은 생명의 위험에 놓인 유기동물을 구조해
 치료하는 기부를 주관하여 시민 구조자의 부담은 나누고,
 작은 단위의 동물 구호 활동 활성화를 지원하기 위하여 위기동물 지원을 &apos;짹&apos;을 통해서 진행하고 있습니다.

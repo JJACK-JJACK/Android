@@ -8,13 +8,8 @@
         android:paddingHorizontal="20dp"
         android:id="@+id/li_donate_container">
 
-    <!--<android.support.v4.widget.DrawerLayout-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content">-->
-    <!--</android.support.v4.widget.DrawerLayout>-->
-
     <LinearLayout
-            android:paddingVertical="15.5dp"
+            android:paddingVertical="5dp"
             android:id="@+id/ly_item"
             android:gravity="center"
             android:layout_width="match_parent"
@@ -33,6 +28,8 @@
                     android:id="@+id/li_donate_img_url"/>
 
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
                     tools:text="@string/donation_step_ing"
                     android:gravity="center"
                     android:id="@+id/li_donate_state"
@@ -56,15 +53,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                 <TextView
+                        android:fontFamily="@font/notosans_medium"
                         android:id="@+id/li_donate_d"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="D"
-                        android:textStyle="bold"
                         android:textColor="@color/red"
                         android:textSize="14sp"/>
 
                 <TextView
+                        android:includeFontPadding = "false"
+                        android:fontFamily="@font/notosans_medium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="1dp"
@@ -78,19 +77,22 @@
             </LinearLayout>
 
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
+                    android:layout_marginBottom="2dp"
                     android:ellipsize="end"
                     android:lines="1"
                     android:textColor="@color/darkGrayA"
                     android:text="올겨울 혜리에게도 따듯한 이불을..."
                     android:textSize="14dp"
-                    android:textStyle="bold"
                     android:singleLine="true"
                     android:id="@+id/li_donate_title"/>
 
             <TextView
+                    android:includeFontPadding = "false"
+                    android:fontFamily="@font/notosans_demilight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
@@ -106,7 +108,7 @@
                     android:progress="69"
                     android:progressTint="@color/red"
                     android:progressBackgroundTint="@color/colorPrimary"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginBottom="2dp"
                     android:max="100"
                     android:id="@+id/li_donate_progress"/>
 
@@ -115,6 +117,8 @@
                     android:layout_height="wrap_content">
 
                 <TextView
+                        android:includeFontPadding = "false"
+                        android:fontFamily="@font/notosans_medium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="69"
@@ -124,6 +128,8 @@
                         android:id="@+id/li_donate_percent"/>
 
                 <TextView
+                        android:includeFontPadding = "false"
+                        android:fontFamily="@font/notosans_medium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
@@ -133,16 +139,19 @@
                         android:textSize="12sp"/>
 
                 <TextView
+                        android:includeFontPadding = "false"
+                        android:fontFamily="@font/notosans_medium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/darkGrayA"
                         android:layout_weight="1"
-                        android:textStyle="bold"
                         android:text="353,542"
                         android:gravity="right"
                         android:id="@+id/li_donate_berry_num"/>
 
                 <TextView
+                        android:includeFontPadding = "false"
+                        android:fontFamily="@font/notosans_regular"
                         android:id="@+id/txt_berry_or_berry_donate"
                         android:layout_marginLeft="1dp"
                         android:textColor="@color/grayA"

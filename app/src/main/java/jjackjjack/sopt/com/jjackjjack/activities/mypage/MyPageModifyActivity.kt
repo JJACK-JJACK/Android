@@ -84,12 +84,15 @@ class MyPageModifyActivity : AppCompatActivity() {
             //chooseImage()
             requestReadExternalStoragePermission()
         }
-        curr_nickname.text = getUserNickname(this)
-        curr_nickname2.text = getUserNickname(this)
-        tv_mypage_email.text = getUserEmail(this)
-
     }
 
+    override fun onResume() {
+        super.onResume()
+        curr_nickname.text = getUserNickname(this)
+        curr_nickname2.text = getUserNickname(this)
+        tv_mypage_modify_email.text = getUserEmail(this)
+
+    }
     private fun postProfileResponse() {
         var token: String = SharedPreferenceController.getAuthorization(this)
 
@@ -99,15 +102,6 @@ class MyPageModifyActivity : AppCompatActivity() {
         val requestfile: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file)
         val data: MultipartBody.Part = MultipartBody.Part.createFormData("photo", file.name, requestfile)
 
-//        var photoUri : Uri = Uri.parse(data.toString())
-//        var filePath : String = photoUri.getPath()
-//        var c : Cursor = contentResolver.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, null, "_data ='"+filePath+"'",null,null)
-//        c.moveToNext()
-//
-//        var id :Int = c.getInt(0)
-//
-//        var uri = ContentUris.withAppendedId(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,id.toLong())
-//
         Log.d("asdfsdfad", imageURI.toString())
 
         real_URI = "https:/" + imageURI

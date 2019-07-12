@@ -54,7 +54,7 @@ class BerryReviewActivity : AppCompatActivity() {
     }
 
     private fun initialUI() {
-        li_state_day.visibility = (View.GONE)
+        li_state_day.visibility = (View.INVISIBLE)
         li_state_total_num.visibility = (View.GONE)
         li_state_total_num_berry.visibility = (View.GONE)
 
