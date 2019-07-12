@@ -58,9 +58,6 @@ class MainActivity : AppCompatActivity(), onDrawer {
 
         drawerUI()
         getmyBerryResponse()
-        logo.setOnClickListener {
-            startActivity<GetBerryActivity>()
-        }
     }
 
     override fun onResume() { //로그아웃 후에 이 뷰는 꺼지게
