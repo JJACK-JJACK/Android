@@ -79,7 +79,6 @@
             android:layout_height="300dp"
             app:lottie_autoPlay="true"/>
 
-
     <Button
             android:layout_gravity="center"
             android:includeFontPadding = "false"

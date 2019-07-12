@@ -91,8 +91,8 @@ class BerryReviewActivity : AppCompatActivity() {
                     if (response.body()!!.status == 201) {
                         val receiveData: ArrayList<DonatedDetailedData> = response.body()!!.data
                         if (idx + 1 <= receiveData.size) {
-                            if (URLUtil.isValidUrl(receiveData[0].thumbnail)) {
-                                Glide.with(this@BerryReviewActivity).load(receiveData[0].thumbnail)
+                            if (URLUtil.isValidUrl(receiveData[idx].thumbnail)) {
+                                Glide.with(this@BerryReviewActivity).load(receiveData[idx].thumbnail)
                                     .into(header_image_view)
                             }
                             donate_detailed_title.text = receiveData[idx].title
