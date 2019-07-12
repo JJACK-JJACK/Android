@@ -2,9 +2,6 @@ package jjackjjack.sopt.com.jjackjjack.network
 
 import com.google.gson.JsonObject
 import jjackjjack.sopt.com.jjackjjack.network.response.get.*
-import jjackjjack.sopt.com.jjackjjack.network.data.DonateSortedData
-import jjackjjack.sopt.com.jjackjjack.network.data.DonatedDetailedData
-import jjackjjack.sopt.com.jjackjjack.network.response.get.*
 import jjackjjack.sopt.com.jjackjjack.network.response.post.*
 import retrofit2.Call
 import retrofit2.http.*
@@ -138,9 +135,16 @@ interface NetworkService {
 
     //프로필 수정
     @POST("/mypage/profile")
-    fun postProfileResponse(
+    fun postProfileModifyResponse(
         @Header("Content-Type") content_type: String,
         @Header("token") token: String,
         @Body() body: JsonObject
-    ):Call<PostProfileResponse>
+    ):Call<PostProfileModifyResponse>
+
+//    //이미지 등록
+//    @FormUrlEncoded
+//    @POST("/image")
+//    fun postProfileRegisterResponse(
+//        @Body() body :
+//    )
 }
