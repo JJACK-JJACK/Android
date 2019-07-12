@@ -7,6 +7,7 @@ import android.support.design.widget.TabLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
 import android.webkit.URLUtil
 import com.bumptech.glide.Glide
 import jjackjjack.sopt.com.jjackjjack.R
@@ -68,7 +69,6 @@ class DonateDetailedActivity : AppCompatActivity() {
         initialUI()
 
         getDonateDetailResponse(ProgramId)
-
     }
 
     private fun getDonateDetailResponse(programId: String){ //programId 넘겨주기
@@ -76,6 +76,9 @@ class DonateDetailedActivity : AppCompatActivity() {
 
         getDonateDetailResponse.enqueue(object : Callback<GetDonateDetailedResponse>{
             override fun onFailure(call: Call<GetDonateDetailedResponse>, t: Throwable) {
+                progress_bar.visibility = View.GONE
+                window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+                toast("잠시 후 다시 시도해주세요")
                 Log.e("Sorted List fail", t.toString())
             }
 
@@ -84,6 +87,8 @@ class DonateDetailedActivity : AppCompatActivity() {
                 response: Response<GetDonateDetailedResponse>
             ) {
                 if(response.isSuccessful){
+                    progress_bar.visibility = View.GONE
+                    //window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
                     if(response.body()!!.status == Secret.NETWORK_LIST_SUCCESS){
                         clearStoryDataList()
                         clearUsePlanDataList()
