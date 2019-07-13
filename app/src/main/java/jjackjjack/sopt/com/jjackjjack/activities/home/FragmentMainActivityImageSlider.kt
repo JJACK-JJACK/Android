@@ -1,5 +1,6 @@
 package jjackjjack.sopt.com.jjackjjack.activities.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
 import android.support.v4.app.Fragment
@@ -13,6 +14,7 @@ import jjackjjack.sopt.com.jjackjjack.activities.donate.DonateActivity
 import kotlinx.android.synthetic.main.content_activity_main.*
 import kotlinx.android.synthetic.main.fragment_main_activity_image_slider.*
 import org.jetbrains.anko.image
+import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.support.v4.startActivity
 
 
@@ -36,7 +38,11 @@ class FragmentMainActivityImageSlider : Fragment() {
                 return@setOnClickListener
             }
             mLastClickTime = SystemClock.elapsedRealtime()
-            startActivity<DonateActivity>("fragment" to this.category_num)
+            val intent = Intent(ctx, DonateActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
+            intent.putExtra("fragment", this.category_num)
+            startActivity(intent)
+            //startActivity<DonateActivity>("fragment" to this.category_num)
         }
         Log.d("category", category_num.toString())
         when (category_num) {
