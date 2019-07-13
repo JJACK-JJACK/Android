@@ -17,6 +17,7 @@ import jjackjjack.sopt.com.jjackjjack.network.ApplicationController
 import jjackjjack.sopt.com.jjackjjack.network.NetworkService
 import jjackjjack.sopt.com.jjackjjack.network.data.DonatedDetailedData
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateParticipationDetailResponse
+import jjackjjack.sopt.com.jjackjjack.utillity.ColorToast
 import jjackjjack.sopt.com.jjackjjack.utillity.Secret
 import kotlinx.android.synthetic.main.activity_donate_record_status.*
 import kotlinx.android.synthetic.main.donate_status.*
@@ -59,7 +60,6 @@ class DonateParticipationStateActivity : AppCompatActivity() {
         btn_toolbar_back.setOnClickListener {
             finish()
         }
-
         var list: ArrayList<DonateUsePlan> = ArrayList()
         initialUI_status()
     }
@@ -75,6 +75,7 @@ class DonateParticipationStateActivity : AppCompatActivity() {
         getDonateParticipationDetailResponse.enqueue(object : Callback<GetDonateParticipationDetailResponse> {
             override fun onFailure(call: Call<GetDonateParticipationDetailResponse>, t: Throwable) {
                 Log.e("DB error", t.toString())
+                ColorToast(this@DonateParticipationStateActivity, "잠시 후 다시 접속해주세요")
             }
 
             override fun onResponse(

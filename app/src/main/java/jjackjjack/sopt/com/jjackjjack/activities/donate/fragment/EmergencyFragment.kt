@@ -107,7 +107,7 @@ class EmergencyFragment : Fragment(), View.OnClickListener{
         val getDonateSortedListResponse = networkService.getDonateSortedListResponse(CategoryId, filterId)
         getDonateSortedListResponse.enqueue(object : Callback<GetDonateSortedListResponse> {
             override fun onFailure(call: Call<GetDonateSortedListResponse>, t: Throwable) {
-                progress_bar.visibility = View.GONE
+                //progress_bar.visibility = View.GONE
                 ColorToast(activity?.applicationContext, "잠시 후 다시 접속해주세요")
                 Log.e("Sorted List fail", t.toString())
             }
@@ -116,7 +116,7 @@ class EmergencyFragment : Fragment(), View.OnClickListener{
                 call: Call<GetDonateSortedListResponse>,
                 response: Response<GetDonateSortedListResponse>
             ) {
-                progress_bar.visibility = View.GONE
+                //progress_bar.visibility = View.GONE
                 if(response.isSuccessful){
                     if(response.body()!!.status == Secret.NETWORK_LIST_SUCCESS){
                         val temp: ArrayList<DonateSortedData> = response.body()!!.data
@@ -125,7 +125,7 @@ class EmergencyFragment : Fragment(), View.OnClickListener{
                                 dataList_DonateInfo.add(temp[i].toDonateInfo())
                             }
                         }
-                        progress_bar.visibility = View.GONE
+                        //progress_bar.visibility = View.GONE
                         updateDonateList(dataList_DonateInfo)
                     }
                     else{

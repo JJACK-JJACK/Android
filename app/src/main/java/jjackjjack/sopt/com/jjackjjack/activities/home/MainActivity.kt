@@ -44,7 +44,7 @@ import java.text.DecimalFormat
 class MainActivity : AppCompatActivity(), onDrawer {
 
     private var mLastClickTime: Long = 0
-    private var amLastClickTime: Long = 0
+    var amLastClickTime: Long = 0
 
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
@@ -107,6 +107,7 @@ class MainActivity : AppCompatActivity(), onDrawer {
             fragmentAdapter.addImage(fragmentList[i], i)
         }
         fragmentAdapter.notifyDataSetChanged()
+        progress_bar.visibility = View.GONE
     }
 
     override fun drawerUI() {
@@ -172,7 +173,7 @@ class MainActivity : AppCompatActivity(), onDrawer {
                 if(SystemClock.elapsedRealtime()-amLastClickTime < 2000){
                     return@setOnClickListener
                 }
-                mLastClickTime = SystemClock.elapsedRealtime()
+                amLastClickTime = SystemClock.elapsedRealtime()
                 val intent = Intent(this, actSet[i])
                 intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
                 ly_drawer.closeDrawer(Gravity.END)

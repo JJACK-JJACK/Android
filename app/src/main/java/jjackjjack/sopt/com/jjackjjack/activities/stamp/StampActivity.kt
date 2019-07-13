@@ -41,6 +41,11 @@ class StampActivity : AppCompatActivity() {
         getStampResponse()
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+    }
+
     override fun onResume() {
         super.onResume()
         getStampResponse()
