@@ -9,13 +9,7 @@
         android:backgroundTint="@color/white"
         android:background="@drawable/radius"
         android:gravity="center_horizontal">
-
-    <!--<ImageView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="187dp"-->
-            <!--android:background="@drawable/img_ad_stamp_100"-->
-            <!--android:id="@+id/imageView3"-->
-            <!--android:layout_marginBottom="16dp"/>-->
+-=
     <com.airbnb.lottie.LottieAnimationView
     android:layout_width="match_parent"
     android:layout_height="187dp"
