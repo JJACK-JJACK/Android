@@ -47,7 +47,7 @@ class DepositActivity : AppCompatActivity() {
 
     var deposit_list = ArrayList<String>()
 
-    var selected_bank: String? = null
+    var selected_bank: String =""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,6 +85,7 @@ class DepositActivity : AppCompatActivity() {
         hint_adapter.addAll(deposit_list)
         hint_adapter.add("입금하실 은행 선택")
 
+
         berry_deposit_spinner.adapter = hint_adapter
         berry_deposit_spinner.setSelection(hint_adapter.getCount())
         berry_deposit_spinner.onItemSelectedListener =
@@ -95,7 +96,7 @@ class DepositActivity : AppCompatActivity() {
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
                     ColorToast(this@DepositActivity,"입금하실 은행을 선택해주세요")
-                    selected_bank = null
+                    selected_bank = ""
                 }
             }
         for (i in 0 until lyList.size) {
@@ -113,7 +114,13 @@ class DepositActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         btn_berry_deposit_charge.setOnClickListener {
-            if (clickTest.sum() > 0 && !(selected_bank.isNullOrBlank())) {
+            if(clickTest.sum()<0 && selected_bank != ""){
+                Log.d("No check berry", "No check berry")
+                ColorToast(this@DepositActivity, "충전베리를 선택해주세요")
+            }else if(clickTest.sum()>0 && selected_bank == "입금하실 은행 선택"){
+                Log.d("No check account", "No check account")
+                ColorToast(this@DepositActivity, "입금하실 은행을 선택해주세요")
+            }else if (clickTest.sum() > 0 && !(selected_bank == "입금하실 은행 선택")) {
                 //계좌뜨는 다이얼로그 창
                 BerryChargeResponse()
             }
