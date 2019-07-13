@@ -169,6 +169,7 @@ class MainActivity : AppCompatActivity(), onDrawer {
 
 
         for (i in 0 until btnAset.size) {
+
             btnAset[i].setOnClickListener {
                 if(SystemClock.elapsedRealtime()-amLastClickTime < 2000){
                     return@setOnClickListener

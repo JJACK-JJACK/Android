@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.os.SystemClock
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.Gravity
@@ -47,6 +48,9 @@ import java.text.DecimalFormat
 
 
 class DeliveryReviewActivity : AppCompatActivity(), onDrawer {
+
+    private var mLastClickTime: Long = 0
+    private var amLastClickTime: Long = 0
 
     lateinit var mAdapter: DeliveryReviewImageAdapter
 
@@ -157,6 +161,10 @@ class DeliveryReviewActivity : AppCompatActivity(), onDrawer {
 
         for (i in 0 until btnAset.size) {
             btnAset[i].setOnClickListener {
+                if(SystemClock.elapsedRealtime()-amLastClickTime < 2000){
+                    return@setOnClickListener
+                }
+                amLastClickTime = SystemClock.elapsedRealtime()
                 val intent = Intent(this, actSet[i])
                 ly_drawer.closeDrawer(Gravity.END)
                 startActivity(intent)
@@ -166,6 +174,10 @@ class DeliveryReviewActivity : AppCompatActivity(), onDrawer {
 
         for (i in 0 until btnFset.size) {
             btnFset[i].setOnClickListener {
+                if(SystemClock.elapsedRealtime()-mLastClickTime < 2000){
+                    return@setOnClickListener
+                }
+                mLastClickTime = SystemClock.elapsedRealtime()
                 startActivity<DonateActivity>("fragment" to i)
                 Handler().postDelayed({ ly_drawer.closeDrawer(Gravity.END) }, 110)
                 finish()
