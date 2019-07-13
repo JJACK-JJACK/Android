@@ -1,5 +1,6 @@
 package jjackjjack.sopt.com.jjackjjack.activities.login
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import jjackjjack.sopt.com.jjackjjack.activities.home.MainActivity
@@ -17,7 +18,9 @@ class BeginningActivity : AppCompatActivity() {
         initialUI()
 
         if(SharedPreferenceController.getAuthorization(this).isNotEmpty()){
-            startActivity<MainActivity>()
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY and Intent.FLAG_ACTIVITY_SINGLE_TOP
+            startActivity(intent)
             finish()
         }
 
@@ -34,11 +37,15 @@ class BeginningActivity : AppCompatActivity() {
     private fun initialUI(){
 
         btn_beginning_login.setOnClickListener {
-            startActivity<LoginActivity>()
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
+            startActivity(intent)
         }
 
         btn_beginning_signup.setOnClickListener {
-            startActivity<SignUpActivity>()
+            val intent = Intent(this, SignUpActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
+            startActivity(intent)
         }
 
     }

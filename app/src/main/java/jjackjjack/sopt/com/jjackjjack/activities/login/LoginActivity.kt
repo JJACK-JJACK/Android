@@ -1,7 +1,9 @@
 package jjackjjack.sopt.com.jjackjjack.activities.login
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.SystemClock
 import android.util.Log
 import jjackjjack.sopt.com.jjackjjack.activities.home.MainActivity
 import jjackjjack.sopt.com.jjackjjack.R
@@ -28,6 +30,8 @@ class LoginActivity : AppCompatActivity() {
         ApplicationController.instance.networkService
     }
 
+    private var mLastClickTime: Long = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -35,6 +39,15 @@ class LoginActivity : AppCompatActivity() {
         initialUI()
 
     }
+
+    override fun onResume() {
+        super.onResume()
+        if(SharedPreferenceController.getAuthorization(this).isNotEmpty()){
+            finish()
+        }
+
+    }
+
     private fun LoginResponse(){
 
         val input_email: String = et_login_email.text.toString()
@@ -43,7 +56,7 @@ class LoginActivity : AppCompatActivity() {
         Log.d("login", input_email)
         Log.d("login", input_pw)
 
-        if(input_email.isNotEmpty() && input_pw.isNotEmpty()){
+        if(!input_email.isNullOrBlank() && input_pw.isNotEmpty()){
             var jsonObject = JSONObject()
             jsonObject.put("email", input_email)
             jsonObject.put("password", input_pw)
@@ -92,18 +105,26 @@ class LoginActivity : AppCompatActivity() {
     private fun initialUI(){
         btn_login_login.setOnClickListener {
 
+            if(SystemClock.elapsedRealtime()-mLastClickTime <1500){
+                return@setOnClickListener
+            }
+            mLastClickTime = SystemClock.elapsedRealtime()
+
             LoginResponse()
-
             if(SharedPreferenceController.getAuthorization(this).isNotEmpty()){
-
-                startActivity<MainActivity>()
+                val intent = Intent(this, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY or Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP
+                startActivity(intent)
                 finish()
             }
         }
 
 
         btn_login_signup.setOnClickListener {
-            startActivity<SignUpActivity>()
+            val intent = Intent(this, SignUpActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
+            startActivity(intent)
+            finish()
         }
 
         btn_login_back.setOnClickListener {

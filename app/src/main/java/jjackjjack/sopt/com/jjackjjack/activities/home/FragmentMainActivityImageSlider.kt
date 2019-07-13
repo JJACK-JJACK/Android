@@ -1,6 +1,7 @@
 package jjackjjack.sopt.com.jjackjjack.activities.home
 
 import android.os.Bundle
+import android.os.SystemClock
 import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
@@ -18,6 +19,7 @@ import org.jetbrains.anko.support.v4.startActivity
 class FragmentMainActivityImageSlider : Fragment() {
 
    var category_num: Int = 0
+    private var mLastClickTime: Long = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +32,10 @@ class FragmentMainActivityImageSlider : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         fragment_main_image_slider.setOnClickListener {
+            if(SystemClock.elapsedRealtime()-mLastClickTime < 2000){
+                return@setOnClickListener
+            }
+            mLastClickTime = SystemClock.elapsedRealtime()
             startActivity<DonateActivity>("fragment" to this.category_num)
         }
         Log.d("category", category_num.toString())

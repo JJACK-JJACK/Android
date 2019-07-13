@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.os.SystemClock
 import android.util.Log
 import android.view.Gravity
 import android.view.View
@@ -41,6 +42,10 @@ import java.text.DecimalFormat
 
 
 class MainActivity : AppCompatActivity(), onDrawer {
+
+    private var mLastClickTime: Long = 0
+    private var amLastClickTime: Long = 0
+
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
     }
@@ -65,14 +70,18 @@ class MainActivity : AppCompatActivity(), onDrawer {
     override fun onResume() { //로그아웃 후에 이 뷰는 꺼지게
         super.onResume()
         if (!SharedPreferenceController.getAuthorization(this).isNotEmpty()) {
-            startActivity<BeginningActivity>()
+            val intent = Intent(this, BeginningActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
+            startActivity(intent)
             finish()
         }
     }
 
     private fun initialUI() {
         if (!SharedPreferenceController.getAuthorization(this).isNotEmpty()) {
-            startActivity<BeginningActivity>()
+            val intent = Intent(this, BeginningActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
+            startActivity(intent)
             finish()
         }
 
@@ -151,13 +160,21 @@ class MainActivity : AppCompatActivity(), onDrawer {
         } //이미지 DB에서 가져오기 나중에 없을때 default 이미지 뜨게 처리해야함
 
         btn_drawer_usehistory.setOnClickListener {
-            startActivity<BerryHistoryActivity>()
+            val intent = Intent(this, BerryHistoryActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
+            startActivity(intent)
+            //startActivity<BerryHistoryActivity>()
         }
 
 
         for (i in 0 until btnAset.size) {
             btnAset[i].setOnClickListener {
+                if(SystemClock.elapsedRealtime()-amLastClickTime < 2000){
+                    return@setOnClickListener
+                }
+                mLastClickTime = SystemClock.elapsedRealtime()
                 val intent = Intent(this, actSet[i])
+                intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
                 ly_drawer.closeDrawer(Gravity.END)
                 Handler().postDelayed({ startActivity(intent) }, 110)
                 if (activityType == i) {
@@ -168,6 +185,10 @@ class MainActivity : AppCompatActivity(), onDrawer {
 
         for (i in 0 until btnFset.size) {
             btnFset[i].setOnClickListener {
+                if(SystemClock.elapsedRealtime()-mLastClickTime < 2000){
+                    return@setOnClickListener
+                }
+                mLastClickTime = SystemClock.elapsedRealtime()
                 startActivity<DonateActivity>("fragment" to i)
                 Handler().postDelayed({ ly_drawer.closeDrawer(Gravity.END) }, 110)
             }
