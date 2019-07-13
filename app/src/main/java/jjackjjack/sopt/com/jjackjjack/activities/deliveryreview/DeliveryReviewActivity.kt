@@ -87,7 +87,9 @@ class DeliveryReviewActivity : AppCompatActivity(), onDrawer {
     }
     private fun initialUI() {
         btn_home.setOnClickListener {
-            startActivity<MainActivity>()
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
             finish()
         }
         drawerUI()

@@ -32,6 +32,7 @@ import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateParticipatio
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateParticipationResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateRecordResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GetmyBerryResponse
+import jjackjjack.sopt.com.jjackjjack.utillity.ColorToast
 import jjackjjack.sopt.com.jjackjjack.utillity.Constants
 import jjackjjack.sopt.com.jjackjjack.utillity.Secret
 import kotlinx.android.synthetic.main.activity_donate_record.ly_drawer
@@ -90,12 +91,16 @@ class DonateParticipationActivity : AppCompatActivity(), onDrawer {
     private fun initialUI() {
 
         btn_home.setOnClickListener {
-            startActivity<MainActivity>()
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
             finish()
         }
 
         donate_record_stamp.setOnClickListener {
-            startActivity<StampActivity>()
+            val intent = Intent(this, StampActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
+            startActivity(intent)
         }
         drawerUI()
 
@@ -158,8 +163,9 @@ class DonateParticipationActivity : AppCompatActivity(), onDrawer {
         for (i in 0 until btnAset.size) {
             btnAset[i].setOnClickListener {
                 val intent = Intent(this, actSet[i])
+                intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
                 ly_drawer.closeDrawer(Gravity.END)
-                startActivity(intent)
+                Handler().postDelayed({startActivity(intent)}, 110)
                 finish()
             }
         }
@@ -191,6 +197,7 @@ class DonateParticipationActivity : AppCompatActivity(), onDrawer {
 
             override fun onFailure(call: Call<GetDonateRecordResponse>, t: Throwable) {
                 Log.d("hello", t.toString())
+                ColorToast(this@DonateParticipationActivity,"잠시 후 다시 접속해주세요")
             }
 
             override fun onResponse(call: Call<GetDonateRecordResponse>, response: Response<GetDonateRecordResponse>) {
@@ -219,7 +226,7 @@ class DonateParticipationActivity : AppCompatActivity(), onDrawer {
                             participation_num.text = 0.toString()
                         }
                     } else if (response.body()!!.status == 600) {
-                        toast(response.body()!!.message)
+                        ColorToast(this@DonateParticipationActivity,response.body()!!.message)
                     }
                 }
             }
@@ -238,6 +245,7 @@ class DonateParticipationActivity : AppCompatActivity(), onDrawer {
         getDonateParticipationBerryNumResponse.enqueue(object : Callback<GetDonateParticipationBerryNumResponse> {
             override fun onFailure(call: Call<GetDonateParticipationBerryNumResponse>, t: Throwable) {
                 Log.e("hello", t.toString())
+                ColorToast(this@DonateParticipationActivity, "잠시 후 다시 접속해주세요")
             }
 
             override fun onResponse(
@@ -257,7 +265,7 @@ class DonateParticipationActivity : AppCompatActivity(), onDrawer {
                             getDonateParticipationResponse(dataList_donateberrynum)
                         }
                     } else if (response.body()!!.status == 600) {
-                        toast(response.body()!!.message)
+                        ColorToast(this@DonateParticipationActivity, response.body()!!.message)
                     }
                 }
             }
@@ -275,6 +283,7 @@ class DonateParticipationActivity : AppCompatActivity(), onDrawer {
         getDonateParticipationResponse.enqueue(object : Callback<GetDonateParticipationResponse> {
             override fun onFailure(call: Call<GetDonateParticipationResponse>, t: Throwable) {
                 Log.e("hello", t.toString())
+                ColorToast(this@DonateParticipationActivity, "잠시 후 다시 접속해주세요")
             }
 
             override fun onResponse(
@@ -302,7 +311,7 @@ class DonateParticipationActivity : AppCompatActivity(), onDrawer {
                             updateDonateList(dataList_donateParticipateInfo)
                         }
                     } else if (response.body()!!.status == 600) {
-                        toast(response.body()!!.message)
+                        ColorToast(this@DonateParticipationActivity,response.body()!!.message)
                     }
                 }
             }
@@ -318,6 +327,7 @@ class DonateParticipationActivity : AppCompatActivity(), onDrawer {
         getmyBerryResponse.enqueue(object : Callback<GetmyBerryResponse> {
             override fun onFailure(call: Call<GetmyBerryResponse>, t: Throwable) {
                 Log.d("No berry", "No Berry")
+                ColorToast(this@DonateParticipationActivity, "잠시 후 다시 접속해주세요")
             }
 
             override fun onResponse(call: Call<GetmyBerryResponse>, response: Response<GetmyBerryResponse>) {

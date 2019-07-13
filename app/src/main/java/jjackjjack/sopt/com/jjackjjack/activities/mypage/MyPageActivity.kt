@@ -18,6 +18,7 @@ import jjackjjack.sopt.com.jjackjjack.activities.berrycharge.BerryChargeActivity
 import jjackjjack.sopt.com.jjackjjack.activities.berryusehistory.BerryHistoryActivity
 import jjackjjack.sopt.com.jjackjjack.activities.donate.DonateActivity
 import jjackjjack.sopt.com.jjackjjack.activities.deliveryreview.DeliveryReviewActivity
+import jjackjjack.sopt.com.jjackjjack.activities.login.BeginningActivity
 import jjackjjack.sopt.com.jjackjjack.db.SharedPreferenceController
 import jjackjjack.sopt.com.jjackjjack.db.SharedPreferenceController.getUserEmail
 import jjackjjack.sopt.com.jjackjjack.db.SharedPreferenceController.getUserImg
@@ -80,17 +81,23 @@ class MyPageActivity : AppCompatActivity(), onDrawer {
 
     private fun initialUI() {
         btn_home.setOnClickListener {
-            startActivity<MainActivity>()
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
             finish()
         }
 
-        btn_logout.setOnClickListener {
+        btn_logout.setOnClickListener {//d
             SharedPreferenceController.clearUserSharedPreferences(this)
+            val intent = Intent(this, BeginningActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
             finish()
         }
 
         btn_nickname_edit.setOnClickListener {
             val intent = Intent(this, MyPageModifyActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
             startActivity(intent)
         }
         btn_berry_history.setOnClickListener {
