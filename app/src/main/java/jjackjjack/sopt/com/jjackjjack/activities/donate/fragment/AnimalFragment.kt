@@ -125,13 +125,11 @@ class AnimalFragment : Fragment(), View.OnClickListener{
                                 dataList_DonateInfo.add(temp[i].toDonateInfo())
                             }
                         }
-
                         updateDonateList(dataList_DonateInfo)
                     }
                     else{
                         ColorToast(activity?.applicationContext, response.body()!!.message)
                     }
-
                 }
             }
         })

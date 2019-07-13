@@ -17,7 +17,6 @@ import jjackjjack.sopt.com.jjackjjack.network.data.StoryData
 
 class DonateStoryRecyclerViewAdapter (val ctx: Context, val dataList: ArrayList<StoryData>):RecyclerView.Adapter<DonateStoryRecyclerViewAdapter.Holder>(){
 
-
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): Holder {
         val view: View = LayoutInflater.from(ctx).inflate(R.layout.li_story, viewGroup, false)
         return Holder(view)
