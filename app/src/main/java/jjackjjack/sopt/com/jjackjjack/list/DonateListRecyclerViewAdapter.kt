@@ -3,6 +3,7 @@ package jjackjjack.sopt.com.jjackjjack.list
 import android.content.Context
 import android.graphics.Color
 import android.graphics.PorterDuff
+import android.os.SystemClock
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +21,8 @@ import org.jetbrains.anko.startActivity
 class DonateListRecyclerViewAdapter(val ctx: Context, var list: ArrayList<DonateInfo>, val isDonateHistory: Boolean) :
     RecyclerView.Adapter<DonateListRecyclerViewAdapter.Holder>() {
 
+    var LastClickTime : Long = 0
+    var LastClickTime2 : Long = 0
     override fun onCreateViewHolder(viewGroup: ViewGroup, p1: Int): Holder {
         val view: View = LayoutInflater.from(ctx).inflate(R.layout.li_donate, viewGroup, false)
         return Holder(view)
@@ -42,11 +45,19 @@ class DonateListRecyclerViewAdapter(val ctx: Context, var list: ArrayList<Donate
 
         if (isDonateHistory) {
             holder.container.setOnClickListener {
+                if(SystemClock.elapsedRealtime() - LastClickTime2 < 2000){
+                    return@setOnClickListener
+                }
+                LastClickTime2 = SystemClock.elapsedRealtime()
                 ctx.startActivity<DonateParticipationStateActivity>(
                 )
             }
         } else if (!isDonateHistory) {
             holder.container.setOnClickListener {
+                if(SystemClock.elapsedRealtime()-LastClickTime < 2000){
+                    return@setOnClickListener
+                }
+                LastClickTime = SystemClock.elapsedRealtime()
                 ctx.startActivity<DonateDetailedActivity>(
                     "programId" to list[position]._id
                 )

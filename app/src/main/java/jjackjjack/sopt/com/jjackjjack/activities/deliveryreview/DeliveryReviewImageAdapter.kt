@@ -1,6 +1,7 @@
 package com.example.kmj.imageslider
 
 import android.content.Context
+import android.os.SystemClock
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
@@ -15,6 +16,8 @@ import jjackjjack.sopt.com.jjackjjack.model.DeliveryReviewImageInfo
 import org.jetbrains.anko.startActivity
 
 class DeliveryReviewImageAdapter(val context: Context, val deliveryReviewImageInfoList: ArrayList<DeliveryReviewImageInfo>) : RecyclerView.Adapter<DeliveryReviewImageAdapter.Holder>() {
+    private var mLastClickTime:Long = 0
+
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): Holder {
         val view = LayoutInflater.from(context).inflate(R.layout.rank_image_item, p0, false)
         return Holder(view)
@@ -27,6 +30,10 @@ class DeliveryReviewImageAdapter(val context: Context, val deliveryReviewImageIn
         }
 
         holder.thumbnail.setOnClickListener {
+            if(SystemClock.elapsedRealtime()-mLastClickTime < 2000){
+                return@setOnClickListener
+            }
+            mLastClickTime = SystemClock.elapsedRealtime()
             //Toast.makeText(this, "number is ${rankimg.thumbnail}", Toast.LENGTH_SHORT).show()
             context.startActivity<BerryReviewActivity>("clickedItemIndex" to position)
             Log.d("idx", position.toString())

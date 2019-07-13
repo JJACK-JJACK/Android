@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.os.SystemClock
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.Gravity
@@ -51,6 +52,8 @@ import kotlin.collections.ArrayList
 
 class DonateParticipationActivity : AppCompatActivity(), onDrawer {
 
+    private var mLastClickTime: Long = 0
+    var amLastClickTime: Long = 0
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
     }
@@ -162,6 +165,10 @@ class DonateParticipationActivity : AppCompatActivity(), onDrawer {
 
         for (i in 0 until btnAset.size) {
             btnAset[i].setOnClickListener {
+                if(SystemClock.elapsedRealtime()- amLastClickTime < 2000){
+                    return@setOnClickListener
+                }
+                amLastClickTime = SystemClock.elapsedRealtime()
                 val intent = Intent(this, actSet[i])
                 intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
                 ly_drawer.closeDrawer(Gravity.END)
@@ -172,6 +179,10 @@ class DonateParticipationActivity : AppCompatActivity(), onDrawer {
 
         for (i in 0 until btnFset.size) {
             btnFset[i].setOnClickListener {
+                if(SystemClock.elapsedRealtime()-mLastClickTime < 2000){
+                    return@setOnClickListener
+                }
+                mLastClickTime = SystemClock.elapsedRealtime()
                 startActivity<DonateActivity>("fragment" to i)
                 Handler().postDelayed({ ly_drawer.closeDrawer(Gravity.END) }, 110)
                 finish()
