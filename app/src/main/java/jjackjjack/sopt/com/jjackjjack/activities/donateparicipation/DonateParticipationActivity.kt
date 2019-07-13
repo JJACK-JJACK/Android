@@ -183,7 +183,11 @@ class DonateParticipationActivity : AppCompatActivity(), onDrawer {
                     return@setOnClickListener
                 }
                 mLastClickTime = SystemClock.elapsedRealtime()
-                startActivity<DonateActivity>("fragment" to i)
+                val intent = Intent(this@DonateParticipationActivity, DonateActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
+                intent.putExtra("fragment", i)
+                startActivity(intent)
+                //startActivity<DonateActivity>("fragment" to i)
                 Handler().postDelayed({ ly_drawer.closeDrawer(Gravity.END) }, 110)
                 finish()
             }
