@@ -55,6 +55,6 @@
                 android:id="@+id/li_iv_img"
                 android:layout_width="match_parent"
                 android:layout_height="183dp"
-                android:background="@color/grayA"/>
+        />
     </LinearLayout>
 </RelativeLayout>
