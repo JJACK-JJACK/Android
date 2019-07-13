@@ -1,5 +1,6 @@
 package jjackjjack.sopt.com.jjackjjack.activities.berrycharge
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import jjackjjack.sopt.com.jjackjjack.R
@@ -34,12 +35,23 @@ class PaymentActivity : AppCompatActivity() {
         tv_payment_date.setText(df.format(cal.time).toString() + " 까지")
 
         btn_payment_ok.setOnClickListener {
-            startActivity<MainActivity>()
+            //val intent = Intent(this, MainActivity::class.java)
+            //intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            //startActivity(intent)
             finish()
         }
         btn_payment_back.setOnClickListener {
-            startActivity<MainActivity>()
+            //val intent = Intent(this, MainActivity::class.java)
+            //intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            //startActivity(intent)
             finish()
         }
+    }
+
+    override fun onBackPressed() {
+        //val intent = Intent(this, MainActivity::class.java)
+        //intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        //startActivity(intent)
+        finish()
     }
 }

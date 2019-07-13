@@ -47,7 +47,7 @@ class MyPageNicknameModifyActivity : AppCompatActivity() {
         }
 
         btn_erase_all.setOnClickListener {
-            edt_nickname_modify.setText(null)
+            edt_nickname_modify.setText("")
         }
 
         btn_check.setOnClickListener {
@@ -123,7 +123,7 @@ class MyPageNicknameModifyActivity : AppCompatActivity() {
         postNicknameCheckResponse.enqueue(object : Callback<PostNicknameCheckResponse> {
             override fun onFailure(call: Call<PostNicknameCheckResponse>, t: Throwable) {
                 Log.e("duplicate check fail", t.toString())
-                toast("중복 확인 실패")
+                ColorToast(this@MyPageNicknameModifyActivity,"잠시 후 다시 접속해주세요")
             }
 
             override fun onResponse(
@@ -137,7 +137,7 @@ class MyPageNicknameModifyActivity : AppCompatActivity() {
                         nickname = edt_nickname_modify.text.toString()
                         setUserNickname(this@MyPageNicknameModifyActivity, nickname)
                     } else {
-                        toast(response.body()!!.message)
+                        ColorToast(this@MyPageNicknameModifyActivity,response.body()!!.message)
                         duplicateCheck = false
                     }
                 }
