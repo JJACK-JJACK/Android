@@ -171,6 +171,7 @@ class MyPageActivity : AppCompatActivity(), onDrawer {
                     .load(R.drawable.pofile)
                     .apply(RequestOptions.circleCropTransform())?.into(iv_drawer_profileimg)
             }
+            tv_drawer_nickname.text = SharedPreferenceController.getUserNickname(this)
         }
 
         btn_cancel.setOnClickListener {
