@@ -1,6 +1,7 @@
 package jjackjjack.sopt.com.jjackjjack.activities.berrycharge
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -85,6 +86,7 @@ class DepositActivity : AppCompatActivity() {
         hint_adapter.addAll(deposit_list)
         hint_adapter.add("입금하실 은행 선택")
 
+
         berry_deposit_spinner.adapter = hint_adapter
         berry_deposit_spinner.setSelection(hint_adapter.getCount())
         berry_deposit_spinner.onItemSelectedListener =
@@ -95,6 +97,7 @@ class DepositActivity : AppCompatActivity() {
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
                     ColorToast(this@DepositActivity,"입금하실 은행을 선택해주세요")
+                    selected_bank = ""
                 }
             }
         for (i in 0 until lyList.size) {
@@ -112,7 +115,13 @@ class DepositActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         btn_berry_deposit_charge.setOnClickListener {
-            if (clickTest.sum() > 0 && !(selected_bank=="")) {
+            if(clickTest.sum()<0 && selected_bank != ""){
+                Log.d("No check berry", "No check berry")
+                ColorToast(this@DepositActivity, "충전베리를 선택해주세요")
+            }else if(clickTest.sum()>0 && selected_bank == "입금하실 은행 선택"){
+                Log.d("No check account", "No check account")
+                ColorToast(this@DepositActivity, "입금하실 은행을 선택해주세요")
+            }else if (clickTest.sum() > 0 && !(selected_bank == "입금하실 은행 선택")) {
                 //계좌뜨는 다이얼로그 창
                 BerryChargeResponse()
             }
@@ -133,11 +142,15 @@ class DepositActivity : AppCompatActivity() {
             override fun onResponse(call: Call<PostBerryChargeResponse>, response: Response<PostBerryChargeResponse>) {
                 if (response.isSuccessful) {
                     if (response.body()!!.status == Secret.NETWORK_LIST_SUCCESS) {
-                            startActivity<PaymentActivity>("berry_charge" to now_money, "selected_bank" to selected_bank)
+                            val intent = Intent(this@DepositActivity, PaymentActivity::class.java)
+                            intent.putExtra("berry_charge", now_money)
+                            intent.putExtra("selected_bank", selected_bank)
+                            startActivity(intent)
+                            //startActivity<PaymentActivity>("berry_charge" to now_money, "selected_bank" to selected_bank)
                             finish()
 
                     } else {
-                        toast("베리 충전 실패")
+                        ColorToast(this@DepositActivity,"베리 충전 실패")
                     }
                 }
             }

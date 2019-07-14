@@ -79,7 +79,7 @@ class DonateDetailedActivity : AppCompatActivity() {
 
         getDonateDetailResponse.enqueue(object : Callback<GetDonateDetailedResponse>{
             override fun onFailure(call: Call<GetDonateDetailedResponse>, t: Throwable) {
-                progress_bar.visibility = View.GONE
+//                progress_bar.visibility = View.GONE
                 window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
                 ColorToast(this@DonateDetailedActivity, "잠시 후 다시 접속해주세요")
                 Log.e("Sorted List fail", t.toString())
@@ -90,7 +90,7 @@ class DonateDetailedActivity : AppCompatActivity() {
                 response: Response<GetDonateDetailedResponse>
             ) {
                 if(response.isSuccessful){
-                    progress_bar.visibility = View.GONE
+//                    progress_bar.visibility = View.GONE
                     //window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
                     if(response.body()!!.status == Secret.NETWORK_LIST_SUCCESS){
                         clearStoryDataList()
@@ -124,7 +124,6 @@ class DonateDetailedActivity : AppCompatActivity() {
                     }
                     else{
                         ColorToast(this@DonateDetailedActivity, response.body()!!.message)
-                        toast(response.body()!!.message)
                     }
                 }
             }

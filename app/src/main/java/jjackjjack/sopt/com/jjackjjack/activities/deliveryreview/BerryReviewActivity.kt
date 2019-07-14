@@ -91,8 +91,8 @@ class BerryReviewActivity : AppCompatActivity() {
                     if (response.body()!!.status == 201) {
                         val receiveData: ArrayList<DonatedDetailedData> = response.body()!!.data
                         if (idx + 1 <= receiveData.size) {
-                            if (URLUtil.isValidUrl(receiveData[0].thumbnail)) {
-                                Glide.with(this@BerryReviewActivity).load(receiveData[0].thumbnail)
+                            if (URLUtil.isValidUrl(receiveData[idx].thumbnail)) {
+                                Glide.with(this@BerryReviewActivity).load(receiveData[idx].thumbnail)
                                     .into(header_image_view)
                             }
                             donate_detailed_title.text = receiveData[idx].title
@@ -120,7 +120,7 @@ class BerryReviewActivity : AppCompatActivity() {
 
                             var sum = 0
 
-                            for (i in 0 until receiveData[0].plan!!.size) {
+                            for (i in 0 until receiveData[idx].plan!!.size) {
                                 dataList_use_plan.add(
                                     DonateUsePlan(
                                         (i + 1).toString(),

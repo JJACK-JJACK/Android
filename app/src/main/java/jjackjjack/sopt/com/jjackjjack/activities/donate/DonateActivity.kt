@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.os.SystemClock
 import android.support.v4.app.FragmentManager
 import android.util.Log
 import android.view.Gravity
@@ -39,6 +40,9 @@ import retrofit2.Response
 import java.text.DecimalFormat
 
 class DonateActivity : AppCompatActivity(), onDrawer {
+    private var mLastClickTime: Long = 0
+    var amLastClickTime: Long = 0
+
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
     }
@@ -47,15 +51,17 @@ class DonateActivity : AppCompatActivity(), onDrawer {
 
     lateinit var btnAset: Array<View>
 
-    lateinit var actSet : Array<Class<out AppCompatActivity>>
+    lateinit var actSet: Array<Class<out AppCompatActivity>>
 
     private val sText = arrayOf(
         "어린이", "어르신", "동물", "장애인", "환경", "긴급구조"
     )
 
-    private val sFragmentConstant = arrayOf(Constants.FRAGMENT_CHILD, Constants.FRAGMENT_ELDER,
+    private val sFragmentConstant = arrayOf(
+        Constants.FRAGMENT_CHILD, Constants.FRAGMENT_ELDER,
         Constants.FRAGMENT_ANIMAL, Constants.FRAGMENT_DISABLE, Constants.FRAGMENT_ENVIRONMENT,
-        Constants.FRAGMENT_EMERGENCY)
+        Constants.FRAGMENT_EMERGENCY
+    )
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,30 +74,33 @@ class DonateActivity : AppCompatActivity(), onDrawer {
     override fun onResume() {
         super.onResume()
         var fragnum: Int = intent.getIntExtra("fragment", -1)
-        if(fragnum != -1){
+        if (fragnum != -1) {
             Log.d("fragnum", fragnum.toString())
             donate_pager.setCurrentItem(fragnum)
         }
     }
 
-    private fun initialUI(){
+    private fun initialUI() {
 
         var main_adapter = DonateCategoryPagerAdapter(supportFragmentManager)
         donate_pager.adapter = main_adapter
 
         donate_tab.setupWithViewPager(donate_pager)
 
-        for(i in 0 until sFragmentConstant.size){
+        for (i in 0 until sFragmentConstant.size) {
             donate_tab.getTabAt(sFragmentConstant[i])?.setText(sText[i])
         }
 
         btn_home.setOnClickListener {
-            startActivity<MainActivity>()
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
             finish()
         }
         drawerUI()
     }
 
+    
     override fun drawerUI() {
         actSet = arrayOf(
             MainActivity::class.java, DonateParticipationActivity::class.java,
@@ -113,29 +122,43 @@ class DonateActivity : AppCompatActivity(), onDrawer {
 
     override fun drawerBtnSetting(activityType: Int) {
         btn_hambuger.setOnClickListener {
-            if(!ly_drawer.isDrawerOpen(Gravity.END)){
+            if (!ly_drawer.isDrawerOpen(Gravity.END)) {
                 ly_drawer.openDrawer(Gravity.END)
             }
             getmyBerryResponse()
             tv_drawer_nickname.text = SharedPreferenceController.getUserNickname(this) //닉네임 DB 저장한 거 가져오는거
             tv_drawer_email.text = SharedPreferenceController.getUserEmail(this) // 이메일 DB 저장한 거
+
+            if ((SharedPreferenceController.getUserImg(this))!!.isNotEmpty()) {
+                Glide.with(this@DonateActivity)
+                    .load(SharedPreferenceController.getUserImg(this))
+                    .apply(RequestOptions.circleCropTransform())?.into(iv_drawer_profileimg)
+
+            } else {
+                Glide.with(this@DonateActivity)
+                    .load(R.drawable.pofile).apply(RequestOptions.circleCropTransform())?.into(iv_drawer_profileimg)
+            }
         }
 
         btn_cancel.setOnClickListener {
-            if(ly_drawer.isDrawerOpen(Gravity.END)){
+            if (ly_drawer.isDrawerOpen(Gravity.END)) {
                 ly_drawer.closeDrawer(Gravity.END)
             }
         }
-        if(URLUtil.isValidUrl(SharedPreferenceController.getUserImg(this))){
+        if (URLUtil.isValidUrl(SharedPreferenceController.getUserImg(this))) {
             Glide.with(this).load(SharedPreferenceController.getUserImg(this))
                 .apply(RequestOptions.circleCropTransform())?.into(iv_drawer_profileimg)
         } //이미지 DB에서 가져오기 나중에 없을때 default 이미지 뜨게 처리해야함
 
 
-        for(i in 0 until btnAset.size){
-            btnAset[i].setOnClickListener{
+        for (i in 0 until btnAset.size) {
+            btnAset[i].setOnClickListener {
+                if(SystemClock.elapsedRealtime()- amLastClickTime < 2000){
+                    return@setOnClickListener
+                }
+                amLastClickTime = SystemClock.elapsedRealtime()
                 val intent = Intent(this, actSet[i])
-                var fm : FragmentManager = supportFragmentManager
+                var fm: FragmentManager = supportFragmentManager
                 fm.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
                 startActivity(intent)
                 ly_drawer.closeDrawer(Gravity.END)
@@ -144,29 +167,32 @@ class DonateActivity : AppCompatActivity(), onDrawer {
             }
         }
 
-        for(i in 0 until btnFset.size){
+        for (i in 0 until btnFset.size) {
             btnFset[i].setOnClickListener {
+                if(SystemClock.elapsedRealtime()-mLastClickTime < 2000){
+                    return@setOnClickListener
+                }
+                mLastClickTime = SystemClock.elapsedRealtime()
                 donate_pager.setCurrentItem(i)
-                Handler().postDelayed({ly_drawer.closeDrawer(Gravity.END)}, 200)
+                Handler().postDelayed({ ly_drawer.closeDrawer(Gravity.END) }, 200)
             }
         }
 
     }
 
     override fun onBackPressed() {
-        if(ly_drawer.isDrawerOpen(Gravity.END)){
+        if (ly_drawer.isDrawerOpen(Gravity.END)) {
             ly_drawer.closeDrawer(Gravity.END)
-        }
-        else{
+        } else {
             super.onBackPressed()
         }
     }
 
-    private fun getmyBerryResponse(){
-        var token:String = SharedPreferenceController.getAuthorization(this)
+    private fun getmyBerryResponse() {
+        var token: String = SharedPreferenceController.getAuthorization(this)
 
         val getmyBerryResponse =
-            networkService.getmyBerryResponse("application/json",token)
+            networkService.getmyBerryResponse("application/json", token)
 
         getmyBerryResponse.enqueue(object : Callback<GetmyBerryResponse> {
             override fun onFailure(call: Call<GetmyBerryResponse>, t: Throwable) {
@@ -175,16 +201,16 @@ class DonateActivity : AppCompatActivity(), onDrawer {
             }
 
             override fun onResponse(call: Call<GetmyBerryResponse>, response: Response<GetmyBerryResponse>) {
-                if(response.isSuccessful){
-                    if(response.body()!!.status == Secret.NETWORK_LIST_SUCCESS){
+                if (response.isSuccessful) {
+                    if (response.body()!!.status == Secret.NETWORK_LIST_SUCCESS) {
                         val receiveData = response.body()?.data
 
                         val dec = DecimalFormat("#,000")
-                        val dec_berry : String
+                        val dec_berry: String
 
-                        if(receiveData.toString().length <= 3){
+                        if (receiveData.toString().length <= 3) {
                             dec_berry = receiveData.toString()
-                        }else{
+                        } else {
                             dec_berry = dec.format(receiveData)
                         }
 

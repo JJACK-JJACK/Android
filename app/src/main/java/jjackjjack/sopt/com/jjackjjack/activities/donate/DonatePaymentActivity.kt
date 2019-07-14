@@ -1,5 +1,6 @@
 package jjackjjack.sopt.com.jjackjjack.activities.donate
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
@@ -53,7 +54,7 @@ class DonatePaymentActivity : AppCompatActivity() {
         var edtString = edt_donate_berry_num.text.toString()
         btn_erase_all.setOnClickListener {
             edtString = "0"
-            edt_donate_berry_num.setText(null)
+            edt_donate_berry_num.setText("")
         }
 
         btn_payment_back.setOnClickListener {
@@ -203,8 +204,12 @@ class DonatePaymentActivity : AppCompatActivity() {
         builder.show()
 
         btn_dialog_check_stamp.setOnClickListener {
-            ctx.startActivity<StampActivity>()
+            val intent = Intent(this, StampActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
+            ctx.startActivity(intent)
             finish()
+//            ctx.startActivity<StampActivity>()
+//            finish()
         }
 
         btn_dialog_close.setOnClickListener {

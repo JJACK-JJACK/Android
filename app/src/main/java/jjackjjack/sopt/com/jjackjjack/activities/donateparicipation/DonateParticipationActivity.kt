@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.os.SystemClock
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.Gravity
@@ -32,6 +33,7 @@ import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateParticipatio
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateParticipationResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GetDonateRecordResponse
 import jjackjjack.sopt.com.jjackjjack.network.response.get.GetmyBerryResponse
+import jjackjjack.sopt.com.jjackjjack.utillity.ColorToast
 import jjackjjack.sopt.com.jjackjjack.utillity.Constants
 import jjackjjack.sopt.com.jjackjjack.utillity.Secret
 import kotlinx.android.synthetic.main.activity_donate_record.ly_drawer
@@ -50,6 +52,8 @@ import kotlin.collections.ArrayList
 
 class DonateParticipationActivity : AppCompatActivity(), onDrawer {
 
+    private var mLastClickTime: Long = 0
+    var amLastClickTime: Long = 0
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
     }
@@ -90,12 +94,16 @@ class DonateParticipationActivity : AppCompatActivity(), onDrawer {
     private fun initialUI() {
 
         btn_home.setOnClickListener {
-            startActivity<MainActivity>()
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
             finish()
         }
 
         donate_record_stamp.setOnClickListener {
-            startActivity<StampActivity>()
+            val intent = Intent(this, StampActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
+            startActivity(intent)
         }
         drawerUI()
 
@@ -132,6 +140,14 @@ class DonateParticipationActivity : AppCompatActivity(), onDrawer {
             getmyBerryResponse()
             tv_drawer_nickname.text = SharedPreferenceController.getUserNickname(this) //닉네임 DB 저장한 거 가져오는거
             tv_drawer_email.text = SharedPreferenceController.getUserEmail(this) // 이메일 DB 저장한 거
+            if((SharedPreferenceController.getUserImg(this))!!.isNotEmpty()){
+                Glide.with(this@DonateParticipationActivity)
+                .load(SharedPreferenceController.getUserImg(this)).apply(RequestOptions.circleCropTransform())?.into(iv_drawer_profileimg)
+            }else{
+                Glide.with(this@DonateParticipationActivity)
+                    .load(R.drawable.pofile)
+                    .apply(RequestOptions.circleCropTransform())?.into(iv_drawer_profileimg)
+            }
         }
 
         btn_cancel.setOnClickListener {
@@ -149,16 +165,29 @@ class DonateParticipationActivity : AppCompatActivity(), onDrawer {
 
         for (i in 0 until btnAset.size) {
             btnAset[i].setOnClickListener {
+                if(SystemClock.elapsedRealtime()- amLastClickTime < 2000){
+                    return@setOnClickListener
+                }
+                amLastClickTime = SystemClock.elapsedRealtime()
                 val intent = Intent(this, actSet[i])
+                intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
                 ly_drawer.closeDrawer(Gravity.END)
-                startActivity(intent)
+                Handler().postDelayed({startActivity(intent)}, 110)
                 finish()
             }
         }
 
         for (i in 0 until btnFset.size) {
             btnFset[i].setOnClickListener {
-                startActivity<DonateActivity>("fragment" to i)
+                if(SystemClock.elapsedRealtime()-mLastClickTime < 2000){
+                    return@setOnClickListener
+                }
+                mLastClickTime = SystemClock.elapsedRealtime()
+                val intent = Intent(this@DonateParticipationActivity, DonateActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
+                intent.putExtra("fragment", i)
+                startActivity(intent)
+                //startActivity<DonateActivity>("fragment" to i)
                 Handler().postDelayed({ ly_drawer.closeDrawer(Gravity.END) }, 110)
                 finish()
             }
@@ -183,6 +212,7 @@ class DonateParticipationActivity : AppCompatActivity(), onDrawer {
 
             override fun onFailure(call: Call<GetDonateRecordResponse>, t: Throwable) {
                 Log.d("hello", t.toString())
+                ColorToast(this@DonateParticipationActivity,"잠시 후 다시 접속해주세요")
             }
 
             override fun onResponse(call: Call<GetDonateRecordResponse>, response: Response<GetDonateRecordResponse>) {
@@ -211,7 +241,7 @@ class DonateParticipationActivity : AppCompatActivity(), onDrawer {
                             participation_num.text = 0.toString()
                         }
                     } else if (response.body()!!.status == 600) {
-                        toast(response.body()!!.message)
+                        ColorToast(this@DonateParticipationActivity,response.body()!!.message)
                     }
                 }
             }
@@ -230,6 +260,7 @@ class DonateParticipationActivity : AppCompatActivity(), onDrawer {
         getDonateParticipationBerryNumResponse.enqueue(object : Callback<GetDonateParticipationBerryNumResponse> {
             override fun onFailure(call: Call<GetDonateParticipationBerryNumResponse>, t: Throwable) {
                 Log.e("hello", t.toString())
+                ColorToast(this@DonateParticipationActivity, "잠시 후 다시 접속해주세요")
             }
 
             override fun onResponse(
@@ -249,7 +280,7 @@ class DonateParticipationActivity : AppCompatActivity(), onDrawer {
                             getDonateParticipationResponse(dataList_donateberrynum)
                         }
                     } else if (response.body()!!.status == 600) {
-                        toast(response.body()!!.message)
+                        ColorToast(this@DonateParticipationActivity, response.body()!!.message)
                     }
                 }
             }
@@ -267,6 +298,7 @@ class DonateParticipationActivity : AppCompatActivity(), onDrawer {
         getDonateParticipationResponse.enqueue(object : Callback<GetDonateParticipationResponse> {
             override fun onFailure(call: Call<GetDonateParticipationResponse>, t: Throwable) {
                 Log.e("hello", t.toString())
+                ColorToast(this@DonateParticipationActivity, "잠시 후 다시 접속해주세요")
             }
 
             override fun onResponse(
@@ -294,7 +326,7 @@ class DonateParticipationActivity : AppCompatActivity(), onDrawer {
                             updateDonateList(dataList_donateParticipateInfo)
                         }
                     } else if (response.body()!!.status == 600) {
-                        toast(response.body()!!.message)
+                        ColorToast(this@DonateParticipationActivity,response.body()!!.message)
                     }
                 }
             }
@@ -310,6 +342,7 @@ class DonateParticipationActivity : AppCompatActivity(), onDrawer {
         getmyBerryResponse.enqueue(object : Callback<GetmyBerryResponse> {
             override fun onFailure(call: Call<GetmyBerryResponse>, t: Throwable) {
                 Log.d("No berry", "No Berry")
+                ColorToast(this@DonateParticipationActivity, "잠시 후 다시 접속해주세요")
             }
 
             override fun onResponse(call: Call<GetmyBerryResponse>, response: Response<GetmyBerryResponse>) {

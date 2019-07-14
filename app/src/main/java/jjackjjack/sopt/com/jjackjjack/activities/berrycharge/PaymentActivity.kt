@@ -1,5 +1,6 @@
 package jjackjjack.sopt.com.jjackjjack.activities.berrycharge
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import jjackjjack.sopt.com.jjackjjack.R
@@ -28,46 +29,29 @@ class PaymentActivity : AppCompatActivity() {
         val df: DateFormat = SimpleDateFormat("yyyy-MM-dd")
         cal.add(Calendar.DATE, 1)
 
-        tv_payment_money.setText(credits+"원")
+        tv_payment_money.setText(credits + "원")
         tv_payment_bank.setText(set_selected_bank[0])
         tv_payment_account.setText(set_selected_bank[1])
-        tv_payment_date.setText(df.format(cal.time).toString()+" 까지")
+        tv_payment_date.setText(df.format(cal.time).toString() + " 까지")
 
         btn_payment_ok.setOnClickListener {
-            startActivity<MainActivity>()
+            //val intent = Intent(this, MainActivity::class.java)
+            //intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            //startActivity(intent)
+            finish()
+        }
+        btn_payment_back.setOnClickListener {
+            //val intent = Intent(this, MainActivity::class.java)
+            //intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            //startActivity(intent)
             finish()
         }
     }
-    private fun converteDday(finish: String) : String{
 
-        var dday : Int = 0
-        var Dday: String = ""
-
-
-        if(finish != null) {
-
-            val today = Calendar.getInstance()
-            val finishdateFormat = SimpleDateFormat("yyyy-MM-dd").parse(finish.split("T")[0])
-            val instance: Calendar = Calendar.getInstance()
-            instance.setTime(finishdateFormat)
-
-
-            val cnt_today: Long = today.timeInMillis / 86400000
-            val cnt_instance: Long = instance.timeInMillis / 86400000
-
-            val sub: Long = cnt_today - cnt_instance
-
-            dday = sub.toInt() + 1
-
-            if(dday >0){
-                Dday = "+$dday"
-            }
-            else{
-                Dday = "$dday"
-            }
-        }
-        return Dday
-
+    override fun onBackPressed() {
+        //val intent = Intent(this, MainActivity::class.java)
+        //intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        //startActivity(intent)
+        finish()
     }
-
 }

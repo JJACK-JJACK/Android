@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.os.SystemClock
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.Gravity
@@ -48,6 +49,9 @@ import java.text.DecimalFormat
 
 class DeliveryReviewActivity : AppCompatActivity(), onDrawer {
 
+    private var mLastClickTime: Long = 0
+    private var amLastClickTime: Long = 0
+
     lateinit var mAdapter: DeliveryReviewImageAdapter
 
     lateinit var btnFset: Array<ImageView>
@@ -87,7 +91,9 @@ class DeliveryReviewActivity : AppCompatActivity(), onDrawer {
     }
     private fun initialUI() {
         btn_home.setOnClickListener {
-            startActivity<MainActivity>()
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
             finish()
         }
         drawerUI()
@@ -127,6 +133,16 @@ class DeliveryReviewActivity : AppCompatActivity(), onDrawer {
             getmyBerryResponse()
             tv_drawer_nickname.text = SharedPreferenceController.getUserNickname(this) //닉네임 DB 저장한 거 가져오는거
             tv_drawer_email.text = SharedPreferenceController.getUserEmail(this) // 이메일 DB 저장한 거
+            if((SharedPreferenceController.getUserImg(this))!!.isNotEmpty()){
+                Glide.with(this@DeliveryReviewActivity)
+                .load(SharedPreferenceController.getUserImg(this))
+                    .apply(RequestOptions.circleCropTransform())?.into(iv_drawer_profileimg)
+
+            }else{
+                Glide.with(this@DeliveryReviewActivity)
+                    .load(R.drawable.pofile)
+                    .apply(RequestOptions.circleCropTransform())?.into(iv_drawer_profileimg)
+            }
         }
 
         btn_cancel.setOnClickListener {
@@ -138,13 +154,17 @@ class DeliveryReviewActivity : AppCompatActivity(), onDrawer {
         tv_drawer_nickname.text = SharedPreferenceController.getUserNickname(this)//닉네임 DB 저장한 거 가져오는거
         tv_drawer_email.text = SharedPreferenceController.getUserEmail(this) // 이메일 DB 저장한 거
 
-        if(URLUtil.isValidUrl(SharedPreferenceController.getUserImg(this))){
-            Glide.with(this).load(SharedPreferenceController.getUserImg(this))
-                .apply(RequestOptions.circleCropTransform())?.into(iv_drawer_profileimg)
-        } //이미지 DB에서 가져오기 나중에 없을때 default 이미지 뜨게 처리해야함
+        //if(URLUtil.isValidUrl(SharedPreferenceController.getUserImg(this))){
+        //    Glide.with(this).load(SharedPreferenceController.getUserImg(this))
+        //        .apply(RequestOptions.circleCropTransform())?.into(iv_drawer_profileimg)
+        //} //이미지 DB에서 가져오기 나중에 없을때 default 이미지 뜨게 처리해야함
 
         for (i in 0 until btnAset.size) {
             btnAset[i].setOnClickListener {
+                if(SystemClock.elapsedRealtime()-amLastClickTime < 2000){
+                    return@setOnClickListener
+                }
+                amLastClickTime = SystemClock.elapsedRealtime()
                 val intent = Intent(this, actSet[i])
                 ly_drawer.closeDrawer(Gravity.END)
                 startActivity(intent)
@@ -154,7 +174,15 @@ class DeliveryReviewActivity : AppCompatActivity(), onDrawer {
 
         for (i in 0 until btnFset.size) {
             btnFset[i].setOnClickListener {
-                startActivity<DonateActivity>("fragment" to i)
+                if(SystemClock.elapsedRealtime()-mLastClickTime < 2000){
+                    return@setOnClickListener
+                }
+                mLastClickTime = SystemClock.elapsedRealtime()
+                val intent = Intent(this@DeliveryReviewActivity, DonateActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
+                intent.putExtra("fragment", i)
+                startActivity(intent)
+                //startActivity<DonateActivity>("fragment" to i)
                 Handler().postDelayed({ ly_drawer.closeDrawer(Gravity.END) }, 110)
                 finish()
             }

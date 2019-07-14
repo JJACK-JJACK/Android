@@ -8,7 +8,7 @@
         tools:showIn="@layout/activity_donate_detailed">
     <ImageView
             android:id="@+id/header_image_view"
-            android:scaleType="center"
+            android:scaleType="centerCrop"
             android:layout_width="match_parent"
             android:layout_height="207dp"
             app:srcCompat="@color/colorPrimary">
